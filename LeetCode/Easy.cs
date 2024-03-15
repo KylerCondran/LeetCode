@@ -4370,6 +4370,29 @@ namespace LeetCode
             }
             return finalstring;
         }
+        //Title: 383. Ransom Note
+        //Link: https://leetcode.com/problems/ransom-note
+        //Tags: Hash Table, String, Counting
+        public static bool CanConstruct(string ransomNote, string magazine)
+        {
+            List<char> a = new List<char>();
+            for (int i = 0; i < magazine.Length; i++)
+            {
+                a.Add(magazine[i]);
+            }
+            for (int i = 0; i < ransomNote.Length; i++)
+            {
+                if (a.Contains(ransomNote[i]))
+                {
+                    a.Remove(ransomNote[i]);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         #endregion
     }
 }
