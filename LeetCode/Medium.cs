@@ -1383,6 +1383,79 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 36. Valid Sudoku
+        //Link: https://leetcode.com/problems/valid-sudoku
+        //Tags: Array, Hash Table, Matrix
+        public static bool IsValidSudoku(char[][] board)
+        {
+            int[][,] localgroup = new int[9][,];
+            localgroup[0] = new int[9, 2] { { 0, 0 }, { 0, 1 }, { 0, 2 }, { 1, 0 }, { 1, 1 }, { 1, 2 }, { 2, 0 }, { 2, 1 }, { 2, 2 } };
+            localgroup[1] = new int[9, 2] { { 0, 3 }, { 0, 4 }, { 0, 5 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 2, 3 }, { 2, 4 }, { 2, 5 } };
+            localgroup[2] = new int[9, 2] { { 0, 6 }, { 0, 7 }, { 0, 8 }, { 1, 6 }, { 1, 7 }, { 1, 8 }, { 2, 6 }, { 2, 7 }, { 2, 8 } };
+            localgroup[3] = new int[9, 2] { { 3, 0 }, { 3, 1 }, { 3, 2 }, { 4, 0 }, { 4, 1 }, { 4, 2 }, { 5, 0 }, { 5, 1 }, { 5, 2 } };
+            localgroup[4] = new int[9, 2] { { 3, 3 }, { 3, 4 }, { 3, 5 }, { 4, 3 }, { 4, 4 }, { 4, 5 }, { 5, 3 }, { 5, 4 }, { 5, 5 } };
+            localgroup[5] = new int[9, 2] { { 3, 6 }, { 3, 7 }, { 3, 8 }, { 4, 6 }, { 4, 7 }, { 4, 8 }, { 5, 6 }, { 5, 7 }, { 5, 8 } };
+            localgroup[6] = new int[9, 2] { { 6, 0 }, { 6, 1 }, { 6, 2 }, { 7, 0 }, { 7, 1 }, { 7, 2 }, { 8, 0 }, { 8, 1 }, { 8, 2 } };
+            localgroup[7] = new int[9, 2] { { 6, 3 }, { 6, 4 }, { 6, 5 }, { 7, 3 }, { 7, 4 }, { 7, 5 }, { 8, 3 }, { 8, 4 }, { 8, 5 } };
+            localgroup[8] = new int[9, 2] { { 6, 6 }, { 6, 7 }, { 6, 8 }, { 7, 6 }, { 7, 7 }, { 7, 8 }, { 8, 6 }, { 8, 7 }, { 8, 8 } };
+            foreach (char[] a in board)
+            {
+                List<char> b = new List<char>();
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (a[i] != '.')
+                    {
+                        if (!b.Contains(a[i]))
+                        {
+                            b.Add(a[i]);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                List<char> c = new List<char>();
+                for (int t = 0; t < 9; t++)
+                {
+                    if (board[t][i] != '.')
+                    {
+                        if (!c.Contains(board[t][i]))
+                        {
+                            c.Add(board[t][i]);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                List<char> d = new List<char>();
+                for (int j = 0; j < localgroup[i].Length / 2; j++)
+                {
+                    int ycoord = localgroup[i][j, 0];
+                    int xcoord = localgroup[i][j, 1];
+                    if (board[ycoord][xcoord] != '.')
+                    {
+                        if (!d.Contains(board[ycoord][xcoord]))
+                        {
+                            d.Add(board[ycoord][xcoord]);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
         #endregion
     }
 }
