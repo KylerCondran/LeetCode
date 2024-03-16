@@ -4441,6 +4441,58 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2133. Check if Every Row and Column Contains All Numbers
+        //Link: https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers
+        //Tags: Array, Hash Table, Matrix
+        public bool CheckValid(int[][] matrix)
+        {
+            int len = matrix.Length;
+            foreach (int[] a in matrix)
+            {
+                List<int> b = new List<int>();
+                for (int i = 0; i < len; i++)
+                {
+                    if (!b.Contains(a[i]))
+                    {
+                        b.Add(a[i]);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                for (int i = 1; i <= len; i++)
+                {
+                    if (!b.Contains(i))
+                    {
+                        return false;
+                    }
+                }
+            }
+            for (int i = 0; i < len; i++)
+            {
+                List<int> c = new List<int>();
+                for (int t = 0; t < len; t++)
+                {
+                    if (!c.Contains(matrix[t][i]))
+                    {
+                        c.Add(matrix[t][i]);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                for (int t = 1; t <= len; t++)
+                {
+                    if (!c.Contains(t))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         #endregion
     }
 }
