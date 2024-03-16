@@ -1515,6 +1515,114 @@ namespace LeetCode
             final = final.TrimEnd();
             return final;
         }
+        //Title: 289. Game of Life
+        //Link: https://leetcode.com/problems/game-of-life
+        //Tags: Array, Matrix, Simulation
+        public static void GameOfLife(int[][] board)
+        {
+            int yval = 0;
+            var len = board.Length;
+            var source = new int[len][];
+            for (var x = 0; x < len; x++)
+            {
+                var inner = board[x];
+                var ilen = inner.Length;
+                var newer = new int[ilen];
+                Array.Copy(inner, newer, ilen);
+                source[x] = newer;
+            }
+            foreach (int[] a in source)
+            {
+                for (int i = 0; i < a.Length; i++)
+                {
+                    bool alive = false;
+                    int liveneighbors = 0;
+                    if (a[i] == 1)
+                    {
+                        alive = true;
+                    }
+                    if (i != a.Length - 1)
+                    {
+                        //right
+                        if (source[yval][i + 1] == 1)
+                        {
+                            liveneighbors++;
+                        }
+                        //right down diagonal
+                        if (yval != source.Length - 1)
+                        {
+                            if (source[yval + 1][i + 1] == 1)
+                            {
+                                liveneighbors++;
+                            }
+                        }
+                        //right up diagonal
+                        if (yval != 0)
+                        {
+                            if (source[yval - 1][i + 1] == 1)
+                            {
+                                liveneighbors++;
+                            }
+                        }
+                    }
+                    //down
+                    if (yval != source.Length - 1)
+                    {
+                        if (source[yval + 1][i] == 1)
+                        {
+                            liveneighbors++;
+                        }
+                    }
+                    //up
+                    if (yval != 0)
+                    {
+                        if (source[yval - 1][i] == 1)
+                        {
+                            liveneighbors++;
+                        }
+                    }
+                    if (i != 0)
+                    {
+                        //left
+                        if (source[yval][i - 1] == 1)
+                        {
+                            liveneighbors++;
+                        }
+                        //left down diagonal
+                        if (yval != source.Length - 1)
+                        {
+                            if (source[yval + 1][i - 1] == 1)
+                            {
+                                liveneighbors++;
+                            }
+                        }
+                        //left up diagonal
+                        if (yval != 0)
+                        {
+                            if (source[yval - 1][i - 1] == 1)
+                            {
+                                liveneighbors++;
+                            }
+                        }
+                    }
+                    if (alive)
+                    {
+                        if (liveneighbors < 2 || liveneighbors > 3)
+                        {
+                            board[yval][i] = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (liveneighbors == 3)
+                        {
+                            board[yval][i] = 1;
+                        }
+                    }
+                }
+                yval++;
+            }
+        }
         #endregion
     }
 }
