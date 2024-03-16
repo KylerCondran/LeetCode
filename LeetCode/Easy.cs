@@ -4393,6 +4393,54 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2299. Strong Password Checker II
+        //Link: https://leetcode.com/problems/strong-password-checker-ii
+        //Tags: String
+        public bool StrongPasswordCheckerII(string password)
+        {
+            if (password.Length < 8)
+            {
+                return false;
+            }
+            bool lower = false;
+            bool upper = false;
+            bool digit = false;
+            bool special = false;
+            char last = '|';
+            char[] v = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char[] u = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            char[] w = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] x = new char[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+' };
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (password[i] == last)
+                {
+                    return false;
+                }
+                else if (v.Contains(password[i]))
+                {
+                    upper = true;
+                }
+                else if (u.Contains(password[i]))
+                {
+                    lower = true;
+                }
+                else if (w.Contains(password[i]))
+                {
+                    digit = true;
+                }
+                else if (x.Contains(password[i]))
+                {
+                    special = true;
+                }
+                last = password[i];
+            }
+            if (lower == false || upper == false || digit == false || special == false)
+            {
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }
