@@ -1456,6 +1456,65 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2288. Apply Discount to Prices
+        //Link: https://leetcode.com/problems/apply-discount-to-prices
+        //Tags: String
+        public string DiscountPrices(string sentence, int discount)
+        {
+            string[] s = sentence.Split(' ');
+            string[] ans = new string[s.Length];
+            int counter = 0;
+            foreach (string word in s)
+            {
+                if (word[0] == '$')
+                {
+                    string r = "$";
+                    string digits = "";
+                    for (int i = 1; i < word.Length; i++)
+                    {
+                        if (char.IsDigit(word[i]))
+                        {
+                            digits += word[i];
+                        }
+                        else
+                        {
+                            digits = "";
+                            r = word;
+                            break;
+                        }
+                    }
+                    if (digits.Length > 0)
+                    {
+                        BigInteger d = 0;
+                        BigInteger.TryParse(digits, out d);
+                        if (discount == 100)
+                        {
+                            r += (0).ToString("0.00");
+                        }
+                        else
+                        {
+                            double c = discount * 0.01;
+                            decimal f = 1 - (decimal)c;
+                            decimal e = (decimal)d * f;
+                            r += e.ToString("C2").Replace("¤", "").Replace(",", "");
+                        }
+                    }
+                    ans[counter] = r;
+                }
+                else
+                {
+                    ans[counter] = word;
+                }
+                counter++;
+            }
+            string final = "";
+            foreach (string word in ans)
+            {
+                final += word + ' ';
+            }
+            final = final.TrimEnd();
+            return final;
+        }
         #endregion
     }
 }
