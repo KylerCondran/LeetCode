@@ -1459,7 +1459,7 @@ namespace LeetCode
         //Title: 2288. Apply Discount to Prices
         //Link: https://leetcode.com/problems/apply-discount-to-prices
         //Tags: String
-        public string DiscountPrices(string sentence, int discount)
+        public static string DiscountPrices(string sentence, int discount)
         {
             string[] s = sentence.Split(' ');
             string[] ans = new string[s.Length];

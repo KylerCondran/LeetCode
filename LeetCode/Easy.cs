@@ -4396,7 +4396,7 @@ namespace LeetCode
         //Title: 2299. Strong Password Checker II
         //Link: https://leetcode.com/problems/strong-password-checker-ii
         //Tags: String
-        public bool StrongPasswordCheckerII(string password)
+        public static bool StrongPasswordCheckerII(string password)
         {
             if (password.Length < 8)
             {
@@ -4444,7 +4444,7 @@ namespace LeetCode
         //Title: 2133. Check if Every Row and Column Contains All Numbers
         //Link: https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers
         //Tags: Array, Hash Table, Matrix
-        public bool CheckValid(int[][] matrix)
+        public static bool CheckValid(int[][] matrix)
         {
             int len = matrix.Length;
             foreach (int[] a in matrix)
