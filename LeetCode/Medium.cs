@@ -1623,6 +1623,13 @@ namespace LeetCode
                 yval++;
             }
         }
+        //Title: 2396. Strictly Palindromic Number
+        //Link: https://leetcode.com/problems/strictly-palindromic-number
+        //Tags: Math, Two Pointers, Brainteaser
+        public static bool IsStrictlyPalindromic(int n)
+        {
+            return false;
+        }
         #endregion
     }
 }
