@@ -95,7 +95,7 @@ namespace LeetCode
         //======================================================================================================================
         //I wrote and used this custom class to change the default sort behavior of the SortedDictionary from ascending to descending.
         //This sorts the keys in descending order which allows SortedDictionary.Keys.First() to be called rather than 
-        //SortedDictionary.Keys.Last() which is must slower with larger datasets, likely due to iterating from the top to the bottom.
+        //SortedDictionary.Keys.Last() which is much slower with larger datasets, likely due to iterating from the top to the bottom.
         //This allowed me to pass the time limit exceeded restriction and optimized the runtime complexity of my algorithm.
         //======================================================================================================================
         //public class ReverseSortComparer : IComparer<int>
