@@ -4493,6 +4493,64 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2. Add Two Numbers
+        //Link: https://leetcode.com/problems/add-two-numbers
+        //Tags: Linked List, Math, Recursion
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            ListNode head = null;
+            string num1 = "";
+            string num2 = "";
+            while (l1 != null)
+            {
+                num1 += l1.val.ToString();
+                l1 = l1.next;
+            }
+            while (l2 != null)
+            {
+                num2 += l2.val.ToString();
+                l2 = l2.next;
+            }
+            char[] a = num1.ToCharArray();
+            char[] b = num2.ToCharArray();
+            Array.Reverse(a);
+            Array.Reverse(b);
+            string a1 = new string(a);
+            string b1 = new string(b);
+            BigInteger d1 = 0;
+            BigInteger d2 = 0;
+            BigInteger.TryParse(a1, out d1);
+            BigInteger.TryParse(b1, out d2);
+            BigInteger sum = d1 + d2;
+            string sumstr = sum.ToString();
+            char[] sumrev = sumstr.ToCharArray();
+            Array.Reverse(sumrev);
+            string sumstrrev = new string(sumrev);
+            for (int i = 0; i < sumstrrev.Length; i++)
+            {
+                int digit = 0;
+                int.TryParse(sumstrrev[i] + "", out digit);
+                AddLink(ref head, digit);
+            }
+            return head;
+        }
+        public static void AddLink(ref ListNode headref, int linkval)
+        {
+            ListNode link = new ListNode(linkval);
+            if (headref == null)
+            {
+                headref = link;
+            }
+            else
+            {
+                ListNode current = headref;
+                while (current.next != null)
+                {
+                    current = current.next;
+                }
+                current.next = link;
+            }
+        }
         #endregion
     }
 }
