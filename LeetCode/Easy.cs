@@ -4541,6 +4541,45 @@ namespace LeetCode
                 current.next = link;
             }
         }
+        public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            ListNode head = null;
+            while (list1 != null)
+            {
+                int listval = list1.val;
+                if (!a.ContainsKey(listval))
+                {
+                    a.Add(listval, 1);
+                }
+                else
+                {
+                    a[listval]++;
+                }
+                list1 = list1.next;
+            }
+            while (list2 != null)
+            {
+                int listval = list2.val;
+                if (!a.ContainsKey(listval))
+                {
+                    a.Add(listval, 1);
+                }
+                else
+                {
+                    a[listval]++;
+                }
+                list2 = list2.next;
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                for (int i = 0; i < b.Value; i++)
+                {
+                    AddLink(ref head, b.Key);
+                }
+            }
+            return head;
+        }
         #endregion
     }
 }
