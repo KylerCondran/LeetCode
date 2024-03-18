@@ -4541,6 +4541,9 @@ namespace LeetCode
                 current.next = link;
             }
         }
+        //Title: 21. Merge Two Sorted Lists
+        //Link: https://leetcode.com/problems/merge-two-sorted-lists
+        //Tags: Linked List, Recursion
         public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
             SortedDictionary<int, int> a = new SortedDictionary<int, int>();
@@ -4579,6 +4582,32 @@ namespace LeetCode
                 }
             }
             return head;
+        }
+        //Title: 83. Remove Duplicates from Sorted List
+        //Link: https://leetcode.com/problems/remove-duplicates-from-sorted-list
+        //Tags: Linked List
+        public static ListNode DeleteDuplicates(ListNode head)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (!a.ContainsKey(listval))
+                {
+                    a.Add(listval, 1);
+                }
+                else
+                {
+                    a[listval]++;
+                }
+                head = head.next;
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                AddLink(ref ans, b.Key);
+            }
+            return ans;
         }
         #endregion
     }
