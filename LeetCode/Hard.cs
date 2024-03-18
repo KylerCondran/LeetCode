@@ -153,6 +153,201 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 273. Integer to English Words
+        //Link: https://leetcode.com/problems/integer-to-english-words
+        //Tags: Math, String, Recursion
+        public static string NumberToWords(int num)
+        {
+            int start = num;
+            string startstring = start.ToString();
+            char[] c = startstring.ToCharArray();
+            Array.Reverse(c);
+            string backwards = new string(c);
+            string final = "";
+            Dictionary<int, string> a = new Dictionary<int, string>();
+            a.Add(0, "Zero");
+            a.Add(1, "One");
+            a.Add(2, "Two");
+            a.Add(3, "Three");
+            a.Add(4, "Four");
+            a.Add(5, "Five");
+            a.Add(6, "Six");
+            a.Add(7, "Seven");
+            a.Add(8, "Eight");
+            a.Add(9, "Nine");
+            a.Add(10, "Ten");
+            a.Add(11, "Eleven");
+            a.Add(12, "Twelve");
+            a.Add(13, "Thirteen");
+            a.Add(14, "Fourteen");
+            a.Add(15, "Fifteen");
+            a.Add(16, "Sixteen");
+            a.Add(17, "Seventeen");
+            a.Add(18, "Eighteen");
+            a.Add(19, "Nineteen");
+            a.Add(20, "Twenty");
+            a.Add(30, "Thirty");
+            a.Add(40, "Forty");
+            a.Add(50, "Fifty");
+            a.Add(60, "Sixty");
+            a.Add(70, "Seventy");
+            a.Add(80, "Eighty");
+            a.Add(90, "Ninety");
+            a.Add(100, "Hundred");
+            a.Add(1000, "Thousand");
+            a.Add(1000000, "Million");
+            a.Add(1000000000, "Billion");
+            if (num == 0)
+            {
+                return a[0];
+            }
+            //billion
+            if (num > 999999999)
+            {
+                int billion = 0;
+                while (num > 999999999)
+                {
+                    billion++;
+                    num = num - 1000000000;
+                }
+                final += a[billion] + " " + a[1000000000] + " ";
+            }
+            //hundred million
+            if (num > 99999999)
+            {
+                int hundred = 0;
+                while (num > 99999999)
+                {
+                    hundred++;
+                    num = num - 100000000;
+                }
+                final += a[hundred] + " " + a[100] + " ";
+            }
+            //ten million
+            if (num > 19999999)
+            {
+                int tens = 0;
+                while (num > 9999999)
+                {
+                    tens++;
+                    num = num - 10000000;
+                }
+                final += a[tens * 10] + " ";
+            }
+            //one million
+            if (num > 999999)
+            {
+                int million = 0;
+                while (num > 999999)
+                {
+                    million++;
+                    num = num - 1000000;
+                }
+                final += a[million] + " " + a[1000000] + " ";
+            }
+            if (!final.Contains("Million") && start > 999999)
+            {
+                int counter = 0;
+                for (int i = 6; i < backwards.Length; i++)
+                {
+                    if (counter >= 3)
+                    {
+                        break;
+                    }
+                    if (backwards[i] != '0')
+                    {
+                        final = final + a[1000000] + " ";
+                        break;
+                    }
+                    counter++;
+                }
+            }
+            //hundred thousand
+            if (num > 99999)
+            {
+                int hundred = 0;
+                while (num > 99999)
+                {
+                    hundred++;
+                    num = num - 100000;
+                }
+                final += a[hundred] + " " + a[100] + " ";
+            }
+            //ten thousand
+            if (num > 19999)
+            {
+                int tens = 0;
+                while (num > 9999)
+                {
+                    tens++;
+                    num = num - 10000;
+                }
+                final += a[tens * 10] + " ";
+            }
+            //one thousand
+            if (num > 999)
+            {
+                int thousand = 0;
+                while (num > 999)
+                {
+                    thousand++;
+                    num = num - 1000;
+                }
+                final += a[thousand] + " " + a[1000] + " ";
+            }
+            if (!final.Contains("Thousand") && start > 999)
+            {
+                int counter = 0;
+                for (int i = 3; i < backwards.Length; i++)
+                {
+                    if (counter >= 3)
+                    {
+                        break;
+                    }
+                    if (backwards[i] != '0')
+                    {
+                        final = final + a[1000] + " ";
+                        break;
+                    }
+                    counter++;
+                }
+            }
+            //hundred
+            if (num > 99)
+            {
+                int hundred = 0;
+                while (num > 99)
+                {
+                    hundred++;
+                    num = num - 100;
+                }
+                final += a[hundred] + " " + a[100] + " ";
+            }
+            //tens
+            if (num > 19)
+            {
+                int tens = 0;
+                while (num > 9)
+                {
+                    tens++;
+                    num = num - 10;
+                }
+                final += a[tens * 10] + " ";
+            }
+            //ones
+            if (num > 0)
+            {
+                int ones = 0;
+                while (num > 0)
+                {
+                    ones++;
+                    num = num - 1;
+                }
+                final += a[ones];
+            }
+            final = final.TrimEnd();
+            return final;
+        }
         #endregion
     }
     public class ReverseSortComparer : IComparer<int>
