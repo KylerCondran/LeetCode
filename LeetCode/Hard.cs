@@ -348,6 +348,56 @@ namespace LeetCode
             final = final.TrimEnd();
             return final;
         }
+        //Title: 23. Merge k Sorted Lists
+        //Link: https://leetcode.com/problems/merge-k-sorted-lists
+        //Tags: Linked List, Divide and Conquer, Heap(Priority Queue), Merge Sort
+        public ListNode MergeKLists(ListNode[] lists)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            ListNode head = null;
+            foreach (var list in lists)
+            {
+                ListNode mylist = list;
+                while (mylist != null)
+                {
+                    int listval = mylist.val;
+                    if (!a.ContainsKey(listval))
+                    {
+                        a.Add(listval, 1);
+                    }
+                    else
+                    {
+                        a[listval]++;
+                    }
+                    mylist = mylist.next;
+                }
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                for (int i = 0; i < b.Value; i++)
+                {
+                    AddLink(ref head, b.Key);
+                }
+            }
+            return head;
+        }
+        public void AddLink(ref ListNode headref, int linkval)
+        {
+            ListNode link = new ListNode(linkval);
+            if (headref == null)
+            {
+                headref = link;
+            }
+            else
+            {
+                ListNode current = headref;
+                while (current.next != null)
+                {
+                    current = current.next;
+                }
+                current.next = link;
+            }
+        }
         #endregion
     }
     public class ReverseSortComparer : IComparer<int>
@@ -355,6 +405,16 @@ namespace LeetCode
         public int Compare(int x, int y)
         {
             return y.CompareTo(x);
+        }
+    }
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
         }
     }
 }
