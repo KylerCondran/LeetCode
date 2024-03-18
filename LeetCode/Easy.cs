@@ -4506,6 +4506,41 @@ namespace LeetCode
             }
             return Convert.ToInt32(num, 2);
         }
+        //Title: 206. Reverse Linked List
+        //Link: https://leetcode.com/problems/reverse-linked-list
+        //Tags: Linked List, Recursion
+        public static ListNode ReverseList(ListNode head)
+        {
+            List<int> a = new List<int>();
+            ListNode b = null;
+            while (head != null)
+            {
+                a.Add(head.val);
+                head = head.next;
+            }
+            for (int i = a.Count - 1; i >= 0; i--)
+            {
+                AddLink(ref b, a[i]);
+            }
+            return b;
+        }
+        public static void AddLink(ref ListNode headref, int linkval)
+        {
+            ListNode link = new ListNode(linkval);
+            if (headref == null)
+            {
+                headref = link;
+            }
+            else
+            {
+                ListNode current = headref;
+                while (current.next != null)
+                {
+                    current = current.next;
+                }
+                current.next = link;
+            }
+        }
         #endregion
     }
 }
