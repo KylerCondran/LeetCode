@@ -4493,6 +4493,19 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 1290. Convert Binary Number in a Linked List to Integer
+        //Link: https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer
+        //Tags: Linked List, Math
+        public static int GetDecimalValue(ListNode head)
+        {
+            string num = "";
+            while (head != null)
+            {
+                num += head.val.ToString();
+                head = head.next;
+            }
+            return Convert.ToInt32(num, 2);
+        }
         #endregion
     }
 }
