@@ -351,7 +351,7 @@ namespace LeetCode
         //Title: 23. Merge k Sorted Lists
         //Link: https://leetcode.com/problems/merge-k-sorted-lists
         //Tags: Linked List, Divide and Conquer, Heap(Priority Queue), Merge Sort
-        public ListNode MergeKLists(ListNode[] lists)
+        public static ListNode MergeKLists(ListNode[] lists)
         {
             SortedDictionary<int, int> a = new SortedDictionary<int, int>();
             ListNode head = null;
@@ -381,7 +381,7 @@ namespace LeetCode
             }
             return head;
         }
-        public void AddLink(ref ListNode headref, int linkval)
+        public static void AddLink(ref ListNode headref, int linkval)
         {
             ListNode link = new ListNode(linkval);
             if (headref == null)
