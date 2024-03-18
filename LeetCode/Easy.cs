@@ -4609,6 +4609,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 203. Remove Linked List Elements
+        //Link: https://leetcode.com/problems/remove-linked-list-elements
+        //Tags: Linked List, Recursion
+        public static ListNode RemoveElements(ListNode head, int val)
+        {
+            List<int> a = new List<int>();
+            ListNode b = null;
+            while (head != null)
+            {
+                int nodeval = head.val;
+                if (nodeval != val)
+                {
+                    a.Add(nodeval);
+                }
+                head = head.next;
+            }
+            for (int i = 0; i < a.Count; i++)
+            {
+                AddLink(ref b, a[i]);
+            }
+            return b;
+        }
         #endregion
     }
 }
