@@ -3986,20 +3986,17 @@ namespace LeetCode
         //Tags: Array, String
         public static bool ArrayStringsAreEqual(string[] word1, string[] word2)
         {
-            var firstWord = new StringBuilder();
-            var secondWord = new StringBuilder();
-
-            foreach (string s in word1)
+            string a = "";
+            string b = "";
+            foreach (string i in word1)
             {
-                firstWord.Append(s);
+                a += i;
             }
-
-            foreach (string s in word2)
+            foreach (string t in word2)
             {
-                secondWord.Append(s);
+                b += t;
             }
-
-            return string.Equals(firstWord.ToString(), secondWord.ToString());
+            return a == b ? true : false;
         }
         //Title: 1716. Calculate Money in Leetcode Bank
         //Link: https://leetcode.com/problems/calculate-money-in-leetcode-bank
@@ -4247,7 +4244,7 @@ namespace LeetCode
             return splitarray[splitarray.Length - 1].Length;
         }
         //Title: 66. Plus One
-        //Link: https://leetcode.com/problems/plus-one/description/
+        //Link: https://leetcode.com/problems/plus-one/
         //Tags: Array, Math
         public static int[] PlusOne(int[] digits)
         {
