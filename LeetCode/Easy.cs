@@ -4011,18 +4011,23 @@ namespace LeetCode
         //Tags: Math
         public static int TotalMoney(int n)
         {
-            int res = 0;
-            int day = 1;
-            int i = 1;
-            while (true)
+            int e = 0;
+            int d = 1;
+            int increment = 0;
+            int total = 0;
+            for (int i = 0; i < n; i++)
             {
-                for (int j = i; j < i + 7; j++, day++)
+                total += d + increment;
+                increment++;
+                e++;
+                if (e == 7)
                 {
-                    res += j;
-                    if (day == n) return res;
+                    increment = 0;
+                    d++;
+                    e = 0;
                 }
-                i++;
             }
+            return total;
         }
         //Title: 844. Backspace String Compare
         //Link: https://leetcode.com/problems/backspace-string-compare
