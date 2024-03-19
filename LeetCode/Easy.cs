@@ -4631,6 +4631,28 @@ namespace LeetCode
             }
             return b;
         }
+        //Title: 414. Third Maximum Number
+        //Link: https://leetcode.com/problems/third-maximum-number
+        //Tags: Array, Sorting
+        public static int ThirdMax(int[] nums)
+        {
+            SortedList<int, int> a = new SortedList<int, int>(new ReverseSortComparer());
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+            }
+            if (a.Count < 3)
+            {
+                return a.Keys[0];
+            }
+            else
+            {
+                return a.Keys[2];
+            }
+        }
         #endregion
     }
 }
