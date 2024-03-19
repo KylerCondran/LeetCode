@@ -4251,24 +4251,37 @@ namespace LeetCode
         //Tags: Array, Math
         public static int[] PlusOne(int[] digits)
         {
-            List<int> res = new List<int>();
-            int carry = 1;
-            for (int i = digits.Length - 1; i >= 0; i--)
+            int[] a = digits;
+            Array.Reverse(a);
+            if (a[0] == 9)
             {
-                int num = digits[i] + carry;
-                if (num != 10)
+                for (int i = 0; i < a.Length; i++)
                 {
-                    carry = 0;
-                    res.Insert(0, num);
+                    if (a[i] == 9)
+                    {
+                        a[i] = 0;
+                        if (i == a.Length - 1)
+                        {
+                            int[] b = new int[a.Length + 1];
+                            a.CopyTo(b, 0);
+                            b[b.Length - 1] = 1;
+                            Array.Reverse(b);
+                            return b;
+                        }
+                    }
+                    else
+                    {
+                        a[i] += 1;
+                        break;
+                    }
                 }
-                else
-                    res.Insert(0, 0);
             }
-            if (carry == 1)
+            else
             {
-                res.Insert(0, 1);
+                a[0] += 1;
             }
-            return res.ToArray();
+            Array.Reverse(a);
+            return a;
         }
         //Title: 118. Pascal's Triangle
         //Link: https://leetcode.com/problems/pascals-triangle
