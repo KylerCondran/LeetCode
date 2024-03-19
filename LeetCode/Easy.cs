@@ -3940,24 +3940,32 @@ namespace LeetCode
         //Tags: Two Pointers, String
         public static string MergeAlternately(string word1, string word2)
         {
-            //use 2 pointers
-            StringBuilder res = new StringBuilder();
-            int len1 = word1.Length, len2 = word2.Length;
-            int p1 = 0, p2 = 0;
-
-            for (int i = 0; i < Math.Min(len1, len2); i++)
+            string final = "";
+            bool c = true;
+            int d = 0;
+            int e = 0;
+            for (int i = 0; i < word1.Length + word2.Length; i++)
             {
-                res.Append(word1[i]);
-                res.Append(word2[i]);
+                if (c == true && d < word1.Length)
+                {
+                    final += word1[d];
+                    d++;
+                    if (e < word2.Length)
+                    {
+                        c = false;
+                    }
+                }
+                else if (c == false && e < word2.Length)
+                {
+                    final += word2[e];
+                    e++;
+                    if (d < word1.Length)
+                    {
+                        c = true;
+                    }
+                }
             }
-
-            if (len1 > len2)
-                res.Append(word1.Substring(len2));
-            else if (len1 < len2)
-                res.Append(word2.Substring(len1));
-
-            return res.ToString();
-
+            return final;
         }
         //Title: 28. Find the Index of the First Occurrence in a String
         //Link: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string
