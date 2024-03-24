@@ -10,8 +10,9 @@ namespace LeetCode
     internal class Program
     {
         #region "Notes"
-        //Complexity classes
         //The following list contains common time complexities of algorithms:
+        //https://en.wikipedia.org/wiki/Big_O_notation
+        //https://en.wikipedia.org/wiki/Time_complexity#Table_of_common_time_complexities
 
         //* O(1) The running time of a constant-time algorithm does not depend on the
         //input size.A typical constant-time algorithm is a direct formula that
