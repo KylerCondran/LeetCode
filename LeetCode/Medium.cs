@@ -1730,6 +1730,55 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2095. Delete the Middle Node of a Linked List
+        //Link: https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list
+        //Tags: Linked List, Two Pointers
+        public ListNode DeleteMiddle(ListNode head)
+        {
+            Queue<int> q = new Queue<int>();
+            ListNode ans = null;
+            int counter = 0;
+            int half = 0;
+            while (head != null)
+            {
+                int listval = head.val;
+                q.Enqueue(listval);
+                counter++;
+                head = head.next;
+            }
+            if (counter == 1)
+            {
+                return ans;
+            }
+            if (counter % 2 == 0)
+            {
+                half = counter / 2;
+            }
+            else
+            {
+                half = (((counter + 1) / 2) - 1);
+            }
+            if (ans == null)
+            {
+                ListNode link = new ListNode(q.Peek());
+                ans = link;
+                q.Dequeue();
+            }
+            ListNode current = ans;
+            int index = 1;
+            while (q.Count > 0)
+            {
+                if (index != half)
+                {
+                    ListNode link = new ListNode(q.Peek());
+                    current.next = link;
+                    current = current.next;
+                }
+                q.Dequeue();
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
