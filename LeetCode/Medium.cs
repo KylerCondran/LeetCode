@@ -1825,6 +1825,70 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1669. Merge In Between Linked Lists
+        //Link: https://leetcode.com/problems/merge-in-between-linked-lists
+        //Tags: Linked List
+        public static ListNode MergeInBetween(ListNode list1, int a, int b, ListNode list2)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            Queue<int> q3 = new Queue<int>();
+            ListNode ans = null;
+            int counter = 0;
+            while (list1 != null)
+            {
+                int listval = list1.val;
+                if (counter < a)
+                {
+                    q1.Enqueue(listval);
+                }
+                else if (counter >= a && counter <= b)
+                {
+
+                }
+                else if (counter > b)
+                {
+                    q2.Enqueue(listval);
+                }
+                counter++;
+                list1 = list1.next;
+            }
+            while (list2 != null)
+            {
+                int listval = list2.val;
+                q3.Enqueue(listval);
+                list2 = list2.next;
+            }
+            if (ans == null)
+            {
+                ListNode link = new ListNode(q1.Peek());
+                ans = link;
+                q1.Dequeue();
+            }
+            ListNode current = ans;
+            while (q1.Count > 0)
+            {
+                ListNode link = new ListNode(q1.Peek());
+                current.next = link;
+                current = current.next;
+                q1.Dequeue();
+            }
+            while (q3.Count > 0)
+            {
+                ListNode link = new ListNode(q3.Peek());
+                current.next = link;
+                current = current.next;
+                q3.Dequeue();
+            }
+            while (q2.Count > 0)
+            {
+                ListNode link = new ListNode(q2.Peek());
+                current.next = link;
+                current = current.next;
+                q2.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
