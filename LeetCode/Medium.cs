@@ -1889,6 +1889,37 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1721. Swapping Nodes in a Linked List
+        //Link: https://leetcode.com/problems/swapping-nodes-in-a-linked-list
+        //Tags: Linked List, Two Pointers
+        public static ListNode SwapNodes(ListNode head, int k)
+        {
+            List<int> a = new List<int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                int listval = head.val;
+                a.Add(listval);
+                head = head.next;
+            }
+            int n1 = a[k - 1];
+            int n2 = a[a.Count - k];
+            a[k - 1] = n2;
+            a[a.Count - k] = n1;
+            if (ans == null)
+            {
+                ListNode link = new ListNode(a[0]);
+                ans = link;
+            }
+            ListNode current = ans;
+            for (int i = 1; i < a.Count; i++)
+            {
+                ListNode link = new ListNode(a[i]);
+                current.next = link;
+                current = current.next;
+            }
+            return ans;
+        }
         #endregion
     }
 }
