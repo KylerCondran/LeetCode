@@ -1779,6 +1779,52 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 445. Add Two Numbers II
+        //Link: https://leetcode.com/problems/add-two-numbers-ii
+        //Tags: Linked List, Math, Stack
+        public static ListNode AddTwoNumbers2(ListNode l1, ListNode l2)
+        {
+            BigInteger num1 = 0;
+            BigInteger num2 = 0;
+            BigInteger sum = 0;
+            string sumstr = "";
+            string str1 = "";
+            string str2 = "";
+            ListNode ans = null;
+            while (l1 != null)
+            {
+                int listval = l1.val;
+                str1 += listval.ToString();
+                l1 = l1.next;
+            }
+            while (l2 != null)
+            {
+                int listval = l2.val;
+                str2 += listval.ToString();
+                l2 = l2.next;
+            }
+            BigInteger.TryParse(str1, out num1);
+            BigInteger.TryParse(str2, out num2);
+            sum = num1 + num2;
+            sumstr = sum.ToString();
+            if (ans == null)
+            {
+                int startdigit = 0;
+                int.TryParse(sumstr[0] + "", out startdigit);
+                ListNode link = new ListNode(startdigit);
+                ans = link;
+            }
+            ListNode current = ans;
+            for (int i = 1; i < sumstr.Length; i++)
+            {
+                int digit = 0;
+                int.TryParse(sumstr[i] + "", out digit);
+                ListNode link = new ListNode(digit);
+                current.next = link;
+                current = current.next;
+            }
+            return ans;
+        }
         #endregion
     }
 }
