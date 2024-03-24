@@ -1688,6 +1688,48 @@ namespace LeetCode
                 current.next = link;
             }
         }
+        //Title: 2181. Merge Nodes in Between Zeros
+        //Link: https://leetcode.com/problems/merge-nodes-in-between-zeros
+        //Tags: Linked List, Simulation
+        public static ListNode MergeNodes(ListNode head)
+        {
+            Queue<int> q = new Queue<int>();
+            ListNode ans = null;
+            int sum = 0;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (listval == 0 && sum != 0)
+                {
+                    q.Enqueue(sum);
+                    sum = 0;
+                }
+                if (listval != 0)
+                {
+                    sum += listval;
+                }
+                head = head.next;
+            }
+            if (ans == null)
+            {
+                ListNode link = new ListNode(q.Peek());
+                ans = link;
+                q.Dequeue();
+            }
+            ListNode current = ans;
+            while (current.next != null)
+            {
+                current = current.next;
+            }
+            while (q.Count > 0)
+            {
+                ListNode link = new ListNode(q.Peek());
+                current.next = link;
+                current = current.next;
+                q.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
