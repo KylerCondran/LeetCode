@@ -4676,6 +4676,54 @@ namespace LeetCode
                 return a.Keys[2];
             }
         }
+        //Title: 876. Middle of the Linked List
+        //Link: https://leetcode.com/problems/middle-of-the-linked-list
+        //Tags: Linked List, Two Pointers
+        public static ListNode MiddleNode(ListNode head)
+        {
+            Queue<int> q = new Queue<int>();
+            ListNode ans = null;
+            int counter = 0;
+            int half = 0;
+            while (head != null)
+            {
+                int listval = head.val;
+                q.Enqueue(listval);
+                counter++;
+                head = head.next;
+            }
+            if (counter % 2 == 0)
+            {
+                half = counter / 2;
+            }
+            else
+            {
+                half = (((counter + 1) / 2) - 1);
+            }
+            for (int i = 0; i < half; i++)
+            {
+                q.Dequeue();
+            }
+            if (ans == null)
+            {
+                ListNode link = new ListNode(q.Peek());
+                ans = link;
+                q.Dequeue();
+            }
+            ListNode current = ans;
+            while (current.next != null)
+            {
+                current = current.next;
+            }
+            while (q.Count > 0)
+            {
+                ListNode link = new ListNode(q.Peek());
+                current.next = link;
+                current = current.next;
+                q.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
