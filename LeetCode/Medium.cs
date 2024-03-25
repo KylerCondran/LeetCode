@@ -1972,6 +1972,31 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2545. Sort the Students by Their Kth Score
+        //Link: https://leetcode.com/problems/sort-the-students-by-their-kth-score
+        //Tags: Array, Sorting, Matrix
+        public static int[][] SortTheStudents(int[][] score, int k)
+        {
+            SortedDictionary<int, int[]> a = new SortedDictionary<int, int[]>(new ReverseSortComparer());
+            foreach (int[] b in score)
+            {
+                int mykey = b[k];
+                a.Add(mykey, b);
+            }
+            var len = score.Length;
+            var source = new int[len][];
+            int x = 0;
+            foreach (KeyValuePair<int, int[]> c in a)
+            {
+                var inner = score[x];
+                var ilen = inner.Length;
+                var newer = new int[ilen];
+                Array.Copy(c.Value, newer, ilen);
+                source[x] = newer;
+                x++;
+            }
+            return source;
+        }
         #endregion
     }
 }
