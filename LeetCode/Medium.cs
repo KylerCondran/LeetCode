@@ -2039,6 +2039,86 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 19. Remove Nth Node From End of List
+        //Link: https://leetcode.com/problems/remove-nth-node-from-end-of-list
+        //Tags: Linked List, Two Pointers
+        public ListNode ReverseBetween(ListNode head, int left, int right)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            Queue<int> q3 = new Queue<int>();
+            ListNode ans = null;
+            int counter = 1;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (counter < left)
+                {
+                    q1.Enqueue(listval);
+                }
+                else if (counter >= left && counter <= right)
+                {
+                    q2.Enqueue(listval);
+                }
+                else if (counter > right)
+                {
+                    q3.Enqueue(listval);
+                }
+                counter++;
+                head = head.next;
+            }
+            ListNode current = ans;
+            while (q1.Count > 0)
+            {
+                if (ans == null)
+                {
+                    ListNode link = new ListNode(q1.Peek());
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    ListNode link = new ListNode(q1.Peek());
+                    current.next = link;
+                    current = current.next;
+                }
+                q1.Dequeue();
+            }
+            Queue<int> qrev = new Queue<int>(q2.Reverse());
+            while (qrev.Count > 0)
+            {
+                if (ans == null)
+                {
+                    ListNode link = new ListNode(qrev.Peek());
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    ListNode link = new ListNode(qrev.Peek());
+                    current.next = link;
+                    current = current.next;
+                }
+                qrev.Dequeue();
+            }
+            while (q3.Count > 0)
+            {
+                if (ans == null)
+                {
+                    ListNode link = new ListNode(q3.Peek());
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    ListNode link = new ListNode(q3.Peek());
+                    current.next = link;
+                    current = current.next;
+                }
+                q3.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
