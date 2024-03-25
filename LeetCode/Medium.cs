@@ -2248,6 +2248,62 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 86. Partition List
+        //Link: https://leetcode.com/problems/partition-list
+        //Tags: Linked List, Two Pointers
+        public static ListNode Partition(ListNode head, int x)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            ListNode ans = null;
+            int counter = 1;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (listval < x)
+                {
+                    q1.Enqueue(listval);
+                }
+                else
+                {
+                    q2.Enqueue(listval);
+                }
+                counter++;
+                head = head.next;
+            }
+            ListNode current = ans;
+            while (q1.Count > 0)
+            {
+                ListNode link = new ListNode(q1.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q1.Dequeue();
+            }
+            while (q2.Count > 0)
+            {
+                ListNode link = new ListNode(q2.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q2.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
