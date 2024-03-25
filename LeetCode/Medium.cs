@@ -1997,6 +1997,48 @@ namespace LeetCode
             }
             return source;
         }
+        //Title: 19. Remove Nth Node From End of List
+        //Link: https://leetcode.com/problems/remove-nth-node-from-end-of-list
+        //Tags: Linked List, Two Pointers
+        public static ListNode RemoveNthFromEnd(ListNode head, int n)
+        {
+            Queue<int> q = new Queue<int>();
+            ListNode ans = null;
+            int counter = 0;
+            while (head != null)
+            {
+                int listval = head.val;
+                q.Enqueue(listval);
+                counter++;
+                head = head.next;
+            }
+            int index = 0;
+            ListNode current = ans;
+            while (q.Count > 0)
+            {
+                if (ans == null)
+                {
+                    if (index != counter - n)
+                    {
+                        ListNode link = new ListNode(q.Peek());
+                        ans = link;
+                        current = ans;
+                    }
+                }
+                else
+                {
+                    if (index != counter - n)
+                    {
+                        ListNode link = new ListNode(q.Peek());
+                        current.next = link;
+                        current = current.next;
+                    }
+                }
+                q.Dequeue();
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
