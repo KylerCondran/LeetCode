@@ -2304,6 +2304,36 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 147. Insertion Sort List
+        //Link: https://leetcode.com/problems/insertion-sort-list
+        //Tags: Linked List, Sorting
+        public static ListNode InsertionSortList(ListNode head)
+        {
+            List<int> a = new List<int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                a.Add(head.val);
+                head = head.next;
+            }
+            a.Sort();
+            ListNode current = ans;
+            foreach (int i in a)
+            {
+                ListNode link = new ListNode(i);
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
