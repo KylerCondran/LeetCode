@@ -2042,7 +2042,7 @@ namespace LeetCode
         //Title: 92. Reverse Linked List II
         //Link: https://leetcode.com/problems/reverse-linked-list-ii
         //Tags: Linked List
-        public ListNode ReverseBetween(ListNode head, int left, int right)
+        public static ListNode ReverseBetween(ListNode head, int left, int right)
         {
             Queue<int> q1 = new Queue<int>();
             Queue<int> q2 = new Queue<int>();
@@ -2122,7 +2122,7 @@ namespace LeetCode
         //Title: 2487. Remove Nodes From Linked List
         //Link: https://leetcode.com/problems/remove-nodes-from-linked-list
         //Tags: Linked List, Stack, Recursion, Monotonic Stack
-        public ListNode RemoveNodes(ListNode head)
+        public static ListNode RemoveNodes(ListNode head)
         {
             Stack<int> a = new Stack<int>();
             Stack<int> b = new Stack<int>();
@@ -2159,6 +2159,62 @@ namespace LeetCode
                     current = current.next;
                 }
                 b.Pop();
+            }
+            return ans;
+        }
+        //Title: 328. Odd Even Linked List
+        //Link: https://leetcode.com/problems/odd-even-linked-list
+        //Tags: Linked List
+        public static ListNode OddEvenList(ListNode head)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            ListNode ans = null;
+            int counter = 1;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (counter % 2 != 0)
+                {
+                    q1.Enqueue(listval);
+                }
+                else
+                {
+                    q2.Enqueue(listval);
+                }
+                counter++;
+                head = head.next;
+            }
+            ListNode current = ans;
+            while (q1.Count > 0)
+            {
+                ListNode link = new ListNode(q1.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q1.Dequeue();
+            }
+            while (q2.Count > 0)
+            {
+                ListNode link = new ListNode(q2.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q2.Dequeue();
             }
             return ans;
         }
