@@ -1940,6 +1940,38 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 807. Max Increase to Keep City Skyline
+        //Link: https://leetcode.com/problems/max-increase-to-keep-city-skyline
+        //Tags: Array, Greedy, Matrix
+        public static int MaxIncreaseKeepingSkyline(int[][] grid)
+        {
+            int len = grid.Length;
+            int ilen = grid[0].Length;
+            int counter = 0;
+            foreach (int[] a in grid)
+            {
+                int rowmax = a.Max();
+                for (int t = 0; t < ilen; t++)
+                {
+                    int colmax = 0;
+                    int numtouse = 0;
+                    for (int i = 0; i < len; i++)
+                    {
+                        colmax = Math.Max(colmax, grid[i][t]);
+                    }
+                    if (rowmax <= colmax)
+                    {
+                        numtouse = rowmax;
+                    }
+                    else if (colmax <= rowmax)
+                    {
+                        numtouse = colmax;
+                    }
+                    counter += numtouse - a[t];
+                }
+            }
+            return counter;
+        }
         #endregion
     }
 }
