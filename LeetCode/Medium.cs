@@ -2039,9 +2039,9 @@ namespace LeetCode
             }
             return ans;
         }
-        //Title: 19. Remove Nth Node From End of List
-        //Link: https://leetcode.com/problems/remove-nth-node-from-end-of-list
-        //Tags: Linked List, Two Pointers
+        //Title: 92. Reverse Linked List II
+        //Link: https://leetcode.com/problems/reverse-linked-list-ii
+        //Tags: Linked List
         public ListNode ReverseBetween(ListNode head, int left, int right)
         {
             Queue<int> q1 = new Queue<int>();
