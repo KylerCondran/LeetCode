@@ -2334,6 +2334,43 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2816. Double a Number Represented as a Linked List
+        //Link: https://leetcode.com/problems/double-a-number-represented-as-a-linked-list
+        //Tags: Linked List, Math, Stack
+        public static ListNode DoubleIt(ListNode head)
+        {
+            BigInteger num1 = 0;
+            BigInteger sum = 0;
+            string sumstr = "";
+            string str1 = "";
+            ListNode ans = null;
+            while (head != null)
+            {
+                int listval = head.val;
+                str1 += listval.ToString();
+                head = head.next;
+            }
+            BigInteger.TryParse(str1, out num1);
+            sum = num1 * 2;
+            sumstr = sum.ToString();
+            if (ans == null)
+            {
+                int startdigit = 0;
+                int.TryParse(sumstr[0] + "", out startdigit);
+                ListNode link = new ListNode(startdigit);
+                ans = link;
+            }
+            ListNode current = ans;
+            for (int i = 1; i < sumstr.Length; i++)
+            {
+                int digit = 0;
+                int.TryParse(sumstr[i] + "", out digit);
+                ListNode link = new ListNode(digit);
+                current.next = link;
+                current = current.next;
+            }
+            return ans;
+        }
         #endregion
     }
 }
