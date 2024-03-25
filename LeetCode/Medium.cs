@@ -2119,6 +2119,49 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2487. Remove Nodes From Linked List
+        //Link: https://leetcode.com/problems/remove-nodes-from-linked-list
+        //Tags: Linked List, Stack, Recursion, Monotonic Stack
+        public ListNode RemoveNodes(ListNode head)
+        {
+            Stack<int> a = new Stack<int>();
+            Stack<int> b = new Stack<int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                a.Push(head.val);
+                head = head.next;
+            }
+            int myval = 0;
+            while (a.Count > 0)
+            {
+                int curr = a.Peek();
+                if (curr >= myval)
+                {
+                    b.Push(curr);
+                    myval = curr;
+                }
+                a.Pop();
+            }
+            ListNode current = ans;
+            while (b.Count > 0)
+            {
+                if (ans == null)
+                {
+                    ListNode link = new ListNode(b.Peek());
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    ListNode link = new ListNode(b.Peek());
+                    current.next = link;
+                    current = current.next;
+                }
+                b.Pop();
+            }
+            return ans;
+        }
         #endregion
     }
 }
