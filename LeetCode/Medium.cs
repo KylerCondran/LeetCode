@@ -2371,6 +2371,46 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 82. Remove Duplicates from Sorted List II
+        //Link: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii
+        //Tags: Linked List, Two Pointers
+        public static ListNode DeleteDuplicates(ListNode head)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                int listval = head.val;
+                if (!a.ContainsKey(listval))
+                {
+                    a.Add(listval, 1);
+                }
+                else
+                {
+                    a[listval]++;
+                }
+                head = head.next;
+            }
+            ListNode current = ans;
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                if (i.Value == 1)
+                {
+                    ListNode link = new ListNode(i.Key);
+                    if (ans == null)
+                    {
+                        ans = link;
+                        current = ans;
+                    }
+                    else
+                    {
+                        current.next = link;
+                        current = current.next;
+                    }
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
