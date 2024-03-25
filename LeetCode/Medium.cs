@@ -1920,6 +1920,26 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 442. Find All Duplicates in an Array
+        //Link: https://leetcode.com/problems/find-all-duplicates-in-an-array
+        //Tags: Array, Hash Table
+        public static IList<int> FindDuplicates(int[] nums)
+        {
+            List<int> a = new List<int>();
+            List<int> ans = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.Contains(nums[i]))
+                {
+                    a.Add(nums[i]);
+                }
+                else
+                {
+                    ans.Add(nums[i]);
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
