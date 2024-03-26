@@ -2512,6 +2512,36 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 189. Rotate Array
+        //Link: https://leetcode.com/problems/rotate-array
+        //Tags: Array, Math, Two Pointers
+        public static void Rotate(int[] nums, int k)
+        {
+            Queue<int> q1 = new Queue<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                q1.Enqueue(nums[i]);
+            }
+            int rotations = k % q1.Count();
+            Queue<int> q2 = new Queue<int>(q1.Reverse());
+            if (k != 0)
+            {
+                for (int i = 0; i < rotations; i++)
+                {
+                    int myval = q2.Peek();
+                    q2.Dequeue();
+                    q2.Enqueue(myval);
+                }
+            }
+            Queue<int> q3 = new Queue<int>(q2.Reverse());
+            int index = 0;
+            while (q3.Count > 0)
+            {
+                nums[index] = q3.Peek();
+                index++;
+                q3.Dequeue();
+            }
+        }
         #endregion
     }
 }
