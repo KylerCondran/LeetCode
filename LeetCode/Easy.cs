@@ -4724,6 +4724,75 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 168. Excel Sheet Column Title
+        //Link: https://leetcode.com/problems/excel-sheet-column-title
+        //Tags: Math, String
+        public static string ConvertToTitle(int columnNumber)
+        {
+            int a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
+            string final = "";
+            char[] v = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            while (columnNumber > 26)
+            {
+                f++;
+                columnNumber -= 26;
+                if (f == 27)
+                {
+                    e++;
+                    f = 1;
+                }
+                if (e == 27)
+                {
+                    d++;
+                    e = 1;
+                }
+                if (d == 27)
+                {
+                    c++;
+                    d = 1;
+                }
+                if (c == 27)
+                {
+                    b++;
+                    c = 1;
+                }
+                if (b == 27)
+                {
+                    a++;
+                    b = 1;
+                }
+            }
+            g = columnNumber;
+            if (a > 0)
+            {
+                final += v[a - 1];
+            }
+            if (b > 0)
+            {
+                final += v[b - 1];
+            }
+            if (c > 0)
+            {
+                final += v[c - 1];
+            }
+            if (d > 0)
+            {
+                final += v[d - 1];
+            }
+            if (e > 0)
+            {
+                final += v[e - 1];
+            }
+            if (f > 0)
+            {
+                final += v[f - 1];
+            }
+            if (g > 0)
+            {
+                final += v[g - 1];
+            }
+            return final;
+        }
         #endregion
     }
 }
