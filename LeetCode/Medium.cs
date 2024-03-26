@@ -2457,6 +2457,61 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 24. Swap Nodes in Pairs
+        //Link: https://leetcode.com/problems/swap-nodes-in-pairs
+        //Tags: Linked List, Recursion
+        public static ListNode SwapPairs(ListNode head)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            Queue<int> q3 = new Queue<int>();
+            ListNode ans = null;
+            int counter = 0;
+            while (head != null)
+            {
+                int myval = head.val;
+                if (counter % 2 == 0)
+                {
+                    q1.Enqueue(myval);
+                }
+                else
+                {
+                    q2.Enqueue(myval);
+                }
+                counter++;
+                head = head.next;
+            }
+            while (q1.Count > 0 || q2.Count > 0)
+            {
+                if (q2.Count > 0)
+                {
+                    q3.Enqueue(q2.Peek());
+                    q2.Dequeue();
+                }
+                if (q1.Count > 0)
+                {
+                    q3.Enqueue(q1.Peek());
+                    q1.Dequeue();
+                }
+            }
+            ListNode current = ans;
+            while (q3.Count > 0)
+            {
+                ListNode link = new ListNode(q3.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q3.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
