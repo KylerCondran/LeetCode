@@ -2411,6 +2411,52 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 61. Rotate List
+        //Link: https://leetcode.com/problems/rotate-list
+        //Tags: Linked List, Two Pointers
+        public ListNode RotateRight(ListNode head, int k)
+        {
+            Queue<int> q1 = new Queue<int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                q1.Enqueue(head.val);
+                head = head.next;
+            }
+            if (q1.Count == 0)
+            {
+                return ans;
+            }
+            int rotations = k % q1.Count();
+            Queue<int> q2 = new Queue<int>(q1.Reverse());
+            if (k != 0)
+            {
+                for (int i = 0; i < rotations; i++)
+                {
+                    int myval = q2.Peek();
+                    q2.Dequeue();
+                    q2.Enqueue(myval);
+                }
+            }
+            Queue<int> q3 = new Queue<int>(q2.Reverse());
+            ListNode current = ans;
+            while (q3.Count > 0)
+            {
+                ListNode link = new ListNode(q3.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q3.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
