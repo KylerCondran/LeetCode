@@ -2542,6 +2542,32 @@ namespace LeetCode
                 q3.Dequeue();
             }
         }
+        //Title: 260. Single Number III
+        //Link: https://leetcode.com/problems/single-number-iii
+        //Tags: Array, Bit Manipulation
+        public static int[] SingleNumber2(int[] nums)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.Contains(nums[i]))
+                {
+                    a.Add(nums[i]);
+                }
+                else
+                {
+                    a.Remove(nums[i]);
+                }
+            }
+            int[] ans = new int[a.Count];
+            int index = 0;
+            for (int i = 0; i < a.Count; i++)
+            {
+                ans[i] = a[i];
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
