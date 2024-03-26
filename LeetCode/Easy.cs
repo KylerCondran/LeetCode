@@ -4793,6 +4793,23 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 171. Excel Sheet Column Number
+        //Link: https://leetcode.com/problems/excel-sheet-column-number
+        //Tags: Math, String
+        public static int TitleToNumber(string columnTitle)
+        {
+            char[] v = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            int len = columnTitle.Length - 1;
+            int total = 0;
+            for (int i = 0; i < columnTitle.Length; i++)
+            {
+                int f1 = Array.IndexOf(v, columnTitle[i]) + 1;
+                int f2 = (int)Math.Pow(26, len);
+                total += (f1) * (f2);
+                len -= 1;
+            }
+            return total;
+        }
         #endregion
     }
 }
