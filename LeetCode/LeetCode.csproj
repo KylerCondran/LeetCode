@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Design.cs" />
     <Compile Include="Easy.cs" />
     <Compile Include="Hard.cs" />
     <Compile Include="Medium.cs" />
