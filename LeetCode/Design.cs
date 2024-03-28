@@ -193,5 +193,36 @@ namespace LeetCode
             }
         }
     }
+    //Title: 398. Random Pick Index
+    //Link: https://leetcode.com/problems/random-pick-index
+    //Difficulty: Medium
+    //Tags: Hash Table, Math, Reservoir Sampling, Randomized
+    public class RandomPick
+    {
+        Dictionary<int, List<int>> a = new Dictionary<int, List<int>>();
+        public RandomPick(int[] nums)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    List<int> b = new List<int>();
+                    b.Add(i);
+                    a.Add(nums[i], b);
+                }
+                else
+                {
+                    a[nums[i]].Add(i);
+                }
+            }
+        }
+        public int Pick(int target)
+        {
+            List<int> c = a[target];
+            Random rnd = new Random();
+            int rand = rnd.Next(0, c.Count);
+            return c[rand];
+        }
+    }
     #endregion
 }
