@@ -2672,6 +2672,35 @@ namespace LeetCode
             }
             return q.Peek();
         }
+        //Title: 950. Reveal Cards In Increasing Order
+        //Link: https://leetcode.com/problems/reveal-cards-in-increasing-order
+        //Tags: Array, Queue, Sorting, Simulation
+        public static int[] DeckRevealedIncreasing(int[] deck)
+        {
+            int[] ans = new int[deck.Length];
+            Queue<int> q = new Queue<int>();
+            Array.Sort(deck);
+            Array.Reverse(deck);
+            for (int i = 0; i < deck.Length; i++)
+            {
+                if (q.Count > 0)
+                {
+                    int val = q.Peek();
+                    q.Dequeue();
+                    q.Enqueue(val);
+                }
+                q.Enqueue(deck[i]);
+            }
+            int index = 0;
+            Queue<int> q2 = new Queue<int>(q.Reverse());
+            while (q2.Count > 0)
+            {
+                ans[index] = q2.Peek();
+                index++;
+                q2.Dequeue();
+            }
+            return ans;
+        }
         #endregion
     }
 }
