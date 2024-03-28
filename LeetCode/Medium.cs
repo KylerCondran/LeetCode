@@ -2568,6 +2568,32 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 713. Subarray Product Less Than K
+        //Link: https://leetcode.com/problems/subarray-product-less-than-k
+        //Tags: Array, Sliding Window
+        public static int NumSubarrayProductLessThanK(int[] nums, int k)
+        {
+            if (k <= 1) { return 0; }
+            int counter = 0;
+            int product = 1;
+            for (int d = 0; d < nums.Length; d++)
+            {
+                for (int i = d; i < nums.Length; i++)
+                {
+                    product *= nums[i];
+                    if (product < k)
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                product = 1;
+            }
+            return counter;
+        }
         #endregion
     }
 }
