@@ -2594,6 +2594,41 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2958. Length of Longest Subarray With at Most K Frequency
+        //Link: https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency
+        //Tags: Array, Hash Table, Sliding Window
+        public static int MaxSubarrayLength(int[] nums, int k)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            Queue<int> q = new Queue<int>();
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+                else
+                {
+                    if (a[nums[i]] + 1 > k)
+                    {
+                        while (q.Peek() != nums[i])
+                        {
+                            a[q.Peek()]--;
+                            q.Dequeue();
+                        }
+                        q.Dequeue();
+                    }
+                    else
+                    {
+                        a[nums[i]]++;
+                    }
+                }
+                q.Enqueue(nums[i]);
+                max = Math.Max(max, q.Count);
+            }
+            return max;
+        }
         #endregion
     }
 }
