@@ -2629,6 +2629,27 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 560. Subarray Sum Equals K
+        //Link: https://leetcode.com/problems/subarray-sum-equals-k
+        //Tags: Array, Hash Table, Prefix Sum
+        public static int SubarraySum(int[] nums, int k)
+        {
+            int counter = 0;
+            int sum = 0;
+            for (int d = 0; d < nums.Length; d++)
+            {
+                for (int i = d; i < nums.Length; i++)
+                {
+                    sum += nums[i];
+                    if (sum == k)
+                    {
+                        counter++;
+                    }
+                }
+                sum = 0;
+            }
+            return counter;
+        }
         #endregion
     }
 }
