@@ -2650,6 +2650,28 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1823. Find the Winner of the Circular Game
+        //Link: https://leetcode.com/problems/find-the-winner-of-the-circular-game
+        //Tags: Array, Math, Recursion, Queue, Simulation
+        public static int FindTheWinner(int n, int k)
+        {
+            Queue<int> q = new Queue<int>();
+            for (int i = 1; i <= n; i++)
+            {
+                q.Enqueue(i);
+            }
+            while (q.Count() > 1)
+            {
+                for (int i = 1; i < k; i++)
+                {
+                    int val = q.Peek();
+                    q.Dequeue();
+                    q.Enqueue(val);
+                }
+                q.Dequeue();
+            }
+            return q.Peek();
+        }
         #endregion
     }
 }
