@@ -890,6 +890,27 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 930. Binary Subarrays With Sum
+        //Link: https://leetcode.com/problems/binary-subarrays-with-sum/
+        //Tags: Array, Hash Table, Sliding Window, Prefix Sum
+        public static int NumSubarraysWithSum(int[] nums, int goal)
+        {
+            int counter = 0;
+            int sum = 0;
+            for (int d = 0; d < nums.Length; d++)
+            {
+                for (int i = d; i < nums.Length; i++)
+                {
+                    sum += nums[i];
+                    if (sum == goal)
+                    {
+                        counter++;
+                    }
+                }
+                sum = 0;
+            }
+            return counter;
+        }
         //Title: 1291. Sequential Digits
         //Link: https://leetcode.com/problems/sequential-digits
         //Tags: Enumeration
