@@ -2758,6 +2758,25 @@ namespace LeetCode
             }
             return properties.Length - s.Count;
         }
+        //Title: 152. Maximum Product Subarray
+        //Link: https://leetcode.com/problems/maximum-product-subarray
+        //Tags: Array, Dynamic Programming
+        public static int MaxProduct(int[] nums)
+        {
+            int currmaxproduct = nums[0];
+            int prevmaxproduct = nums[0];
+            int prevminproduct = nums[0];
+            int max = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                currmaxproduct = Math.Max(Math.Max(prevmaxproduct * nums[i], prevminproduct * nums[i]), nums[i]);
+                int currminproduct = Math.Min(Math.Min(prevmaxproduct * nums[i], prevminproduct * nums[i]), nums[i]);
+                max = Math.Max(max, currmaxproduct);
+                prevmaxproduct = currmaxproduct;
+                prevminproduct = currminproduct;
+            }
+            return max;
+        }
         #endregion
     }
 }
