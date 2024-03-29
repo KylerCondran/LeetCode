@@ -2736,6 +2736,28 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 1996. The Number of Weak Characters in the Game
+        //Link: https://leetcode.com/problems/the-number-of-weak-characters-in-the-game
+        //Tags: Array, Stack, Greedy, Sorting, Monotonic Stack
+        public static int NumberOfWeakCharacters(int[][] properties)
+        {
+            List<KeyValuePair<int, int>> a = new List<KeyValuePair<int, int>>();
+            foreach (int[] b in properties)
+            {
+                a.Add(new KeyValuePair<int, int>(b[0], b[1]));
+            }
+            var sortedDict = from entry in a orderby entry.Key ascending, entry.Value descending select entry;
+            Stack<KeyValuePair<int, int>> s = new Stack<KeyValuePair<int, int>>();
+            foreach (KeyValuePair<int, int> b in sortedDict)
+            {
+                while (s.Count > 0 && b.Value > s.Peek().Value)
+                {
+                    s.Pop();
+                }
+                s.Push(b);
+            }
+            return properties.Length - s.Count;
+        }
         #endregion
     }
 }
