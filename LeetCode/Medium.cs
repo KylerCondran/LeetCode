@@ -2869,6 +2869,25 @@ namespace LeetCode
             }
             return a | b;
         }
+        //Title: 2433. Find The Original Array of Prefix Xor
+        //Link: https://leetcode.com/problems/find-the-original-array-of-prefix-xor
+        //Tags: Array, Bit Manipulation
+        public static int[] FindArray(int[] pref)
+        {
+            int[] ans = new int[pref.Length];
+            Array.Reverse(pref);
+            int xor = pref[0];
+            int index = 0;
+            for (int i = 1; i < pref.Length; i++)
+            {
+                ans[index] = xor ^ pref[i];
+                index++;
+                xor = pref[i];
+            }
+            ans[index] = pref[pref.Length - 1];
+            Array.Reverse(ans);
+            return ans;
+        }
         #endregion
     }
 }
