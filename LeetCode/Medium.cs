@@ -2820,6 +2820,55 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2807. Insert Greatest Common Divisors in Linked List
+        //Link: https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list
+        //Tags: Linked List, Math, Number Theory
+        public static ListNode InsertGreatestCommonDivisors(ListNode head)
+        {
+            Queue<int> q = new Queue<int>();
+            ListNode ans = null;
+            int lastval = 0;
+            while (head != null)
+            {
+                int myval = head.val;
+                if (lastval != 0)
+                {
+                    int divisor = GCD(lastval, myval);
+                    q.Enqueue(divisor);
+                }
+                lastval = myval;
+                q.Enqueue(myval);
+                head = head.next;
+            }
+            ListNode current = ans;
+            while (q.Count > 0)
+            {
+                ListNode link = new ListNode(q.Peek());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+                q.Dequeue();
+            }
+            return ans;
+        }
+        public static int GCD(int a, int b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+            return a | b;
+        }
         #endregion
     }
 }
