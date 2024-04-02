@@ -2777,6 +2777,49 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2348. Number of Zero-Filled Subarrays
+        //Link: https://leetcode.com/problems/number-of-zero-filled-subarrays
+        //Tags: Array, Math
+        public static long ZeroFilledSubarray(int[] nums)
+        {
+            long counter = 0;
+            bool zero = false;
+            int curr = 0;
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 0)
+                {
+                    if (zero)
+                    {
+                        curr++;
+                    }
+                    else
+                    {
+                        zero = true;
+                        curr = 1;
+                    }
+                }
+                else
+                {
+                    if (zero)
+                    {
+                        zero = false;
+                        a.Add(curr);
+                        curr = 0;
+                    }
+                }
+            }
+            if (curr > 0)
+            {
+                a.Add(curr);
+            }
+            foreach (int i in a)
+            {
+                counter += (long)(i * (long)(i + 1) / 2);
+            }
+            return counter;
+        }
         #endregion
     }
 }
