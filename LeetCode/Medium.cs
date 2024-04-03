@@ -2953,6 +2953,41 @@ namespace LeetCode
             a.Sort();
             return a;
         }
+        //Title: 513. Find Bottom Left Tree Value
+        //Link: https://leetcode.com/problems/find-bottom-left-tree-value
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static int FindBottomLeftValue(TreeNode root)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<List<int>> a = new List<List<int>>();
+            int ans = 0;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                int size = q.Count();
+                List<int> b = new List<int>();
+                for (int i = 0; i < size; i++)
+                {
+                    TreeNode T = q.Dequeue();
+                    if (T.left != null)
+                    {
+                        q.Enqueue(T.left);
+                    }
+                    if (T.right != null)
+                    {
+                        q.Enqueue(T.right);
+                    }
+                    b.Add(T.val);
+                }
+                a.Add(b);
+            }
+            foreach (int j in a[a.Count - 1])
+            {
+                ans = j;
+                break;
+            }
+            return ans;
+        }
         #endregion
     }
 }
