@@ -2922,6 +2922,37 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 1305. All Elements in Two Binary Search Trees
+        //Link: https://leetcode.com/problems/all-elements-in-two-binary-search-trees
+        //Tags: Tree, Depth-First Search, Binary Search Tree, Sorting, Binary Tree
+        public static IList<int> GetAllElements(TreeNode root1, TreeNode root2)
+        {
+            List<int> a = new List<int>();
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            if (root1 != null)
+            {
+                q.Enqueue(root1);
+            }
+            if (root2 != null)
+            {
+                q.Enqueue(root2);
+            }
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.left != null)
+                {
+                    q.Enqueue(T.left);
+                }
+                if (T.right != null)
+                {
+                    q.Enqueue(T.right);
+                }
+                a.Add(T.val);
+            }
+            a.Sort();
+            return a;
+        }
         #endregion
     }
 }
