@@ -3012,6 +3012,52 @@ namespace LeetCode
             a.Sort();
             return a[k - 1];
         }
+        //Title: 1161. Maximum Level Sum of a Binary Tree
+        //Link: https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static int MaxLevelSum(TreeNode root)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<List<int>> a = new List<List<int>>();
+            int maxsum = Int32.MinValue;
+            int maxlevel = 0;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                int size = q.Count();
+                List<int> b = new List<int>();
+                for (int i = 0; i < size; i++)
+                {
+                    TreeNode T = q.Dequeue();
+                    if (T.left != null)
+                    {
+                        q.Enqueue(T.left);
+                    }
+                    if (T.right != null)
+                    {
+                        q.Enqueue(T.right);
+                    }
+                    b.Add(T.val);
+                }
+                a.Add(b);
+            }
+            int level = 1;
+            foreach (List<int> j in a)
+            {
+                int sum = 0;
+                foreach (int i in j)
+                {
+                    sum += i;
+                }
+                if (sum > maxsum)
+                {
+                    maxsum = sum;
+                    maxlevel = level;
+                }
+                level++;
+            }
+            return maxlevel;
+        }
         #endregion
     }
 }
