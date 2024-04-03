@@ -2988,6 +2988,30 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 230. Kth Smallest Element in a BST
+        //Link: https://leetcode.com/problems/kth-smallest-element-in-a-bst
+        //Tags: Tree, Depth-First Search, Binary Search Tree, Binary Tree
+        public static int KthSmallest(TreeNode root, int k)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<int> a = new List<int>();
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.left != null)
+                {
+                    q.Enqueue(T.left);
+                }
+                if (T.right != null)
+                {
+                    q.Enqueue(T.right);
+                }
+                a.Add(T.val);
+            }
+            a.Sort();
+            return a[k - 1];
+        }
         #endregion
     }
 }
