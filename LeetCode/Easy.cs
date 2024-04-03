@@ -4841,6 +4841,17 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 2236. Root Equals Sum of Children
+        //Link: https://leetcode.com/problems/root-equals-sum-of-children
+        //Tags: Tree, Binary Tree
+        public static bool CheckTree(TreeNode root)
+        {
+            if (root.left.val + root.right.val == root.val)
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }
