@@ -3120,6 +3120,22 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1441. Build an Array With Stack Operations
+        //Link: https://leetcode.com/problems/build-an-array-with-stack-operations
+        //Tags: Array, Stack, Simulation
+        public static IList<string> BuildArray(int[] target, int n)
+        {
+            List<string> a = new List<string>();
+            for (int i = 1; i <= target.Max(); i++)
+            {
+                a.Add("Push");
+                if (!target.Contains(i))
+                {
+                    a.Add("Pop");
+                }
+            }
+            return a;
+        }
         #endregion
     }
 }
