@@ -4921,6 +4921,30 @@ namespace LeetCode
             }
             return c;
         }
+        //Title: 222. Count Complete Tree Nodes
+        //Link: https://leetcode.com/problems/count-complete-tree-nodes
+        //Tags: Binary Search, Bit Manipulation, Tree, Binary Tree
+        public static int CountNodes(TreeNode root)
+        {
+            if (root == null) return 0;
+            int counter = 0;
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.left != null)
+                {
+                    q.Enqueue(T.left);
+                }
+                if (T.right != null)
+                {
+                    q.Enqueue(T.right);
+                }
+                counter++;
+            }
+            return counter;
+        }
         #endregion
     }
 }
