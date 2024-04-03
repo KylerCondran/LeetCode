@@ -400,21 +400,4 @@ namespace LeetCode
         }
         #endregion
     }
-    public class ReverseSortComparer : IComparer<int>
-    {
-        public int Compare(int x, int y)
-        {
-            return y.CompareTo(x);
-        }
-    }
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

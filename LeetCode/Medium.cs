@@ -2888,6 +2888,40 @@ namespace LeetCode
             Array.Reverse(ans);
             return ans;
         }
+        //Title: 1302. Deepest Leaves Sum
+        //Link: https://leetcode.com/problems/deepest-leaves-sum
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static int DeepestLeavesSum(TreeNode root)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<List<int>> a = new List<List<int>>();
+            int sum = 0;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                int size = q.Count();
+                List<int> b = new List<int>();
+                for (int i = 0; i < size; i++)
+                {
+                    TreeNode T = q.Dequeue();
+                    if (T.left != null)
+                    {
+                        q.Enqueue(T.left);
+                    }
+                    if (T.right != null)
+                    {
+                        q.Enqueue(T.right);
+                    }
+                    b.Add(T.val);
+                }
+                a.Add(b);
+            }
+            foreach (int j in a[a.Count - 1])
+            {
+                sum += j;
+            }
+            return sum;
+        }
         #endregion
     }
 }
