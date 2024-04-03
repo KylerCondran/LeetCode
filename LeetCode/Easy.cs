@@ -4810,6 +4810,37 @@ namespace LeetCode
             }
             return total;
         }
+        //Title: 938. Range Sum of BST
+        //Link: https://leetcode.com/problems/range-sum-of-bst
+        //Tags: Tree, Depth-First Search, Binary Search Tree, Binary Tree
+        public static int RangeSumBST(TreeNode root, int low, int high)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<int> a = new List<int>();
+            int sum = 0;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.left != null)
+                {
+                    q.Enqueue(T.left);
+                }
+                if (T.right != null)
+                {
+                    q.Enqueue(T.right);
+                }
+                a.Add(T.val);
+            }
+            foreach (int i in a)
+            {
+                if (low <= i && i <= high)
+                {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
         #endregion
     }
 }
