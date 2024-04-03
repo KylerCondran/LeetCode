@@ -4882,6 +4882,45 @@ namespace LeetCode
             }
             return a.Count;
         }
+        //Title: 637. Average of Levels in Binary Tree
+        //Link: https://leetcode.com/problems/average-of-levels-in-binary-tree
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static IList<double> AverageOfLevels(TreeNode root)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<List<int>> a = new List<List<int>>();
+            List<double> c = new List<double>();
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                int size = q.Count();
+                List<int> b = new List<int>();
+                for (int i = 0; i < size; i++)
+                {
+                    TreeNode T = q.Dequeue();
+                    if (T.left != null)
+                    {
+                        q.Enqueue(T.left);
+                    }
+                    if (T.right != null)
+                    {
+                        q.Enqueue(T.right);
+                    }
+                    b.Add(T.val);
+                }
+                a.Add(b);
+            }
+            foreach (List<int> j in a)
+            {
+                long sum = 0;
+                foreach (int i in j)
+                {
+                    sum += i;
+                }
+                c.Add((double)sum / (double)j.Count);
+            }
+            return c;
+        }
         #endregion
     }
 }
