@@ -3136,6 +3136,38 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 2442. Count Number of Distinct Integers After Reverse Operations
+        //Link: https://leetcode.com/problems/count-number-of-distinct-integers-after-reverse-operations
+        //Tags: Array, Hash Table, Math
+        public static int CountDistinctIntegers(int[] nums)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+                else
+                {
+                    a[nums[i]]++;
+                }
+                char[] array = nums[i].ToString().ToCharArray();
+                Array.Reverse(array);
+                string backwards = new String(array);
+                int digits = 0;
+                int.TryParse(backwards, out digits);
+                if (!a.ContainsKey(digits))
+                {
+                    a.Add(digits, 1);
+                }
+                else
+                {
+                    a[digits]++;
+                }
+            }
+            return a.Count;
+        }
         #endregion
     }
 }
