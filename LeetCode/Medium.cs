@@ -3058,6 +3058,68 @@ namespace LeetCode
             }
             return maxlevel;
         }
+        //Title: 2482. Difference Between Ones and Zeros in Row and Column
+        //Link: https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column
+        //Tags: Array, Matrix, Simulation
+        public static int[][] OnesMinusZeros(int[][] grid)
+        {
+            int[][] rowmap = new int[grid.Length][];
+            int len = grid[0].Length;
+            int[][] colmap = new int[len][];
+            int rowindex = 0;
+            int[][] ans = new int[grid.Length][];
+            for (var x = 0; x < grid.Length; x++)
+            {
+                var inner = grid[x];
+                var ilen = inner.Length;
+                var newer = new int[ilen];
+                Array.Copy(inner, newer, ilen);
+                ans[x] = newer;
+            }
+            foreach (int[] row in grid)
+            {
+                int one = 0;
+                int zero = 0;
+                for (int i = 0; i < len; i++)
+                {
+                    if (row[i] == 0)
+                    {
+                        zero++;
+                    }
+                    else
+                    {
+                        one++;
+                    }
+                }
+                rowmap[rowindex] = new int[] { one, zero };
+                rowindex++;
+            }
+            for (int i = 0; i < len; i++)
+            {
+                int one = 0;
+                int zero = 0;
+                for (int j = 0; j < grid.Length; j++)
+                {
+                    if (grid[j][i] == 0)
+                    {
+                        zero++;
+                    }
+                    else
+                    {
+                        one++;
+                    }
+                }
+                colmap[i] = new int[] { one, zero };
+            }
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < grid.Length; j++)
+                {
+                    ans[j][i] = rowmap[j][0] + colmap[i][0] - rowmap[j][1] - colmap[i][1];
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
