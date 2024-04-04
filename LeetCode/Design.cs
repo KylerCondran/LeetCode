@@ -371,5 +371,33 @@ namespace LeetCode
             }
         }
     }
+    //Title: 2336. Smallest Number in Infinite Set
+    //Link: https://leetcode.com/problems/smallest-number-in-infinite-set
+    //Difficulty: Medium
+    //Tags: Hash Table, Design, Heap(Priority Queue)
+    public class SmallestInfiniteSet
+    {
+        SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+        public SmallestInfiniteSet()
+        {
+            for (int i = 1; i < 2000; i++)
+            {
+                a.Add(i, 1);
+            }
+        }
+        public int PopSmallest()
+        {
+            int val = a.ElementAt(0).Key;
+            a.Remove(a.ElementAt(0).Key);
+            return val;
+        }
+        public void AddBack(int num)
+        {
+            if (!a.ContainsKey(num))
+            {
+                a.Add(num, 1);
+            }
+        }
+    }
     #endregion
 }
