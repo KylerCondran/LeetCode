@@ -4945,6 +4945,28 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 88. Merge Sorted Array
+        //Link: https://leetcode.com/problems/merge-sorted-array
+        //Tags: Array, Two Pointers, Sorting
+        public static void Merge(int[] nums1, int m, int[] nums2, int n)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < m; i++)
+            {
+                a.Add(nums1[i]);
+            }
+            for (int i = 0; i < n; i++)
+            {
+                a.Add(nums2[i]);
+            }
+            a.Sort();
+            int index = 0;
+            foreach (int i in a)
+            {
+                nums1[index] = i;
+                index++;
+            }
+        }
         #endregion
     }
 }
