@@ -3202,6 +3202,17 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 81. Search in Rotated Sorted Array II
+        //Link: https://leetcode.com/problems/search-in-rotated-sorted-array-ii
+        //Tags: Array, Binary Search
+        public static bool Search(int[] nums, int target)
+        {
+            if (nums.Contains(target))
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }
