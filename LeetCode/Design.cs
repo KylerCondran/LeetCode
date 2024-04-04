@@ -224,5 +224,99 @@ namespace LeetCode
             return c[rand];
         }
     }
+    //Title: 2671. Frequency Tracker
+    //Link: https://leetcode.com/problems/frequency-tracker
+    //Difficulty: Medium
+    //Tags: Hash Table, Design
+    public class FrequencyTracker
+    {
+        Dictionary<int, int> a = new Dictionary<int, int>();
+        Dictionary<int, int> b = new Dictionary<int, int>();
+        public FrequencyTracker()
+        {
+
+        }
+        public void Add(int number)
+        {
+            if (!a.ContainsKey(number))
+            {
+                a.Add(number, 1);
+                if (!b.ContainsKey(1))
+                {
+                    b.Add(1, 1);
+                }
+                else
+                {
+                    b[1]++;
+                }
+            }
+            else
+            {
+                int count = a[number];
+                a[number]++;
+                if (b.ContainsKey(count))
+                {
+                    if (b[count] == 1)
+                    {
+                        b.Remove(count);
+                    }
+                    else
+                    {
+                        b[count]--;
+                    }
+                }
+                if (!b.ContainsKey(count + 1))
+                {
+                    b.Add(count + 1, 1);
+                }
+                else
+                {
+                    b[count + 1]++;
+                }
+            }
+        }
+        public void DeleteOne(int number)
+        {
+            if (a.ContainsKey(number))
+            {
+                int count = a[number];
+                if (a[number] == 1)
+                {
+                    a.Remove(number);
+                }
+                else
+                {
+                    a[number]--;
+                }
+                if (!b.ContainsKey(count - 1))
+                {
+                    b.Add(count - 1, 1);
+                }
+                else
+                {
+                    b[count - 1]++;
+                }
+                if (b.ContainsKey(count))
+                {
+                    if (b[count] == 1)
+                    {
+                        b.Remove(count);
+                    }
+                    else
+                    {
+                        b[count]--;
+                    }
+                }
+            }
+        }
+        public bool HasFrequency(int frequency)
+        {
+            if (b.ContainsKey(frequency))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
     #endregion
 }
