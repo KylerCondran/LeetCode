@@ -399,5 +399,55 @@ namespace LeetCode
             }
         }
     }
+    //Title: 155. Min Stack
+    //Link: https://leetcode.com/problems/min-stack
+    //Difficulty: Medium
+    //Tags: Stack, Design
+    public class MinStack
+    {
+        List<int> a = new List<int>();
+        SortedDictionary<int, int> b = new SortedDictionary<int, int>();
+        public MinStack()
+        {
+
+        }
+        public void Push(int val)
+        {
+            a.Add(val);
+            if (!b.ContainsKey(val))
+            {
+                b.Add(val, 1);
+            }
+            else
+            {
+                b[val]++;
+            }
+        }
+        public void Pop()
+        {
+            int val = a[a.Count - 1];
+            a.RemoveAt(a.Count - 1);
+            if (b.ContainsKey(val))
+            {
+                if (b[val] == 1)
+                {
+                    b.Remove(val);
+                }
+                else
+                {
+                    b[val]--;
+                }
+            }
+        }
+        public int Top()
+        {
+            int val = a[a.Count - 1];
+            return val;
+        }
+        public int GetMin()
+        {
+            return b.ElementAt(0).Key;
+        }
+    }
     #endregion
 }
