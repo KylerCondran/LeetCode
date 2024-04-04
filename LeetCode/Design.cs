@@ -318,5 +318,58 @@ namespace LeetCode
             return false;
         }
     }
+    //Title: 1381. Design a Stack With Increment Operation
+    //Link: https://leetcode.com/problems/design-a-stack-with-increment-operation
+    //Difficulty: Medium
+    //Tags: Array, Stack, Design
+    public class CustomStack
+    {
+        List<int> a = new List<int>();
+        int max = 0;
+        public CustomStack(int maxSize)
+        {
+            this.max = maxSize;
+        }
+        public void Push(int x)
+        {
+            if (a.Count != max)
+            {
+                a.Add(x);
+            }
+        }
+        public int Pop()
+        {
+            if (a.Count > 0)
+            {
+                int val = a[a.Count - 1];
+                a.RemoveAt(a.Count - 1);
+                return val;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        public void Increment(int k, int val)
+        {
+            if (a.Count > 0)
+            {
+                if (a.Count < k)
+                {
+                    for (int i = 0; i < a.Count; i++)
+                    {
+                        a[i] = a[i] + val;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < k; i++)
+                    {
+                        a[i] = a[i] + val;
+                    }
+                }
+            }
+        }
+    }
     #endregion
 }
