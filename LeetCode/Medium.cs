@@ -3168,6 +3168,40 @@ namespace LeetCode
             }
             return a.Count;
         }
+        //Title: 80. Remove Duplicates from Sorted Array II
+        //Link: https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii
+        //Tags: Array, Two Pointers
+        public static int RemoveDuplicates(int[] nums)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int[] numcopy = new int[nums.Length];
+            Array.Copy(nums, 0, numcopy, 0, nums.Length);
+            int index = 0;
+            for (int i = 0; i < numcopy.Length; i++)
+            {
+                if (!a.ContainsKey(numcopy[i]))
+                {
+                    a.Add(numcopy[i], 1);
+                    nums[index] = numcopy[i];
+                    index++;
+                }
+                else
+                {
+                    if (a[numcopy[i]] != 2)
+                    {
+                        a[numcopy[i]]++;
+                        nums[index] = numcopy[i];
+                        index++;
+                    }
+                }
+            }
+            int ans = 0;
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                ans += i.Value;
+            }
+            return ans;
+        }
         #endregion
     }
 }
