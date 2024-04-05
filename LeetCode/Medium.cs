@@ -3213,6 +3213,49 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 2225. Find Players With Zero or One Losses
+        //Link: https://leetcode.com/problems/find-players-with-zero-or-one-losses
+        //Tags: Array, Hash Table, Sorting, Counting
+        public static IList<IList<int>> FindWinners(int[][] matches)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            List<IList<int>> b = new List<IList<int>>();
+            List<int> c = new List<int>();
+            List<int> d = new List<int>();
+            foreach (int[] i in matches)
+            {
+                int w = i[0];
+                int l = i[1];
+                if (!a.ContainsKey(w))
+                {
+                    a.Add(w, 0);
+                }
+                if (!a.ContainsKey(l))
+                {
+                    a.Add(l, 1);
+                }
+                else
+                {
+                    a[l]++;
+                }
+            }
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                if (i.Value == 0)
+                {
+                    c.Add(i.Key);
+                }
+                if (i.Value == 1)
+                {
+                    d.Add(i.Key);
+                }
+            }
+            c.Sort();
+            d.Sort();
+            b.Add(c);
+            b.Add(d);
+            return b;
+        }
         #endregion
     }
 }
