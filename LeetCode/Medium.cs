@@ -3256,6 +3256,25 @@ namespace LeetCode
             b.Add(d);
             return b;
         }
+        //Title: 1268. Search Suggestions System
+        //Link: https://leetcode.com/problems/search-suggestions-system
+        //Tags: Array, String, Binary Search, Trie, Sorting, Heap(Priority Queue)
+        public static IList<IList<string>> SuggestedProducts(string[] products, string searchWord)
+        {
+            List<IList<string>> a = new List<IList<string>>();
+            Array.Sort(products);
+            for (int j = 1; j <= searchWord.Length; j++)
+            {
+                List<string> b = new List<string>();
+                var results = products.Where((x) => x.StartsWith(searchWord.Substring(0, j))).Take(3);
+                foreach (string i in results)
+                {
+                    b.Add(i);
+                }
+                a.Add(b);
+            }
+            return a;
+        }
         #endregion
     }
 }
