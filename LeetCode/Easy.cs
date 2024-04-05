@@ -4967,6 +4967,31 @@ namespace LeetCode
                 index++;
             }
         }
+        //Title: 1544. Make The String Great
+        //Link: https://leetcode.com/problems/make-the-string-great
+        //Tags: String, Stack
+        public static string MakeGood(string s)
+        {
+            bool foundcase = true;
+            while (foundcase)
+            {
+                foundcase = false;
+                for (char i = 'a'; i <= 'z'; i++)
+                {
+                    if (s.Contains(i + i.ToString().ToUpper()))
+                    {
+                        s = s.Replace(i + i.ToString().ToUpper(), "");
+                        foundcase = true;
+                    }
+                    if (s.Contains(i.ToString().ToUpper() + i))
+                    {
+                        s = s.Replace(i.ToString().ToUpper() + i, "");
+                        foundcase = true;
+                    }
+                }
+            }
+            return s;
+        }
         #endregion
     }
 }
