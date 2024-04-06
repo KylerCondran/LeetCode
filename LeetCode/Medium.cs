@@ -7,6 +7,7 @@ using System.Numerics;
 using System.Security.Policy;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Net.Sockets;
 
 namespace LeetCode
 {
@@ -3312,6 +3313,35 @@ namespace LeetCode
                 score += colmax;
             }
             return score;
+        }
+        //Title: 912. Sort an Array
+        //Link: https://leetcode.com/problems/sort-an-array
+        //Tags: Array, Divide and Conquer, Sorting, Heap(Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort
+        public static int[] SortArray(int[] nums)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            int[] ans = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+                else
+                {
+                    a[nums[i]]++;
+                }
+            }
+            int index = 0;
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                for (int j = 0; j < i.Value; j++)
+                {
+                    ans[index] = i.Key;
+                    index++;
+                }
+            }
+            return ans;
         }
         #endregion
     }
