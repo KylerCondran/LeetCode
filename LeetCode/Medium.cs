@@ -3275,6 +3275,44 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 2679. Sum in a Matrix
+        //Link: https://leetcode.com/problems/sum-in-a-matrix
+        //Tags: Array, Sorting, Heap(Priority Queue), Matrix, Simulation
+        public static int MatrixSum(int[][] nums)
+        {
+            int score = 0;
+            int xlen = nums[0].Length;
+            int ylen = nums.Length;
+            for (int d = 0; d < xlen; d++)
+            {
+                int colmax = 0;
+                for (int i = 0; i < ylen; i++)
+                {
+                    int rowmax = 0;
+                    for (int j = 0; j < xlen; j++)
+                    {
+                        if (nums[i][j] > rowmax)
+                        {
+                            rowmax = nums[i][j];
+                        }
+                    }
+                    for (int j = 0; j < xlen; j++)
+                    {
+                        if (nums[i][j] == rowmax)
+                        {
+                            nums[i][j] = 0;
+                            break;
+                        }
+                    }
+                    if (rowmax > colmax)
+                    {
+                        colmax = rowmax;
+                    }
+                }
+                score += colmax;
+            }
+            return score;
+        }
         #endregion
     }
 }
