@@ -3343,6 +3343,53 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2343. Query Kth Smallest Trimmed Number
+        //Link: https://leetcode.com/problems/query-kth-smallest-trimmed-number
+        //Tags: Array, String, Divide and Conquer, Sorting, Heap(Priority Queue), Radix Sort, Quickselect
+        public static int[] SmallestTrimmedNumbers(string[] nums, int[][] queries)
+        {
+            List<int> a = new List<int>();
+            Dictionary<int, BigInteger[]> b = new Dictionary<int, BigInteger[]>();
+            int[] ans = new int[queries.Length];
+            foreach (int[] i in queries)
+            {
+                if (!a.Contains(i[1]))
+                {
+                    a.Add(i[1]);
+                }
+            }
+            foreach (int i in a)
+            {
+                BigInteger[] c = new BigInteger[nums.Length];
+                int indexa = 0;
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    BigInteger digits = 0;
+                    BigInteger.TryParse(nums[j].Substring(nums[j].Length - i, i), out digits);
+                    c[indexa] = digits;
+                    indexa++;
+                }
+                b.Add(i, c);
+            }
+            int indexb = 0;
+            foreach (int[] i in queries)
+            {
+                int x = i[0];
+                int y = i[1];
+                List<PreSortItem> c = new List<PreSortItem>();
+                for (int j = 0; j < b[y].Length; j++)
+                {
+                    PreSortItem ps = new PreSortItem();
+                    ps.Key = b[y][j];
+                    ps.Index = j;
+                    c.Add(ps);
+                }
+                var sortedDict = from entry in c orderby entry.Key ascending select entry;
+                ans[indexb] = sortedDict.ElementAt(x - 1).Index;
+                indexb++;
+            }
+            return ans;
+        }
         #endregion
     }
 }

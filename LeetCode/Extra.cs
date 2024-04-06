@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,5 +35,10 @@ namespace LeetCode
             this.left = left;
             this.right = right;
         }
+    }
+    public class PreSortItem
+    {
+        public BigInteger Key { get; set; }
+        public int Index { get; set; }
     }
 }
