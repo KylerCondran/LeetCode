@@ -480,5 +480,30 @@ namespace LeetCode
             a.Add(seatNumber, 0);
         }
     }
+    //Title: 2424. Longest Uploaded Prefix
+    //Link: https://leetcode.com/problems/longest-uploaded-prefix
+    //Difficulty: Medium
+    //Tags: Binary Search, Union Find, Design, Binary Indexed Tree, Segment Tree, Heap(Priority Queue), Ordered Set
+    public class LUPrefix
+    {
+        int[] a;
+        public LUPrefix(int n)
+        {
+            this.a = new int[n];
+        }
+        public void Upload(int video)
+        {
+            a[video - 1] = video;
+        }
+        public int Longest()
+        {
+            int count = Array.IndexOf(a, 0);
+            if (count == -1)
+            {
+                count = a.Length;
+            }
+            return count;
+        }
+    }
     #endregion
 }
