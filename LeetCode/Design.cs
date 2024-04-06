@@ -449,5 +449,36 @@ namespace LeetCode
             return b.ElementAt(0).Key;
         }
     }
+    //Title: 1845. Seat Reservation Manager
+    //Link: https://leetcode.com/problems/seat-reservation-manager
+    //Difficulty: Medium
+    //Tags: Design, Heap(Priority Queue)
+    public class SeatManager
+    {
+        SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+        SortedDictionary<int, int> b = new SortedDictionary<int, int>();
+        public SeatManager(int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                if (!a.ContainsKey(i))
+                {
+                    a.Add(i, 0);
+                }
+            }
+        }
+        public int Reserve()
+        {
+            int val = a.ElementAt(0).Key;
+            b.Add(val, 1);
+            a.Remove(val);
+            return val;
+        }
+        public void Unreserve(int seatNumber)
+        {
+            b.Remove(seatNumber);
+            a.Add(seatNumber, 0);
+        }
+    }
     #endregion
 }
