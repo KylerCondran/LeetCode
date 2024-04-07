@@ -505,5 +505,118 @@ namespace LeetCode
             return count;
         }
     }
+    //Title: 895. Maximum Frequency Stack
+    //Link: https://leetcode.com/problems/maximum-frequency-stack
+    //Difficulty: Hard
+    //Tags: Hash Table, Stack, Design, Ordered Set
+    public class FreqStack
+    {
+        Dictionary<int, int> a;
+        List<int> b;
+        SortedDictionary<int, List<int>> c;
+        public FreqStack()
+        {
+            this.a = new Dictionary<int, int>();
+            this.b = new List<int>();
+            this.c = new SortedDictionary<int, List<int>>(new ReverseSortComparer());
+        }
+        public void Push(int val)
+        {
+            if (!a.ContainsKey(val))
+            {
+                a.Add(val, 1);
+                if (!c.ContainsKey(1))
+                {
+                    c.Add(1, new List<int> { val });
+                }
+                else
+                {
+                    c[1].Add(val);
+                }
+            }
+            else
+            {
+                c[a[val]].Remove(val);
+                if (c[a[val]].Count == 0)
+                {
+                    c.Remove(a[val]);
+                }
+                a[val]++;
+                if (!c.ContainsKey(a[val]))
+                {
+                    c.Add(a[val], new List<int> { val });
+                }
+                else
+                {
+                    c[a[val]].Add(val);
+                }
+            }
+            b.Add(val);
+        }
+        public int Pop()
+        {
+            int min = Int32.MinValue;
+            int integer = -1;
+            if (c.ElementAt(0).Value.Count == 1)
+            {
+                int num = c.ElementAt(0).Value[0];
+                int index = b.LastIndexOf(num);
+                if (index != -1 && index > min)
+                {
+                    min = index;
+                    integer = num;
+                }
+            }
+            else if (c.ElementAt(0).Value.Count > 1)
+            {
+                int[] d = new int[2];
+                d = GetIndex(b, c.ElementAt(0).Value);
+                if (d[0] != -1)
+                {
+                    min = d[0];
+                    integer = d[1];
+                }
+            }
+            c[a[integer]].Remove(integer);
+            if (c[a[integer]].Count == 0)
+            {
+                c.Remove(a[integer]);
+            }
+            a[integer]--;
+            if (!c.ContainsKey(a[integer]))
+            {
+                c.Add(a[integer], new List<int> { integer });
+            }
+            else
+            {
+                if (a[integer] != 0)
+                {
+                    c[a[integer]].Add(integer);
+                }
+            }
+            if (a[integer] == 0)
+            {
+                a.Remove(integer);
+            }
+            b.RemoveAt(min);
+            return integer;
+        }
+        public int[] GetIndex(List<int> list, List<int> topfreq)
+        {
+            int[] ans = new int[2];
+            ans[0] = -1;
+            ans[1] = -1;
+            for (int index = list.Count - 1; index >= 0; index--)
+            {
+                if (topfreq.Contains(list[index]))
+                {
+                    ans[0] = index;
+                    ans[1] = list[index];
+                    return ans;
+                }
+            }
+            return ans;
+        }
+    }
     #endregion
 }
