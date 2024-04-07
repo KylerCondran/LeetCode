@@ -3430,6 +3430,36 @@ namespace LeetCode
             }
             return root;
         }
+        //Title: 102. Binary Tree Level Order Traversal
+        //Link: https://leetcode.com/problems/binary-tree-level-order-traversal
+        //Tags: Tree, Breadth-First Search, Binary Tree
+        public static IList<IList<int>> LevelOrder(TreeNode root)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<IList<int>> a = new List<IList<int>>();
+            if (root == null) return a;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                int size = q.Count();
+                List<int> b = new List<int>();
+                for (int i = 0; i < size; i++)
+                {
+                    TreeNode T = q.Dequeue();
+                    if (T.left != null)
+                    {
+                        q.Enqueue(T.left);
+                    }
+                    if (T.right != null)
+                    {
+                        q.Enqueue(T.right);
+                    }
+                    b.Add(T.val);
+                }
+                a.Add(b);
+            }
+            return a;
+        }
         #endregion
     }
 }
