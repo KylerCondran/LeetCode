@@ -398,6 +398,13 @@ namespace LeetCode
                 current.next = link;
             }
         }
+        //Title: 154. Find Minimum in Rotated Sorted Array II
+        //Link: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii
+        //Tags: Array, Binary Search
+        public static int FindMin(int[] nums)
+        {
+            return nums.Min();
+        }
         #endregion
     }
 }
