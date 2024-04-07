@@ -3390,6 +3390,46 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 654. Maximum Binary Tree
+        //Link: https://leetcode.com/problems/maximum-binary-tree
+        //Tags: Array, Divide and Conquer, Stack, Tree, Monotonic Stack, Binary Tree
+        public static TreeNode ConstructMaximumBinaryTree(int[] nums)
+        {
+            TreeNode root = null;
+            root = InsertNode(root, nums);
+            return root;
+        }
+        public static TreeNode InsertNode(TreeNode root, int[] vals)
+        {
+            int max = vals.Max();
+            int maxindex = Array.IndexOf(vals, max);
+            if (root == null)
+            {
+                root = new TreeNode(max);
+            }
+            if (maxindex > 0)
+            {
+                int[] a = new int[maxindex];
+                for (int i = 0; i < maxindex; i++)
+                {
+                    a[i] = vals[i];
+                }
+                root.left = InsertNode(root.left, a);
+            }
+            if (maxindex != vals.Length - 1)
+            {
+                int lenb = vals.Length - 1 - maxindex;
+                int[] b = new int[lenb];
+                int index = 0;
+                for (int i = maxindex + 1; i < vals.Length; i++)
+                {
+                    b[index] = vals[i];
+                    index++;
+                }
+                root.right = InsertNode(root.right, b);
+            }
+            return root;
+        }
         #endregion
     }
 }
