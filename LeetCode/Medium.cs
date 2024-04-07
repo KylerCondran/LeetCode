@@ -776,6 +776,20 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 74. Search a 2D Matrix
+        //Link: https://leetcode.com/problems/search-a-2d-matrix
+        //Tags: Array, Binary Search, Matrix
+        public static bool SearchMatrix(int[][] matrix, int target)
+        {
+            foreach (int[] i in matrix)
+            {
+                if (i.Contains(target))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         //Title: 692. Top K Frequent Words
         //Link: https://leetcode.com/problems/top-k-frequent-words
         //Tags: Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting
@@ -3463,7 +3477,7 @@ namespace LeetCode
         //Title: 240. Search a 2D Matrix II
         //Link: https://leetcode.com/problems/search-a-2d-matrix-ii
         //Tags: Array, Binary Search, Divide and Conquer, Matrix
-        public static bool SearchMatrix(int[][] matrix, int target)
+        public static bool SearchMatrixII(int[][] matrix, int target)
         {
             foreach (int[] i in matrix)
             {
