@@ -3495,6 +3495,13 @@ namespace LeetCode
         {
             return Array.IndexOf(nums, target);
         }
+        //Title: 153. Find Minimum in Rotated Sorted Array
+        //Link: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
+        //Tags: Array, Binary Search
+        public static int FindMin(int[] nums)
+        {
+            return nums.Min();
+        }
         #endregion
     }
 }
