@@ -618,5 +618,90 @@ namespace LeetCode
             return ans;
         }
     }
+    //Title: 432. All O`one Data Structure
+    //Link: https://leetcode.com/problems/all-oone-data-structure
+    //Difficulty: Hard
+    //Tags: Hash Table, Linked List, Design, Doubly-Linked List
+    public class AllOne
+    {
+        Dictionary<string, int> a;
+        SortedDictionary<int, List<string>> b;
+        public AllOne()
+        {
+            this.a = new Dictionary<string, int>();
+            this.b = new SortedDictionary<int, List<string>>(new ReverseSortComparer());
+        }
+        public void Inc(string key)
+        {
+            if (!a.ContainsKey(key))
+            {
+                a.Add(key, 1);
+                if (!b.ContainsKey(1))
+                {
+                    b.Add(1, new List<string> { key });
+                }
+                else
+                {
+                    b[1].Add(key);
+                }
+            }
+            else
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a[key]++;
+                if (!b.ContainsKey(a[key]))
+                {
+                    b.Add(a[key], new List<string> { key });
+                }
+                else
+                {
+                    b[a[key]].Add(key);
+                }
+            }
+        }
+        public void Dec(string key)
+        {
+            if (a[key] == 1)
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a.Remove(key);
+            }
+            else
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a[key]--;
+                if (!b.ContainsKey(a[key]))
+                {
+                    b.Add(a[key], new List<string> { key });
+                }
+                else
+                {
+                    b[a[key]].Add(key);
+                }
+            }
+        }
+        public string GetMaxKey()
+        {
+            if (a.Count == 0) return "";
+            return b.ElementAt(0).Value[0];
+        }
+        public string GetMinKey()
+        {
+            if (a.Count == 0) return "";
+            return b.ElementAt(b.Count - 1).Value[0];
+        }
+    }
     #endregion
 }
