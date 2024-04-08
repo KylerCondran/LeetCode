@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -4991,6 +4992,45 @@ namespace LeetCode
                 }
             }
             return s;
+        }
+        //Title: 1700. Number of Students Unable to Eat Lunch
+        //Link: https://leetcode.com/problems/number-of-students-unable-to-eat-lunch
+        //Tags: Array, Stack, Queue, Simulation
+        public static int CountStudents(int[] students, int[] sandwiches)
+        {
+            Queue<int> q = new Queue<int>();
+            Stack<int> s = new Stack<int>();
+            bool ate = true;
+            for (int i = 0; i < students.Length; i++)
+            {
+                q.Enqueue(students[i]);
+            }
+            Array.Reverse(sandwiches);
+            for (int i = 0; i < sandwiches.Length; i++)
+            {
+                s.Push(sandwiches[i]);
+            }
+            while (ate)
+            {
+                ate = false;
+                for (int i = 0; i < q.Count; i++)
+                {
+                    int pref = q.Peek();
+                    int sand = s.Peek();
+                    if (pref == sand)
+                    {
+                        q.Dequeue();
+                        s.Pop();
+                        ate = true;
+                    }
+                    else
+                    {
+                        q.Dequeue();
+                        q.Enqueue(pref);
+                    }
+                }
+            }
+            return q.Count();
         }
         #endregion
     }
