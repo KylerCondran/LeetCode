@@ -703,5 +703,63 @@ namespace LeetCode
             return b.ElementAt(b.Count - 1).Value[0];
         }
     }
+    //Title: 295. Find Median from Data Stream
+    //Link: https://leetcode.com/problems/find-median-from-data-stream
+    //Difficulty: Hard
+    //Tags: Two Pointers, Design, Sorting, Heap(Priority Queue), Data Stream
+    public class MedianFinder
+    {
+        List<int> a;
+        public MedianFinder()
+        {
+            this.a = new List<int>();
+        }
+        public void AddNum(int num)
+        {
+            InsertIntoSortedList(a, num, (a, b) => a.CompareTo(b));
+        }
+        public double FindMedian()
+        {
+            int size = a.Count;
+            if (size == 1) { return (double)a[0]; }
+            if (size % 2 == 0)
+            {
+                int mid1 = a[(size / 2) - 1];
+                int mid2 = a[((size / 2))];
+                return (double)(mid1 + mid2) / 2;
+            }
+            else
+            {
+                int median = ((size + 1) / 2) - 1;
+                return (double)a[median];
+            }
+        }
+        public void InsertIntoSortedList(IList list, IComparable value, Comparison<IComparable> comparison)
+        {
+            var startIndex = 0;
+            var endIndex = list.Count;
+            while (endIndex > startIndex)
+            {
+                var windowSize = endIndex - startIndex;
+                var middleIndex = startIndex + (windowSize / 2);
+                var middleValue = (IComparable)list[middleIndex];
+                var compareToResult = comparison(middleValue, value);
+                if (compareToResult == 0)
+                {
+                    list.Insert(middleIndex, value);
+                    return;
+                }
+                else if (compareToResult < 0)
+                {
+                    startIndex = middleIndex + 1;
+                }
+                else
+                {
+                    endIndex = middleIndex;
+                }
+            }
+            list.Insert(startIndex, value);
+        }
+    }
     #endregion
 }
