@@ -405,6 +405,56 @@ namespace LeetCode
         {
             return nums.Min();
         }
+        //Title: 25. Reverse Nodes in k-Group
+        //Link: https://leetcode.com/problems/reverse-nodes-in-k-group
+        //Tags: Linked List, Recursion
+        public static ListNode ReverseKGroup(ListNode head, int k)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            ListNode ans = null;
+            while (head != null)
+            {
+                q1.Enqueue(head.val);
+                head = head.next;
+            }
+            while (q1.Count > 0)
+            {
+                if (q1.Count >= k)
+                {
+                    List<int> b = new List<int>();
+                    for (int i = 0; i < k; i++)
+                    {
+                        b.Add(q1.Dequeue());
+                    }
+                    b.Reverse();
+                    foreach (int i in b)
+                    {
+                        q2.Enqueue(i);
+                    }
+                }
+                else
+                {
+                    q2.Enqueue(q1.Dequeue());
+                }
+            }
+            ListNode current = ans;
+            while (q2.Count > 0)
+            {
+                ListNode link = new ListNode(q2.Dequeue());
+                if (ans == null)
+                {
+                    ans = link;
+                    current = ans;
+                }
+                else
+                {
+                    current.next = link;
+                    current = current.next;
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
