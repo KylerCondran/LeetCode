@@ -5074,6 +5074,29 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 1550. Three Consecutive Odds
+        //Link: https://leetcode.com/problems/three-consecutive-odds
+        //Tags: Array
+        public static bool ThreeConsecutiveOdds(int[] arr)
+        {
+            int counter = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] % 2 != 0)
+                {
+                    counter++;
+                    if (counter == 3)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    counter = 0;
+                }
+            }
+            return false;
+        }
         #endregion
     }
 }
