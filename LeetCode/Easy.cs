@@ -5055,6 +5055,25 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1539. Kth Missing Positive Number
+        //Link: https://leetcode.com/problems/kth-missing-positive-number
+        //Tags: Array, Binary Search
+        public static int FindKthPositive(int[] arr, int k)
+        {
+            int counter = 0;
+            for (int i = 1; i <= arr.Max() + k; i++)
+            {
+                if (!arr.Contains(i))
+                {
+                    counter++;
+                    if (counter == k)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
         #endregion
     }
 }
