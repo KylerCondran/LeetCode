@@ -761,5 +761,32 @@ namespace LeetCode
             list.Insert(startIndex, value);
         }
     }
+    //Title: 729. My Calendar I
+    //Link: https://leetcode.com/problems/my-calendar-i
+    //Difficulty: Medium
+    //Tags: Binary Search, Design, Segment Tree, Ordered Set
+    public class MyCalendar
+    {
+        List<BookRange> a;
+        public MyCalendar()
+        {
+            this.a = new List<BookRange>();
+        }
+        public bool Book(int start, int end)
+        {
+            foreach (BookRange i in a)
+            {
+                if ((start >= i.start && start < i.end) || (end <= i.end && end > i.start) || (start < i.start && end > i.end))
+                {
+                    return false;
+                }
+            }
+            BookRange b = new BookRange();
+            b.start = start;
+            b.end = end;
+            a.Add(b);
+            return true;
+        }
+    }
     #endregion
 }

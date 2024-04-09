@@ -41,4 +41,9 @@ namespace LeetCode
         public BigInteger Key { get; set; }
         public int Index { get; set; }
     }
+    public class BookRange
+    {
+        public int start { get; set; }
+        public int end { get; set; }
+    }
 }
