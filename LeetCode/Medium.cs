@@ -3502,6 +3502,37 @@ namespace LeetCode
         {
             return nums.Min();
         }
+        //Title: 204. Count Primes
+        //Link: https://leetcode.com/problems/count-primes
+        //Tags: Array, Math, Enumeration, Number Theory, Sieve of Eratosthenes
+        public static int CountPrimes(int n)
+        {
+            n = n - 1;
+            int count = 0;
+            bool[] primes = new bool[n + 1];
+            for (int i = 0; i < primes.Length; i++)
+            {
+                primes[i] = true;
+            }
+            for (int i = 2; i < Math.Sqrt(n) + 1; i++)
+            {
+                if (primes[i - 1])
+                {
+                    for (int j = (int)Math.Pow(i, 2); j <= n; j += i)
+                    {
+                        primes[j - 1] = false;
+                    }
+                }
+            }
+            for (int i = 2; i < primes.Length; i++)
+            {
+                if (primes[i - 1])
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
         #endregion
     }
 }
