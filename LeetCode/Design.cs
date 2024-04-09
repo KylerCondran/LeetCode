@@ -788,5 +788,47 @@ namespace LeetCode
             return true;
         }
     }
+    //Title: 380. Insert Delete GetRandom O(1)
+    //Link: https://leetcode.com/problems/insert-delete-getrandom-o1
+    //Difficulty: Medium
+    //Tags: Array, Hash Table, Math, Design, Randomized
+    public class RandomizedSet
+    {
+        List<int> a;
+        public RandomizedSet()
+        {
+            this.a = new List<int>();
+        }
+        public bool Insert(int val)
+        {
+            if (!a.Contains(val))
+            {
+                a.Add(val);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool Remove(int val)
+        {
+            if (a.Contains(val))
+            {
+                a.Remove(val);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public int GetRandom()
+        {
+            Random rnd = new Random();
+            int rand = rnd.Next(0, a.Count);
+            return a[rand];
+        }
+    }
     #endregion
 }
