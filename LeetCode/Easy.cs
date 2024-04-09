@@ -5032,6 +5032,29 @@ namespace LeetCode
             }
             return q.Count();
         }
+        //Title: 2073. Time Needed to Buy Tickets
+        //Link: https://leetcode.com/problems/time-needed-to-buy-tickets
+        //Tags: Array, Queue, Simulation
+        public static int TimeRequiredToBuy(int[] tickets, int k)
+        {
+            int counter = 0;
+            while (tickets[k] != 0)
+            {
+                for (int i = 0; i < tickets.Length; i++)
+                {
+                    if (tickets[i] != 0)
+                    {
+                        tickets[i]--;
+                        counter++;
+                    }
+                    if (tickets[k] == 0)
+                    {
+                        return counter;
+                    }
+                }
+            }
+            return counter;
+        }
         #endregion
     }
 }
