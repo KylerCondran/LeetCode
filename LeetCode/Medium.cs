@@ -3684,6 +3684,47 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 2718. Sum of Matrix After Queries
+        //Link: https://leetcode.com/problems/sum-of-matrix-after-queries
+        //Tags: Array, Hash Table
+        public static long MatrixSumQueries(int n, int[][] queries)
+        {
+            Dictionary<int, int> cols = new Dictionary<int, int>();
+            Dictionary<int, int> rows = new Dictionary<int, int>();
+            int colnum = 0;
+            int rownum = 0;
+            long ans = 0;
+            for (int i = queries.Length - 1; i >= 0; i--)
+            {
+                int index = queries[i][1];
+                int val = queries[i][2];
+                if (queries[i][0] == 1)
+                {
+                    if (!cols.ContainsKey(index))
+                    {
+                        for (int j = 0; j < n - rownum; j++)
+                        {
+                            ans += val;
+                        }
+                        cols.Add(index, 1);
+                        colnum++;
+                    }
+                }
+                else
+                {
+                    if (!rows.ContainsKey(index))
+                    {
+                        for (int j = 0; j < n - colnum; j++)
+                        {
+                            ans += val;
+                        }
+                        rows.Add(index, 1);
+                        rownum++;
+                    }
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
