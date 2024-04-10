@@ -3562,6 +3562,128 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1222. Queens That Can Attack the King
+        //Link: https://leetcode.com/problems/queens-that-can-attack-the-king
+        //Tags: Array, Matrix, Simulation
+        public static IList<IList<int>> QueensAttacktheKing(int[][] queens, int[] king)
+        {
+            List<IList<int>> a = new List<IList<int>>();
+            int[][] b = new int[8][];
+            for (int i = 0; i < 8; i++) b[i] = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            int kingx = king[0];
+            int kingy = king[1];
+            b[kingx][kingy] = 1;
+            foreach (int[] queen in queens) b[queen[0]][queen[1]] = 2;
+            //right
+            for (int i = kingx; i < 8; i++)
+            {
+                if (b[i][kingy] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(i);
+                    c.Add(kingy);
+                    a.Add(c);
+                    break;
+                }
+            }
+            //right up
+            int rightupx = kingx;
+            for (int i = kingy; i >= 0; i--)
+            {
+                if (rightupx > 7) break;
+                if (b[rightupx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(rightupx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+                rightupx++;
+            }
+            //right down
+            int rightdownx = kingx;
+            for (int i = kingy; i < 8; i++)
+            {
+                if (rightdownx > 7) break;
+                if (b[rightdownx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(rightdownx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+                rightdownx++;
+            }
+            //down
+            for (int i = kingy; i < 8; i++)
+            {
+                if (b[kingx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(kingx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+            }
+            //left
+            for (int i = kingx; i >= 0; i--)
+            {
+                if (b[i][kingy] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(i);
+                    c.Add(kingy);
+                    a.Add(c);
+                    break;
+                }
+            }
+            //left up
+            int leftupx = kingx;
+            for (int i = kingy; i >= 0; i--)
+            {
+                if (leftupx < 0) break;
+                if (b[leftupx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(leftupx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+                leftupx--;
+            }
+            //left down
+            int leftdownx = kingx;
+            for (int i = kingy; i < 8; i++)
+            {
+                if (leftdownx < 0) break;
+                if (b[leftdownx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(leftdownx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+                leftdownx--;
+            }
+            //up
+            for (int i = kingy; i >= 0; i--)
+            {
+                if (b[kingx][i] == 2)
+                {
+                    List<int> c = new List<int>();
+                    c.Add(kingx);
+                    c.Add(i);
+                    a.Add(c);
+                    break;
+                }
+            }
+            return a;
+        }
         #endregion
     }
 }
