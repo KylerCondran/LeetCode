@@ -3533,6 +3533,35 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 1817. Finding the Users Active Minutes
+        //Link: https://leetcode.com/problems/finding-the-users-active-minutes
+        //Tags: Array, Hash Table
+        public static int[] FindingUsersActiveMinutes(int[][] logs, int k)
+        {
+            Dictionary<int, List<int>> a = new Dictionary<int, List<int>>();
+            int[] ans = new int[k];
+            foreach (int[] i in logs)
+            {
+                int user = i[0];
+                int action = i[1];
+                if (!a.ContainsKey(user))
+                {
+                    a.Add(user, new List<int> { action });
+                }
+                else
+                {
+                    if (!a[user].Contains(action))
+                    {
+                        a[user].Add(action);
+                    }
+                }
+            }
+            foreach (KeyValuePair<int, List<int>> i in a)
+            {
+                ans[i.Value.Count - 1]++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
