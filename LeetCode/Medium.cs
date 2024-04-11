@@ -3795,6 +3795,38 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 1347. Minimum Number of Steps to Make Two Strings Anagram
+        //Link: https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram
+        //Tags: Hash Table, String, Counting
+        public static int MinSteps(string s, string t)
+        {
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            int counter = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!a.ContainsKey(s[i]))
+                {
+                    a.Add(s[i], 1);
+                }
+                else
+                {
+                    a[s[i]]++;
+                }
+            }
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (a.ContainsKey(t[i]))
+                {
+                    counter++;
+                    a[t[i]]--;
+                    if (a[t[i]] == 0)
+                    {
+                        a.Remove(t[i]);
+                    }
+                }
+            }
+            return s.Length - counter;
+        }
         #endregion
     }
 }
