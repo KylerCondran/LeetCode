@@ -3725,6 +3725,41 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1282. Group the People Given the Group Size They Belong To
+        //Link: https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to
+        //Tags: Array, Hash Table
+        public static IList<IList<int>> GroupThePeople(int[] groupSizes)
+        {
+            Dictionary<int, List<int>> a = new Dictionary<int, List<int>>();
+            List<IList<int>> b = new List<IList<int>>();
+            for (int i = 0; i < groupSizes.Length; i++)
+            {
+                if (!a.ContainsKey(groupSizes[i]))
+                {
+                    a.Add(groupSizes[i], new List<int> { i });
+                }
+                else
+                {
+                    a[groupSizes[i]].Add(i);
+                }
+            }
+            foreach (KeyValuePair<int, List<int>> i in a)
+            {
+                int counter = 0;
+                int mult = i.Value.Count / i.Key;
+                for (int j = 0; j < mult; j++)
+                {
+                    List<int> c = new List<int>();
+                    for (int d = 0; d < i.Key; d++)
+                    {
+                        c.Add(a[i.Key][counter]);
+                        counter++;
+                    }
+                    b.Add(c);
+                }
+            }
+            return b;
+        }
         #endregion
     }
 }
