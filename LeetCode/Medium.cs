@@ -3827,6 +3827,41 @@ namespace LeetCode
             }
             return s.Length - counter;
         }
+        //Title: 2657. Find the Prefix Common Array of Two Arrays
+        //Link: https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays
+        //Tags: Array, Hash Table, Bit Manipulation
+        public static int[] FindThePrefixCommonArray(int[] A, int[] B)
+        {
+            List<int> total = new List<int>();
+            List<int> alist = new List<int>();
+            List<int> blist = new List<int>();
+            int[] ans = new int[A.Length];
+            int index = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                int counter = 0;
+                if (!total.Contains(A[i]))
+                {
+                    total.Add(A[i]);
+                }
+                alist.Add(A[i]);
+                if (!total.Contains(B[i]))
+                {
+                    total.Add(B[i]);
+                }
+                blist.Add(B[i]);
+                foreach (int j in total)
+                {
+                    if (alist.Contains(j) && blist.Contains(j))
+                    {
+                        counter++;
+                    }
+                }
+                ans[index] = counter;
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
