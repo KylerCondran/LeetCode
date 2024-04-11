@@ -3760,6 +3760,41 @@ namespace LeetCode
             }
             return b;
         }
+        //Title: 1630. Arithmetic Subarrays
+        //Link: https://leetcode.com/problems/arithmetic-subarrays
+        //Tags: Array, Hash Table, Sorting
+        public static IList<bool> CheckArithmeticSubarrays(int[] nums, int[] l, int[] r)
+        {
+            List<bool> a = new List<bool>();
+            for (int i = 0; i < l.Length; i++)
+            {
+                bool ans = true;
+                List<int> diff = new List<int>();
+                for (int j = l[i]; j <= r[i]; j++)
+                {
+                    diff.Add(nums[j]);
+                }
+                diff.Sort();
+                List<int> vals = new List<int>();
+                int start = diff[0];
+                for (int j = 1; j < diff.Count; j++)
+                {
+                    int end = diff[j];
+                    int minus = start - end;
+                    if (!vals.Contains(minus))
+                    {
+                        vals.Add(minus);
+                    }
+                    start = end;
+                }
+                if (vals.Count > 1)
+                {
+                    ans = false;
+                }
+                a.Add(ans);
+            }
+            return a;
+        }
         #endregion
     }
 }
