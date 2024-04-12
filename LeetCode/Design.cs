@@ -878,5 +878,39 @@ namespace LeetCode
             }
         }
     }
+    //Title: 1476. Subrectangle Queries
+    //Link: https://leetcode.com/problems/subrectangle-queries
+    //Difficulty: Medium
+    //Tags: Array, Design, Matrix
+    public class SubrectangleQueries
+    {
+        int[][] a;
+        public SubrectangleQueries(int[][] rectangle)
+        {
+            this.a = new int[rectangle.Length][];
+            for (var x = 0; x < rectangle.Length; x++)
+            {
+                var inner = rectangle[x];
+                var ilen = inner.Length;
+                var newer = new int[ilen];
+                Array.Copy(inner, newer, ilen);
+                this.a[x] = newer;
+            }
+        }
+        public void UpdateSubrectangle(int row1, int col1, int row2, int col2, int newValue)
+        {
+            for (int i = col1; i <= col2; i++)
+            {
+                for (int j = row1; j <= row2; j++)
+                {
+                    this.a[j][i] = newValue;
+                }
+            }
+        }
+        public int GetValue(int row, int col)
+        {
+            return this.a[row][col];
+        }
+    }
     #endregion
 }
