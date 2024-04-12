@@ -3908,6 +3908,49 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2161. Partition Array According to Given Pivot
+        //Link: https://leetcode.com/problems/partition-array-according-to-given-pivot
+        //Tags: Array, Two Pointers, Simulation
+        public static int[] PivotArray(int[] nums, int pivot)
+        {
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            Queue<int> q3 = new Queue<int>();
+            int[] ans = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val < pivot)
+                {
+                    q1.Enqueue(val);
+                }
+                else if (val > pivot)
+                {
+                    q3.Enqueue(val);
+                }
+                else
+                {
+                    q2.Enqueue(val);
+                }
+            }
+            int index = 0;
+            while (q1.Count > 0)
+            {
+                ans[index] = q1.Dequeue();
+                index++;
+            }
+            while (q2.Count > 0)
+            {
+                ans[index] = q2.Dequeue();
+                index++;
+            }
+            while (q3.Count > 0)
+            {
+                ans[index] = q3.Dequeue();
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
