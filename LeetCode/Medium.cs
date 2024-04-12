@@ -3862,6 +3862,35 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2295. Replace Elements in an Array
+        //Link: https://leetcode.com/problems/replace-elements-in-an-array
+        //Tags: Array, Hash Table, Simulation
+        public static int[] ArrayChange(int[] nums, int[][] operations)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], i);
+                }
+            }
+            foreach (int[] i in operations)
+            {
+                int replace = i[1];
+                int prev = i[0];
+                if (!a.ContainsKey(replace))
+                {
+                    a.Add(replace, a[prev]);
+                }
+                else
+                {
+                    a[replace] = a[prev];
+                }
+                nums[a[prev]] = replace;
+            }
+            return nums;
+        }
         #endregion
     }
 }
