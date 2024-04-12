@@ -3894,7 +3894,7 @@ namespace LeetCode
         //Title: 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers
         //Link: https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers
         //Tags: String, Greedy
-        public int MinPartitions(string n)
+        public static int MinPartitions(string n)
         {
             int ans = 0;
             for (int i = 0; i < n.Length; i++)
