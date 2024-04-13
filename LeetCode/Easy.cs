@@ -5113,6 +5113,34 @@ namespace LeetCode
             }
             return null;
         }
+        //Title: 1507. Reformat Date
+        //Link: https://leetcode.com/problems/reformat-date
+        //Tags: String
+        public static string ReformatDate(string date)
+        {
+            string[] a = date.Split(' ');
+            string[] v = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            string month = a[1];
+            string monthnum = "";
+            string year = a[2];
+            string numberOnly = Regex.Replace(a[0], "[^0-9.]", "");
+            if (numberOnly.Length == 1) numberOnly = "0" + numberOnly;
+            for (int i = 1; i <= 12; i++)
+            {
+                if (month == v[i - 1])
+                {
+                    if (i < 10)
+                    {
+                        monthnum = "0" + i;
+                    }
+                    else
+                    {
+                        monthnum = i.ToString();
+                    }
+                }
+            }
+            return year + "-" + monthnum + "-" + numberOnly;
+        }
         #endregion
     }
 }
