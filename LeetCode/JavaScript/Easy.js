@@ -23,7 +23,6 @@ function HelloWorld() {
 //Link: https://leetcode.com/problems/counter
 //Tags: JavaScript
 var createCounter = function (n) {
-
     return function () {
         return n++;
     };
@@ -46,4 +45,10 @@ var createCounter = function (init) {
         return val;
     };
     return { increment, decrement, reset };
+};
+//Title: 2727. Is Object Empty
+//Link: https://leetcode.com/problems/is-object-empty
+//Tags: JavaScript
+var isEmpty = function (obj) {
+    return _.isEmpty(obj)
 };
