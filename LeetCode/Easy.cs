@@ -5141,6 +5141,33 @@ namespace LeetCode
             }
             return year + "-" + monthnum + "-" + numberOnly;
         }
+        //Title: 1556. Thousand Separator
+        //Link: https://leetcode.com/problems/thousand-separator
+        //Tags: String
+        public static string ThousandSeparator(int n)
+        {
+            string num = n.ToString();
+            string build = "";
+            int counter = 0;
+            for (int i = num.Length - 1; i >= 0; i--)
+            {
+                if (counter == 3)
+                {
+                    build += ".";
+                    counter = 0;
+                }
+                build += num[i];
+                counter++;
+            }
+            if (build[build.Length - 1] == '.')
+            {
+                build = build.Substring(0, build.Length - 1);
+            }
+            char[] charArray = build.ToCharArray();
+            Array.Reverse(charArray);
+            string backwards = new string(charArray);
+            return backwards;
+        }
         #endregion
     }
 }
