@@ -4005,6 +4005,30 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2414. Length of the Longest Alphabetical Continuous Substring
+        //Link: https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring
+        //Tags: String
+        public static int LongestContinuousSubstring(string s)
+        {
+            int count = 1;
+            int max = 1;
+            char last = s[0];
+            for (int i = 1; i < s.Length; i++)
+            {
+                char a = s[i];
+                if (a == (char)(last + 1))
+                {
+                    count++;
+                }
+                else
+                {
+                    count = 1;
+                }
+                max = Math.Max(max, count);
+                last = a;
+            }
+            return max;
+        }
         #endregion
     }
 }
