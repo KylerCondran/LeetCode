@@ -3951,6 +3951,33 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 841. Keys and Rooms
+        //Link: https://leetcode.com/problems/keys-and-rooms
+        //Tags: Depth-First Search, Breadth-First Search, Graph
+        public static bool CanVisitAllRooms(IList<IList<int>> rooms)
+        {
+            Queue<int> q = new Queue<int>();
+            List<int> visited = new List<int>();
+            q.Enqueue(0);
+            visited.Add(0);
+            while (q.Count > 0)
+            {
+                int roomnum = q.Dequeue();
+                foreach (int i in rooms[roomnum])
+                {
+                    if (!visited.Contains(i))
+                    {
+                        visited.Add(i);
+                        q.Enqueue(i);
+                    }
+                }
+            }
+            if (visited.Count() == rooms.Count())
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }
