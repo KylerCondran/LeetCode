@@ -3978,6 +3978,33 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1456. Maximum Number of Vowels in a Substring of Given Length
+        //Link: https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length
+        //Tags: String, Sliding Window
+        public static int MaxVowels(string s, int k)
+        {
+            Queue<char> q = new Queue<char>();
+            char[] v = new char[] { 'a', 'e', 'i', 'o', 'u' };
+            int count = 0;
+            int max = 0;
+            for (int i = 0; i < k; i++)
+            {
+                char a = s[i];
+                if (v.Contains(a)) count++;
+                max = Math.Max(max, count);
+                q.Enqueue(a);
+            }
+            for (int i = k; i < s.Length; i++)
+            {
+                char b = q.Dequeue();
+                if (v.Contains(b)) count--;
+                char c = s[i];
+                q.Enqueue(c);
+                if (v.Contains(c)) count++;
+                max = Math.Max(max, count);
+            }
+            return max;
+        }
         #endregion
     }
 }
