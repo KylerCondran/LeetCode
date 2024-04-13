@@ -5199,6 +5199,14 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1784. Check if Binary String Has at Most One Segment of Ones
+        //Link: https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones
+        //Tags: String
+        public static bool CheckOnesSegment(string s)
+        {
+            if (s.Contains("01")) return false;
+            return true;
+        }
         #endregion
     }
 }
