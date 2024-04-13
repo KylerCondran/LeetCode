@@ -5168,6 +5168,37 @@ namespace LeetCode
             string backwards = new string(charArray);
             return backwards;
         }
+        //Title: 1636. Sort Array by Increasing Frequency
+        //Link: https://leetcode.com/problems/sort-array-by-increasing-frequency
+        //Tags: Array, Hash Table, Sorting
+        public static int[] FrequencySort(int[] nums)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int[] ans = new int[nums.Length];
+            int index = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a[val]++;
+                }
+            }
+            var sortedDict = from entry in a orderby entry.Value ascending, entry.Key descending select entry;
+            foreach (KeyValuePair<int, int> i in sortedDict)
+            {
+                for (int j = 0; j < i.Value; j++)
+                {
+                    ans[index] = i.Key;
+                    index++;
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
