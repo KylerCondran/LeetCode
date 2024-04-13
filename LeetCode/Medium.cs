@@ -4036,6 +4036,25 @@ namespace LeetCode
         {
             return Array.IndexOf(nums, nums.Max());
         }
+        //Title: 540. Single Element in a Sorted Array
+        //Link: https://leetcode.com/problems/single-element-in-a-sorted-array
+        //Tags: Array, Binary Search
+        public static int SingleNonDuplicate(int[] nums)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.Contains(nums[i]))
+                {
+                    a.Add(nums[i]);
+                }
+                else
+                {
+                    a.Remove(nums[i]);
+                }
+            }
+            return a[0];
+        }
         #endregion
     }
 }
