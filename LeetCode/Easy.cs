@@ -5207,6 +5207,23 @@ namespace LeetCode
             if (s.Contains("01")) return false;
             return true;
         }
+        //Title: 1796. Second Largest Digit in a String
+        //Link: https://leetcode.com/problems/second-largest-digit-in-a-string
+        //Tags: Hash Table, String
+        public static int SecondHighest(string s)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>(new ReverseSortComparer());
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (!char.IsDigit(val)) continue;
+                int digit = 0;
+                int.TryParse(val + "", out digit);
+                if (!a.ContainsKey(digit)) a.Add(digit, 1);
+            }
+            if (a.Count < 2) return -1;
+            return a.ElementAt(1).Key;
+        }
         #endregion
     }
 }
