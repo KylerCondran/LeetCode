@@ -4029,6 +4029,13 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 162. Find Peak Element
+        //Link: https://leetcode.com/problems/find-peak-element
+        //Tags: Array, Binary Search
+        public static int FindPeakElement(int[] nums)
+        {
+            return Array.IndexOf(nums, nums.Max());
+        }
         #endregion
     }
 }
