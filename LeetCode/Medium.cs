@@ -4055,6 +4055,13 @@ namespace LeetCode
             }
             return a[0];
         }
+        //Title: 852. Peak Index in a Mountain Array
+        //Link: https://leetcode.com/problems/peak-index-in-a-mountain-array
+        //Tags: Array, Binary Search
+        public int PeakIndexInMountainArray(int[] arr)
+        {
+            return Array.IndexOf(arr, arr.Max());
+        }
         #endregion
     }
 }
