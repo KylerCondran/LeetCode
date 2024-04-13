@@ -5097,6 +5097,22 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 700. Search in a Binary Search Tree
+        //Link: https://leetcode.com/problems/search-in-a-binary-search-tree
+        //Tags: Tree, Binary Search Tree, Binary Tree
+        public static TreeNode SearchBST(TreeNode root, int val)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.val == val) return T;
+                if (T.left != null) q.Enqueue(T.left);
+                if (T.right != null) q.Enqueue(T.right);
+            }
+            return null;
+        }
         #endregion
     }
 }
