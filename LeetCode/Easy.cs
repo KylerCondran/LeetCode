@@ -5224,6 +5224,19 @@ namespace LeetCode
             if (a.Count < 2) return -1;
             return a.ElementAt(1).Key;
         }
+        //Title: 1903. Largest Odd Number in String
+        //Link: https://leetcode.com/problems/largest-odd-number-in-string
+        //Tags: Math, String, Greedy
+        public static string LargestOddNumber(string num)
+        {
+            for (int i = num.Length - 1; i >= 0; i--)
+            {
+                int digit = 0;
+                int.TryParse(num[i] + "", out digit);
+                if (digit % 2 != 0) return num.Substring(0, i + 1);
+            }
+            return "";
+        }
         #endregion
     }
 }
