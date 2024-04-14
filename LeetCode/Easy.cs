@@ -5317,6 +5317,28 @@ namespace LeetCode
             }
             return target;
         }
+        //Title: 3099. Harshad Number
+        //Link: https://leetcode.com/problems/harshad-number
+        //Tags: Math
+        public static int SumOfTheDigitsOfHarshadNumber(int x)
+        {
+            string num = x.ToString();
+            int sum = 0;
+            for (int i = 0; i < num.Length; i++)
+            {
+                int digit = 0;
+                int.TryParse(num[i] + "", out digit);
+                sum += digit;
+            }
+            if (x % sum == 0)
+            {
+                return sum;
+            }
+            else
+            {
+                return -1;
+            }
+        }
         #endregion
     }
 }
