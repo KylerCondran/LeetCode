@@ -5300,6 +5300,23 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree
+        //Link: https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static TreeNode GetTargetCopy(TreeNode original, TreeNode cloned, TreeNode target)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            int val = target.val;
+            q.Enqueue(cloned);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.val == val) return T;
+                if (T.left != null) q.Enqueue(T.left);
+                if (T.right != null) q.Enqueue(T.right);
+            }
+            return target;
+        }
         #endregion
     }
 }
