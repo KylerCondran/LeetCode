@@ -85,3 +85,11 @@ def concatenateTables(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
     frames = [df1, df2]
     result = pd.concat(frames)
     return result
+#Title: 2891. Method Chaining
+#Link: https://leetcode.com/problems/method-chaining
+#Tags: Database
+def findHeavyAnimals(animals: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(animals)   
+    df = df[df['weight'] > 100].sort_values('weight', ascending=False)  
+    df = df[["name"]]
+    return df
