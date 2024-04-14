@@ -93,3 +93,10 @@ def findHeavyAnimals(animals: pd.DataFrame) -> pd.DataFrame:
     df = df[df['weight'] > 100].sort_values('weight', ascending=False)  
     df = df[["name"]]
     return df
+#Title: 2889. Reshape Data: Pivot
+#Link: https://leetcode.com/problems/reshape-data-pivot
+#Tags: Database
+def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(weather)
+    df = pd.pivot_table(df, values = 'temperature', index='month', columns = 'city', aggfunc="max")
+    return df
