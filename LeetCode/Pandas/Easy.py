@@ -62,3 +62,10 @@ def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(students)
     df = df[~df['name'].isnull()]
     return df
+#Title: 2882. Drop Duplicate Rows
+#Link: https://leetcode.com/problems/drop-duplicate-rows
+#Tags: Database
+def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(customers)
+    df = df.drop_duplicates(subset='email', keep="first")      
+    return df
