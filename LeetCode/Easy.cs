@@ -5411,6 +5411,22 @@ namespace LeetCode
             ans[1] = sum2;
             return ans;
         }
+        //Title: 961. N-Repeated Element in Size 2N Array
+        //Link: https://leetcode.com/problems/n-repeated-element-in-size-2n-array
+        //Tags: Array, Hash Table
+        public static int RepeatedNTimes(int[] nums)
+        {
+            int count = nums.Length / 2;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+                if (a[val] == count) return val;
+            }
+            return -1;
+        }
         #endregion
     }
 }
