@@ -5271,6 +5271,35 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 404. Sum of Left Leaves
+        //Link: https://leetcode.com/problems/sum-of-left-leaves
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static int SumOfLeftLeaves(TreeNode root)
+        {
+            Queue<TreeNode> q1 = new Queue<TreeNode>();
+            Queue<TreeNode> q2 = new Queue<TreeNode>();
+            int sum = 0;
+            q1.Enqueue(root);
+            while (q1.Count > 0)
+            {
+                TreeNode T = q1.Dequeue();
+                if (T.left != null)
+                {
+                    q1.Enqueue(T.left);
+                    q2.Enqueue(T.left);
+                }
+                if (T.right != null) q1.Enqueue(T.right);
+            }
+            while (q2.Count > 0)
+            {
+                TreeNode T = q2.Dequeue();
+                if (T.left == null && T.right == null)
+                {
+                    sum += T.val;
+                }
+            }
+            return sum;
+        }
         #endregion
     }
 }
