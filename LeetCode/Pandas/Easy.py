@@ -41,3 +41,10 @@ def getDataframeSize(players: pd.DataFrame) -> List[int]:
     df = pd.DataFrame(players)
     vals = [len(df.index), len(df.columns)]
     return vals
+#Title: 2885. Rename Columns
+#Link: https://leetcode.com/problems/rename-columns
+#Tags: Database
+def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(students)
+    df = df.rename(columns={'id': 'student_id', 'first': 'first_name', 'last': 'last_name', 'age': 'age_in_years'})
+    return df
