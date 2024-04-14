@@ -69,3 +69,10 @@ def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(customers)
     df = df.drop_duplicates(subset='email', keep="first")      
     return df
+#Title: 2887. Fill Missing Data
+#Link: https://leetcode.com/problems/fill-missing-data
+#Tags: Database
+def fillMissingValues(products: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(products)
+    df["quantity"].fillna(0, inplace = True)    
+    return df
