@@ -55,3 +55,10 @@ def changeDatatype(students: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(students)
     df[["grade"]] = df[["grade"]].astype('int')
     return df
+#Title: 2883. Drop Missing Data
+#Link: https://leetcode.com/problems/drop-missing-data
+#Tags: Database
+def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(students)
+    df = df[~df['name'].isnull()]
+    return df
