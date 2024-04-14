@@ -27,3 +27,10 @@ def selectData(students: pd.DataFrame) -> pd.DataFrame:
     nameage = df[["name", "age"]]
     nameage = nameage.loc[df['student_id'] == 101]
     return nameage
+#Title: 2877. Create a DataFrame from List
+#Link: https://leetcode.com/problems/create-a-dataframe-from-list
+#Tags: Database
+def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
+    lst = student_data
+    df = pd.DataFrame(lst, columns =['student_id', 'age']) 
+    return df
