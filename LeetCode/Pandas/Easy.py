@@ -12,3 +12,10 @@ def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(employees)
     df['bonus'] = df.apply(lambda column: column.salary * 2, axis=1)
     return df
+#Title: 2884. Modify Columns
+#Link: https://leetcode.com/problems/modify-columns
+#Tags: Database
+def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(employees)
+    df.salary *= 2
+    return df
