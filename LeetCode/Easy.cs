@@ -5360,6 +5360,57 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2956. Find Common Elements Between Two Arrays
+        //Link: https://leetcode.com/problems/find-common-elements-between-two-arrays
+        //Tags: Array, Hash Table
+        public static int[] FindIntersectionValues(int[] nums1, int[] nums2)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            Dictionary<int, int> b = new Dictionary<int, int>();
+            List<int> c = new List<int>();
+            int[] ans = new int[2];
+            for (int i = 0; i < nums1.Length; i++)
+            {
+                int val = nums1[i];
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a[val]++;
+                }
+                if (nums2.Contains(val))
+                {
+                    if (!c.Contains(val))
+                    {
+                        c.Add(val);
+                    }
+                }
+            }
+            for (int i = 0; i < nums2.Length; i++)
+            {
+                int val = nums2[i];
+                if (!b.ContainsKey(val))
+                {
+                    b.Add(val, 1);
+                }
+                else
+                {
+                    b[val]++;
+                }
+            }
+            int sum1 = 0;
+            int sum2 = 0;
+            foreach (int i in c)
+            {
+                sum1 += a[i];
+                sum2 += b[i];
+            }
+            ans[0] = sum1;
+            ans[1] = sum2;
+            return ans;
+        }
         #endregion
     }
 }
