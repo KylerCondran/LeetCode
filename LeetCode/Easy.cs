@@ -5255,6 +5255,22 @@ namespace LeetCode
             }
             return a.Count();
         }
+        //Title: 3110. Score of a String
+        //Link: https://leetcode.com/problems/score-of-a-string
+        //Tags: 
+        public static int ScoreOfString(string s)
+        {
+            int sum = 0;
+            byte[] a = Encoding.ASCII.GetBytes(s);
+            int last = (int)a[0];
+            for (int i = 1; i < a.Length; i++)
+            {
+                int val = (int)a[i];
+                sum += Math.Abs(last - val);
+                last = val;
+            }
+            return sum;
+        }
         #endregion
     }
 }
