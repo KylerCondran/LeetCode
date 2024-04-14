@@ -5339,6 +5339,27 @@ namespace LeetCode
                 return -1;
             }
         }
+        //Title: 1464. Maximum Product of Two Elements in an Array
+        //Link: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array
+        //Tags: Array, Sorting, Heap(Priority Queue)
+        public static int MaxProduct(int[] nums)
+        {
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int first = nums[i] - 1;
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    if (j != i)
+                    {
+                        int second = nums[j] - 1;
+                        int product = first * second;
+                        max = Math.Max(max, product);
+                    }
+                }
+            }
+            return max;
+        }
         #endregion
     }
 }
