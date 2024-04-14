@@ -19,3 +19,11 @@ def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(employees)
     df.salary *= 2
     return df
+#Title: 2880. Select Data
+#Link: https://leetcode.com/problems/select-data
+#Tags: Database
+def selectData(students: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(students)
+    nameage = df[["name", "age"]]
+    nameage = nameage.loc[df['student_id'] == 101]
+    return nameage
