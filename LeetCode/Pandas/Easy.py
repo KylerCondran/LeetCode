@@ -76,3 +76,12 @@ def fillMissingValues(products: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(products)
     df["quantity"].fillna(0, inplace = True)    
     return df
+#Title: 2888. Reshape Data: Concatenate
+#Link: https://leetcode.com/problems/reshape-data-concatenate
+#Tags: Database
+def concatenateTables(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+    df1 = pd.DataFrame(df1)
+    df2 = pd.DataFrame(df2)
+    frames = [df1, df2]
+    result = pd.concat(frames)
+    return result
