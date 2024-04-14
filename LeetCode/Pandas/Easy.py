@@ -100,3 +100,10 @@ def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
     df = pd.DataFrame(weather)
     df = pd.pivot_table(df, values = 'temperature', index='month', columns = 'city', aggfunc="max")
     return df
+#Title: 2890. Reshape Data: Melt
+#Link: https://leetcode.com/problems/reshape-data-melt
+#Tags: Database
+def meltTable(report: pd.DataFrame) -> pd.DataFrame:
+    df = pd.DataFrame(report)
+    df = pd.melt(df, id_vars=['product'], value_vars=['quarter_1', 'quarter_2', 'quarter_3', 'quarter_4'], var_name='quarter', value_name='sales')
+    return df
