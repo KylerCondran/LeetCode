@@ -34,3 +34,10 @@ def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
     lst = student_data
     df = pd.DataFrame(lst, columns =['student_id', 'age']) 
     return df
+#Title: 2878. Get the Size of a DataFrame
+#Link: https://leetcode.com/problems/get-the-size-of-a-dataframe
+#Tags: Database
+def getDataframeSize(players: pd.DataFrame) -> List[int]:
+    df = pd.DataFrame(players)
+    vals = [len(df.index), len(df.columns)]
+    return vals
