@@ -5462,6 +5462,17 @@ namespace LeetCode
             for (int i = 0; i < heights.Length; i++) if (heights[i] != expected[i]) counter++;
             return counter;
         }
+        //Title: 2089. Find Target Indices After Sorting Array
+        //Link: https://leetcode.com/problems/find-target-indices-after-sorting-array
+        //Tags: Array, Binary Search, Sorting
+        public static IList<int> TargetIndices(int[] nums, int target)
+        {
+            List<int> a = new List<int>();
+            Array.Sort(nums);
+            for (int i = 0; i < nums.Length; i++) if (nums[i] == target) a.Add(i);
+            a.Sort();
+            return a;
+        }
         #endregion
     }
 }
