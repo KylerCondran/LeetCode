@@ -5653,6 +5653,47 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1122. Relative Sort Array
+        //Link: https://leetcode.com/problems/relative-sort-array
+        //Tags: Array, Hash Table, Sorting, Counting Sort
+        public static int[] RelativeSortArray(int[] arr1, int[] arr2)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            int[] ans = new int[arr1.Length];
+            int index = 0;
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                int val = arr1[i];
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a[val]++;
+                }
+            }
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                int val = arr2[i];
+                int times = a[val];
+                for (int j = 0; j < times; j++)
+                {
+                    ans[index] = val;
+                    index++;
+                }
+                a.Remove(val);
+            }
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                for (int j = 0; j < i.Value; j++)
+                {
+                    ans[index] = i.Key;
+                    index++;
+                }
+            }
+            return ans;
+        }
         #endregion
     }
 }
