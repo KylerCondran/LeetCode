@@ -5616,6 +5616,43 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 922. Sort Array By Parity II
+        //Link: https://leetcode.com/problems/sort-array-by-parity-ii
+        //Tags: Array, Two Pointers, Sorting
+        public static int[] SortArrayByParityII(int[] nums)
+        {
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            int[] ans = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val % 2 == 0)
+                {
+                    a.Add(val);
+                }
+                else
+                {
+                    b.Add(val);
+                }
+            }
+            int index = 0; int even = 0; int odd = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    ans[index] = a[even];
+                    even++;
+                }
+                else
+                {
+                    ans[index] = b[odd];
+                    odd++;
+                }
+                index++;
+            }
+            return ans;
+        }
         #endregion
     }
 }
