@@ -5550,6 +5550,33 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1876. Substrings of Size Three with Distinct Characters
+        //Link: https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters
+        //Tags: Hash Table, String, Sliding Window, Counting
+        public static int CountGoodSubstrings(string s)
+        {
+            int counter = 0;
+            for (int i = 0; i <= s.Length - 3; i++)
+            {
+                List<int> a = new List<int>();
+                bool complete = true;
+                for (int j = i; j < i + 3; j++)
+                {
+                    char b = s[j];
+                    if (!a.Contains(b))
+                    {
+                        a.Add(b);
+                    }
+                    else
+                    {
+                        complete = false;
+                        break;
+                    }
+                }
+                if (complete) counter++;
+            }
+            return counter;
+        }
         #endregion
     }
 }
