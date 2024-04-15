@@ -5496,6 +5496,31 @@ namespace LeetCode
             ans[1] = max;
             return ans;
         }
+        //Title: 2341. Maximum Number of Pairs in Array
+        //Link: https://leetcode.com/problems/maximum-number-of-pairs-in-array
+        //Tags: Array, Hash Table, Counting
+        public static int[] NumberOfPairs(int[] nums)
+        {
+            List<int> a = new List<int>();
+            int[] ans = new int[2];
+            int pair = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.Contains(val))
+                {
+                    a.Add(val);
+                }
+                else
+                {
+                    a.Remove(val);
+                    pair++;
+                }
+            }
+            ans[0] = pair;
+            ans[1] = a.Count();
+            return ans;
+        }
         #endregion
     }
 }
