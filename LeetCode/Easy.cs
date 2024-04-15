@@ -5473,6 +5473,29 @@ namespace LeetCode
             a.Sort();
             return a;
         }
+        //Title: 2643. Row With Maximum Ones
+        //Link: https://leetcode.com/problems/row-with-maximum-ones
+        //Tags: Array, Matrix
+        public static int[] RowAndMaximumOnes(int[][] mat)
+        {
+            int[] ans = new int[2];
+            int len = mat[0].Length;
+            int max = 0;
+            int row = 0;
+            for (int i = 0; i < mat.Length; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < len; j++) if (mat[i][j] == 1) count++;
+                if (count > max)
+                {
+                    max = count;
+                    row = i;
+                }
+            }
+            ans[0] = row;
+            ans[1] = max;
+            return ans;
+        }
         #endregion
     }
 }
