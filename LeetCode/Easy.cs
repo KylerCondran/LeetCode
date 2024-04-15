@@ -5430,7 +5430,7 @@ namespace LeetCode
         //Title: 1252. Cells with Odd Values in a Matrix
         //Link: https://leetcode.com/problems/cells-with-odd-values-in-a-matrix
         //Tags: Array, Math, Simulation
-        public int OddCells(int m, int n, int[][] indices)
+        public static int OddCells(int m, int n, int[][] indices)
         {
             int[][] a = new int[m][];
             int counter = 0;
@@ -5442,6 +5442,13 @@ namespace LeetCode
             }
             foreach (int[] i in a) for (int j = 0; j <= n - 1; j++) if (i[j] % 2 != 0) counter++;
             return counter;
+        }
+        //Title: 1351. Count Negative Numbers in a Sorted Matrix
+        //Link: https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix
+        //Tags: Array, Binary Search, Matrix
+        public static int CountNegatives(int[][] grid)
+        {
+            int counter = 0; int len = grid[0].Length; foreach (int[] i in grid) for (int j = 0; j < len; j++) if (i[j] < 0) counter++; return counter;
         }
         #endregion
     }
