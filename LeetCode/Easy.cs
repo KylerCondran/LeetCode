@@ -5427,6 +5427,22 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 1252. Cells with Odd Values in a Matrix
+        //Link: https://leetcode.com/problems/cells-with-odd-values-in-a-matrix
+        //Tags: Array, Math, Simulation
+        public int OddCells(int m, int n, int[][] indices)
+        {
+            int[][] a = new int[m][];
+            int counter = 0;
+            for (int x = 0; x < m; x++) a[x] = new int[n];
+            foreach (int[] i in indices)
+            {
+                for (int j = 0; j <= n - 1; j++) a[i[0]][j]++;
+                for (int j = 0; j <= m - 1; j++) a[j][i[1]]++;
+            }
+            foreach (int[] i in a) for (int j = 0; j <= n - 1; j++) if (i[j] % 2 != 0) counter++;
+            return counter;
+        }
         #endregion
     }
 }
