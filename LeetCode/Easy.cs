@@ -5521,6 +5521,35 @@ namespace LeetCode
             ans[1] = a.Count();
             return ans;
         }
+        //Title: 1337. The K Weakest Rows in a Matrix
+        //Link: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix
+        //Tags: Array, Binary Search, Sorting, Heap(Priority Queue), Matrix
+        public static int[] KWeakestRows(int[][] mat, int k)
+        {
+            int[] ans = new int[k];
+            int len = mat[0].Length;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int index = 0;
+            foreach (int[] i in mat)
+            {
+                int count = 0;
+                for (int j = 0; j < len; j++)
+                {
+                    if (i[j] == 1)
+                    {
+                        count++;
+                    }
+                }
+                a.Add(index, count);
+                index++;
+            }
+            var sortedDict = from entry in a orderby entry.Value ascending, entry.Key ascending select entry;
+            for (int i = 0; i < k; i++)
+            {
+                ans[i] = sortedDict.ElementAt(i).Key;
+            }
+            return ans;
+        }
         #endregion
     }
 }
