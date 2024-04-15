@@ -5594,6 +5594,28 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 3028. Ant on the Boundary
+        //Link: https://leetcode.com/problems/ant-on-the-boundary
+        //Tags: Array, Simulation, Prefix Sum
+        public static int ReturnToBoundaryCount(int[] nums)
+        {
+            int counter = 0;
+            int bound = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int moves = nums[i];
+                if (moves > 0)
+                {
+                    bound += moves;
+                }
+                else if (moves < 0)
+                {
+                    bound -= Math.Abs(moves);
+                }
+                if (bound == 0) counter++;
+            }
+            return counter;
+        }
         #endregion
     }
 }
