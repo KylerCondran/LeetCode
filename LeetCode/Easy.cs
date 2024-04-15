@@ -5450,6 +5450,18 @@ namespace LeetCode
         {
             int counter = 0; int len = grid[0].Length; foreach (int[] i in grid) for (int j = 0; j < len; j++) if (i[j] < 0) counter++; return counter;
         }
+        //Title: 1051. Height Checker
+        //Link: https://leetcode.com/problems/height-checker
+        //Tags: Array, Sorting, Counting Sort
+        public static int HeightChecker(int[] heights)
+        {
+            int counter = 0;
+            int[] expected = new int[heights.Length];
+            Array.Copy(heights, 0, expected, 0, heights.Length);
+            Array.Sort(expected);
+            for (int i = 0; i < heights.Length; i++) if (heights[i] != expected[i]) counter++;
+            return counter;
+        }
         #endregion
     }
 }
