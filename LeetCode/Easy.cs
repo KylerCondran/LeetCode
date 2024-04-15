@@ -5694,6 +5694,41 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3033. Modify the Matrix
+        //Link: https://leetcode.com/problems/modify-the-matrix
+        //Tags: Array, Matrix
+        public static int[][] ModifiedMatrix(int[][] matrix)
+        {
+            int[][] a = new int[matrix.Length][];
+            List<int> b = new List<int>();
+            for (var x = 0; x < matrix.Length; x++)
+            {
+                var inner = matrix[x];
+                var ilen = inner.Length;
+                var newer = new int[ilen];
+                Array.Copy(inner, newer, ilen);
+                a[x] = newer;
+            }
+            for (int i = 0; i < matrix[0].Length; i++)
+            {
+                int max = 0;
+                for (int j = 0; j < matrix.Length; j++)
+                {
+                    int val = matrix[j][i];
+                    if (val > max) max = val;
+                }
+                b.Add(max);
+            }
+            for (int i = 0; i < a[0].Length; i++)
+            {
+                for (int j = 0; j < a.Length; j++)
+                {
+                    int val = a[j][i];
+                    if (val == -1) a[j][i] = b[i];
+                }
+            }
+            return a;
+        }
         #endregion
     }
 }
