@@ -5577,6 +5577,23 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2006. Count Number of Pairs With Absolute Difference K
+        //Link: https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k
+        //Tags: Array, Hash Table, Counting
+        public static int CountKDifference(int[] nums, int k)
+        {
+            int counter = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int first = nums[i];
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    int second = nums[j];
+                    if (Math.Abs(first - second) == k) counter++;
+                }
+            }
+            return counter;
+        }
         #endregion
     }
 }
