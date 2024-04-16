@@ -5795,6 +5795,13 @@ namespace LeetCode
             for (int i = 1; i <= size; i++) if (!a.Contains(i)) ans[1] = i;
             return ans;
         }
+        //Title: 704. Binary Search
+        //Link: https://leetcode.com/problems/binary-search
+        //Tags: Array, Binary Search
+        public static int Search(int[] nums, int target)
+        {
+            return Array.IndexOf(nums, target);
+        }
         #endregion
     }
 }
