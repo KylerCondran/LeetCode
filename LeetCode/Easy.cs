@@ -5774,6 +5774,27 @@ namespace LeetCode
             }
             return b;
         }
+        //Title: 2965. Find Missing and Repeated Values
+        //Link: https://leetcode.com/problems/find-missing-and-repeated-values
+        //Tags: Array, Hash Table, Math, Matrix
+        public static int[] FindMissingAndRepeatedValues(int[][] grid)
+        {
+            List<int> a = new List<int>();
+            int[] ans = new int[2];
+            int len = grid[0].Length;
+            int size = (int)Math.Pow(len, 2);
+            foreach (int[] i in grid)
+            {
+                for (int j = 0; j < len; j++)
+                {
+                    int val = i[j];
+                    if (!a.Contains(val)) a.Add(val);
+                    else ans[0] = val;
+                }
+            }
+            for (int i = 1; i <= size; i++) if (!a.Contains(i)) ans[1] = i;
+            return ans;
+        }
         #endregion
     }
 }
