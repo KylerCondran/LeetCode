@@ -5754,6 +5754,26 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 1380. Lucky Numbers in a Matrix
+        //Link: https://leetcode.com/problems/lucky-numbers-in-a-matrix
+        //Tags: Array, Matrix
+        public static IList<int> LuckyNumbers(int[][] matrix)
+        {
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            foreach (int[] i in matrix) a.Add(i.Min());
+            for (int i = 0; i < matrix[0].Length; i++)
+            {
+                int max = 0;
+                for (int j = 0; j < matrix.Length; j++)
+                {
+                    int val = matrix[j][i];
+                    if (val > max) max = val;
+                }
+                if (a.Contains(max)) b.Add(max);
+            }
+            return b;
+        }
         #endregion
     }
 }
