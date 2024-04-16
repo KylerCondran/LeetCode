@@ -5729,6 +5729,31 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 1260. Shift 2D Grid
+        //Link: https://leetcode.com/problems/shift-2d-grid
+        //Tags: Array, Matrix, Simulation
+        public static IList<IList<int>> ShiftGrid(int[][] grid, int k)
+        {
+            Queue<int> q1 = new Queue<int>();
+            List<IList<int>> a = new List<IList<int>>();
+            int lenx = grid[0].Length;
+            int leny = grid.Length;
+            foreach (int[] i in grid) for (int j = 0; j < i.Length; j++) q1.Enqueue(i[j]);
+            Queue<int> q2 = new Queue<int>(q1.Reverse());
+            for (int i = 0; i < k; i++)
+            {
+                int val = q2.Dequeue();
+                q2.Enqueue(val);
+            }
+            Queue<int> q3 = new Queue<int>(q2.Reverse());
+            for (int i = 0; i < leny; i++)
+            {
+                List<int> b = new List<int>();
+                for (int j = 0; j < lenx; j++) b.Add(q3.Dequeue());
+                a.Add(b);
+            }
+            return a;
+        }
         #endregion
     }
 }
