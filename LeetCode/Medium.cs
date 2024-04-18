@@ -4062,6 +4062,34 @@ namespace LeetCode
         {
             return Array.IndexOf(arr, arr.Max());
         }
+        //Title: 128. Longest Consecutive Sequence
+        //Link: https://leetcode.com/problems/longest-consecutive-sequence
+        //Tags: Array, Hash Table, Union Find
+        public static int LongestConsecutive(int[] nums)
+        {
+            if (nums.Length == 0) return 0;
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.Contains(val)) a.Add(val);
+            }
+            a.Sort();
+            int lag = a[0];
+            int longest = 1;
+            int count = 1;
+            for (int i = 1; i < a.Count; i++)
+            {
+                if (a[i] == lag + 1)
+                {
+                    count++;
+                    if (count > longest) longest = count;
+                }
+                else count = 1;
+                lag = a[i];
+            }
+            return longest;
+        }
         #endregion
     }
 }
