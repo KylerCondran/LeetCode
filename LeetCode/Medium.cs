@@ -4090,6 +4090,50 @@ namespace LeetCode
             }
             return longest;
         }
+        //Title: 2785. Sort Vowels in a String
+        //Link: https://leetcode.com/problems/sort-vowels-in-a-string
+        //Tags: String, Sorting
+        public static string SortVowels(string s)
+        {
+            List<char> a = new List<char>();
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            int ccount = 0;
+            char[] v = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (v.Contains(val))
+                {
+                    a.Add(val);
+                    sb.Append("™");
+                    count++;
+                }
+                else
+                {
+                    sb.Append(val);
+                    ccount++;
+                }
+            }
+            if (count == 0) return s;
+            a.Sort();
+            if (ccount == 0)
+            {
+                var sortedv = new string(a.ToArray());
+                return sortedv;
+            }
+            int vcount = 0;
+            for (int i = 0; i < sb.Length; i++)
+            {
+                char val = sb[i];
+                if (val == '™')
+                {
+                    sb[i] = a[vcount];
+                    vcount++;
+                }
+            }
+            return sb.ToString();
+        }
         #endregion
     }
 }
