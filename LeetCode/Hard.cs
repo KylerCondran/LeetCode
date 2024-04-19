@@ -455,6 +455,66 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 480. Sliding Window Median
+        //Link: https://leetcode.com/problems/sliding-window-median
+        //Tags: Array, Hash Table, Sliding Window, Heap (Priority Queue)
+        public static double[] MedianSlidingWindow(int[] nums, int k)
+        {
+            double[] ans = new double[nums.Length + 1 - k];
+            List<int> x = new List<int>();
+            Queue<int> q = new Queue<int>();
+            bool even = false;
+            int index = 0;
+            int mid1 = 0;
+            int mid2 = 0;
+            if (k % 2 == 0)
+            {
+                even = true;
+                mid1 = (k / 2) - 1;
+                mid2 = k / 2;
+            }
+            else mid1 = ((k + 1) / 2) - 1;
+            for (int i = 0; i < k; i++)
+            {
+                int val = nums[i];
+                q.Enqueue(val);
+                InsertIntoSortedList(x, val, (a, b) => a.CompareTo(b));
+            }
+            if (even) ans[index] = (double)((long)x[mid1] + (long)x[mid2]) / 2;
+            else ans[index] = (double)x[mid1];
+            index++;
+            for (int i = k; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                x.Remove(q.Dequeue());
+                q.Enqueue(val);
+                InsertIntoSortedList(x, val, (a, b) => a.CompareTo(b));
+                if (even) ans[index] = (double)((long)x[mid1] + (long)x[mid2]) / 2;
+                else ans[index] = (double)x[mid1];
+                index++;
+            }
+            return ans;
+        }
+        public static void InsertIntoSortedList(IList list, IComparable value, Comparison<IComparable> comparison)
+        {
+            var startIndex = 0;
+            var endIndex = list.Count;
+            while (endIndex > startIndex)
+            {
+                var windowSize = endIndex - startIndex;
+                var middleIndex = startIndex + (windowSize / 2);
+                var middleValue = (IComparable)list[middleIndex];
+                var compareToResult = comparison(middleValue, value);
+                if (compareToResult == 0)
+                {
+                    list.Insert(middleIndex, value);
+                    return;
+                }
+                else if (compareToResult < 0) startIndex = middleIndex + 1;
+                else endIndex = middleIndex;
+            }
+            list.Insert(startIndex, value);
+        }
         #endregion
     }
 }
