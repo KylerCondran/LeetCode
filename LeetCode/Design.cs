@@ -912,5 +912,35 @@ namespace LeetCode
             return this.a[row][col];
         }
     }
+    //Title: 710. Random Pick with Blacklist
+    //Link: https://leetcode.com/problems/random-pick-with-blacklist
+    //Difficulty: Hard
+    //Tags: Array, Hash Table, Math, Binary Search, Sorting, Randomized
+    public class RandomPickBlackList
+    {
+        Random rand;
+        int diff;
+        int len;
+        int[] BL;
+        public RandomPickBlackList(int n, int[] blacklist)
+        {
+            this.rand = new System.Random();
+            this.len = blacklist.Length;
+            this.diff = n - this.len;
+            this.BL = new int[this.len];
+            Array.Sort(blacklist);
+            Array.Copy(blacklist, 0, this.BL, 0, this.len);
+        }
+        public int Pick()
+        {
+            int result = this.rand.Next(0, this.diff);
+            for (int i = 0; i < this.len; i++)
+            {
+                if (result < this.BL[i]) return result;
+                result++;
+            }
+            return result;
+        }
+    }
     #endregion
 }
