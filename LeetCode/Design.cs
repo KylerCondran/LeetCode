@@ -942,5 +942,86 @@ namespace LeetCode
             return result;
         }
     }
+    //Title: 1172. Dinner Plate Stacks
+    //Link: https://leetcode.com/problems/dinner-plate-stacks
+    //Difficulty: Hard
+    //Tags: Hash Table, Stack, Design, Heap (Priority Queue)
+    public class DinnerPlates
+    {
+        int cap;
+        int stackcount;
+        int freecount;
+        int somecount;
+        List<Stack<int>> a;
+        Dictionary<int, int> b;
+        SortedDictionary<int, bool> c;
+        SortedDictionary<int, bool> d;
+        public DinnerPlates(int capacity)
+        {
+            cap = capacity;
+            stackcount = 0;
+            freecount = 0;
+            somecount = 0;
+            a = new List<Stack<int>>();
+            b = new Dictionary<int, int>();
+            c = new SortedDictionary<int, bool>();
+            d = new SortedDictionary<int, bool>(new ReverseSortComparer());
+        }
+        public void Push(int val)
+        {
+            if (stackcount == 0)
+            {
+                b.Add(stackcount, 1);
+                a.Add(new Stack<int>());
+                a[stackcount].Push(val);
+                if (cap > 1) { c.Add(stackcount, true); freecount++; }
+                d.Add(stackcount, true); somecount++;
+                stackcount++;
+                return;
+            }
+            if (freecount > 0)
+            {
+                int key = c.ElementAt(0).Key;
+                b[key]++;
+                a[key].Push(val);
+                if (b[key] == cap) { c.Remove(key); freecount--; }
+                if (!d.ContainsKey(key)) { d.Add(key, true); somecount++; }
+                return;
+            }
+            b.Add(stackcount, 1);
+            a.Add(new Stack<int>());
+            a[stackcount].Push(val);
+            if (cap > 1) { c.Add(stackcount, true); freecount++; }
+            d.Add(stackcount, true); somecount++;
+            stackcount++;
+            return;
+        }
+        public int Pop()
+        {
+            if (somecount > 0)
+            {
+                int key = d.ElementAt(0).Key;
+                if (!c.ContainsKey(key)) { c.Add(key, true); freecount++; }
+                b[key]--;
+                if (b[key] == 0) { d.Remove(key); somecount--; }
+                return a[key].Pop();
+            }
+            return -1;
+        }
+        public int PopAtStack(int index)
+        {
+            if (b.ContainsKey(index))
+            {
+                if (b[index] > 0)
+                {
+                    if (!c.ContainsKey(index)) { c.Add(index, true); freecount++; }
+                    b[index]--;
+                    if (b[index] == 0) { d.Remove(index); somecount--; }
+                    return a[index].Pop();
+                }
+            }
+            return -1;
+        }
+    }
     #endregion
 }
