@@ -515,6 +515,51 @@ namespace LeetCode
             }
             list.Insert(startIndex, value);
         }
+        //Title: 315. Count of Smaller Numbers After Self
+        //Link: https://leetcode.com/problems/count-of-smaller-numbers-after-self
+        //Tags: Array, Binary Search, Divide and Conquer, Binary Indexed Tree, Segment Tree, Merge Sort, Ordered Set
+        public static IList<int> CountSmaller(int[] nums)
+        {
+            int[] ans = new int[nums.Length];
+            List<int> x = new List<int>();
+            int index = nums.Length - 1;
+            for (int i = nums.Length - 1; i >= 0; i--)
+            {
+                ans[index] = InsertIntoSortedDupeList(x, nums[i], (a, b) => a.CompareTo(b));
+                index--;
+            }
+            return ans.ToList();
+        }
+        public static int InsertIntoSortedDupeList(IList list, IComparable value, Comparison<IComparable> comparison)
+        {
+            if (list.Contains(value))
+            {
+                int val = list.IndexOf(value);
+                list.Insert(val, value);
+                return val;
+            }
+            else
+            {
+                var startIndex = 0;
+                var endIndex = list.Count;
+                while (endIndex > startIndex)
+                {
+                    var windowSize = endIndex - startIndex;
+                    var middleIndex = startIndex + (windowSize / 2);
+                    var middleValue = (IComparable)list[middleIndex];
+                    var compareToResult = comparison(middleValue, value);
+                    if (compareToResult == 0)
+                    {
+                        list.Insert(middleIndex, value);
+                        return middleIndex;
+                    }
+                    else if (compareToResult < 0) startIndex = middleIndex + 1;
+                    else endIndex = middleIndex;
+                }
+                list.Insert(startIndex, value);
+                return startIndex;
+            }
+        }
         #endregion
     }
 }
