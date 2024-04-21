@@ -1023,5 +1023,87 @@ namespace LeetCode
             return -1;
         }
     }
+    //Title: 460. LFU Cache
+    //Link: https://leetcode.com/problems/lfu-cache
+    //Difficulty: Hard
+    //Tags: Hash Table, Linked List, Design, Doubly-Linked List
+    public class LFUCache
+    {
+        Dictionary<int, int> a;
+        List<int> b;
+        Dictionary<int, int> c;
+        SortedDictionary<int, List<int>> d;
+        int cap;
+        int keycount;
+        public LFUCache(int capacity)
+        {
+            a = new Dictionary<int, int>();
+            b = new List<int>();
+            c = new Dictionary<int, int>();
+            d = new SortedDictionary<int, List<int>>();
+            cap = capacity;
+            keycount = 0;
+        }
+        public int Get(int key)
+        {
+            if (a.ContainsKey(key))
+            {
+                d[c[key]].Remove(key);
+                if (d[c[key]].Count() == 0) d.Remove(c[key]);
+                c[key]++;
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Remove(key);
+                b.Add(key);
+                return a[key];
+            }
+            else return -1;
+        }
+        public void Put(int key, int value)
+        {
+            if (!a.ContainsKey(key))
+            {
+                if (keycount == cap)
+                {
+                    int remkey = 0;
+                    if (d.ElementAt(0).Value.Count() == 1) remkey = d.ElementAt(0).Value[0];
+                    else if (d.ElementAt(0).Value.Count() > 1)
+                    {
+                        foreach (int i in b)
+                        {
+                            if (d.ElementAt(0).Value.Contains(i))
+                            {
+                                remkey = i;
+                                break;
+                            }
+                        }
+                    }
+                    d.ElementAt(0).Value.Remove(remkey);
+                    if (d.ElementAt(0).Value.Count() == 0) d.Remove(c[remkey]);
+                    c.Remove(remkey);
+                    a.Remove(remkey);
+                    b.Remove(remkey);
+                    keycount--;
+                }
+                c.Add(key, 1);
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Add(key);
+                a.Add(key, value);
+                keycount++;
+            }
+            else
+            {
+                d[c[key]].Remove(key);
+                if (d[c[key]].Count() == 0) d.Remove(c[key]);
+                c[key]++;
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Remove(key);
+                b.Add(key);
+                a[key] = value;
+            }
+        }
+    }
     #endregion
 }
