@@ -3381,7 +3381,7 @@ namespace LeetCode
         }
         //Title: 2974. Minimum Number Game
         //Link: https://leetcode.com/problems/minimum-number-game
-        //Tags: Array, Sorting, Heap(Priority Queue), Simulation
+        //Tags: Array, Sorting, Heap (Priority Queue), Simulation
         public static int[] NumberGame(int[] nums)
         {
             int[] a = new int[nums.Length];
@@ -5341,7 +5341,7 @@ namespace LeetCode
         }
         //Title: 1464. Maximum Product of Two Elements in an Array
         //Link: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array
-        //Tags: Array, Sorting, Heap(Priority Queue)
+        //Tags: Array, Sorting, Heap (Priority Queue)
         public static int MaxProduct(int[] nums)
         {
             int max = 0;
@@ -5523,7 +5523,7 @@ namespace LeetCode
         }
         //Title: 1337. The K Weakest Rows in a Matrix
         //Link: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix
-        //Tags: Array, Binary Search, Sorting, Heap(Priority Queue), Matrix
+        //Tags: Array, Binary Search, Sorting, Heap (Priority Queue), Matrix
         public static int[] KWeakestRows(int[][] mat, int k)
         {
             int[] ans = new int[k];

@@ -92,7 +92,7 @@ namespace LeetCode
         }
         //Title: 239. Sliding Window Maximum
         //Link: https://leetcode.com/problems/sliding-window-maximum
-        //Tags: Array, Queue, Sliding Window, Heap(Priority Queue), Monotonic Queue
+        //Tags: Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue
         //======================================================================================================================
         //I wrote and used this custom class to change the default sort behavior of the SortedDictionary from ascending to descending.
         //This sorts the keys in descending order which allows SortedDictionary.Keys.First() to be called rather than 
@@ -351,7 +351,7 @@ namespace LeetCode
         }
         //Title: 23. Merge k Sorted Lists
         //Link: https://leetcode.com/problems/merge-k-sorted-lists
-        //Tags: Linked List, Divide and Conquer, Heap(Priority Queue), Merge Sort
+        //Tags: Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort
         public static ListNode MergeKLists(ListNode[] lists)
         {
             SortedDictionary<int, int> a = new SortedDictionary<int, int>();
@@ -765,7 +765,7 @@ namespace LeetCode
     //Title: 295. Find Median from Data Stream
     //Link: https://leetcode.com/problems/find-median-from-data-stream
     //Difficulty: Hard
-    //Tags: Two Pointers, Design, Sorting, Heap(Priority Queue), Data Stream
+    //Tags: Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream
     public class MedianFinder
     {
         List<int> a;

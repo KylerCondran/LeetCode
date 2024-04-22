@@ -3273,7 +3273,7 @@ namespace LeetCode
         }
         //Title: 1268. Search Suggestions System
         //Link: https://leetcode.com/problems/search-suggestions-system
-        //Tags: Array, String, Binary Search, Trie, Sorting, Heap(Priority Queue)
+        //Tags: Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)
         public static IList<IList<string>> SuggestedProducts(string[] products, string searchWord)
         {
             List<IList<string>> a = new List<IList<string>>();
@@ -3292,7 +3292,7 @@ namespace LeetCode
         }
         //Title: 2679. Sum in a Matrix
         //Link: https://leetcode.com/problems/sum-in-a-matrix
-        //Tags: Array, Sorting, Heap(Priority Queue), Matrix, Simulation
+        //Tags: Array, Sorting, Heap (Priority Queue), Matrix, Simulation
         public static int MatrixSum(int[][] nums)
         {
             int score = 0;
@@ -3330,7 +3330,7 @@ namespace LeetCode
         }
         //Title: 912. Sort an Array
         //Link: https://leetcode.com/problems/sort-an-array
-        //Tags: Array, Divide and Conquer, Sorting, Heap(Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort
+        //Tags: Array, Divide and Conquer, Sorting, Heap (Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort
         public static int[] SortArray(int[] nums)
         {
             SortedDictionary<int, int> a = new SortedDictionary<int, int>();
@@ -3359,7 +3359,7 @@ namespace LeetCode
         }
         //Title: 2343. Query Kth Smallest Trimmed Number
         //Link: https://leetcode.com/problems/query-kth-smallest-trimmed-number
-        //Tags: Array, String, Divide and Conquer, Sorting, Heap(Priority Queue), Radix Sort, Quickselect
+        //Tags: Array, String, Divide and Conquer, Sorting, Heap (Priority Queue), Radix Sort, Quickselect
         public static int[] SmallestTrimmedNumbers(string[] nums, int[][] queries)
         {
             List<int> a = new List<int>();
@@ -4421,7 +4421,7 @@ namespace LeetCode
     //Title: 2336. Smallest Number in Infinite Set
     //Link: https://leetcode.com/problems/smallest-number-in-infinite-set
     //Difficulty: Medium
-    //Tags: Hash Table, Design, Heap(Priority Queue)
+    //Tags: Hash Table, Design, Heap (Priority Queue)
     public class SmallestInfiniteSet
     {
         SortedDictionary<int, int> a = new SortedDictionary<int, int>();
@@ -4499,7 +4499,7 @@ namespace LeetCode
     //Title: 1845. Seat Reservation Manager
     //Link: https://leetcode.com/problems/seat-reservation-manager
     //Difficulty: Medium
-    //Tags: Design, Heap(Priority Queue)
+    //Tags: Design, Heap (Priority Queue)
     public class SeatManager
     {
         SortedDictionary<int, int> a = new SortedDictionary<int, int>();
@@ -4530,7 +4530,7 @@ namespace LeetCode
     //Title: 2424. Longest Uploaded Prefix
     //Link: https://leetcode.com/problems/longest-uploaded-prefix
     //Difficulty: Medium
-    //Tags: Binary Search, Union Find, Design, Binary Indexed Tree, Segment Tree, Heap(Priority Queue), Ordered Set
+    //Tags: Binary Search, Union Find, Design, Binary Indexed Tree, Segment Tree, Heap (Priority Queue), Ordered Set
     public class LUPrefix
     {
         int[] a;
