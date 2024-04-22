@@ -62,3 +62,7 @@ SELECT user_id, count(*) as [followers_count] FROM Followers GROUP BY user_id
 --Link: https://leetcode.com/problems/biggest-single-number
 --Tags: Database
 SELECT MAX(num) AS [num] FROM (SELECT num FROM MyNumbers GROUP BY num HAVING COUNT(num) < 2) T
+--Title: 2356. Number of Unique Subjects Taught by Each Teacher
+--Link: https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher
+--Tags: Database
+SELECT teacher_id, count(*) as [cnt] FROM (SELECT teacher_id, subject_id FROM Teacher GROUP BY teacher_id, subject_id) T GROUP BY teacher_id
