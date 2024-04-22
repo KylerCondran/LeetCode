@@ -66,3 +66,7 @@ SELECT MAX(num) AS [num] FROM (SELECT num FROM MyNumbers GROUP BY num HAVING COU
 --Link: https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher
 --Tags: Database
 SELECT teacher_id, count(*) as [cnt] FROM (SELECT teacher_id, subject_id FROM Teacher GROUP BY teacher_id, subject_id) T GROUP BY teacher_id
+--Title: 627. Swap Salary
+--Link: https://leetcode.com/problems/swap-salary
+--Tags: Database
+UPDATE Salary SET sex = CASE WHEN sex = 'f' THEN 'm' WHEN sex = 'm' THEN 'f' ELSE sex END WHERE sex IN ('f', 'm')
