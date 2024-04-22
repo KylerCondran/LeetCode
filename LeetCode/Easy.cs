@@ -5886,5 +5886,24 @@ namespace LeetCode
             return counter;
         }
     }
+    //Title: 303. Range Sum Query - Immutable
+    //Link: https://leetcode.com/problems/range-sum-query-immutable
+    //Tags: Array, Design, Prefix Sum
+    public class NumArray
+    {
+        int[] Ranges;
+        public NumArray(int[] nums)
+        {
+            int len = nums.Length;
+            Ranges = new int[len];
+            Array.Copy(nums, 0, Ranges, 0, len);
+        }
+        public int SumRange(int left, int right)
+        {
+            int sum = 0;
+            for (int i = left; i <= right; i++) sum += Ranges[i];
+            return sum;
+        }
+    }
     #endregion
 }
