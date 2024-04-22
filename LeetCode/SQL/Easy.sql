@@ -54,3 +54,7 @@ SELECT product_id FROM Products WHERE low_fats = 'Y' AND recyclable = 'Y'
 --Link: https://leetcode.com/problems/classes-more-than-5-students
 --Tags: Database
 SELECT class FROM Courses GROUP BY class HAVING COUNT(class) > 4
+--Title: 1729. Find Followers Count
+--Link: https://leetcode.com/problems/find-followers-count
+--Tags: Database
+SELECT user_id, count(*) as [followers_count] FROM Followers GROUP BY user_id
