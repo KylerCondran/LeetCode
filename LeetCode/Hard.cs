@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace LeetCode
 {
+    #region "Hard Methods"
     public class Hard
     {
-        #region "Hard"
+        
         //Title: 4. Median of Two Sorted Arrays
         //Link: https://leetcode.com/problems/median-of-two-sorted-arrays
         //Tags: Array, Binary Search, Divide and Conquer
@@ -559,7 +560,458 @@ namespace LeetCode
                 list.Insert(startIndex, value);
                 return startIndex;
             }
-        }
-        #endregion
+        }       
     }
+    #endregion
+    #region "Hard Classes"
+    //Title: 895. Maximum Frequency Stack
+    //Link: https://leetcode.com/problems/maximum-frequency-stack
+    //Difficulty: Hard
+    //Tags: Hash Table, Stack, Design, Ordered Set
+    public class FreqStack
+    {
+        Dictionary<int, int> a;
+        List<int> b;
+        SortedDictionary<int, List<int>> c;
+        public FreqStack()
+        {
+            this.a = new Dictionary<int, int>();
+            this.b = new List<int>();
+            this.c = new SortedDictionary<int, List<int>>(new ReverseSortComparer());
+        }
+        public void Push(int val)
+        {
+            if (!a.ContainsKey(val))
+            {
+                a.Add(val, 1);
+                if (!c.ContainsKey(1))
+                {
+                    c.Add(1, new List<int> { val });
+                }
+                else
+                {
+                    c[1].Add(val);
+                }
+            }
+            else
+            {
+                c[a[val]].Remove(val);
+                if (c[a[val]].Count == 0)
+                {
+                    c.Remove(a[val]);
+                }
+                a[val]++;
+                if (!c.ContainsKey(a[val]))
+                {
+                    c.Add(a[val], new List<int> { val });
+                }
+                else
+                {
+                    c[a[val]].Add(val);
+                }
+            }
+            b.Add(val);
+        }
+        public int Pop()
+        {
+            int min = Int32.MinValue;
+            int integer = -1;
+            if (c.ElementAt(0).Value.Count == 1)
+            {
+                int num = c.ElementAt(0).Value[0];
+                int index = b.LastIndexOf(num);
+                if (index != -1 && index > min)
+                {
+                    min = index;
+                    integer = num;
+                }
+            }
+            else if (c.ElementAt(0).Value.Count > 1)
+            {
+                int[] d = new int[2];
+                d = GetIndex(b, c.ElementAt(0).Value);
+                if (d[0] != -1)
+                {
+                    min = d[0];
+                    integer = d[1];
+                }
+            }
+            c[a[integer]].Remove(integer);
+            if (c[a[integer]].Count == 0)
+            {
+                c.Remove(a[integer]);
+            }
+            a[integer]--;
+            if (!c.ContainsKey(a[integer]))
+            {
+                c.Add(a[integer], new List<int> { integer });
+            }
+            else
+            {
+                if (a[integer] != 0)
+                {
+                    c[a[integer]].Add(integer);
+                }
+            }
+            if (a[integer] == 0)
+            {
+                a.Remove(integer);
+            }
+            b.RemoveAt(min);
+            return integer;
+        }
+        public int[] GetIndex(List<int> list, List<int> topfreq)
+        {
+            int[] ans = new int[2];
+            ans[0] = -1;
+            ans[1] = -1;
+            for (int index = list.Count - 1; index >= 0; index--)
+            {
+                if (topfreq.Contains(list[index]))
+                {
+                    ans[0] = index;
+                    ans[1] = list[index];
+                    return ans;
+                }
+            }
+            return ans;
+        }
+    }
+    //Title: 432. All O`one Data Structure
+    //Link: https://leetcode.com/problems/all-oone-data-structure
+    //Difficulty: Hard
+    //Tags: Hash Table, Linked List, Design, Doubly-Linked List
+    public class AllOne
+    {
+        Dictionary<string, int> a;
+        SortedDictionary<int, List<string>> b;
+        public AllOne()
+        {
+            this.a = new Dictionary<string, int>();
+            this.b = new SortedDictionary<int, List<string>>(new ReverseSortComparer());
+        }
+        public void Inc(string key)
+        {
+            if (!a.ContainsKey(key))
+            {
+                a.Add(key, 1);
+                if (!b.ContainsKey(1))
+                {
+                    b.Add(1, new List<string> { key });
+                }
+                else
+                {
+                    b[1].Add(key);
+                }
+            }
+            else
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a[key]++;
+                if (!b.ContainsKey(a[key]))
+                {
+                    b.Add(a[key], new List<string> { key });
+                }
+                else
+                {
+                    b[a[key]].Add(key);
+                }
+            }
+        }
+        public void Dec(string key)
+        {
+            if (a[key] == 1)
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a.Remove(key);
+            }
+            else
+            {
+                b[a[key]].Remove(key);
+                if (b[a[key]].Count == 0)
+                {
+                    b.Remove(a[key]);
+                }
+                a[key]--;
+                if (!b.ContainsKey(a[key]))
+                {
+                    b.Add(a[key], new List<string> { key });
+                }
+                else
+                {
+                    b[a[key]].Add(key);
+                }
+            }
+        }
+        public string GetMaxKey()
+        {
+            if (a.Count == 0) return "";
+            return b.ElementAt(0).Value[0];
+        }
+        public string GetMinKey()
+        {
+            if (a.Count == 0) return "";
+            return b.ElementAt(b.Count - 1).Value[0];
+        }
+    }
+    //Title: 295. Find Median from Data Stream
+    //Link: https://leetcode.com/problems/find-median-from-data-stream
+    //Difficulty: Hard
+    //Tags: Two Pointers, Design, Sorting, Heap(Priority Queue), Data Stream
+    public class MedianFinder
+    {
+        List<int> a;
+        public MedianFinder()
+        {
+            this.a = new List<int>();
+        }
+        public void AddNum(int num)
+        {
+            InsertIntoSortedList(a, num, (a, b) => a.CompareTo(b));
+        }
+        public double FindMedian()
+        {
+            int size = a.Count;
+            if (size == 1) { return (double)a[0]; }
+            if (size % 2 == 0)
+            {
+                int mid1 = a[(size / 2) - 1];
+                int mid2 = a[((size / 2))];
+                return (double)(mid1 + mid2) / 2;
+            }
+            else
+            {
+                int median = ((size + 1) / 2) - 1;
+                return (double)a[median];
+            }
+        }
+        public void InsertIntoSortedList(IList list, IComparable value, Comparison<IComparable> comparison)
+        {
+            var startIndex = 0;
+            var endIndex = list.Count;
+            while (endIndex > startIndex)
+            {
+                var windowSize = endIndex - startIndex;
+                var middleIndex = startIndex + (windowSize / 2);
+                var middleValue = (IComparable)list[middleIndex];
+                var compareToResult = comparison(middleValue, value);
+                if (compareToResult == 0)
+                {
+                    list.Insert(middleIndex, value);
+                    return;
+                }
+                else if (compareToResult < 0)
+                {
+                    startIndex = middleIndex + 1;
+                }
+                else
+                {
+                    endIndex = middleIndex;
+                }
+            }
+            list.Insert(startIndex, value);
+        }
+    }
+    //Title: 710. Random Pick with Blacklist
+    //Link: https://leetcode.com/problems/random-pick-with-blacklist
+    //Difficulty: Hard
+    //Tags: Array, Hash Table, Math, Binary Search, Sorting, Randomized
+    public class RandomPickBlackList
+    {
+        Random rand;
+        int diff;
+        int len;
+        int[] BL;
+        public RandomPickBlackList(int n, int[] blacklist)
+        {
+            this.rand = new System.Random();
+            this.len = blacklist.Length;
+            this.diff = n - this.len;
+            this.BL = new int[this.len];
+            Array.Sort(blacklist);
+            Array.Copy(blacklist, 0, this.BL, 0, this.len);
+        }
+        public int Pick()
+        {
+            int result = this.rand.Next(0, this.diff);
+            for (int i = 0; i < this.len; i++)
+            {
+                if (result < this.BL[i]) return result;
+                result++;
+            }
+            return result;
+        }
+    }
+    //Title: 1172. Dinner Plate Stacks
+    //Link: https://leetcode.com/problems/dinner-plate-stacks
+    //Difficulty: Hard
+    //Tags: Hash Table, Stack, Design, Heap (Priority Queue)
+    public class DinnerPlates
+    {
+        int cap;
+        int stackcount;
+        int freecount;
+        int somecount;
+        List<Stack<int>> a;
+        Dictionary<int, int> b;
+        SortedDictionary<int, bool> c;
+        SortedDictionary<int, bool> d;
+        public DinnerPlates(int capacity)
+        {
+            cap = capacity;
+            stackcount = 0;
+            freecount = 0;
+            somecount = 0;
+            a = new List<Stack<int>>();
+            b = new Dictionary<int, int>();
+            c = new SortedDictionary<int, bool>();
+            d = new SortedDictionary<int, bool>(new ReverseSortComparer());
+        }
+        public void Push(int val)
+        {
+            if (stackcount == 0)
+            {
+                b.Add(stackcount, 1);
+                a.Add(new Stack<int>());
+                a[stackcount].Push(val);
+                if (cap > 1) { c.Add(stackcount, true); freecount++; }
+                d.Add(stackcount, true); somecount++;
+                stackcount++;
+                return;
+            }
+            if (freecount > 0)
+            {
+                int key = c.ElementAt(0).Key;
+                b[key]++;
+                a[key].Push(val);
+                if (b[key] == cap) { c.Remove(key); freecount--; }
+                if (!d.ContainsKey(key)) { d.Add(key, true); somecount++; }
+                return;
+            }
+            b.Add(stackcount, 1);
+            a.Add(new Stack<int>());
+            a[stackcount].Push(val);
+            if (cap > 1) { c.Add(stackcount, true); freecount++; }
+            d.Add(stackcount, true); somecount++;
+            stackcount++;
+            return;
+        }
+        public int Pop()
+        {
+            if (somecount > 0)
+            {
+                int key = d.ElementAt(0).Key;
+                if (!c.ContainsKey(key)) { c.Add(key, true); freecount++; }
+                b[key]--;
+                if (b[key] == 0) { d.Remove(key); somecount--; }
+                return a[key].Pop();
+            }
+            return -1;
+        }
+        public int PopAtStack(int index)
+        {
+            if (b.ContainsKey(index))
+            {
+                if (b[index] > 0)
+                {
+                    if (!c.ContainsKey(index)) { c.Add(index, true); freecount++; }
+                    b[index]--;
+                    if (b[index] == 0) { d.Remove(index); somecount--; }
+                    return a[index].Pop();
+                }
+            }
+            return -1;
+        }
+    }
+    //Title: 460. LFU Cache
+    //Link: https://leetcode.com/problems/lfu-cache
+    //Difficulty: Hard
+    //Tags: Hash Table, Linked List, Design, Doubly-Linked List
+    public class LFUCache
+    {
+        Dictionary<int, int> a;
+        List<int> b;
+        Dictionary<int, int> c;
+        SortedDictionary<int, List<int>> d;
+        int cap;
+        int keycount;
+        public LFUCache(int capacity)
+        {
+            a = new Dictionary<int, int>();
+            b = new List<int>();
+            c = new Dictionary<int, int>();
+            d = new SortedDictionary<int, List<int>>();
+            cap = capacity;
+            keycount = 0;
+        }
+        public int Get(int key)
+        {
+            if (a.ContainsKey(key))
+            {
+                d[c[key]].Remove(key);
+                if (d[c[key]].Count() == 0) d.Remove(c[key]);
+                c[key]++;
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Remove(key);
+                b.Add(key);
+                return a[key];
+            }
+            else return -1;
+        }
+        public void Put(int key, int value)
+        {
+            if (!a.ContainsKey(key))
+            {
+                if (keycount == cap)
+                {
+                    int remkey = 0;
+                    if (d.ElementAt(0).Value.Count() == 1) remkey = d.ElementAt(0).Value[0];
+                    else if (d.ElementAt(0).Value.Count() > 1)
+                    {
+                        foreach (int i in b)
+                        {
+                            if (d.ElementAt(0).Value.Contains(i))
+                            {
+                                remkey = i;
+                                break;
+                            }
+                        }
+                    }
+                    d.ElementAt(0).Value.Remove(remkey);
+                    if (d.ElementAt(0).Value.Count() == 0) d.Remove(c[remkey]);
+                    c.Remove(remkey);
+                    a.Remove(remkey);
+                    b.Remove(remkey);
+                    keycount--;
+                }
+                c.Add(key, 1);
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Add(key);
+                a.Add(key, value);
+                keycount++;
+            }
+            else
+            {
+                d[c[key]].Remove(key);
+                if (d[c[key]].Count() == 0) d.Remove(c[key]);
+                c[key]++;
+                if (!d.ContainsKey(c[key])) d.Add(c[key], new List<int> { key });
+                else d[c[key]].Add(key);
+                b.Remove(key);
+                b.Add(key);
+                a[key] = value;
+            }
+        }
+    }
+    #endregion
 }

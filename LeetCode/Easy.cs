@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace LeetCode
 {
+    #region "Easy Methods"
     public class Easy
-    {
-        #region "Easy"
+    {   
         //Title: 1002. Find Common Characters
         //Link: https://leetcode.com/problems/find-common-characters
         //Tags: Array, Hash Table, String
@@ -5801,7 +5801,90 @@ namespace LeetCode
         public static int Search(int[] nums, int target)
         {
             return Array.IndexOf(nums, target);
-        }
-        #endregion
+        }      
     }
+    #endregion
+    #region "Easy Classes"
+    //Title: 1603. Design Parking System
+    //Link: https://leetcode.com/problems/design-parking-system
+    //Difficulty: Easy
+    //Tags: Design, Simulation, Counting
+    public class ParkingSystem
+    {
+        int big;
+        int medium;
+        int small;
+        public ParkingSystem(int big, int medium, int small)
+        {
+            this.big = big;
+            this.medium = medium;
+            this.small = small;
+        }
+        public bool AddCar(int carType)
+        {
+            if (carType == 1)
+            {
+                if (this.big > 0)
+                {
+                    this.big -= 1;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (carType == 2)
+            {
+                if (this.medium > 0)
+                {
+                    this.medium -= 1;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (carType == 3)
+            {
+                if (this.small > 0)
+                {
+                    this.small -= 1;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+    }
+    //Title: 933. Number of Recent Calls
+    //Link: https://leetcode.com/problems/number-of-recent-calls
+    //Difficulty: Easy
+    //Tags: Design, Queue, Data Stream
+    public class RecentCounter
+    {
+        List<int> a;
+        public RecentCounter()
+        {
+            this.a = new List<int>();
+        }
+        public int Ping(int t)
+        {
+            this.a.Add(t);
+            int counter = 0;
+            foreach (int b in a)
+            {
+                if (t - 3000 <= b && b <= t)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+    }
+    #endregion
 }
