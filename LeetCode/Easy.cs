@@ -5807,7 +5807,6 @@ namespace LeetCode
     #region "Easy Classes"
     //Title: 1603. Design Parking System
     //Link: https://leetcode.com/problems/design-parking-system
-    //Difficulty: Easy
     //Tags: Design, Simulation, Counting
     public class ParkingSystem
     {
@@ -5863,7 +5862,6 @@ namespace LeetCode
     }
     //Title: 933. Number of Recent Calls
     //Link: https://leetcode.com/problems/number-of-recent-calls
-    //Difficulty: Easy
     //Tags: Design, Queue, Data Stream
     public class RecentCounter
     {
