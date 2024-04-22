@@ -5903,5 +5903,25 @@ namespace LeetCode
             return sum;
         }
     }
+    //Title: 703. Kth Largest Element in a Stream
+    //Link: https://leetcode.com/problems/kth-largest-element-in-a-stream
+    //Tags: Tree, Design, Binary Search Tree, Heap (Priority Queue), Binary Tree, Data Stream
+    public class KthLargest
+    {
+        List<int> a;
+        int z;
+        public KthLargest(int k, int[] nums)
+        {
+            a = new List<int>();
+            z = k;
+            for (int i = 0; i < nums.Length; i++) a.Add(nums[i]);
+        }
+        public int Add(int val)
+        {
+            a.Add(val);
+            a.Sort();
+            return a[a.Count - z];
+        }
+    }
     #endregion
 }
