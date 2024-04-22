@@ -566,7 +566,6 @@ namespace LeetCode
     #region "Hard Classes"
     //Title: 895. Maximum Frequency Stack
     //Link: https://leetcode.com/problems/maximum-frequency-stack
-    //Difficulty: Hard
     //Tags: Hash Table, Stack, Design, Ordered Set
     public class FreqStack
     {
@@ -679,7 +678,6 @@ namespace LeetCode
     }
     //Title: 432. All O`one Data Structure
     //Link: https://leetcode.com/problems/all-oone-data-structure
-    //Difficulty: Hard
     //Tags: Hash Table, Linked List, Design, Doubly-Linked List
     public class AllOne
     {
@@ -764,7 +762,6 @@ namespace LeetCode
     }
     //Title: 295. Find Median from Data Stream
     //Link: https://leetcode.com/problems/find-median-from-data-stream
-    //Difficulty: Hard
     //Tags: Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream
     public class MedianFinder
     {
@@ -822,7 +819,6 @@ namespace LeetCode
     }
     //Title: 710. Random Pick with Blacklist
     //Link: https://leetcode.com/problems/random-pick-with-blacklist
-    //Difficulty: Hard
     //Tags: Array, Hash Table, Math, Binary Search, Sorting, Randomized
     public class RandomPickBlackList
     {
@@ -852,7 +848,6 @@ namespace LeetCode
     }
     //Title: 1172. Dinner Plate Stacks
     //Link: https://leetcode.com/problems/dinner-plate-stacks
-    //Difficulty: Hard
     //Tags: Hash Table, Stack, Design, Heap (Priority Queue)
     public class DinnerPlates
     {
@@ -933,7 +928,6 @@ namespace LeetCode
     }
     //Title: 460. LFU Cache
     //Link: https://leetcode.com/problems/lfu-cache
-    //Difficulty: Hard
     //Tags: Hash Table, Linked List, Design, Doubly-Linked List
     public class LFUCache
     {
