@@ -58,3 +58,7 @@ SELECT class FROM Courses GROUP BY class HAVING COUNT(class) > 4
 --Link: https://leetcode.com/problems/find-followers-count
 --Tags: Database
 SELECT user_id, count(*) as [followers_count] FROM Followers GROUP BY user_id
+--Title: 619. Biggest Single Number
+--Link: https://leetcode.com/problems/biggest-single-number
+--Tags: Database
+SELECT MAX(num) AS [num] FROM (SELECT num FROM MyNumbers GROUP BY num HAVING COUNT(num) < 2) T
