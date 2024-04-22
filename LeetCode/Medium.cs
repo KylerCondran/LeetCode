@@ -4139,7 +4139,6 @@ namespace LeetCode
     #region "Medium Classes"
     //Title: 382. Linked List Random Node
     //Link: https://leetcode.com/problems/linked-list-random-node
-    //Difficulty: Medium
     //Tags: Linked List, Math, Reservoir Sampling, Randomized
     public class Solution
     {
@@ -4161,7 +4160,6 @@ namespace LeetCode
     }
     //Title: 535. Encode and Decode TinyURL
     //Link: https://leetcode.com/problems/encode-and-decode-tinyurl
-    //Difficulty: Medium
     //Tags: Hash Table, String, Design, Hash Function
     public class Codec
     {
@@ -4180,7 +4178,6 @@ namespace LeetCode
     }
     //Title: 2043. Simple Bank System
     //Link: https://leetcode.com/problems/simple-bank-system
-    //Difficulty: Medium
     //Tags: Array, Hash Table, Design, Simulation
     public class Bank
     {
@@ -4242,7 +4239,6 @@ namespace LeetCode
     }
     //Title: 398. Random Pick Index
     //Link: https://leetcode.com/problems/random-pick-index
-    //Difficulty: Medium
     //Tags: Hash Table, Math, Reservoir Sampling, Randomized
     public class RandomPick
     {
@@ -4273,7 +4269,6 @@ namespace LeetCode
     }
     //Title: 2671. Frequency Tracker
     //Link: https://leetcode.com/problems/frequency-tracker
-    //Difficulty: Medium
     //Tags: Hash Table, Design
     public class FrequencyTracker
     {
@@ -4367,7 +4362,6 @@ namespace LeetCode
     }
     //Title: 1381. Design a Stack With Increment Operation
     //Link: https://leetcode.com/problems/design-a-stack-with-increment-operation
-    //Difficulty: Medium
     //Tags: Array, Stack, Design
     public class CustomStack
     {
@@ -4420,7 +4414,6 @@ namespace LeetCode
     }
     //Title: 2336. Smallest Number in Infinite Set
     //Link: https://leetcode.com/problems/smallest-number-in-infinite-set
-    //Difficulty: Medium
     //Tags: Hash Table, Design, Heap (Priority Queue)
     public class SmallestInfiniteSet
     {
@@ -4448,7 +4441,6 @@ namespace LeetCode
     }
     //Title: 155. Min Stack
     //Link: https://leetcode.com/problems/min-stack
-    //Difficulty: Medium
     //Tags: Stack, Design
     public class MinStack
     {
@@ -4498,7 +4490,6 @@ namespace LeetCode
     }
     //Title: 1845. Seat Reservation Manager
     //Link: https://leetcode.com/problems/seat-reservation-manager
-    //Difficulty: Medium
     //Tags: Design, Heap (Priority Queue)
     public class SeatManager
     {
@@ -4529,7 +4520,6 @@ namespace LeetCode
     }
     //Title: 2424. Longest Uploaded Prefix
     //Link: https://leetcode.com/problems/longest-uploaded-prefix
-    //Difficulty: Medium
     //Tags: Binary Search, Union Find, Design, Binary Indexed Tree, Segment Tree, Heap (Priority Queue), Ordered Set
     public class LUPrefix
     {
@@ -4554,7 +4544,6 @@ namespace LeetCode
     }
     //Title: 729. My Calendar I
     //Link: https://leetcode.com/problems/my-calendar-i
-    //Difficulty: Medium
     //Tags: Binary Search, Design, Segment Tree, Ordered Set
     public class MyCalendar
     {
@@ -4581,7 +4570,6 @@ namespace LeetCode
     }
     //Title: 380. Insert Delete GetRandom O(1)
     //Link: https://leetcode.com/problems/insert-delete-getrandom-o1
-    //Difficulty: Medium
     //Tags: Array, Hash Table, Math, Design, Randomized
     public class RandomizedSet
     {
@@ -4623,7 +4611,6 @@ namespace LeetCode
     }
     //Title: 146. LRU Cache
     //Link: https://leetcode.com/problems/lru-cache
-    //Difficulty: Medium
     //Tags: Hash Table, Linked List, Design, Doubly-Linked List
     public class LRUCache
     {
@@ -4671,7 +4658,6 @@ namespace LeetCode
     }
     //Title: 1476. Subrectangle Queries
     //Link: https://leetcode.com/problems/subrectangle-queries
-    //Difficulty: Medium
     //Tags: Array, Design, Matrix
     public class SubrectangleQueries
     {
