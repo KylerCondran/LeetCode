@@ -49,4 +49,8 @@ SELECT tweet_id FROM Tweets WHERE LEN(content) > 15
 --Title: 1757. Recyclable and Low Fat Products
 --Link: https://leetcode.com/problems/recyclable-and-low-fat-products
 --Tags: Database
-SELECT product_id FROM Products WHERE low_fats = 'Y' AND recyclable = 'Y' 
+SELECT product_id FROM Products WHERE low_fats = 'Y' AND recyclable = 'Y'
+--Title: 596. Classes More Than 5 Students
+--Link: https://leetcode.com/problems/classes-more-than-5-students
+--Tags: Database
+SELECT class FROM Courses GROUP BY class HAVING COUNT(class) > 4
