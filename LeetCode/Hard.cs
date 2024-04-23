@@ -560,7 +560,24 @@ namespace LeetCode
                 list.Insert(startIndex, value);
                 return startIndex;
             }
-        }       
+        }
+        //Title: 2444. Count Subarrays With Fixed Bounds
+        //Link: https://leetcode.com/problems/count-subarrays-with-fixed-bounds
+        //Tags: Array, Queue, Sliding Window, Monotonic Queue
+        public static long CountSubarrays(int[] nums, int minK, int maxK)
+        {
+            int a = -1; int b = -1; int c = -1;
+            long counter = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val < minK || val > maxK) c = i;
+                if (val == minK) a = i;
+                if (val == maxK) b = i;
+                counter += Math.Max(0, Math.Min(a, b) - c);
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Hard Classes"
