@@ -5872,6 +5872,21 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 643. Maximum Average Subarray I
+        //Link: https://leetcode.com/problems/maximum-average-subarray-i
+        //Tags: Array, Sliding Window
+        public double FindMaxAverage(int[] nums, int k)
+        {
+            double maxavg = int.MinValue;
+            for (int i = 0; i <= nums.Length - k; i++)
+            {
+                int total = 0;
+                for (int j = i; j < i + k; j++) total += nums[j];
+                double curravg = (double)total / (double)k;
+                if (curravg > maxavg) maxavg = curravg;
+            }
+            return maxavg;
+        }
     }
     #endregion
     #region "Easy Classes"
