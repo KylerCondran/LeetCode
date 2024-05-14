@@ -5936,6 +5936,36 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2138. Divide a String Into Groups of Size k
+        //Link: https://leetcode.com/problems/divide-a-string-into-groups-of-size-k
+        //Tags: String, Simulation
+        public static string[] DivideString(string s, int k, char fill)
+        {
+            int len = s.Length;
+            int size = 0;
+            while (len > 0)
+            {
+                len -= k;
+                size += 1;
+            }
+            string[] ans = new string[size];
+            int index = 0;
+            for (int i = 0; i < size; i++)
+            {
+                string seg = "";
+                for (int j = 0; j < k; j++)
+                {
+                    if (index == s.Length) seg += fill;
+                    else
+                    {
+                        seg += s[index];
+                        index++;
+                    }
+                }
+                ans[i] = seg;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
