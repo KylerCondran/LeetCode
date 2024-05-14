@@ -6011,6 +6011,26 @@ namespace LeetCode
             if (!vowel || !consonant) return false;
             return true;
         }
+        //Title: 1446. Consecutive Characters
+        //Link: https://leetcode.com/problems/consecutive-characters
+        //Tags: String
+        public static int MaxPower(string s)
+        {
+            char val = s[0];
+            int maxpower = 1;
+            int power = 1;
+            for (int i = 1; i < s.Length; i++)
+            {
+                if (s[i] == val) power++;
+                else
+                {
+                    val = s[i];
+                    power = 1;
+                }
+                if (power > maxpower) maxpower = power;
+            }
+            return maxpower;
+        }
     }
     #endregion
     #region "Easy Classes"
