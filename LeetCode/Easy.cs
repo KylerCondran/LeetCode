@@ -5989,6 +5989,28 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 3136. Valid Word
+        //Link: https://leetcode.com/problems/valid-word
+        //Tags: None
+        public static bool IsValid2(string word)
+        {
+            int len = word.Length;
+            bool vowel = false;
+            bool consonant = false;
+            char[] a = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] v = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+            char[] c = new char[] { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z' };
+            if (len < 3) return false;
+            for (int i = 0; i < len; i++)
+            {
+                char val = word[i];
+                if (!a.Contains(val)) return false;
+                if (!vowel) if (v.Contains(val)) vowel = true;
+                if (!consonant) if (c.Contains(val)) consonant = true;
+            }
+            if (!vowel || !consonant) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
