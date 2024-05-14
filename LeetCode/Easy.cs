@@ -5887,6 +5887,34 @@ namespace LeetCode
             }
             return maxavg;
         }
+        //Title: 2500. Delete Greatest Value in Each Row
+        //Link: https://leetcode.com/problems/delete-greatest-value-in-each-row
+        //Tags: Array, Sorting, Heap (Priority Queue), Matrix, Simulation
+        public static int DeleteGreatestValue(int[][] grid)
+        {
+            int counter = 0;
+            int lenx = grid[0].Length;
+            int leny = grid.Length;
+            List<List<int>> a = new List<List<int>>();
+            foreach (int[] i in grid)
+            {
+                List<int> b = new List<int>();
+                for (int j = 0; j < i.Length; j++) b.Add(i[j]);
+                a.Add(b);
+            }
+            for (int i = 0; i < lenx; i++)
+            {
+                int max = 0;
+                for (int j = 0; j < leny; j++)
+                {
+                    int xmax = a[j].Max();
+                    a[j].Remove(xmax);
+                    if (xmax > max) max = xmax;
+                }
+                counter += max;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
