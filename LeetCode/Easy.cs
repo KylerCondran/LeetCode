@@ -6031,6 +6031,25 @@ namespace LeetCode
             }
             return maxpower;
         }
+        //Title: 2455. Average Value of Even Numbers That Are Divisible by Three
+        //Link: https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three
+        //Tags: Array, Math
+        public static int AverageValue(int[] nums)
+        {
+            int counter = 0;
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val % 3 == 0 && val % 2 == 0)
+                {
+                    sum += val;
+                    counter++;
+                }
+            }
+            if (counter == 0) return 0;
+            return sum / counter;
+        }
     }
     #endregion
     #region "Easy Classes"
