@@ -5822,6 +5822,17 @@ namespace LeetCode
             if (max > 0) return max;
             return -1;
         }
+        //Title: 3146. Permutation Difference between Two Strings
+        //Link: https://leetcode.com/problems/permutation-difference-between-two-strings
+        //Tags: None
+        public static int FindPermutationDifference(string s, string t)
+        {
+            int counter = 0;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++) a.Add(s[i], i);
+            for (int i = 0; i < t.Length; i++) counter += Math.Abs(a[t[i]] - i);
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
