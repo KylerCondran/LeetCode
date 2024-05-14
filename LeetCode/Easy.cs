@@ -5915,6 +5915,27 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2639. Find the Width of Columns of a Grid
+        //Link: https://leetcode.com/problems/find-the-width-of-columns-of-a-grid
+        //Tags: Array, Matrix
+        public static int[] FindColumnWidth(int[][] grid)
+        {
+            int xlen = grid[0].Length;
+            int ylen = grid.Length;
+            int[] ans = new int[xlen];
+            for (int i = 0; i < xlen; i++)
+            {
+                int maxlen = 0;
+                for (int j = 0; j < ylen; j++)
+                {
+                    string val = grid[j][i].ToString();
+                    int lenval = val.Length;
+                    if (lenval > maxlen) maxlen = lenval;
+                }
+                ans[i] = maxlen;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
