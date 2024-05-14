@@ -5833,6 +5833,45 @@ namespace LeetCode
             for (int i = 0; i < t.Length; i++) counter += Math.Abs(a[t[i]] - i);
             return counter;
         }
+        //Title: 506. Relative Ranks
+        //Link: https://leetcode.com/problems/relative-ranks
+        //Tags: Array, Sorting, Heap (Priority Queue)
+        public string[] FindRelativeRanks(int[] score)
+        {
+            string[] ans = new string[score.Length];
+            Dictionary<int, string> b = new Dictionary<int, string>();
+            List<int> a = new List<int>();
+            for (int i = 0; i < score.Length; i++) a.Add(score[i]);
+            Array.Sort(score);
+            Array.Reverse(score);
+            for (int i = 0; i < score.Length; i++)
+            {
+                string placement = "";
+                switch (i)
+                {
+                    case 0:
+                        placement = "Gold Medal";
+                        break;
+                    case 1:
+                        placement = "Silver Medal";
+                        break;
+                    case 2:
+                        placement = "Bronze Medal";
+                        break;
+                    default:
+                        placement = (i + 1).ToString();
+                        break;
+                }
+                b.Add(score[i], placement);
+            }
+            int index = 0;
+            foreach (int val in a)
+            {
+                ans[index] = b[val];
+                index++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
