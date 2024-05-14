@@ -5966,6 +5966,29 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3142. Check if Grid Satisfies Conditions
+        //Link: https://leetcode.com/problems/check-if-grid-satisfies-conditions
+        //Tags: None
+        public static bool SatisfiesConditions(int[][] grid)
+        {
+            int xlen = grid[0].Length;
+            int ylen = grid.Length;
+            for (int i = 0; i < xlen; i++)
+            {
+                int val = grid[0][i];
+                for (int j = 1; j < ylen; j++) if (val != grid[j][i]) return false;
+            }
+            foreach (int[] i in grid)
+            {
+                int val = i[0];
+                for (int j = 1; j < i.Length; j++)
+                {
+                    if (i[j] == val) return false;
+                    else val = i[j];
+                }
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
