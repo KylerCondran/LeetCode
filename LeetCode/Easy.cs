@@ -6066,6 +6066,18 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 448. Find All Numbers Disappeared in an Array
+        //Link: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array
+        //Tags: Array, Hash Table
+        public static IList<int> FindDisappearedNumbers(int[] nums)
+        {
+            List<int> ans = new List<int>();
+            int max = nums.Max();
+            int count = nums.Length;
+            int total = Math.Max(count, max);
+            for (int i = 1; i <= total; i++) if (!nums.Contains(i)) ans.Add(i);
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
