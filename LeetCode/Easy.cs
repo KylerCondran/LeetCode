@@ -5801,7 +5801,27 @@ namespace LeetCode
         public static int Search(int[] nums, int target)
         {
             return Array.IndexOf(nums, target);
-        }      
+        }
+        //Title: 2441. Largest Positive Integer That Exists With Its Negative
+        //Link: https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative
+        //Tags: Array, Hash Table, Two Pointers, Sorting
+        public static int FindMaxK(int[] nums)
+        {
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val > 0)
+                {
+                    if (val > max)
+                    {
+                        if (nums.Contains(val * -1)) max = val;
+                    }
+                }
+            }
+            if (max > 0) return max;
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
