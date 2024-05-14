@@ -6050,6 +6050,22 @@ namespace LeetCode
             if (counter == 0) return 0;
             return sum / counter;
         }
+        //Title: 1408. String Matching in an Array
+        //Link: https://leetcode.com/problems/string-matching-in-an-array
+        //Tags: Array, String, String Matching
+        public static IList<string> StringMatching(string[] words)
+        {
+            List<string> ans = new List<string>();
+            foreach (string word in words)
+            {
+                for (int i = 0; i < words.Length; i++)
+                {
+                    string curr = words[i];
+                    if (curr != word && curr.Contains(word)) if (!ans.Contains(word)) ans.Add(word);
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
