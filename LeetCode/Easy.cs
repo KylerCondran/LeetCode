@@ -6078,6 +6078,29 @@ namespace LeetCode
             for (int i = 1; i <= total; i++) if (!nums.Contains(i)) ans.Add(i);
             return ans;
         }
+        //Title: 2506. Count Pairs Of Similar Strings
+        //Link: https://leetcode.com/problems/count-pairs-of-similar-strings
+        //Tags: Array, Hash Table, String, Bit Manipulation
+        public int SimilarPairs(string[] words)
+        {
+            int counter = 0;
+            List<string> b = new List<string>();
+            foreach (string word in words)
+            {
+                List<char> a = new List<char>();
+                for (int i = 0; i < word.Length; i++)
+                {
+                    char val = word[i];
+                    if (!a.Contains(val)) a.Add(val);
+                }
+                a.Sort();
+                string final = "";
+                foreach (char i in a) final += i;
+                b.Add(final);
+            }
+            for (int i = 0; i < b.Count; i++) for (int j = 0; j < b.Count; j++) if (j != i && b[j] == b[i]) counter++;
+            return counter / 2;
+        }
     }
     #endregion
     #region "Easy Classes"
