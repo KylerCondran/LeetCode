@@ -6231,5 +6231,29 @@ namespace LeetCode
             return a[a.Count - z];
         }
     }
+    //Title: 1656. Design an Ordered Stream
+    //Link: https://leetcode.com/problems/design-an-ordered-stream
+    //Tags: Array, Hash Table, Design, Data Stream
+    public class OrderedStream
+    {
+        string[] stream;
+        int ptr;
+        public OrderedStream(int n)
+        {
+            stream = new string[n + 1];
+            ptr = 0;
+        }
+        public IList<string> Insert(int idKey, string value)
+        {
+            List<string> ans = new List<string>();
+            stream[idKey - 1] = value;
+            for (int i = ptr; i < Array.IndexOf(stream, null, ptr); i++)
+            {
+                ans.Add(stream[i]);
+                ptr++;
+            }
+            return ans;
+        }
+    }
     #endregion
 }
