@@ -6333,6 +6333,23 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 2129. Capitalize the Title
+        //Link: https://leetcode.com/problems/capitalize-the-title
+        //Tags: String
+        public static string CapitalizeTitle(string title)
+        {
+            title = title.ToLower();
+            string[] a = title.Split(' ');
+            string final = "";
+            for (int i = 0; i < a.Length; i++)
+            {
+                string val = a[i];
+                if (val.Length > 2) a[i] = val.Substring(0, 1).ToUpper() + val.Substring(1, val.Length - 1);
+            }
+            for (int i = 0; i < a.Length; i++) final += a[i] + " ";
+            final = final.TrimEnd();
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
