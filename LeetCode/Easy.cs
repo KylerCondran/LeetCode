@@ -6365,6 +6365,41 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2164. Sort Even and Odd Indices Independently
+        //Link: https://leetcode.com/problems/sort-even-and-odd-indices-independently
+        //Tags: Array, Sorting
+        public static int[] SortEvenOdd(int[] nums)
+        {
+            int len = nums.Length;
+            int[] ans = new int[len];
+            List<int> even = new List<int>();
+            List<int> odd = new List<int>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (i % 2 == 0) even.Add(val);
+                else odd.Add(val);
+            }
+            even.Sort();
+            odd.Sort();
+            odd.Reverse();
+            int evenindex = 0;
+            int oddindex = 0;
+            for (int i = 0; i < len; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    ans[i] = even[evenindex];
+                    evenindex++;
+                }
+                else
+                {
+                    ans[i] = odd[oddindex];
+                    oddindex++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
