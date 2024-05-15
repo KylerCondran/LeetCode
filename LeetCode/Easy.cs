@@ -6165,6 +6165,30 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2595. Number of Even and Odd Bits
+        //Link: https://leetcode.com/problems/number-of-even-and-odd-bits
+        //Tags: Bit Manipulation
+        public static int[] EvenOddBit(int n)
+        {
+            int[] ans = new int[2];
+            int even = 0;
+            int odd = 0;
+            string a = Convert.ToString(n, 2);
+            char[] charArray = a.ToCharArray();
+            Array.Reverse(charArray);
+            string backwards = new string(charArray);
+            for (int i = 0; i < backwards.Length; i++)
+            {
+                if (backwards[i] == '1')
+                {
+                    if (i % 2 == 0) even++;
+                    else odd++;
+                }
+            }
+            ans[0] = even;
+            ans[1] = odd;
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
