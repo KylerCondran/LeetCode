@@ -6284,6 +6284,17 @@ namespace LeetCode
             foreach (KeyValuePair<int, int> i in sortedDict) if (i.Key == i.Value) return i.Key;
             return -1;
         }
+        //Title: 3083. Existence of a Substring in a String and Its Reverse
+        //Link: https://leetcode.com/problems/existence-of-a-substring-in-a-string-and-its-reverse
+        //Tags: Hash Table, String
+        public static bool IsSubstringPresent(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            string backwards = new string(charArray);
+            for (int i = 0; i < s.Length - 1; i++) if (backwards.Contains(s.Substring(i, 2))) return true;
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
