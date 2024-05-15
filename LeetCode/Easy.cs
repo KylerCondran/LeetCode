@@ -6242,7 +6242,7 @@ namespace LeetCode
             for (int i = 0; i < s.Length; i++)
             {
                 char val = s[i];
-                if (u.Contains(val)) if (!upper.Contains(val)) upper.Add(val);
+                if (u.Contains(val)) { if (!upper.Contains(val)) upper.Add(val); }
                 else if (l.Contains(val)) if (!lower.Contains(val)) lower.Add(val);
             }
             for (int i = 0; i < upper.Count; i++)
@@ -6294,6 +6294,29 @@ namespace LeetCode
             string backwards = new string(charArray);
             for (int i = 0; i < s.Length - 1; i++) if (backwards.Contains(s.Substring(i, 2))) return true;
             return false;
+        }
+        //Title: 3120. Count the Number of Special Characters I
+        //Link: https://leetcode.com/problems/count-the-number-of-special-characters-i
+        //Tags: Hash Table, String
+        public static int NumberOfSpecialChars(string word)
+        {
+            List<char> upper = new List<char>();
+            List<char> lower = new List<char>();
+            List<char> final = new List<char>();
+            char[] u = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            for (int i = 0; i < word.Length; i++)
+            {
+                char val = word[i];
+                if (u.Contains(val)) { if (!upper.Contains(val)) upper.Add(val); }
+                else if (l.Contains(val)) if (!lower.Contains(val)) lower.Add(val);
+            }
+            for (int i = 0; i < upper.Count; i++)
+            {
+                char val = upper[i];
+                if (lower.Contains(Char.ToLower(val))) final.Add(val);
+            }
+            return final.Count();
         }
     }
     #endregion
