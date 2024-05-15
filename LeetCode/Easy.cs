@@ -6081,7 +6081,7 @@ namespace LeetCode
         //Title: 2506. Count Pairs Of Similar Strings
         //Link: https://leetcode.com/problems/count-pairs-of-similar-strings
         //Tags: Array, Hash Table, String, Bit Manipulation
-        public int SimilarPairs(string[] words)
+        public static int SimilarPairs(string[] words)
         {
             int counter = 0;
             List<string> b = new List<string>();
@@ -6104,7 +6104,7 @@ namespace LeetCode
         //Title: 2824. Count Pairs Whose Sum is Less than Target
         //Link: https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target
         //Tags: Array, Two Pointers, Binary Search, Sorting
-        public int CountPairs(IList<int> nums, int target)
+        public static int CountPairs(IList<int> nums, int target)
         {
             int counter = 0;
             for (int i = 0; i < nums.Count; i++) for (int j = 0; j < nums.Count; j++) if (j != i && nums[j] + nums[i] < target) counter++;
@@ -6113,13 +6113,35 @@ namespace LeetCode
         //Title: 3131. Find the Integer Added to Array I
         //Link: https://leetcode.com/problems/find-the-integer-added-to-array-i
         //Tags: Array
-        public int AddedInteger(int[] nums1, int[] nums2)
+        public static int AddedInteger(int[] nums1, int[] nums2)
         {
             int sum1 = nums1.Sum();
             int sum2 = nums2.Sum();
             int subtract = sum2 - sum1;
             int ans = subtract / nums1.Length;
             return ans;
+        }
+        //Title: 3079. Find the Sum of Encrypted Integers
+        //Link: https://leetcode.com/problems/find-the-sum-of-encrypted-integers
+        //Tags: Array, Math
+        public static int SumOfEncryptedInt(int[] nums)
+        {
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int largest = 0;
+                string digits = nums[i].ToString();
+                for (int t = 0; t < digits.Length; t++)
+                {
+                    int.TryParse(digits[t] + "", out int digit);
+                    if (digit > largest) largest = digit;
+                }
+                string encrypted = "";
+                for (int j = 0; j < digits.Length; j++) encrypted += largest.ToString();
+                int.TryParse(encrypted, out int final);
+                sum += final;
+            }
+            return sum;
         }
     }
     #endregion
