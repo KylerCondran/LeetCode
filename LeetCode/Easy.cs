@@ -6143,6 +6143,28 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 1742. Maximum Number of Balls in a Box
+        //Link: https://leetcode.com/problems/maximum-number-of-balls-in-a-box
+        //Tags: Hash Table, Math, Counting
+        public static int CountBalls(int lowLimit, int highLimit)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int max = 0;
+            for (int i = lowLimit; i <= highLimit; i++)
+            {
+                int sum = 0;
+                string digits = i.ToString();
+                for (int j = 0; j < digits.Length; j++)
+                {
+                    int.TryParse(digits[j] + "", out int digit);
+                    sum += digit;
+                }
+                if (!a.ContainsKey(sum)) a.Add(sum, 1);
+                else a[sum]++;
+                max = Math.Max(max, a[sum]);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
