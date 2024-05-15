@@ -6255,6 +6255,19 @@ namespace LeetCode
             final.Reverse();
             return final[0] + "";
         }
+        //Title: 2264. Largest 3-Same-Digit Number in String
+        //Link: https://leetcode.com/problems/largest-3-same-digit-number-in-string
+        //Tags: String
+        public static string LargestGoodInteger(string num)
+        {
+            string[] check = new string[10] { "999", "888", "777", "666", "555", "444", "333", "222", "111", "000" };
+            for (int i = 0; i < check.Length; i++)
+            {
+                string val = check[i];
+                if (num.Contains(val)) return val;
+            }
+            return "";
+        }
     }
     #endregion
     #region "Easy Classes"
