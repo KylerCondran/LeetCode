@@ -6350,6 +6350,21 @@ namespace LeetCode
             final = final.TrimEnd();
             return final;
         }
+        //Title: 2490. Circular Sentence
+        //Link: https://leetcode.com/problems/circular-sentence
+        //Tags: String
+        public static bool IsCircularSentence(string sentence)
+        {
+            if (sentence[0] != sentence[sentence.Length - 1]) return false;
+            string[] words = sentence.Split(' ');
+            char lag = words[0][words[0].Length - 1];
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (words[i][0] != lag) return false;
+                lag = words[i][words[i].Length - 1];
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
