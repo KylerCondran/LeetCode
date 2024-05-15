@@ -6101,6 +6101,15 @@ namespace LeetCode
             for (int i = 0; i < b.Count; i++) for (int j = 0; j < b.Count; j++) if (j != i && b[j] == b[i]) counter++;
             return counter / 2;
         }
+        //Title: 2824. Count Pairs Whose Sum is Less than Target
+        //Link: https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target
+        //Tags: Array, Two Pointers, Binary Search, Sorting
+        public int CountPairs(IList<int> nums, int target)
+        {
+            int counter = 0;
+            for (int i = 0; i < nums.Count; i++) for (int j = 0; j < nums.Count; j++) if (j != i && nums[j] + nums[i] < target) counter++;
+            return counter / 2;
+        }
     }
     #endregion
     #region "Easy Classes"
