@@ -6318,6 +6318,21 @@ namespace LeetCode
             }
             return final.Count();
         }
+        //Title: 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+        //Link: https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence
+        //Tags: Two Pointers, String, String Matching
+        public static int IsPrefixOfWord(string sentence, string searchWord)
+        {
+            string[] words = sentence.Split(' ');
+            int len = searchWord.Length;
+            for (int i = 0; i < words.Length; i++)
+            {
+                string word = words[i];
+                if (word.Length < len) continue;
+                if (words[i].Substring(0, len) == searchWord) return i + 1;
+            }
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
