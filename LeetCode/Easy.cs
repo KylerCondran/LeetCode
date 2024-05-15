@@ -6229,6 +6229,32 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2309. Greatest English Letter in Upper and Lower Case
+        //Link: https://leetcode.com/problems/greatest-english-letter-in-upper-and-lower-case
+        //Tags: Hash Table, String, Enumeration
+        public static string GreatestLetter(string s)
+        {
+            List<char> upper = new List<char>();
+            List<char> lower = new List<char>();
+            List<char> final = new List<char>();
+            char[] u = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (u.Contains(val)) if (!upper.Contains(val)) upper.Add(val);
+                else if (l.Contains(val)) if (!lower.Contains(val)) lower.Add(val);
+            }
+            for (int i = 0; i < upper.Count; i++)
+            {
+                char val = upper[i];
+                if (lower.Contains(Char.ToLower(val))) final.Add(val);
+            }
+            if (final.Count == 0) return "";
+            final.Sort();
+            final.Reverse();
+            return final[0] + "";
+        }
     }
     #endregion
     #region "Easy Classes"
