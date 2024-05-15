@@ -6110,6 +6110,17 @@ namespace LeetCode
             for (int i = 0; i < nums.Count; i++) for (int j = 0; j < nums.Count; j++) if (j != i && nums[j] + nums[i] < target) counter++;
             return counter / 2;
         }
+        //Title: 3131. Find the Integer Added to Array I
+        //Link: https://leetcode.com/problems/find-the-integer-added-to-array-i
+        //Tags: Array
+        public int AddedInteger(int[] nums1, int[] nums2)
+        {
+            int sum1 = nums1.Sum();
+            int sum2 = nums2.Sum();
+            int subtract = sum2 - sum1;
+            int ans = subtract / nums1.Length;
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
