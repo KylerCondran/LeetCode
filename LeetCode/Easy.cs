@@ -6400,6 +6400,20 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 217. Contains Duplicate
+        //Link: https://leetcode.com/problems/contains-duplicate
+        //Tags: Array, Hash Table, Sorting
+        public static bool ContainsDuplicate(int[] nums)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.Contains(val)) a.Add(val);
+                else return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
