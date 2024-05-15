@@ -6189,6 +6189,46 @@ namespace LeetCode
             ans[1] = odd;
             return ans;
         }
+        //Title: 3069. Distribute Elements Into Two Arrays I
+        //Link: https://leetcode.com/problems/distribute-elements-into-two-arrays-i
+        //Tags: Array, Simulation
+        public static int[] ResultArray(int[] nums)
+        {
+            int len = nums.Length;
+            int[] ans = new int[len];
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            int lasta = nums[0];
+            int lastb = nums[1];
+            a.Add(lasta);
+            b.Add(lastb);
+            for (int i = 2; i < len; i++)
+            {
+                int val = nums[i];
+                if (lasta > lastb)
+                {
+                    a.Add(val);
+                    lasta = val;
+                }
+                else
+                {
+                    b.Add(val);
+                    lastb = val;
+                }
+            }
+            int index = 0;
+            foreach (int i in a)
+            {
+                ans[index] = i;
+                index++;
+            }
+            foreach (int i in b)
+            {
+                ans[index] = i;
+                index++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
