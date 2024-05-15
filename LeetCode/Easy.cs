@@ -6268,6 +6268,22 @@ namespace LeetCode
             }
             return "";
         }
+        //Title: 1394. Find Lucky Integer in an Array
+        //Link: https://leetcode.com/problems/find-lucky-integer-in-an-array
+        //Tags: Array, Hash Table, Counting
+        public static int FindLucky(int[] arr)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int val = arr[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            var sortedDict = from entry in a orderby entry.Key descending select entry;
+            foreach (KeyValuePair<int, int> i in sortedDict) if (i.Key == i.Value) return i.Key;
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
