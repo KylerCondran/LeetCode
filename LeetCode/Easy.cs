@@ -6511,6 +6511,24 @@ namespace LeetCode
             if (zeroerrors < oneerrors) return zeroerrors;
             else return oneerrors;
         }
+        //Title: 653. Two Sum IV - Input is a BST
+        //Link: https://leetcode.com/problems/two-sum-iv-input-is-a-bst
+        //Tags: Hash Table, Two Pointers, Tree, Depth-First Search, Breadth-First Search, Binary Search Tree, Binary Tree
+        public static bool FindTarget(TreeNode root, int k)
+        {
+            Queue<TreeNode> q = new Queue<TreeNode>();
+            List<int> a = new List<int>();
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode T = q.Dequeue();
+                if (T.left != null) q.Enqueue(T.left);
+                if (T.right != null) q.Enqueue(T.right);
+                a.Add(T.val);
+            }
+            for (int i = 0; i < a.Count; i++) for (int j = 0; j < a.Count; j++) if (j != i && a[j] + a[i] == k) return true;
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
