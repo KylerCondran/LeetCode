@@ -6428,6 +6428,35 @@ namespace LeetCode
             }
             for (int i = 0; i < arr.Length; i++) arr[i] = a[i];
         }
+        //Title: 3038. Maximum Number of Operations With the Same Score I
+        //Link: https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i
+        //Tags: Array, Simulation
+        public static int MaxOperations(int[] nums)
+        {
+            int counter = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < nums.Length; i++) q.Enqueue(nums[i]);
+            int sum = 0;
+            if (q.Count >= 2)
+            {
+                sum += q.Dequeue();
+                sum += q.Dequeue();
+                counter++;
+            }
+            int target = 0;
+            while (q.Count >= 2)
+            {
+                target += q.Dequeue();
+                target += q.Dequeue();
+                if (target == sum)
+                {
+                    counter++;
+                    target = 0;
+                }
+                else break;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
