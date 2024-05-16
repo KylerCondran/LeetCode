@@ -6493,6 +6493,24 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 1758. Minimum Changes To Make Alternating Binary String
+        //Link: https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string
+        //Tags: String
+        public static int MinOperations(string s)
+        {
+            int zeroerrors = 0;
+            int oneerrors = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (i % 2 == 0) { if (val != '0') zeroerrors++; }
+                else { if (val != '1') zeroerrors++; }
+                if (i % 2 == 0) { if (val != '1') oneerrors++; }
+                else { if (val != '0') oneerrors++; }
+            }
+            if (zeroerrors < oneerrors) return zeroerrors;
+            else return oneerrors;
+        }
     }
     #endregion
     #region "Easy Classes"
