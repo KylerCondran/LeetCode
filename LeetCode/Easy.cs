@@ -6546,6 +6546,31 @@ namespace LeetCode
             for (int i = 0; i < len; i++) ans[i] = a.IndexOf(arr[i]) + 1;
             return ans;
         }
+        //Title: 566. Reshape the Matrix
+        //Link: https://leetcode.com/problems/reshape-the-matrix
+        //Tags: Array, Matrix, Simulation
+        public static int[][] MatrixReshape(int[][] mat, int r, int c)
+        {
+            int lenx = mat[0].Length;
+            int leny = mat.Length;
+            int area = lenx * leny;
+            int targetarea = r * c;
+            List<int> a = new List<int>();
+            if (area != targetarea) return mat;
+            foreach (int[] i in mat) for (int j = 0; j < i.Length; j++) a.Add(i[j]);
+            int[][] ans = new int[r][];
+            int index = 0;
+            for (int i = 0; i < r; i++) ans[i] = new int[c];
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < c; j++)
+                {
+                    ans[i][j] = a[index];
+                    index++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
