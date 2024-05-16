@@ -6641,6 +6641,17 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1619. Mean of Array After Removing Some Elements
+        //Link: https://leetcode.com/problems/mean-of-array-after-removing-some-elements
+        //Tags: Array, Sorting
+        public static double TrimMean(int[] arr)
+        {
+            int len = arr.Length / 20;
+            Array.Sort(arr);
+            int sum = 0;
+            for (int i = len; i < arr.Length - len; i++) sum += arr[i];
+            return (double)sum / (double)(arr.Length - (len * 2));
+        }
     }
     #endregion
     #region "Easy Classes"
