@@ -6652,6 +6652,27 @@ namespace LeetCode
             for (int i = len; i < arr.Length - len; i++) sum += arr[i];
             return (double)sum / (double)(arr.Length - (len * 2));
         }
+        //Title: 2248. Intersection of Multiple Arrays
+        //Link: https://leetcode.com/problems/intersection-of-multiple-arrays
+        //Tags: Array, Hash Table, Sorting, Counting
+        public static IList<int> Intersection(int[][] nums)
+        {
+            int len = nums.Length;
+            List<int> ans = new List<int>();
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            foreach (int[] i in nums)
+            {
+                for (int j = 0; j < i.Length; j++)
+                {
+                    int val = i[j];
+                    if (!a.ContainsKey(val)) a.Add(val, 1);
+                    else a[val]++;
+                }
+            }
+            foreach (KeyValuePair<int, int> i in a) if (i.Value == len) ans.Add(i.Key);
+            ans.Sort();
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
