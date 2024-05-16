@@ -6414,6 +6414,20 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1089. Duplicate Zeros
+        //Link: https://leetcode.com/problems/duplicate-zeros
+        //Tags: Array, Two Pointers
+        public static void DuplicateZeros(int[] arr)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int val = arr[i];
+                a.Add(val);
+                if (val == 0) a.Add(val);
+            }
+            for (int i = 0; i < arr.Length; i++) arr[i] = a[i];
+        }
     }
     #endregion
     #region "Easy Classes"
