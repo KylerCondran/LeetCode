@@ -6701,6 +6701,21 @@ namespace LeetCode
             if (maxone > maxzero) return true;
             else return false;
         }
+        //Title: 2148. Count Elements With Strictly Smaller and Greater Elements 
+        //Link: https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements
+        //Tags: Array, Sorting
+        public static int CountElements(int[] nums)
+        {
+            int max = nums.Max();
+            int min = nums.Min();
+            int counter = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val != max && val != min) counter++;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
