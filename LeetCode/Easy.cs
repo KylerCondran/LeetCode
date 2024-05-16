@@ -6529,6 +6529,23 @@ namespace LeetCode
             for (int i = 0; i < a.Count; i++) for (int j = 0; j < a.Count; j++) if (j != i && a[j] + a[i] == k) return true;
             return false;
         }
+        //Title: 1331. Rank Transform of an Array
+        //Link: https://leetcode.com/problems/rank-transform-of-an-array
+        //Tags: Array, Hash Table, Sorting
+        public static int[] ArrayRankTransform(int[] arr)
+        {
+            List<int> a = new List<int>();
+            int len = arr.Length;
+            int[] ans = new int[len];
+            for (int i = 0; i < len; i++)
+            {
+                int val = arr[i];
+                if (!a.Contains(val)) a.Add(val);
+            }
+            a.Sort();
+            for (int i = 0; i < len; i++) ans[i] = a.IndexOf(arr[i]) + 1;
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
