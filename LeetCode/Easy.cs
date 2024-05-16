@@ -6731,6 +6731,22 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 476. Number Complement
+        //Link: https://leetcode.com/problems/number-complement
+        //Tags: Bit Manipulation
+        public static int FindComplement(int num)
+        {
+            string binary = Convert.ToString(num, 2);
+            string final = "";
+            for (int i = 0; i < binary.Length; i++)
+            {
+                char val = binary[i];
+                if (val == '1') final += "0";
+                else if (val == '0') final += "1";
+            }
+            int number = Convert.ToInt32(final, 2);
+            return number;
+        }
     }
     #endregion
     #region "Easy Classes"
