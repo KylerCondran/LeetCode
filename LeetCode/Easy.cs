@@ -6617,6 +6617,16 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1460. Make Two Arrays Equal by Reversing Subarrays
+        //Link: https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays
+        //Tags: Array, Hash Table, Sorting
+        public static bool CanBeEqual(int[] target, int[] arr)
+        {
+            Array.Sort(target);
+            Array.Sort(arr);
+            for (int i = 0; i < target.Length; i++) if (target[i] != arr[i]) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
