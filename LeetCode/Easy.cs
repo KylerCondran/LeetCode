@@ -6457,6 +6457,42 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1694. Reformat Phone Number
+        //Link: https://leetcode.com/problems/reformat-phone-number
+        //Tags: String
+        public static string ReformatNumber(string number)
+        {
+            string stripped = "";
+            for (int i = 0; i < number.Length; i++)
+            {
+                char val = number[i];
+                if (Char.IsDigit(val)) stripped += val;
+            }
+            int remaining = stripped.Length;
+            string final = "";
+            int index = 0;
+            while (remaining > 4)
+            {
+                final += stripped.Substring(index, 3) + "-";
+                index += 3;
+                remaining -= 3;
+            }
+            switch (remaining)
+            {
+                case 2:
+                    final += stripped.Substring(index, 2);
+                    break;
+                case 3:
+                    final += stripped.Substring(index, 3);
+                    break;
+                case 4:
+                    final += stripped.Substring(index, 2) + "-";
+                    index += 2;
+                    final += stripped.Substring(index, 2);
+                    break;
+            }
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
