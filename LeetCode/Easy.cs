@@ -6627,6 +6627,20 @@ namespace LeetCode
             for (int i = 0; i < target.Length; i++) if (target[i] != arr[i]) return false;
             return true;
         }
+        //Title: 2980. Check if Bitwise OR Has Trailing Zeros
+        //Link: https://leetcode.com/problems/check-if-bitwise-or-has-trailing-zeros
+        //Tags: Array, Bit Manipulation
+        public static bool HasTrailingZeros(int[] nums)
+        {
+            int counter = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val % 2 == 0) counter++;
+                if (counter > 1) return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
