@@ -6571,6 +6571,22 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 485. Max Consecutive Ones
+        //Link: https://leetcode.com/problems/max-consecutive-ones
+        //Tags: Array
+        public static int FindMaxConsecutiveOnes(int[] nums)
+        {
+            int max = 0;
+            int counter = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 1) counter++;
+                else counter = 0;
+                max = Math.Max(max, counter);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
