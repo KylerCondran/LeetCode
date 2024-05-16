@@ -6716,6 +6716,21 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2869. Minimum Operations to Collect Elements
+        //Link: https://leetcode.com/problems/minimum-operations-to-collect-elements
+        //Tags: Array, Hash Table, Bit Manipulation
+        public static int MinOperations(IList<int> nums, int k)
+        {
+            int[] a = new int[k];
+            int counter = 0;
+            foreach (int i in nums.Reverse())
+            {
+                if (i > 0 && i <= k) a[i - 1] = i;
+                counter++;
+                if (!a.Contains(0)) break;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
