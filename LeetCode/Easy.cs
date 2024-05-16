@@ -6587,6 +6587,36 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2363. Merge Similar Items
+        //Link: https://leetcode.com/problems/merge-similar-items
+        //Tags: Array, Hash Table, Sorting, Ordered Set
+        public static IList<IList<int>> MergeSimilarItems(int[][] items1, int[][] items2)
+        {
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            List<IList<int>> ans = new List<IList<int>>();
+            foreach (int[] i in items1)
+            {
+                int val1 = i[0];
+                int val2 = i[1];
+                if (!a.ContainsKey(val1)) a.Add(val1, val2);
+                else a[val1] += val2;
+            }
+            foreach (int[] i in items2)
+            {
+                int val1 = i[0];
+                int val2 = i[1];
+                if (!a.ContainsKey(val1)) a.Add(val1, val2);
+                else a[val1] += val2;
+            }
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                List<int> b = new List<int>();
+                b.Add(i.Key);
+                b.Add(i.Value);
+                ans.Add(b);
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
