@@ -6673,6 +6673,34 @@ namespace LeetCode
             ans.Sort();
             return ans;
         }
+        //Title: 1869. Longer Contiguous Segments of Ones than Zeros
+        //Link: https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros
+        //Tags: String
+        public static bool CheckZeroOnes(string s)
+        {
+            int maxone = 0;
+            int maxzero = 0;
+            int onecounter = 0;
+            int zerocounter = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                int val = s[i];
+                if (val == '1')
+                {
+                    onecounter++;
+                    zerocounter = 0;
+                }
+                if (val == '0')
+                {
+                    zerocounter++;
+                    onecounter = 0;
+                }
+                maxone = Math.Max(maxone, onecounter);
+                maxzero = Math.Max(maxzero, zerocounter);
+            }
+            if (maxone > maxzero) return true;
+            else return false;
+        }
     }
     #endregion
     #region "Easy Classes"
