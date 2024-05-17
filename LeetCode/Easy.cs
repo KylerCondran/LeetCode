@@ -6849,6 +6849,33 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1805. Number of Different Integers in a String
+        //Link: https://leetcode.com/problems/number-of-different-integers-in-a-string
+        //Tags: Hash Table, String
+        public static int NumDifferentIntegers(string word)
+        {
+            string stripped = "";
+            for (int i = 0; i < word.Length; i++)
+            {
+                char val = word[i];
+                if (Char.IsDigit(val)) stripped += val;
+                else stripped += " ";
+            }
+            while (stripped.Contains("  "))
+            {
+                stripped = stripped.Replace("  ", " ");
+            }
+            stripped = stripped.Trim();
+            if (stripped == "") return 0;
+            string[] a = stripped.Split(' ');
+            List<BigInteger> b = new List<BigInteger>();
+            foreach (string i in a)
+            {
+                BigInteger.TryParse(i, out BigInteger digits);
+                if (!b.Contains(digits)) b.Add(digits);
+            }
+            return b.Count;
+        }
     }
     #endregion
     #region "Easy Classes"
