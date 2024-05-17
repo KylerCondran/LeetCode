@@ -7105,6 +7105,54 @@ namespace LeetCode
             }
             return sum - (samedepth * 3);
         }
+        //Title: 1417. Reformat The String
+        //Link: https://leetcode.com/problems/reformat-the-string
+        //Tags: String
+        public static string Reformat(string s)
+        {
+            string nums = "";
+            string lets = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (Char.IsDigit(val)) nums += val;
+                else lets += val;
+            }
+            if (Math.Abs(nums.Length - lets.Length) > 1) return "";
+            string final = "";
+            int numindex = 0;
+            int letsindex = 0;
+            for (int i = 0; i < nums.Length + lets.Length; i++)
+            {
+                if (nums.Length >= lets.Length)
+                {
+                    if (i % 2 == 0)
+                    {
+                        final += nums[numindex];
+                        numindex++;
+                    }
+                    else
+                    {
+                        final += lets[letsindex];
+                        letsindex++;
+                    }
+                }
+                else if (nums.Length < lets.Length)
+                {
+                    if (i % 2 == 0)
+                    {
+                        final += lets[letsindex];
+                        letsindex++;
+                    }
+                    else
+                    {
+                        final += nums[numindex];
+                        numindex++;
+                    }
+                }
+            }
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
