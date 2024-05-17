@@ -6966,6 +6966,72 @@ namespace LeetCode
             ans[len - 1] = -1;
             return ans;
         }
+        //Title: 999. Available Captures for Rook
+        //Link: https://leetcode.com/problems/available-captures-for-rook
+        //Tags: Array, Matrix, Simulation
+        public static int NumRookCaptures(char[][] board)
+        {
+            int rookx = 0;
+            int rooky = 0;
+            int counter = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    char val = board[i][j];
+                    if (val == 'R')
+                    {
+                        rookx = j;
+                        rooky = i;
+                    }
+                }
+            }
+            //right
+            for (int i = rookx + 1; i < 8; i++)
+            {
+                char val = board[rooky][i];
+                if (val == 'B') break;
+                else if (val == 'p')
+                {
+                    counter++;
+                    break;
+                }
+            }
+            //left
+            for (int i = rookx - 1; i >= 0; i--)
+            {
+                char val = board[rooky][i];
+                if (val == 'B') break;
+                else if (val == 'p')
+                {
+                    counter++;
+                    break;
+                }
+            }
+            //up
+            for (int i = rooky - 1; i >= 0; i--)
+            {
+                char val = board[i][rookx];
+                if (val == 'B') break;
+                else if (val == 'p')
+                {
+                    counter++;
+                    break;
+                }
+            }
+            //down
+            for (int i = rooky + 1; i < 8; i++)
+            {
+                char val = board[i][rookx];
+                if (val == 'B') break;
+                else if (val == 'p')
+                {
+                    counter++;
+                    break;
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
