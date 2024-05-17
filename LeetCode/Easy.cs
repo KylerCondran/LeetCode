@@ -7227,6 +7227,29 @@ namespace LeetCode
             uint number = Convert.ToUInt32(backwards, 2);
             return number;
         }
+        //Title: 2404. Most Frequent Even Element
+        //Link: https://leetcode.com/problems/most-frequent-even-element
+        //Tags: Array, Hash Table, Counting
+        public static int MostFrequentEven(int[] nums)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            List<int> b = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val % 2 == 0)
+                {
+                    if (!a.ContainsKey(val)) a.Add(val, 1);
+                    else a[val]++;
+                }
+            }
+            if (a.Count == 0) return -1;
+            int max = 0;
+            foreach (KeyValuePair<int, int> i in a) max = Math.Max(max, i.Value);
+            foreach (KeyValuePair<int, int> i in a) if (i.Value == max) b.Add(i.Key);
+            b.Sort();
+            return b[0];
+        }
     }
     #endregion
     #region "Easy Classes"
