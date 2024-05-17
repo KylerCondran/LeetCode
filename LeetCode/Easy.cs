@@ -7078,6 +7078,33 @@ namespace LeetCode
             ans[1] = b[0];
             return ans;
         }
+        //Title: 2937. Make Three Strings Equal
+        //Link: https://leetcode.com/problems/make-three-strings-equal
+        //Tags: String
+        public static int FindMinimumOperations(string s1, string s2, string s3)
+        {
+            List<int> a = new List<int>();
+            a.Add(s1.Length);
+            a.Add(s2.Length);
+            a.Add(s3.Length);
+            a.Sort();
+            int sum = s1.Length + s2.Length + s3.Length;
+            int samedepth = 0;
+            for (int i = 0; i < a[0]; i++)
+            {
+                if (i == 0)
+                {
+                    if (s1[i] != s2[i] || s1[i] != s3[i] || s2[i] != s3[i]) return -1;
+                    else samedepth++;
+                }
+                else
+                {
+                    if (s1[i] != s2[i] || s1[i] != s3[i] || s2[i] != s3[i]) break;
+                    else samedepth++;
+                }
+            }
+            return sum - (samedepth * 3);
+        }
     }
     #endregion
     #region "Easy Classes"
