@@ -7056,6 +7056,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 645. Set Mismatch
+        //Link: https://leetcode.com/problems/set-mismatch
+        //Tags: Array, Hash Table, Bit Manipulation, Sorting
+        public static int[] FindErrorNums(int[] nums)
+        {
+            Array.Sort(nums);
+            int[] ans = new int[2];
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            int dupe = 0;
+            for (int i = 0; i < nums.Length; i++) b.Add(i + 1);
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.Contains(val)) a.Add(val);
+                else dupe = val;
+                if (b.Contains(val)) b.Remove(val);
+            }
+            ans[0] = dupe;
+            ans[1] = b[0];
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
