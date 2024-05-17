@@ -7153,6 +7153,23 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 1961. Check If String Is a Prefix of Array
+        //Link: https://leetcode.com/problems/check-if-string-is-a-prefix-of-array
+        //Tags: Array, Two Pointers, String
+        public static bool IsPrefixString(string s, string[] words)
+        {
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (s == "") return true;
+                string val = words[i];
+                int len = val.Length;
+                if (len > s.Length) return false;
+                if (s.Substring(0, len) == val) s = s.Remove(0, len);
+                else return false;
+            }
+            if (s.Length > 0) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
