@@ -7177,5 +7177,28 @@ namespace LeetCode
             return ans;
         }
     }
+    //Title: 705. Design HashSet
+    //Link: https://leetcode.com/problems/design-hashset
+    //Tags: Array, Hash Table, Linked List, Design, Hash Function
+    public class MyHashSet
+    {
+        List<int> a;
+        public MyHashSet()
+        {
+            a = new List<int>();
+        }
+        public void Add(int key)
+        {
+            if (!a.Contains(key)) a.Add(key);
+        }
+        public void Remove(int key)
+        {
+            if (a.Contains(key)) a.Remove(key);
+        }
+        public bool Contains(int key)
+        {
+            return a.Contains(key);
+        }
+    }
     #endregion
 }
