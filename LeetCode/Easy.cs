@@ -6891,6 +6891,32 @@ namespace LeetCode
             if (one == two || two == three || three == one) return "isosceles";
             return "none";
         }
+        //Title: 219. Contains Duplicate II
+        //Link: https://leetcode.com/problems/contains-duplicate-ii
+        //Tags: Array, Hash Table, Sliding Window
+        public static bool ContainsNearbyDuplicate(int[] nums, int k)
+        {
+            int len = nums.Length;
+            Queue<int> q = new Queue<int>();
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            if (k > len) k = len;
+            for (int i = 0; i < k; i++)
+            {
+                int val = nums[i];
+                q.Enqueue(val);
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else return true;
+            }
+            for (int i = k; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                q.Enqueue(val);
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else return true;
+                a.Remove(q.Dequeue());
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
