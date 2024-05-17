@@ -7170,6 +7170,34 @@ namespace LeetCode
             if (s.Length > 0) return false;
             return true;
         }
+        //Title: 2600. K Items With the Maximum Sum
+        //Link: https://leetcode.com/problems/k-items-with-the-maximum-sum
+        //Tags: Math, Greedy
+        public static int KItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k)
+        {
+            int sum = 0;
+            for (int i = 0; i < k; i++)
+            {
+                if (numOnes > 0)
+                {
+                    sum++;
+                    numOnes--;
+                    continue;
+                }
+                if (numZeros > 0)
+                {
+                    numZeros--;
+                    continue;
+                }
+                if (numNegOnes > 0)
+                {
+                    sum--;
+                    numNegOnes--;
+                    continue;
+                }
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
