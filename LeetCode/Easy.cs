@@ -6917,6 +6917,35 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 2239. Find Closest Number to Zero
+        //Link: https://leetcode.com/problems/find-closest-number-to-zero
+        //Tags: Array
+        public static int FindClosestNumber(int[] nums)
+        {
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            if (nums.Length == 1) return nums[0];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 0) return 0;
+                if (val > 0) { if (!a.Contains(val)) a.Add(val); }
+                else if (val < 0) { if (!b.Contains(val)) b.Add(val); }
+            }
+            a.Sort();
+            b.Sort();
+            b.Reverse();
+            if (a.Count > 0 && b.Count > 0)
+            {
+                int aa = a[0];
+                int bb = b[0];
+                if (Math.Abs(aa) <= Math.Abs(bb)) return aa;
+                else return bb;
+            }
+            if (a.Count > 0) return a[0];
+            if (b.Count > 0) return b[0];
+            return 0;
+        }
     }
     #endregion
     #region "Easy Classes"
