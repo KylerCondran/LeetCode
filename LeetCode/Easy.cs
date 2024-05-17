@@ -7214,6 +7214,19 @@ namespace LeetCode
             int number = Convert.ToInt32(final, 2);
             return number;
         }
+        //Title: 190. Reverse Bits
+        //Link: https://leetcode.com/problems/reverse-bits
+        //Tags: Divide and Conquer, Bit Manipulation
+        public static uint reverseBits(uint n)
+        {
+            string binary = Convert.ToString(n, 2);
+            char[] charArray = binary.ToCharArray();
+            Array.Reverse(charArray);
+            string backwards = new string(charArray);
+            for (int i = backwards.Length; i < 32; i++) backwards += '0';
+            uint number = Convert.ToUInt32(backwards, 2);
+            return number;
+        }
     }
     #endregion
     #region "Easy Classes"
