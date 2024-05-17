@@ -6747,6 +6747,46 @@ namespace LeetCode
             int number = Convert.ToInt32(final, 2);
             return number;
         }
+        //Title: 1582. Special Positions in a Binary Matrix
+        //Link: https://leetcode.com/problems/special-positions-in-a-binary-matrix
+        //Tags: Array, Matrix
+        public static int NumSpecial(int[][] mat)
+        {
+            int counter = 0;
+            int lenx = mat[0].Length;
+            int leny = mat.Length;
+            List<int> row = new List<int>();
+            List<int> column = new List<int>();
+            for (int i = 0; i < leny; i++)
+            {
+                int onecount = 0;
+                for (int j = 0; j < lenx; j++)
+                {
+                    int val = mat[i][j];
+                    if (val == 1) onecount++;
+                }
+                if (onecount == 1) row.Add(i);
+            }
+            for (int i = 0; i < lenx; i++)
+            {
+                int onecount = 0;
+                for (int j = 0; j < leny; j++)
+                {
+                    int val = mat[j][i];
+                    if (val == 1) onecount++;
+                }
+                if (onecount == 1) column.Add(i);
+            }
+            for (int i = 0; i < leny; i++)
+            {
+                for (int j = 0; j < lenx; j++)
+                {
+                    int val = mat[i][j];
+                    if (val == 1) if (row.Contains(i) && column.Contains(j)) counter++;
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
