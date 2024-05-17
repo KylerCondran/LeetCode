@@ -6876,6 +6876,21 @@ namespace LeetCode
             }
             return b.Count;
         }
+        //Title: 3024. Type of Triangle
+        //Link: https://leetcode.com/problems/type-of-triangle
+        //Tags: Array, Math, Sorting
+        public static string TriangleType(int[] nums)
+        {
+            Array.Sort(nums);
+            int one = nums[0];
+            int two = nums[1];
+            int three = nums[2];
+            if (one + two <= three) return "none";
+            if (one == two && two == three) return "equilateral";
+            if (one != two && two != three && three != one) return "scalene";
+            if (one == two || two == three || three == one) return "isosceles";
+            return "none";
+        }
     }
     #endregion
     #region "Easy Classes"
