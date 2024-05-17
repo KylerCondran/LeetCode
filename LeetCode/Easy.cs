@@ -6832,6 +6832,23 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1346. Check If N and Its Double Exist
+        //Link: https://leetcode.com/problems/check-if-n-and-its-double-exist
+        //Tags: Array, Hash Table, Two Pointers, Binary Search, Sorting
+        public static bool CheckIfExist(int[] arr)
+        {
+            int len = arr.Length;
+            for (int i = 0; i < len; i++)
+            {
+                int val1 = arr[i];
+                for (int j = 0; j < len; j++)
+                {
+                    int val2 = arr[j];
+                    if (j != i) if (val1 == val2 * 2 || val2 == val1 * 2) return true;
+                }
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
