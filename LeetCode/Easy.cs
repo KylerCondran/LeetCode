@@ -6946,6 +6946,26 @@ namespace LeetCode
             if (b.Count > 0) return b[0];
             return 0;
         }
+        //Title: 1299. Replace Elements with Greatest Element on Right Side
+        //Link: https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side
+        //Tags: Array
+        public static int[] ReplaceElements(int[] arr)
+        {
+            int len = arr.Length;
+            int[] ans = new int[len];
+            for (int j = 0; j < len - 1; j++)
+            {
+                int max = 0;
+                for (int i = len - 1; i > j; i--)
+                {
+                    int val = arr[i];
+                    max = Math.Max(max, val);
+                }
+                ans[j] = max;
+            }
+            ans[len - 1] = -1;
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
