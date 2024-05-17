@@ -7032,6 +7032,30 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 989. Add to Array-Form of Integer
+        //Link: https://leetcode.com/problems/add-to-array-form-of-integer
+        //Tags: Array, Math
+        public static IList<int> AddToArrayForm(int[] num, int k)
+        {
+            List<int> ans = new List<int>();
+            string nums = "";
+            for (int i = 0; i < num.Length; i++)
+            {
+                int val = num[i];
+                nums += val.ToString();
+            }
+            BigInteger sum = 0;
+            BigInteger.TryParse(nums, out BigInteger digits);
+            sum = digits + k;
+            string sumstring = sum.ToString();
+            for (int i = 0; i < sumstring.Length; i++)
+            {
+                char val = sumstring[i];
+                int.TryParse(val + "", out int digit);
+                ans.Add(digit);
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
