@@ -6787,6 +6787,21 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2395. Find Subarrays With Equal Sum
+        //Link: https://leetcode.com/problems/find-subarrays-with-equal-sum
+        //Tags: Array, Hash Table
+        public static bool FindSubarrays(int[] nums)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i <= nums.Length - 2; i++)
+            {
+                int sum = 0;
+                for (int j = i; j < i + 2; j++) sum += nums[j];
+                if (!a.Contains(sum)) a.Add(sum);
+                else return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
