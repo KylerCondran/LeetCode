@@ -6802,6 +6802,36 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 2373. Largest Local Values in a Matrix
+        //Link: https://leetcode.com/problems/largest-local-values-in-a-matrix
+        //Tags: Array, Matrix
+        public static int[][] LargestLocal(int[][] grid)
+        {
+            int lenx = grid[0].Length - 2;
+            int leny = grid.Length - 2;
+            List<int> a = new List<int>();
+            for (int y = 0; y < leny; y++)
+            {
+                for (int i = 0; i < lenx; i++)
+                {
+                    int max = 0;
+                    for (int j = y; j < y + 3; j++) for (int t = i; t < i + 3; t++) max = Math.Max(max, grid[j][t]);
+                    a.Add(max);
+                }
+            }
+            int[][] ans = new int[leny][];
+            int index = 0;
+            for (int i = 0; i < leny; i++) ans[i] = new int[lenx];
+            for (int i = 0; i < leny; i++)
+            {
+                for (int j = 0; j < lenx; j++)
+                {
+                    ans[i][j] = a[index];
+                    index++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
