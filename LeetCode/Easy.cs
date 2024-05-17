@@ -7198,6 +7198,22 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 1009. Complement of Base 10 Integer
+        //Link: https://leetcode.com/problems/complement-of-base-10-integer
+        //Tags: Bit Manipulation
+        public static int BitwiseComplement(int n)
+        {
+            string binary = Convert.ToString(n, 2);
+            string final = "";
+            for (int i = 0; i < binary.Length; i++)
+            {
+                char val = binary[i];
+                if (val == '1') final += "0";
+                else if (val == '0') final += "1";
+            }
+            int number = Convert.ToInt32(final, 2);
+            return number;
+        }
     }
     #endregion
     #region "Easy Classes"
