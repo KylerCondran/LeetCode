@@ -7472,6 +7472,34 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1437. Check If All 1's Are at Least Length K Places Away
+        //Link: https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away
+        //Tags: Array
+        public static bool KLengthApart(int[] nums, int k)
+        {
+            if (k == 0) return true;
+            bool warning = false;
+            int count = k;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 1)
+                {
+                    if (warning) return false;
+                    else warning = true;
+                }
+                else
+                {
+                    count--;
+                    if (count == 0)
+                    {
+                        warning = false;
+                        count = k;
+                    }
+                }
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
