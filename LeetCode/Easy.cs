@@ -7523,6 +7523,33 @@ namespace LeetCode
             foreach (int i in a) sum += (int)Math.Pow(i, 2);
             return sum;
         }
+        //Title: 832. Flipping an Image
+        //Link: https://leetcode.com/problems/flipping-an-image
+        //Tags: Array, Two Pointers, Bit Manipulation, Matrix, Simulation
+        public static int[][] FlipAndInvertImage(int[][] image)
+        {
+            int lenx = image[0].Length;
+            int leny = image.Length;
+            int[][] ans = new int[leny][];
+            for (int i = 0; i < leny; i++) ans[i] = new int[lenx];
+            for (int i = 0; i < leny; i++)
+            {
+                int[] temp = new int[lenx];
+                for (int j = 0; j < lenx; j++) temp[j] = image[i][j];
+                Array.Reverse(temp);
+                for (int j = 0; j < lenx; j++) ans[i][j] = temp[j];
+            }
+            for (int i = 0; i < leny; i++)
+            {
+                for (int j = 0; j < lenx; j++)
+                {
+                    int val = ans[i][j];
+                    if (val == 1) ans[i][j] = 0;
+                    else ans[i][j] = 1;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
