@@ -7350,6 +7350,24 @@ namespace LeetCode
             foreach (KeyValuePair<int, int> i in a) if (i.Value == max) return i.Key;
             return -1;
         }
+        //Title: 504. Base 7
+        //Link: https://leetcode.com/problems/base-7
+        //Tags: Math
+        public static string ConvertToBase7(int num)
+        {
+            bool negative = false;
+            if (num < 0) negative = true;
+            num = Math.Abs(num);
+            string result = string.Empty;
+            do
+            {
+                result = "0123456789ABCDEF"[num % 7] + result;
+                num /= 7;
+            }
+            while (num > 0);
+            if (negative) result = "-" + result;
+            return result;
+        }
     }
     #endregion
     #region "Easy Classes"
