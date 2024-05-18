@@ -7250,6 +7250,27 @@ namespace LeetCode
             b.Sort();
             return b[0];
         }
+        //Title: 1389. Create Target Array in the Given Order
+        //Link: https://leetcode.com/problems/create-target-array-in-the-given-order
+        //Tags: Array, Simulation
+        public static int[] CreateTargetArray(int[] nums, int[] index)
+        {
+            int[] a = new int[nums.Length];
+            List<int> b = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                int pos = index[i];
+                b.Insert(pos, val);
+            }
+            int loc = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                a[loc] = b[loc];
+                loc++;
+            }
+            return a;
+        }
     }
     #endregion
     #region "Easy Classes"
