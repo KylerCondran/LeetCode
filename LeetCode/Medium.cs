@@ -4133,7 +4133,49 @@ namespace LeetCode
                 }
             }
             return sb.ToString();
-        }   
+        }
+        //Title: 2186. Minimum Number of Steps to Make Two Strings Anagram II
+        //Link: https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii
+        //Tags: Hash Table, String, Counting
+        public static int MinSteps2(string s, string t)
+        {
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            Dictionary<char, int> b = new Dictionary<char, int>();
+            int counter = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            for (int i = 0; i < t.Length; i++)
+            {
+                char val = t[i];
+                if (!b.ContainsKey(val)) b.Add(val, 1);
+                else b[val]++;
+            }
+            for (int i = 0; i < t.Length; i++)
+            {
+                char val = t[i];
+                if (a.ContainsKey(val))
+                {
+                    a[val]--;
+                    if (a[val] == 0) a.Remove(val);
+                }
+            }
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (b.ContainsKey(val))
+                {
+                    b[val]--;
+                    if (b[val] == 0) b.Remove(val);
+                }
+            }
+            foreach (KeyValuePair<char, int> i in a) counter += i.Value;
+            foreach (KeyValuePair<char, int> i in b) counter += i.Value;
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
