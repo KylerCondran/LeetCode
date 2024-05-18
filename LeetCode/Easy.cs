@@ -7500,6 +7500,29 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2913. Subarrays Distinct Element Sum of Squares I
+        //Link: https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i
+        //Tags: Array, Hash Table
+        public static int SumCounts(IList<int> nums)
+        {
+            List<int> a = new List<int>();
+            int sum = 0;
+            for (int d = 1; d <= nums.Count; d++)
+            {
+                for (int i = 0; i <= nums.Count - d; i++)
+                {
+                    List<int> b = new List<int>();
+                    for (int j = i; j < i + d; j++)
+                    {
+                        int val = nums[j];
+                        if (!b.Contains(val)) b.Add(val);
+                    }
+                    a.Add(b.Count);
+                }
+            }
+            foreach (int i in a) sum += (int)Math.Pow(i, 2);
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
