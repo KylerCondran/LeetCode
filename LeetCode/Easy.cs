@@ -7564,6 +7564,24 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 2176. Count Equal and Divisible Pairs in an Array
+        //Link: https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array
+        //Tags: Array
+        public static int CountPairs(int[] nums, int k)
+        {
+            int len = nums.Length;
+            int counter = 0;
+            for (int i = 0; i < len; i++)
+            {
+                int val1 = nums[i];
+                for (int j = 0; j < len; j++)
+                {
+                    int val2 = nums[j];
+                    if (j != i && val1 == val2) if ((i * j) % k == 0) counter++;
+                }
+            }
+            return counter / 2;
+        }
     }
     #endregion
     #region "Easy Classes"
