@@ -7550,6 +7550,20 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2778. Sum of Squares of Special Elements
+        //Link: https://leetcode.com/problems/sum-of-squares-of-special-elements
+        //Tags: Array, Enumeration
+        public static int SumOfSquares(int[] nums)
+        {
+            int len = nums.Length;
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (len % (i + 1) == 0) sum += val * val;
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
