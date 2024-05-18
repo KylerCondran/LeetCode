@@ -7299,6 +7299,30 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1399. Count Largest Group
+        //Link: https://leetcode.com/problems/count-largest-group
+        //Tags: Hash Table, Math
+        public static int CountLargestGroup(int n)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 1; i <= n; i++)
+            {
+                int sum = 0;
+                string num = i.ToString();
+                for (int j = 0; j < num.Length; j++)
+                {
+                    int.TryParse(num[j] + "", out int digit);
+                    sum += digit;
+                }
+                if (!a.ContainsKey(sum)) a.Add(sum, 1);
+                else a[sum]++;
+            }
+            int max = 0;
+            int counter = 0;
+            foreach (KeyValuePair<int, int> i in a) max = Math.Max(max, i.Value);
+            foreach (KeyValuePair<int, int> i in a) if (i.Value == max) counter++;
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
