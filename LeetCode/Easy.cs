@@ -7451,6 +7451,27 @@ namespace LeetCode
             if (a.Contains((double)n)) return true;
             return false;
         }
+        //Title: 2273. Find Resultant Array After Removing Anagrams
+        //Link: https://leetcode.com/problems/find-resultant-array-after-removing-anagrams
+        //Tags: Array, Hash Table, String, Sorting
+        public static IList<string> RemoveAnagrams(string[] words)
+        {
+            string LastAnagram = "";
+            List<string> ans = new List<string>();
+            for (int i = 0; i < words.Length; i++)
+            {
+                string val = words[i];
+                char[] array = val.ToCharArray();
+                Array.Sort(array);
+                string sorted = new String(array);
+                if (sorted != LastAnagram)
+                {
+                    ans.Add(val);
+                    LastAnagram = sorted;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
