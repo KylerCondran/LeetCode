@@ -7582,6 +7582,39 @@ namespace LeetCode
             }
             return counter / 2;
         }
+        //Title: 1356. Sort Integers by The Number of 1 Bits
+        //Link: https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits
+        //Tags: Array, Bit Manipulation, Sorting, Counting
+        public int[] SortByBits(int[] arr)
+        {
+            SortedDictionary<int, List<int>> a = new SortedDictionary<int, List<int>>();
+            int[] ans = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int val = arr[i];
+                int count = 0;
+                string binary = Convert.ToString(val, 2);
+                for (int j = 0; j < binary.Length; j++)
+                {
+                    char letter = binary[j];
+                    if (letter == '1') count++;
+                }
+                if (!a.ContainsKey(count)) a.Add(count, new List<int> { val });
+                else a[count].Add(val);
+            }
+            int index = 0;
+            foreach (KeyValuePair<int, List<int>> i in a)
+            {
+                List<int> b = i.Value;
+                b.Sort();
+                foreach (int j in b)
+                {
+                    ans[index] = j;
+                    index++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
