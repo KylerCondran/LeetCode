@@ -7392,6 +7392,47 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 1909. Remove One Element to Make the Array Strictly Increasing
+        //Link: https://leetcode.com/problems/remove-one-element-to-make-the-array-strictly-increasing
+        //Tags: Array
+        public static bool CanBeIncreasing(int[] nums)
+        {
+            bool increasing = true;
+            int start = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val <= start)
+                {
+                    increasing = false;
+                    break;
+                }
+                start = val;
+            }
+            if (increasing) return true;
+            int index = 0;
+            for (int m = 0; m < nums.Length; m++)
+            {
+                bool increase = true;
+                int startval = 0;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (i != index)
+                    {
+                        int val = nums[i];
+                        if (val <= startval)
+                        {
+                            increase = false;
+                            break;
+                        }
+                        startval = val;
+                    }
+                }
+                index++;
+                if (increase) return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
