@@ -7323,6 +7323,13 @@ namespace LeetCode
             foreach (KeyValuePair<int, int> i in a) if (i.Value == max) counter++;
             return counter;
         }
+        //Title: 1688. Count of Matches in Tournament
+        //Link: https://leetcode.com/problems/count-of-matches-in-tournament
+        //Tags: Math, Simulation
+        public static int NumberOfMatches(int n)
+        {
+            return n - 1;
+        }
     }
     #endregion
     #region "Easy Classes"
