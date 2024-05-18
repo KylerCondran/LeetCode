@@ -7368,6 +7368,30 @@ namespace LeetCode
             if (negative) result = "-" + result;
             return result;
         }
+        //Title: 100. Same Tree
+        //Link: https://leetcode.com/problems/same-tree
+        //Tags: Tree, Depth-First Search, Breadth-First Search, Binary Tree
+        public static bool IsSameTree(TreeNode p, TreeNode q)
+        {
+            if (p == null && q == null) return true;
+            if (p == null && q != null || p != null && q == null) return false;
+            Queue<TreeNode> q1 = new Queue<TreeNode>();
+            Queue<TreeNode> q2 = new Queue<TreeNode>();
+            q1.Enqueue(p);
+            q2.Enqueue(q);
+            while (q1.Count > 0)
+            {
+                TreeNode T = q1.Dequeue();
+                TreeNode Y = q2.Dequeue();
+                if (T.val != Y.val) return false;
+                if (T.left == null && Y.left != null || T.left != null && Y.left == null || T.right == null && Y.right != null || T.right != null && Y.right == null) return false;
+                if (T.left != null) q1.Enqueue(T.left);
+                if (T.right != null) q1.Enqueue(T.right);
+                if (Y.left != null) q2.Enqueue(Y.left);
+                if (Y.right != null) q2.Enqueue(Y.right);
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
