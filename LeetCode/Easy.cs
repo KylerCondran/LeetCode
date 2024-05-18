@@ -7271,6 +7271,34 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 2423. Remove Letter To Equalize Frequency
+        //Link: https://leetcode.com/problems/remove-letter-to-equalize-frequency
+        //Tags: Hash Table, String, Counting
+        public static bool EqualFrequency(string word)
+        {
+            int index = 0;
+            for (int m = 0; m < word.Length; m++)
+            {
+                string wordthisround = "";
+                for (int j = 0; j < word.Length; j++) if (j != index) wordthisround += word[j];
+                index++;
+                Dictionary<char, int> a = new Dictionary<char, int>();
+                List<int> b = new List<int>();
+                for (int i = 0; i < word.Length - 1; i++)
+                {
+                    char val = wordthisround[i];
+                    if (!a.ContainsKey(val)) a.Add(val, 1);
+                    else a[val]++;
+                }
+                foreach (KeyValuePair<char, int> i in a)
+                {
+                    int val = i.Value;
+                    if (!b.Contains(val)) b.Add(val);
+                }
+                if (b.Count == 1) return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
