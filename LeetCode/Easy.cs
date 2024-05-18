@@ -7330,6 +7330,26 @@ namespace LeetCode
         {
             return n - 1;
         }
+        //Title: 1791. Find Center of Star Graph
+        //Link: https://leetcode.com/problems/find-center-of-star-graph
+        //Tags: Graph
+        public static int FindCenter(int[][] edges)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < edges.Length; i++)
+            {
+                int val1 = edges[i][0];
+                int val2 = edges[i][1];
+                if (!a.ContainsKey(val1)) a.Add(val1, 1);
+                else a[val1]++;
+                if (!a.ContainsKey(val2)) a.Add(val2, 1);
+                else a[val2]++;
+            }
+            int max = 0;
+            foreach (KeyValuePair<int, int> i in a) max = Math.Max(max, i.Value);
+            foreach (KeyValuePair<int, int> i in a) if (i.Value == max) return i.Key;
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
