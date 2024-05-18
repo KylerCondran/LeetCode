@@ -7433,6 +7433,24 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 326. Power of Three
+        //Link: https://leetcode.com/problems/power-of-three
+        //Tags: Math, Recursion
+        public static bool IsPowerOfThree(int n)
+        {
+            List<double> a = new List<double>();
+            int i = 0;
+            long val = 0;
+            while (val < 2147483647)
+            {
+                double ans = Math.Pow(3, i);
+                val = (long)ans;
+                if (val < 2147483647) a.Add(ans);
+                i++;
+            }
+            if (a.Contains((double)n)) return true;
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
