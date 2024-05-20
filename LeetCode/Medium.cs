@@ -4758,5 +4758,80 @@ namespace LeetCode
             return this.a[row][col];
         }
     }
+    //Title: 641. Design Circular Deque
+    //Link: https://leetcode.com/problems/design-circular-deque
+    //Tags: Array, Linked List, Design, Queue
+    public class MyCircularDeque
+    {
+        int cap;
+        List<int> a;
+        int count;
+        public MyCircularDeque(int k)
+        {
+            cap = k;
+            count = 0;
+            a = new List<int>();
+        }
+        public bool InsertFront(int value)
+        {
+            if (count < cap)
+            {
+                a.Insert(0, value);
+                count++;
+                return true;
+            }
+            else return false;
+        }
+        public bool InsertLast(int value)
+        {
+            if (count < cap)
+            {
+                a.Add(value);
+                count++;
+                return true;
+            }
+            else return false;
+        }
+        public bool DeleteFront()
+        {
+            if (count > 0)
+            {
+                a.Remove(a[0]);
+                count--;
+                return true;
+            }
+            else return false;
+        }
+        public bool DeleteLast()
+        {
+            if (count > 0)
+            {
+                a.RemoveAt(count - 1);
+                count--;
+                return true;
+            }
+            else return false;
+        }
+        public int GetFront()
+        {
+            if (count > 0) return a[0];
+            else return -1;
+        }
+        public int GetRear()
+        {
+            if (count > 0) return a[count - 1];
+            else return -1;
+        }
+        public bool IsEmpty()
+        {
+            if (count == 0) return true;
+            else return false;
+        }
+        public bool IsFull()
+        {
+            if (count == cap) return true;
+            else return false;
+        }
+    }
     #endregion
 }
