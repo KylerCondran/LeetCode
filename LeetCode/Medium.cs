@@ -4946,5 +4946,34 @@ namespace LeetCode
             return x;
         }
     }
+    //Title: 1352. Product of the Last K Numbers
+    //Link: https://leetcode.com/problems/product-of-the-last-k-numbers
+    //Tags: Array, Math, Design, Queue, Data Stream
+    public class ProductOfNumbers
+    {
+        List<int> a;
+        int index;
+        public ProductOfNumbers()
+        {
+            a = new List<int>();
+            index = 0;
+        }
+        public void Add(int num)
+        {
+            a.Add(num);
+            index++;
+        }
+        public int GetProduct(int k)
+        {
+            int pos = index;
+            int product = 1;
+            for (int i = 0; i < k; i++)
+            {
+                product *= a[pos - 1];
+                pos--;
+            }
+            return product;
+        }
+    }
     #endregion
 }
