@@ -4888,5 +4888,63 @@ namespace LeetCode
             else return false;
         }
     }
+    //Title: 1670. Design Front Middle Back Queue
+    //Link: https://leetcode.com/problems/design-front-middle-back-queue
+    //Tags: Array, Linked List, Design, Queue, Data Stream
+    public class FrontMiddleBackQueue
+    {
+        List<int> a;
+        int count;
+        public FrontMiddleBackQueue()
+        {
+            a = new List<int>();
+            count = 0;
+        }
+        public void PushFront(int val)
+        {
+            a.Add(val);
+            count++;
+        }
+        public void PushMiddle(int val)
+        {
+            int x = 0;
+            if (count % 2 == 0) x = count / 2;
+            else x = (count + 1) / 2;
+            a.Insert(x, val);
+            count++;
+        }
+        public void PushBack(int val)
+        {
+            a.Insert(0, val);
+            count++;
+        }
+        public int PopFront()
+        {
+            if (count == 0) { return -1; }
+            int x = a[count - 1];
+            a.RemoveAt(count - 1);
+            count--;
+            return x;
+        }
+        public int PopMiddle()
+        {
+            if (count == 0) { return -1; }
+            int x = 0;
+            if (count % 2 == 0) x = count / 2;
+            else x = ((count + 1) / 2) - 1;
+            int y = a[x];
+            a.RemoveAt(x);
+            count--;
+            return y;
+        }
+        public int PopBack()
+        {
+            if (count == 0) { return -1; }
+            int x = a[0];
+            a.RemoveAt(0);
+            count--;
+            return x;
+        }
+    }
     #endregion
 }
