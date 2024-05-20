@@ -4833,5 +4833,60 @@ namespace LeetCode
             else return false;
         }
     }
+    //Title: 622. Design Circular Queue
+    //Link: https://leetcode.com/problems/design-circular-queue
+    //Tags: Array, Linked List, Design, Queue
+    public class MyCircularQueue
+    {
+        int cap;
+        List<int> a;
+        int count;
+        public MyCircularQueue(int k)
+        {
+            cap = k;
+            count = 0;
+            a = new List<int>();
+        }
+        public bool EnQueue(int value)
+        {
+            if (count < cap)
+            {
+                a.Insert(0, value);
+                count++;
+                return true;
+            }
+            else return false;
+        }
+        public bool DeQueue()
+        {
+            if (count > 0)
+            {
+                a.RemoveAt(count - 1);
+                count--;
+                return true;
+            }
+            else return false;
+        }
+        public int Front()
+        {
+            if (count > 0) return a[count - 1];
+            else return -1;
+        }
+        public int Rear()
+        {
+            if (count > 0) return a[0];
+            else return -1;
+        }
+        public bool IsEmpty()
+        {
+            if (count == 0) return true;
+            else return false;
+        }
+        public bool IsFull()
+        {
+            if (count == cap) return true;
+            else return false;
+        }
+    }
     #endregion
 }
