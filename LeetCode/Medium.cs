@@ -4176,6 +4176,33 @@ namespace LeetCode
             foreach (KeyValuePair<char, int> i in b) counter += i.Value;
             return counter;
         }
+        //Title: 786. K-th Smallest Prime Fraction
+        //Link: https://leetcode.com/problems/k-th-smallest-prime-fraction
+        //Tags: Array, Two Pointers, Binary Search, Sorting, Heap (Priority Queue)
+        public static int[] KthSmallestPrimeFraction(int[] arr, int k)
+        {
+            SortedDictionary<double, int[]> a = new SortedDictionary<double, int[]>();
+            int len = arr.Length;
+            for (int i = 0; i < len; i++)
+            {
+                int val1 = arr[i];
+                for (int j = i + 1; j < len; j++)
+                {
+                    int val2 = arr[j];
+                    double fraction = (double)val1 / val2;
+                    a.Add(fraction, new int[2] { val1, val2 });
+                }
+            }
+            KeyValuePair<double, int[]> result;
+            for (int i = 0; i < k - 1; i++)
+            {
+                result = a.First();
+                a.Remove(result.Key);
+            }
+            result = a.First();
+            int[] ans = result.Value;
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
