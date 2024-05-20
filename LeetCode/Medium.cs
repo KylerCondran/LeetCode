@@ -4975,5 +4975,35 @@ namespace LeetCode
             return product;
         }
     }
+    //Title: 2526. Find Consecutive Integers from a Data Stream
+    //Link: https://leetcode.com/problems/find-consecutive-integers-from-a-data-stream
+    //Tags: Hash Table, Design, Queue, Counting, Data Stream
+    public class DataStream
+    {
+        List<int> a;
+        int index;
+        int val;
+        int amount;
+        public DataStream(int value, int k)
+        {
+            a = new List<int>();
+            index = 0;
+            val = value;
+            amount = k;
+        }
+        public bool Consec(int num)
+        {
+            a.Add(num);
+            index++;
+            if (index < amount) return false;
+            int pos = index;
+            for (int i = 0; i < amount; i++)
+            {
+                if (a[pos - 1] == val) pos--;
+                else return false;
+            }
+            return true;
+        }
+    }
     #endregion
 }
