@@ -4234,6 +4234,24 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 869. Reordered Power of 2
+        //Link: https://leetcode.com/problems/reordered-power-of-2
+        //Tags: Hash Table, Math, Sorting, Counting, Enumeration
+        public static bool ReorderedPowerOf2(int n)
+        {
+            char[] a = n.ToString().ToArray();
+            Array.Sort(a);
+            string final = new string(a);
+            for (int i = 0; i < 100000; i++)
+            {
+                int t = (int)Math.Pow(2, i);
+                char[] b = t.ToString().ToArray();
+                Array.Sort(b);
+                string temp = new string(b);
+                if (temp == final) return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Medium Classes"
