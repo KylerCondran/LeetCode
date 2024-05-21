@@ -4252,6 +4252,70 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 2091. Removing Minimum and Maximum From Array
+        //Link: https://leetcode.com/problems/removing-minimum-and-maximum-from-array
+        //Tags: Array, Greedy
+        public int MinimumDeletions(int[] nums)
+        {
+            int len = nums.Length;
+            if (len == 1) { return 1; }
+            int max = nums.Max();
+            int min = nums.Min();
+            int maxindex = Array.IndexOf(nums, max);
+            int minindex = Array.IndexOf(nums, min);
+            int mid = 0;
+            if (len % 2 == 0) mid = (len / 2) - 1;
+            else mid = ((len + 1) / 2) - 2;
+            if (maxindex <= mid && minindex <= mid)
+            {
+                if (maxindex > minindex) return maxindex + 1;
+                else if (minindex > maxindex) return minindex + 1;
+            }
+            if (maxindex > mid && minindex > mid)
+            {
+                if (maxindex > minindex) return (len - 1) - minindex + 1;
+                else if (minindex > maxindex) return (len - 1) - maxindex + 1;
+            }
+            int count = 0;
+            int left = 0;
+            int right = 0;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                count++;
+                if (val == max || val == min) break;
+            }
+            for (int i = len - 1; i >= 0; i--)
+            {
+                int val = nums[i];
+                count++;
+                if (val == max || val == min) break;
+            }
+            bool foundmin = false;
+            bool foundmax = false;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                left++;
+                if (val == max) foundmax = true;
+                if (val == min) foundmin = true;
+                if (foundmax && foundmin) break;
+            }
+            bool foundrmin = false;
+            bool foundrmax = false;
+            for (int i = len - 1; i >= 0; i--)
+            {
+                int val = nums[i];
+                right++;
+                if (val == max) foundrmax = true;
+                if (val == min) foundrmin = true;
+                if (foundrmax && foundrmin) break;
+            }
+            if (left <= right && left <= count) return left;
+            else if (right <= left && right <= count) return right;
+            else if (count <= left && count <= right) return count;
+            return count;
+        }
     }
     #endregion
     #region "Medium Classes"
