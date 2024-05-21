@@ -4203,6 +4203,37 @@ namespace LeetCode
             int[] ans = result.Value;
             return ans;
         }
+        //Title: 658. Find K Closest Elements
+        //Link: https://leetcode.com/problems/find-k-closest-elements
+        //Tags: Array, Two Pointers, Binary Search, Sliding Window, Sorting, Heap (Priority Queue)
+        public static IList<int> FindClosestElements(int[] arr, int k, int x)
+        {
+            SortedDictionary<int, List<int>> a = new SortedDictionary<int, List<int>>();
+            List<int> ans = new List<int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int diff = 0;
+                int val = arr[i];
+                diff = Math.Abs(val - x);
+                if (!a.ContainsKey(diff)) a.Add(diff, new List<int> { val });
+                else a[diff].Add(val);
+            }
+            int count = 0;
+            foreach (KeyValuePair<int, List<int>> i in a)
+            {
+                foreach (int j in i.Value)
+                {
+                    ans.Add(j);
+                    count++;
+                    if (count == k)
+                    {
+                        ans.Sort();
+                        return ans;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
