@@ -7615,6 +7615,31 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1200. Minimum Absolute Difference
+        //Link: https://leetcode.com/problems/minimum-absolute-difference
+        //Tags: Array, Sorting
+        public static IList<IList<int>> MinimumAbsDifference(int[] arr)
+        {
+            SortedDictionary<int, List<IList<int>>> a = new SortedDictionary<int, List<IList<int>>>();
+            int len = arr.Length;
+            Array.Sort(arr);
+            int min = Int32.MaxValue;
+            for (int i = 0; i < len - 1; i++)
+            {
+                int val1 = arr[i];
+                for (int j = i + 1; j < i + 2; j++)
+                {
+                    int val2 = arr[j];
+                    int diff = Math.Abs(val1 - val2);
+                    min = Math.Min(min, diff);
+                    if (diff > min) continue;
+                    if (!a.ContainsKey(min)) a.Add(min, new List<IList<int>> { new List<int> { val1, val2 } });
+                    else a[min].Add(new List<int> { val1, val2 });
+                }
+            }
+            KeyValuePair<int, List<IList<int>>> result = a.First();
+            return result.Value;
+        }
     }
     #endregion
     #region "Easy Classes"
