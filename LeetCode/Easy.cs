@@ -7693,6 +7693,41 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 859. Buddy Strings
+        //Link: https://leetcode.com/problems/buddy-strings
+        //Tags: Hash Table, String
+        public static bool BuddyStrings(string s, string goal)
+        {
+            int counter = 0;
+            if (s.Length != goal.Length) return false;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            Dictionary<char, int> b = new Dictionary<char, int>();
+            for (int i = 0; i < goal.Length; i++)
+            {
+                char val1 = s[i];
+                char val2 = goal[i];
+                if (val1 != val2) counter++;
+                if (!a.ContainsKey(val1)) a.Add(val1, 1);
+                else a[val1]++;
+                if (!b.ContainsKey(val2)) b.Add(val2, 1);
+                else b[val2]++;
+            }
+            if (s == goal)
+            {
+                bool overone = false;
+                foreach (KeyValuePair<char, int> i in a) if (i.Value > 1) overone = true;
+                if (overone == false) return false;
+                else return true;
+            }
+            foreach (KeyValuePair<char, int> i in a)
+            {
+                if (!b.ContainsKey(i.Key)) return false;
+                if (b[i.Key] != i.Value) return false;
+            }
+            if (a.Count == 1 && counter == 0) return true;
+            if (counter != 2) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
