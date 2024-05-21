@@ -7640,6 +7640,59 @@ namespace LeetCode
             KeyValuePair<int, List<IList<int>>> result = a.First();
             return result.Value;
         }
+        //Title: 925. Long Pressed Name
+        //Link: https://leetcode.com/problems/long-pressed-name
+        //Tags: Two Pointers, String
+        public static bool IsLongPressedName(string name, string typed)
+        {
+            string a = "";
+            string b = "";
+            char alag = name[0];
+            int acount = 1;
+            for (int i = 1; i < name.Length; i++)
+            {
+                char val = name[i];
+                if (val != alag)
+                {
+                    a += alag + acount.ToString() + " ";
+                    acount = 1;
+                    alag = val;
+                }
+                else acount++;
+            }
+            a += alag + acount.ToString();
+            a = a.TrimEnd();
+            char blag = typed[0];
+            int bcount = 1;
+            for (int i = 1; i < typed.Length; i++)
+            {
+                char val = typed[i];
+                if (val != blag)
+                {
+                    b += blag + bcount.ToString() + " ";
+                    bcount = 1;
+                    blag = val;
+                }
+                else bcount++;
+            }
+            b += blag + bcount.ToString();
+            b = b.TrimEnd();
+            string[] agrp = a.Split(' ');
+            string[] bgrp = b.Split(' ');
+            if (agrp.Length != bgrp.Length) return false;
+            for (int i = 0; i < agrp.Length; i++)
+            {
+                char chara = agrp[i][0];
+                char charb = bgrp[i][0];
+                if (chara != charb) return false;
+                string anum = agrp[i].Substring(1, agrp[i].Length - 1);
+                string bnum = bgrp[i].Substring(1, bgrp[i].Length - 1);
+                int.TryParse(anum, out int digitsa);
+                int.TryParse(bnum, out int digitsb);
+                if (digitsa > digitsb) return false;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
