@@ -7821,6 +7821,25 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1668. Maximum Repeating Substring
+        //Link: https://leetcode.com/problems/maximum-repeating-substring
+        //Tags: String, Dynamic Programming, String Matching
+        public static int MaxRepeating(string sequence, string word)
+        {
+            int counter = 0;
+            bool found = true;
+            string concat = word;
+            while (found)
+            {
+                if (sequence.Contains(concat))
+                {
+                    counter++;
+                    concat += word;
+                }
+                else found = false;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
