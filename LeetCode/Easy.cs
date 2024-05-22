@@ -7785,6 +7785,42 @@ namespace LeetCode
             }
             return "";
         }
+        //Title: 830. Positions of Large Groups
+        //Link: https://leetcode.com/problems/positions-of-large-groups
+        //Tags: String
+        public static IList<IList<int>> LargeGroupPositions(string s)
+        {
+            List<IList<int>> ans = new List<IList<int>>();
+            int count = 1;
+            int index = 0;
+            char val = s[0];
+            for (int i = 1; i < s.Length; i++)
+            {
+                char curr = s[i];
+                if (curr != val)
+                {
+                    if (count > 2)
+                    {
+                        List<int> b = new List<int>();
+                        b.Add(index);
+                        b.Add(i - 1);
+                        ans.Add(b);
+                    }
+                    count = 1;
+                    val = curr;
+                    index = i;
+                }
+                else count++;
+            }
+            if (count > 2)
+            {
+                List<int> c = new List<int>();
+                c.Add(index);
+                c.Add(s.Length - 1);
+                ans.Add(c);
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
