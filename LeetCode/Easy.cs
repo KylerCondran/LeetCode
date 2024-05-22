@@ -7728,6 +7728,63 @@ namespace LeetCode
             if (counter != 2) return false;
             return true;
         }
+        //Title: 748. Shortest Completing Word
+        //Link: https://leetcode.com/problems/shortest-completing-word
+        //Tags: Array, Hash Table, String
+        public static string ShortestCompletingWord(string licensePlate, string[] words)
+        {
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            List<string> c = new List<string>();
+            licensePlate = licensePlate.ToLower();
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            for (int i = 0; i < licensePlate.Length; i++)
+            {
+                char val = licensePlate[i];
+                if (l.Contains(val))
+                {
+                    if (!a.ContainsKey(val)) a.Add(val, 1);
+                    else a[val]++;
+                }
+            }
+            for (int i = 0; i < words.Length; i++)
+            {
+                bool addtestword = true;
+                Dictionary<char, int> b = new Dictionary<char, int>();
+                string testword = words[i];
+                for (int j = 0; j < testword.Length; j++)
+                {
+                    char val = testword[j];
+                    if (!b.ContainsKey(val)) b.Add(val, 1);
+                    else b[val]++;
+                }
+                foreach (KeyValuePair<char, int> j in a)
+                {
+                    if (!b.ContainsKey(j.Key))
+                    {
+                        addtestword = false;
+                        break;
+                    }
+                    if (b[j.Key] < j.Value)
+                    {
+                        addtestword = false;
+                        break;
+                    }
+                }
+                if (addtestword) c.Add(testword);
+            }
+            int min = Int32.MaxValue;
+            foreach (string i in c)
+            {
+                int len = i.Length;
+                min = Math.Min(min, len);
+            }
+            foreach (string i in c)
+            {
+                int len = i.Length;
+                if (len == min) return i;
+            }
+            return "";
+        }
     }
     #endregion
     #region "Easy Classes"
