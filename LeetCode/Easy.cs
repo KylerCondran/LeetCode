@@ -7883,6 +7883,21 @@ namespace LeetCode
                 else return lenb;
             }
         }
+        //Title: 2859. Sum of Values at Indices With K Set Bits
+        //Link: https://leetcode.com/problems/sum-of-values-at-indices-with-k-set-bits
+        //Tags: Array, Bit Manipulation
+        public static int SumIndicesWithKSetBits(IList<int> nums, int k)
+        {
+            int len = nums.Count();
+            int sum = 0;
+            for (int i = 0; i < len; i++)
+            {
+                string final = Convert.ToString(i, 2);
+                final = final.Replace("0", "");
+                if (final.Length == k) sum += nums[i];
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
