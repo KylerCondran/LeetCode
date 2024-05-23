@@ -7954,6 +7954,46 @@ namespace LeetCode
             }
             return a.Sum();
         }
+        //Title: 3151. Special Array I
+        //Link: https://leetcode.com/problems/special-array-i
+        //Tags: Array
+        public static bool IsArraySpecial(int[] nums)
+        {
+            bool even = false;
+            bool odd = false;
+            if (nums[0] % 2 != 0)
+            {
+                odd = true;
+                even = false;
+            }
+            else
+            {
+                even = true;
+                odd = false;
+            }
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (odd)
+                {
+                    if (nums[i] % 2 != 0) return false;
+                    else
+                    {
+                        even = true;
+                        odd = false;
+                    }
+                }
+                else
+                {
+                    if (nums[i] % 2 == 0) return false;
+                    else
+                    {
+                        even = false;
+                        odd = true;
+                    }
+                }
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
