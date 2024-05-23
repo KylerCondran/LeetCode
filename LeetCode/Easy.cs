@@ -8025,6 +8025,32 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2399. Check Distances Between Same Letters
+        //Link: https://leetcode.com/problems/check-distances-between-same-letters
+        //Tags: Array, Hash Table, String
+        public static bool CheckDistances(string s, int[] distance)
+        {
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            Dictionary<char, int> b = new Dictionary<char, int>();
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (!a.ContainsKey(val)) a.Add(val, i);
+                else b.Add(val, i);
+            }
+            foreach (KeyValuePair<char, int> i in a)
+            {
+                char val = i.Key;
+                int posa = i.Value;
+                int posb = b[val];
+                int count = 0;
+                int space = Array.IndexOf(l, val);
+                for (int j = posa + 1; j < posb; j++) count++;
+                if (count != distance[space]) return false;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
