@@ -7898,6 +7898,27 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 1837. Sum of Digits in Base K
+        //Link: https://leetcode.com/problems/sum-of-digits-in-base-k
+        //Tags: Math
+        public static int SumBase(int n, int k)
+        {
+            string result = string.Empty;
+            int sum = 0;
+            do
+            {
+                result = "0123456789ABCDEF"[n % k] + result;
+                n /= k;
+            }
+            while (n > 0);
+            for (int i = 0; i < result.Length; i++)
+            {
+                char val = result[i];
+                int.TryParse(val + "", out int digit);
+                sum += digit;
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
