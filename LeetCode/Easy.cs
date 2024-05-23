@@ -7840,6 +7840,35 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1945. Sum of Digits of String After Convert
+        //Link: https://leetcode.com/problems/sum-of-digits-of-string-after-convert
+        //Tags: String, Simulation
+        public static int GetLucky(string s, int k)
+        {
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            string final = "";
+            int sum = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                int pos = Array.IndexOf(l, val) + 1;
+                final += pos.ToString();
+            }
+            string transform = final;
+            for (int i = 0; i < k; i++)
+            {
+                for (int j = 0; j < transform.Length; j++)
+                {
+                    char num = transform[j];
+                    int.TryParse(num + "", out int digit);
+                    sum += digit;
+                }
+                transform = sum.ToString();
+                sum = 0;
+            }
+            int.TryParse(transform, out int ans);
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
