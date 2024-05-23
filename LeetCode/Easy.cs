@@ -7919,6 +7919,41 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 682. Baseball Game
+        //Link: https://leetcode.com/problems/baseball-game
+        //Tags: Array, Stack, Simulation
+        public static int CalPoints(string[] operations)
+        {
+            List<int> a = new List<int>();
+            int index = 0;
+            for (int i = 0; i < operations.Length; i++)
+            {
+                string val = operations[i];
+                switch (val)
+                {
+                    case "+":
+                        int sum = 0;
+                        sum = a[index - 1] + a[index - 2];
+                        a.Add(sum);
+                        index++;
+                        break;
+                    case "D":
+                        a.Add(a[index - 1] * 2);
+                        index++;
+                        break;
+                    case "C":
+                        a.RemoveAt(index - 1);
+                        index--;
+                        break;
+                    default:
+                        int.TryParse(val, out int digits);
+                        a.Add(digits);
+                        index++;
+                        break;
+                }
+            }
+            return a.Sum();
+        }
     }
     #endregion
     #region "Easy Classes"
