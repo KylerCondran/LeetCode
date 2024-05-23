@@ -7869,6 +7869,20 @@ namespace LeetCode
             int.TryParse(transform, out int ans);
             return ans;
         }
+        //Title: 521. Longest Uncommon Subsequence I
+        //Link: https://leetcode.com/problems/longest-uncommon-subsequence-i
+        //Tags: String
+        public static int FindLUSlength(string a, string b)
+        {
+            int lena = a.Length;
+            int lenb = b.Length;
+            if (a == b) return -1;
+            else
+            {
+                if (lena > lenb) return lena;
+                else return lenb;
+            }
+        }
     }
     #endregion
     #region "Easy Classes"
