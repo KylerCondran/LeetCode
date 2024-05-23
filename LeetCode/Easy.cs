@@ -7994,6 +7994,37 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 496. Next Greater Element I
+        //Link: https://leetcode.com/problems/next-greater-element-i
+        //Tags: Array, Hash Table, Stack, Monotonic Stack
+        public static int[] NextGreaterElement(int[] nums1, int[] nums2)
+        {
+            int[] ans = new int[nums1.Length];
+            int index = 0;
+            for (int i = 0; i < nums1.Length; i++)
+            {
+                int val = nums1[i];
+                int pos = Array.IndexOf(nums2, val);
+                bool setval = false;
+                for (int j = pos; j < nums2.Length; j++)
+                {
+                    int val2 = nums2[j];
+                    if (val2 > val)
+                    {
+                        ans[index] = val2;
+                        setval = true;
+                        index++;
+                        break;
+                    }
+                }
+                if (setval == false)
+                {
+                    ans[index] = -1;
+                    index++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
