@@ -8296,5 +8296,35 @@ namespace LeetCode
             else return false;
         }
     }
+    //Title: 232. Implement Queue using Stacks
+    //Link: https://leetcode.com/problems/implement-queue-using-stacks
+    //Tags: Stack, Design, Queue
+    public class MyQueue
+    {
+        List<int> a;
+        public MyQueue()
+        {
+            a = new List<int>();
+        }
+        public void Push(int x)
+        {
+            a.Add(x);
+        }
+        public int Pop()
+        {
+            int i = a[0];
+            a.RemoveAt(0);
+            return i;
+        }
+        public int Peek()
+        {
+            return a[0];
+        }
+        public bool Empty()
+        {
+            if (a.Count == 0) return true;
+            else return false;
+        }
+    }
     #endregion
 }
