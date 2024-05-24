@@ -8266,5 +8266,35 @@ namespace LeetCode
             if (found) a.RemoveAt(index);
         }
     }
+    //Title: 225. Implement Stack using Queues
+    //Link: https://leetcode.com/problems/implement-stack-using-queues
+    //Tags: Stack, Design, Queue
+    public class MyStack
+    {
+        List<int> a;
+        public MyStack()
+        {
+            a = new List<int>();
+        }
+        public void Push(int x)
+        {
+            a.Add(x);
+        }
+        public int Pop()
+        {
+            int i = a[a.Count - 1];
+            a.RemoveAt(a.Count - 1);
+            return i;
+        }
+        public int Top()
+        {
+            return a[a.Count - 1];
+        }
+        public bool Empty()
+        {
+            if (a.Count == 0) return true;
+            else return false;
+        }
+    }
     #endregion
 }
