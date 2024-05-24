@@ -8110,6 +8110,56 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 2047. Number of Valid Words in a Sentence
+        //Link: https://leetcode.com/problems/number-of-valid-words-in-a-sentence
+        //Tags: String
+        public int CountValidWords(string sentence)
+        {
+            int count = 0;
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            sentence = sentence.Trim();
+            while (sentence.Contains("  ")) sentence = sentence.Replace("  ", " ");
+            string[] tokens = sentence.Split(' ');
+            foreach (string token in tokens)
+            {
+                if (token[0] == '-' || token[token.Length - 1] == '-') continue;
+                bool valid = true;
+                int hyphen = 0;
+                for (int i = 0; i < token.Length; i++)
+                {
+                    char val = token[i];
+                    if (Char.IsDigit(val))
+                    {
+                        valid = false;
+                        break;
+                    }
+                    else if (val == '-')
+                    {
+                        hyphen++;
+                        if (hyphen > 1)
+                        {
+                            valid = false;
+                            break;
+                        }
+                        if (!l.Contains(token[i - 1]) || !l.Contains(token[i + 1]))
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+                    else if (val == '!' || val == '.' || val == ',')
+                    {
+                        if (i != token.Length - 1)
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+                }
+                if (valid) count++;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Easy Classes"
