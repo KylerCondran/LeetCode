@@ -8080,6 +8080,36 @@ namespace LeetCode
             if (gotone == false) return -1;
             return s.Length - ((total + 2));
         }
+        //Title: 2843. Count Symmetric Integers
+        //Link: https://leetcode.com/problems/count-symmetric-integers
+        //Tags: Math, Enumeration
+        public static int CountSymmetricIntegers(int low, int high)
+        {
+            int count = 0;
+            for (int i = low; i <= high; i++)
+            {
+                string val = i.ToString();
+                if (val.Length % 2 != 0) continue;
+                string part1 = val.Substring(0, val.Length / 2);
+                string part2 = val.Substring(val.Length / 2, val.Length / 2);
+                int sum1 = 0;
+                int sum2 = 0;
+                for (int j = 0; j < part1.Length; j++)
+                {
+                    char val1 = part1[j];
+                    int.TryParse(val1 + "", out int digit);
+                    sum1 += digit;
+                }
+                for (int j = 0; j < part2.Length; j++)
+                {
+                    char val2 = part2[j];
+                    int.TryParse(val2 + "", out int digit);
+                    sum2 += digit;
+                }
+                if (sum1 == sum2) count++;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Easy Classes"
