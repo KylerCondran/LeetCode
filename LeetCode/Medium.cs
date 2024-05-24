@@ -4316,6 +4316,29 @@ namespace LeetCode
             else if (count <= left && count <= right) return count;
             return count;
         }
+        //Title: 1387. Sort Integers by The Power Value
+        //Link: https://leetcode.com/problems/sort-integers-by-the-power-value
+        //Tags: Dynamic Programming, Memoization, Sorting
+        public static int GetKth(int lo, int hi, int k)
+        {
+            SortedDictionary<int, List<int>> a = new SortedDictionary<int, List<int>>();
+            List<int> b = new List<int>();
+            for (int i = lo; i <= hi; i++)
+            {
+                int val = i;
+                int count = 0;
+                while (val != 1)
+                {
+                    if (val % 2 == 0) val = val / 2;
+                    else val = (val * 3) + 1;
+                    count++;
+                }
+                if (!a.ContainsKey(count)) a.Add(count, new List<int> { i });
+                else a[count].Add(i);
+            }
+            foreach (KeyValuePair<int, List<int>> i in a) foreach (int j in i.Value) b.Add(j);
+            return b[k - 1];
+        }
     }
     #endregion
     #region "Medium Classes"
