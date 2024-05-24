@@ -8051,6 +8051,35 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 1624. Largest Substring Between Two Equal Characters
+        //Link: https://leetcode.com/problems/largest-substring-between-two-equal-characters
+        //Tags: Hash Table, String
+        public static int MaxLengthBetweenEqualCharacters(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            string b = new string(charArray);
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            bool gotone = false;
+            int total = Int32.MaxValue;
+            foreach (KeyValuePair<char, int> i in a)
+            {
+                if (i.Value > 1)
+                {
+                    char val = i.Key;
+                    gotone = true;
+                    if (s.IndexOf(val) + b.IndexOf(val) < total) total = s.IndexOf(val) + b.IndexOf(val);
+                }
+            }
+            if (gotone == false) return -1;
+            return s.Length - ((total + 2));
+        }
     }
     #endregion
     #region "Easy Classes"
