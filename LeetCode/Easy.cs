@@ -8219,5 +8219,52 @@ namespace LeetCode
             return a.Contains(key);
         }
     }
+    //Title: 706. Design HashMap
+    //Link: https://leetcode.com/problems/design-hashmap
+    //Tags: Array, Hash Table, Linked List, Design, Hash Function
+    public class MyHashMap
+    {
+        List<KeyValuePair<int, int>> a;
+        public MyHashMap()
+        {
+            a = new List<KeyValuePair<int, int>>();
+        }
+        public void Put(int key, int value)
+        {
+            bool found = false;
+            int index = 0;
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                if (i.Key == key)
+                {
+                    found = true;
+                    break;
+                }
+                index++;
+            }
+            if (found) a.RemoveAt(index);
+            a.Add(new KeyValuePair<int, int>(key, value));
+        }
+        public int Get(int key)
+        {
+            foreach (KeyValuePair<int, int> i in a) if (i.Key == key) return i.Value;
+            return -1;
+        }
+        public void Remove(int key)
+        {
+            bool found = false;
+            int index = 0;
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                if (i.Key == key)
+                {
+                    found = true;
+                    break;
+                }
+                index++;
+            }
+            if (found) a.RemoveAt(index);
+        }
+    }
     #endregion
 }
