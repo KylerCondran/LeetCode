@@ -4421,6 +4421,29 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2150. Find All Lonely Numbers in the Array
+        //Link: https://leetcode.com/problems/find-all-lonely-numbers-in-the-array
+        //Tags: Array, Hash Table, Counting
+        public static IList<int> FindLonely(int[] nums)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            List<int> ans = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            foreach (KeyValuePair<int, int> i in a)
+            {
+                if (i.Value == 1)
+                {
+                    int val = i.Key;
+                    if (!a.ContainsKey(val - 1) && !a.ContainsKey(val + 1)) ans.Add(val);
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
