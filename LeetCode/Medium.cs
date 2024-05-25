@@ -4444,6 +4444,25 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2109. Adding Spaces to a String
+        //Link: https://leetcode.com/problems/adding-spaces-to-a-string
+        //Tags: Array, Two Pointers, String, Simulation
+        public static string AddSpaces(string s, int[] spaces)
+        {
+            StringBuilder sb = new StringBuilder();
+            int index = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (i == spaces[index])
+                {
+                    sb.Append(" ");
+                    if (index != spaces.Length - 1) index++;
+                }
+                sb.Append(val);
+            }
+            return sb.ToString();
+        }
     }
     #endregion
     #region "Medium Classes"
