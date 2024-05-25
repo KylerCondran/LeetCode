@@ -5284,5 +5284,45 @@ namespace LeetCode
             return true;
         }
     }
+    //Title: 384. Shuffle an Array
+    //Link: https://leetcode.com/problems/shuffle-an-array
+    //Tags: Array, Math, Randomized
+    public class Solution2
+    {
+        int[] orig;
+        int len;
+        public Solution2(int[] nums)
+        {
+            len = nums.Length;
+            orig = new int[len];
+            Array.Copy(nums, 0, orig, 0, len);
+        }
+        public int[] Reset()
+        {
+            return orig;
+        }
+        public int[] Shuffle()
+        {
+            int[] ans = new int[len];
+            int index = 0;
+            int count = len;
+            List<int> a = new List<int>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = orig[i];
+                a.Add(val);
+            }
+            Random rnd = new Random();
+            while (count > 0)
+            {
+                int rand = rnd.Next(0, count);
+                ans[index] = a[rand];
+                a.Remove(a[rand]);
+                index++;
+                count--;
+            }
+            return ans;
+        }
+    }
     #endregion
 }
