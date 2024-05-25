@@ -4482,6 +4482,16 @@ namespace LeetCode
             }
             return Math.Abs(last - first);
         }
+        //Title: 2579. Count Total Number of Colored Cells
+        //Link: https://leetcode.com/problems/count-total-number-of-colored-cells
+        //Tags: Math
+        public static long ColoredCells(int n)
+        {
+            if (n == 1) return 1;
+            long sum = 1;
+            for (int i = 2; i <= n; i++) sum += 4 * (i - 1);
+            return sum;
+        }
     }
     #endregion
     #region "Medium Classes"
