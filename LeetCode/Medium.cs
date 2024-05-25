@@ -4492,6 +4492,18 @@ namespace LeetCode
             for (int i = 2; i <= n; i++) sum += 4 * (i - 1);
             return sum;
         }
+        //Title: 1016. Binary String With Substrings Representing 1 To N
+        //Link: https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n
+        //Tags: String
+        public static bool QueryString(string s, int n)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                string final = Convert.ToString(i, 2);
+                if (!s.Contains(final)) return false;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Medium Classes"
