@@ -4463,6 +4463,25 @@ namespace LeetCode
             }
             return sb.ToString();
         }
+        //Title: 3115. Maximum Prime Difference
+        //Link: https://leetcode.com/problems/maximum-prime-difference
+        //Tags: Array, Math, Number Theory
+        public static int MaximumPrimeDifference(int[] nums)
+        {
+            int[] p = new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 };
+            int first = Int32.MaxValue;
+            int last = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (p.Contains(val))
+                {
+                    if (i < first) first = i;
+                    last = i;
+                }
+            }
+            return Math.Abs(last - first);
+        }
     }
     #endregion
     #region "Medium Classes"
