@@ -4339,6 +4339,69 @@ namespace LeetCode
             foreach (KeyValuePair<int, List<int>> i in a) foreach (int j in i.Value) b.Add(j);
             return b[k - 1];
         }
+        //Title: 2593. Find Score of an Array After Marking All Elements
+        //Link: https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements
+        //Tags: Array, Sorting, Heap (Priority Queue), Simulation
+        public static long FindScore(int[] nums)
+        {
+            long score = 0;
+            int len = nums.Length;
+            int count = len;
+            bool[] inactive = new bool[len];
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            Dictionary<int, List<int>> b = new Dictionary<int, List<int>>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+                if (!b.ContainsKey(val)) b.Add(val, new List<int> { i });
+                else b[val].Add(i);
+            }
+            while (count > 0)
+            {
+                int min = a.ElementAt(0).Key;
+                a[min]--;
+                if (a[min] == 0) a.Remove(min);
+                score += min;
+                foreach (int i in b[min])
+                {
+                    if (inactive[i] == false)
+                    {
+                        b[min].Remove(i);
+                        if (b[min].Count == 0) b.Remove(min);
+                        inactive[i] = true;
+                        count--;
+                        if (i > 0)
+                        {
+                            int x = i - 1;
+                            if (inactive[x] == false)
+                            {
+                                int val = nums[x];
+                                inactive[x] = true;
+                                a[val]--;
+                                if (a[val] == 0) a.Remove(val);
+                                count--;
+                            }
+                        }
+                        if (i < len - 1)
+                        {
+                            int x = i + 1;
+                            if (inactive[x] == false)
+                            {
+                                int val = nums[x];
+                                inactive[x] = true;
+                                a[val]--;
+                                if (a[val] == 0) a.Remove(val);
+                                count--;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            return score;
+        }
     }
     #endregion
     #region "Medium Classes"
