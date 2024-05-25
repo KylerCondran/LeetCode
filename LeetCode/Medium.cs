@@ -4402,6 +4402,25 @@ namespace LeetCode
             }
             return score;
         }
+        //Title: 1780. Check if Number is a Sum of Powers of Three
+        //Link: https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three
+        //Tags: Math
+        public static bool CheckPowersOfThree(int n)
+        {
+            string result = string.Empty;
+            do
+            {
+                result = "0123456789ABCDEF"[n % 3] + result;
+                n /= 3;
+            }
+            while (n > 0);
+            for (int i = 0; i < result.Length; i++)
+            {
+                char val = result[i];
+                if (val == '2') return false;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Medium Classes"
