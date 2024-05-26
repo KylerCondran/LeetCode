@@ -4637,6 +4637,48 @@ namespace LeetCode
             }
             return b[0];
         }
+        //Title: 1209. Remove All Adjacent Duplicates in String II
+        //Link: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii
+        //Tags: String, Stack
+        public static string RemoveDuplicates(string s, int k)
+        {
+            Stack<KeyValuePair<char, int>> s1 = new Stack<KeyValuePair<char, int>>();
+            Stack<char> s2 = new Stack<char>();
+            int count = 1;
+            char lag = s[0];
+            s2.Push(lag);
+            for (int i = 1; i < s.Length; i++)
+            {
+                char val = s[i];
+                s2.Push(val);
+                if (lag == '!') lag = val;
+                else if (val != lag)
+                {
+                    KeyValuePair<char, int> a = new KeyValuePair<char, int>(lag, count);
+                    s1.Push(a);
+                    count = 1;
+                    lag = val;
+                }
+                else count++;
+                if (count == k)
+                {
+                    for (int j = 0; j < k; j++) s2.Pop();
+                    if (s1.Count > 0)
+                    {
+                        count = s1.Peek().Value;
+                        lag = s1.Pop().Key;
+                    }
+                    else
+                    {
+                        count = 1;
+                        lag = '!';
+                    }
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            foreach (char b in s2.Reverse()) sb.Append(b);
+            return sb.ToString();
+        }
     }
     #endregion
     #region "Medium Classes"
