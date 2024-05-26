@@ -4521,6 +4521,49 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 788. Rotated Digits
+        //Link: https://leetcode.com/problems/rotated-digits
+        //Tags: Math, Dynamic Programming
+        public static int RotatedDigits(int n)
+        {
+            int count = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                string val = i.ToString();
+                string flip = "";
+                bool valid = true;
+                for (int j = 0; j < val.Length; j++)
+                {
+                    char val1 = val[j];
+                    switch (val1)
+                    {
+                        case '0':
+                        case '1':
+                        case '8':
+                            flip += val1;
+                            break;
+                        case '2':
+                            flip += '5';
+                            break;
+                        case '5':
+                            flip += '2';
+                            break;
+                        case '6':
+                            flip += '9';
+                            break;
+                        case '9':
+                            flip += '6';
+                            break;
+                        default:
+                            valid = false;
+                            break;
+                    }
+                    if (valid == false) break;
+                }
+                if (val != flip && valid) count++;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Medium Classes"
