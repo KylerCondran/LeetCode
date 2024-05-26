@@ -4679,6 +4679,29 @@ namespace LeetCode
             foreach (char b in s2.Reverse()) sb.Append(b);
             return sb.ToString();
         }
+        //Title: 167. Two Sum II - Input Array Is Sorted
+        //Link: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
+        //Tags: Array, Two Pointers, Binary Search
+        public static int[] TwoSum(int[] numbers, int target)
+        {
+            int len = numbers.Length;
+            int[] ans = new int[2];
+            for (int i = 0; i < len - 1; i++)
+            {
+                int val1 = numbers[i];
+                for (int j = i + 1; j < len; j++)
+                {
+                    int val2 = numbers[j];
+                    if (val1 + val2 == target)
+                    {
+                        ans[0] = i + 1;
+                        ans[1] = j + 1;
+                        return ans;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
