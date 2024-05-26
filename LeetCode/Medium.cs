@@ -4737,6 +4737,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1390. Four Divisors
+        //Link: https://leetcode.com/problems/four-divisors
+        //Tags: Array, Math
+        public static int SumFourDivisors(int[] nums)
+        {
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                List<int> a = new List<int>();
+                for (int j = 1; j <= val; j++)
+                {
+                    if (val % j == 0)
+                    {
+                        a.Add(j);
+                        if (a.Count > 4) break;
+                    }
+                }
+                if (a.Count == 4) sum += a.Sum();
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Medium Classes"
