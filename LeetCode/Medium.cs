@@ -4587,6 +4587,56 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 2284. Sender With Largest Word Count
+        //Link: https://leetcode.com/problems/sender-with-largest-word-count
+        //Tags: Array, Hash Table, String, Counting
+        public static string LargestWordCount(string[] messages, string[] senders)
+        {
+            Dictionary<string, int> a = new Dictionary<string, int>();
+            List<string> b = new List<string>();
+            for (int i = 0; i < messages.Length; i++)
+            {
+                string sender = senders[i];
+                string[] msg = messages[i].Split(' ');
+                if (!a.ContainsKey(sender)) a.Add(sender, msg.Length);
+                else a[sender] += msg.Length;
+            }
+            var sortedDict = from entry in a orderby entry.Value descending select entry;
+            int max = sortedDict.First().Value;
+            foreach (KeyValuePair<string, int> i in sortedDict)
+            {
+                if (i.Value == max) b.Add(i.Key);
+                else break;
+            }
+            while (b.Count != 1)
+            {
+                string s1 = b[0];
+                string s2 = b[1];
+                bool unsure = true;
+                int minLength = Math.Min(s1.Length, s2.Length);
+                for (int i = 0; i < minLength; i++)
+                {
+                    if (s1[i] < s2[i])
+                    {
+                        b.Remove(s1);
+                        unsure = false;
+                        break;
+                    }
+                    else if (s1[i] > s2[i])
+                    {
+                        b.Remove(s2);
+                        unsure = false;
+                        break;
+                    }
+                }
+                if (unsure)
+                {
+                    if (s1.Length < s2.Length) b.Remove(s1);
+                    else if (s1.Length > s2.Length) b.Remove(s2);
+                }
+            }
+            return b[0];
+        }
     }
     #endregion
     #region "Medium Classes"
