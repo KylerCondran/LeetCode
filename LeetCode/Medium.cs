@@ -4564,6 +4564,29 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 817. Linked List Components
+        //Link: https://leetcode.com/problems/linked-list-components
+        //Tags: Array, Hash Table, Linked List
+        public static int NumComponents(ListNode head, int[] nums)
+        {
+            bool connected = false;
+            int count = 0;
+            while (head != null)
+            {
+                int val = head.val;
+                if (nums.Contains(val))
+                {
+                    if (!connected)
+                    {
+                        count++;
+                        connected = true;
+                    }
+                }
+                else connected = false;
+                head = head.next;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Medium Classes"
