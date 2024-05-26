@@ -4504,6 +4504,23 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 1461. Check If a String Contains All Binary Codes of Size K
+        //Link: https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k
+        //Tags: Hash Table, String, Bit Manipulation, Rolling Hash, Hash Function
+        public static bool HasAllCodes(string s, int k)
+        {
+            HashSet<string> a = new HashSet<string>();
+            for (int i = 0; i <= s.Length - k; i++)
+            {
+                string segment = s.Substring(i, k);
+                a.Add(segment);
+            }
+            if (a.Count < (int)Math.Pow(2, k))
+            {
+                return false;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Medium Classes"
