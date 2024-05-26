@@ -4702,6 +4702,41 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3092. Most Frequent IDs
+        //Link: https://leetcode.com/problems/most-frequent-ids
+        //Tags: Array, Hash Table, Heap (Priority Queue), Ordered Set
+        public static long[] MostFrequentIDs(int[] nums, int[] freq)
+        {
+            Dictionary<int, long> a = new Dictionary<int, long>();
+            SortedDictionary<long, List<int>> b = new SortedDictionary<long, List<int>>(new ReverseSortLongComparer());
+            int len = nums.Length;
+            int index = 0;
+            long[] ans = new long[len];
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                int frequency = freq[i];
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, frequency);
+                    if (!b.ContainsKey(frequency)) b.Add(frequency, new List<int> { val });
+                    else b[frequency].Add(val);
+                }
+                else
+                {
+                    b[a[val]].Remove(val);
+                    if (b[a[val]].Count == 0) b.Remove(a[val]);
+                    a[val] += frequency;
+                    if (!b.ContainsKey(a[val])) b.Add(a[val], new List<int> { val });
+                    else b[a[val]].Add(val);
+                }
+                if (a[val] == 0) a.Remove(val);
+                long max = b.First().Key;
+                ans[index] = max;
+                index++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"

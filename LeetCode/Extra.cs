@@ -14,6 +14,13 @@ namespace LeetCode
             return y.CompareTo(x);
         }
     }
+    public class ReverseSortLongComparer : IComparer<long>
+    {
+        public int Compare(long x, long y)
+        {
+            return y.CompareTo(x);
+        }
+    }
     public class ListNode
     {
         public int val;
