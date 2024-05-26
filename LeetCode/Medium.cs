@@ -4759,6 +4759,34 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 532. K-diff Pairs in an Array
+        //Link: https://leetcode.com/problems/k-diff-pairs-in-an-array
+        //Tags: Array, Hash Table, Two Pointers, Binary Search, Sorting
+        public static int FindPairs(int[] nums, int k)
+        {
+            List<string> a = new List<string>();
+            int count = 0;
+            int len = nums.Length;
+            for (int i = 0; i < len - 1; i++)
+            {
+                int val1 = nums[i];
+                for (int j = i + 1; j < len; j++)
+                {
+                    int val2 = nums[j];
+                    if (Math.Abs(val1 - val2) == k)
+                    {
+                        string front = val1.ToString() + "," + val2.ToString();
+                        string back = val2.ToString() + "," + val1.ToString();
+                        if (!a.Contains(front) && !a.Contains(back))
+                        {
+                            count++;
+                            a.Add(front);
+                        }
+                    }
+                }
+            }
+            return count;
+        }
     }
     #endregion
     #region "Medium Classes"
