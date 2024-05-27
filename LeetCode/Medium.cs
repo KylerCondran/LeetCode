@@ -4787,6 +4787,72 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 2456. Most Popular Video Creator
+        //Link: https://leetcode.com/problems/most-popular-video-creator
+        //Tags: Array, Hash Table, String, Sorting, Heap (Priority Queue)
+        public static IList<IList<string>> MostPopularCreator(string[] creators, string[] ids, int[] views)
+        {
+            Dictionary<string, long> a = new Dictionary<string, long>();
+            Dictionary<string, List<KeyValuePair<long, string>>> b = new Dictionary<string, List<KeyValuePair<long, string>>>();
+            List<string> c = new List<string>();
+            List<IList<string>> ans = new List<IList<string>>();
+            Dictionary<string, int> e = new Dictionary<string, int>();
+            for (int i = 0; i < creators.Length; i++)
+            {
+                string creator = creators[i];
+                string id = ids[i];
+                int viewcount = views[i];
+                if (!a.ContainsKey(creator)) a.Add(creator, viewcount);
+                else a[creator] += viewcount;
+                if (!b.ContainsKey(creator)) b.Add(creator, new List<KeyValuePair<long, string>> { new KeyValuePair<long, string>(viewcount, id) });
+                else b[creator].Add(new KeyValuePair<long, string>(viewcount, id));
+                if (!e.ContainsKey(creator)) e.Add(creator, viewcount);
+                else { if (viewcount > e[creator]) e[creator] = viewcount; }
+            }
+            var sortedDict = from entry in a orderby entry.Value descending select entry;
+            long max = sortedDict.First().Value;
+            foreach (KeyValuePair<string, long> i in sortedDict)
+            {
+                if (i.Value == max) c.Add(i.Key);
+                else break;
+            }
+            foreach (string i in c)
+            {
+                List<KeyValuePair<long, string>> d = b[i];
+                List<string> f = new List<string>();
+                foreach (KeyValuePair<long, string> j in d) if (j.Key == e[i]) f.Add(j.Value);
+                while (f.Count != 1)
+                {
+                    string s1 = f[0];
+                    string s2 = f[1];
+                    bool unsure = true;
+                    int minLength = Math.Min(s1.Length, s2.Length);
+                    for (int x = 0; x < minLength; x++)
+                    {
+                        if (s1[x] > s2[x])
+                        {
+                            f.Remove(s1);
+                            unsure = false;
+                            break;
+                        }
+                        else if (s1[x] < s2[x])
+                        {
+                            f.Remove(s2);
+                            unsure = false;
+                            break;
+                        }
+                    }
+                    if (unsure)
+                    {
+                        if (s1.Length > s2.Length) f.Remove(s1);
+                        else if (s1.Length < s2.Length) f.Remove(s2);
+                    }
+                }
+                f.Insert(0, i);
+                ans.Add(f);
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
