@@ -1,6 +1,8 @@
 # Accepted LeetCode Solutions
 
-This repository contains all my solutions to LeetCode problems implemented in C#. Each solution includes a numbered title, a link to the problem, tags associated with the problem, and the corresponding C# code that successfully solved the problem. Here is a link to my LeetCode account: [https://leetcode.com/u/KylerCondran/](https://leetcode.com/u/KylerCondran/).
+This repository contains all my solutions to LeetCode problems implemented in C#. 
+
+Here is a link to my LeetCode [Account](https://leetcode.com/u/KylerCondran/).
 
 ## About LeetCode
 
@@ -12,7 +14,7 @@ The primary goal of this repository is to challenge myself and provide a resourc
 
 ## Structure
 
-In the project directory, I have a class file for each difficulty level of problems and an extra class file for helper methods. Each difficulty class file has two region tags, methods for individual problems are on top, and stand alone classes for design problems on bottom. The program class file contains the main run method, some dummy data, and helpful notes in case you wanted to run any of the solutions. There are also some folders for non C# related LeetCode categories.
+In the project directory, I have a class file for each difficulty level of problems and an extra class file for helper methods. Each difficulty class file has two region tags, methods for individual problems are on top, and stand alone classes for design problems on bottom. The program class file contains the main run method, some dummy data, and helpful notes in case you wanted to run any of the solutions. There are also some folders for non C# related LeetCode categories. Each solution includes a numbered title, a link to the problem, tags associated with the problem, and the corresponding C# code that successfully solved the problem.
 
 ## Getting Started
 
