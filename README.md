@@ -25,7 +25,7 @@ git clone https://github.com/KylerCondran/LeetCode.git
 
 ## Things I Wish I Knew When First Starting
 
-- Question difficulties are often mislabled, some easy's are quite hard, and there are hard problems which can be solved in 1 line of code.
+- Question difficulties are often mislabeled, some easy's are quite hard, and there are hard problems which can be solved in 1 line of code.
 - Sometimes the question description is purposely misleading or confusing, leetcode problem writers are tricksters and trolls. Hints, discussion section, and topic labels are often great clues. Understanding the problem is literally half the battle.
 - It is better to do 100 easy's before you do a medium, and 100 medium's before you do a hard.
 - What is hard for some people may be easy to you and vica versa, everyone has a unique skill set and learning ability.
