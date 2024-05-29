@@ -87,7 +87,7 @@ The goal is to reduce calculations, calculate only what you need and do it once,
 
 Do not get discouraged, often when you hit time limit exceeded instead of racking your brain on the problem for hours its best to immediately put it aside, take note and log it in an excel sheet with the title, link to the problem, and how many test cases you got through, save and store the code in a project, move on and come back later with a fresh mind and outlook after you have had a chance to ponder how it can be optimized.
 
-Some easy problems have times limits, more medium problems have time limits, and nearly all hard problems have time limits and brute force may not always be possible, some hard problems only have one solution which is a famous and obscure algorithm such as Kadane / Dijkstra / Euclid. 
+Some easy problems have time limits, more medium problems have time limits, and nearly all hard problems have time limits and brute force may not always be possible, some hard problems only have one solution which is a famous and obscure algorithm such as Kadane / Dijkstra / Euclid. 
 
 Research Topics:  
 [Time Complexity](https://en.wikipedia.org/wiki/Time_complexity)  
