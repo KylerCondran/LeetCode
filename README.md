@@ -25,6 +25,18 @@ git clone https://github.com/KylerCondran/LeetCode.git
 
 ## Things I Wish I Knew When First Starting
 
+- Question difficulties are often mislabled, some easy's are quite hard, and there are hard problems which can be solved in 1 line of code.
+- Sometimes the question description is purposely misleading or confusing, leetcode problem writers are tricksters and trolls. Hints, discussion section, and topic labels are often great clues.
+- It is better to do 100 easy's before you do a medium, and 100 medium's before you do a hard.
+- What is hard for some people may be easy to you and vica versa, everyone has a unique skill set and learning ability.
+- Non increasing just means decreasing but with duplicates, non decreasing means increasing but with duplicates.
+- If you are stumped on a question, instead of looking at the solution, look at a solution for a similar problem to find some starter code or get a better idea of what is needed.
+- Once you learn a new skill or data structure like linked lists or tree's, you will get some starter code that can then be used to pop 20-30 questions quickly with minimal changes.
+- Spend some time exclusively hunting for problems you think you can accomplish, sort by difficulty / category / acceptance rate, use the browser bookmark toolbar and create folders, scan through questions and dump them into folders of different categories.
+- Acceptance rate does not mean difficulty level, it means it was the average amount of submits required to get accepted status. This number can be skewed by purposely obtuse test cases not mentioned in the problem.
+- The easiest way to start a GitHub portfolio is to just save your LeetCode solutions.
+- Its best to get comfy and drink coffee while LeetCoding.
+
 ## Examples
 
 Here is some super simple starter code to get you started working with common data structures.
