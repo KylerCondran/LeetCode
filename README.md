@@ -29,6 +29,48 @@ git clone https://github.com/KylerCondran/LeetCode.git
 
 Here is some super simple starter code to get you started working with common data structures.
 
+### Building A Priority Queue
+```
+Dictionary<int, int> a = new Dictionary<int, int>();
+for (int i = 0; i < nums.Length; i++)
+{
+    int val = nums[i];
+    if (!a.ContainsKey(val))
+    {
+        a.Add(val, 1);
+    }
+    else
+    {
+        a[val]++;
+    }
+}
+```
+### Parsing A Linked List
+```
+while (head != null)
+{
+    int val = head.val;
+    head = head.next;
+}
+```
+### Parsing A Tree
+```
+Queue<TreeNode> q = new Queue<TreeNode>();
+q.Enqueue(root);
+while (q.Count > 0)
+{
+    TreeNode T = q.Dequeue();
+    if (T.left != null)
+    {
+        q.Enqueue(T.left);
+    }
+    if (T.right != null)
+    {
+        q.Enqueue(T.right);
+    }
+}
+```
+
 ## Submit Error Codes
 
 ## Helpful Links
