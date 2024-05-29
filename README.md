@@ -35,6 +35,7 @@ git clone https://github.com/KylerCondran/LeetCode.git
 - Spend some time exclusively hunting for problems you think you can accomplish, sort by difficulty / category / acceptance rate, use the browser bookmark toolbar and create folders, scan through questions and dump them into folders of different categories.
 - The constraints section provides valuable clues such as what ranges are valid for variables, this can give you clues that can allow you to skip calculations outside these ranges such as working with negative numbers or duplicates.
 - Acceptance rate does not mean difficulty level, it means it was the average amount of submits required to get accepted status. This number can be skewed by purposely obtuse test cases not mentioned in the problem.
+- Some test cases are hundreds of thousands of lines long, its best to copy these test case values into a text file and load the text file into an array rather than paste these values into the IDE for debugging.
 - The easiest way to start a GitHub portfolio is to just save your LeetCode solutions.
 - Its best to get comfy and drink coffee while LeetCoding.
 
