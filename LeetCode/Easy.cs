@@ -8160,6 +8160,24 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 2864. Maximum Odd Binary Number
+        //Link: https://leetcode.com/problems/maximum-odd-binary-number
+        //Tags: Math, String, Greedy
+        public static string MaximumOddBinaryNumber(string s)
+        {
+            int ones = 0;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (val == '1') ones++;
+            }
+            int zeros = s.Length - ones;
+            for (int i = 0; i < ones - 1; i++) sb.Append("1");
+            for (int i = 0; i < zeros; i++) sb.Append("0");
+            sb.Append("1");
+            return sb.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
