@@ -8317,6 +8317,25 @@ namespace LeetCode
             sb.Clear();
             return ans;
         }
+        //Title: 459. Repeated Substring Pattern
+        //Link: https://leetcode.com/problems/repeated-substring-pattern
+        //Tags: String, String Matching
+        public static bool RepeatedSubstringPattern(string s)
+        {
+            Queue<char> q = new Queue<char>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                q.Enqueue(val);
+            }
+            for (int i = 0; i < s.Length - 1; i++)
+            {
+                q.Enqueue(q.Dequeue());
+                string shift = new String(q.ToArray());
+                if (shift == s) return true;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
