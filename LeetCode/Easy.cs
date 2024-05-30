@@ -8467,6 +8467,38 @@ namespace LeetCode
             }
             return sb2.ToString();
         }
+        //Title: 3090. Maximum Length Substring With Two Occurrences
+        //Link: https://leetcode.com/problems/maximum-length-substring-with-two-occurrences
+        //Tags: Hash Table, String, Sliding Window
+        public static int MaximumLengthSubstring(string s)
+        {
+            int max = 0;
+            int len = s.Length;
+            for (int d = 1; d <= len; d++)
+            {
+                for (int i = 0; i <= len - d; i++)
+                {
+                    Dictionary<char, int> a = new Dictionary<char, int>();
+                    bool target = true;
+                    for (int j = i; j < i + d; j++)
+                    {
+                        char val = s[j];
+                        if (!a.ContainsKey(val)) a.Add(val, 1);
+                        else
+                        {
+                            a[val]++;
+                            if (a[val] > 2)
+                            {
+                                target = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (target) max = Math.Max(max, d);
+                }
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
