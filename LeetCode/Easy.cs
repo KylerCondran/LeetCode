@@ -8499,6 +8499,32 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 1413. Minimum Value to Get Positive Step by Step Sum
+        //Link: https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum
+        //Tags: Array, Prefix Sum
+        public static int MinStartValue(int[] nums)
+        {
+            bool compute = true;
+            int startval = 1;
+            while (compute)
+            {
+                int curr = startval;
+                compute = false;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    int val = nums[i];
+                    curr += val;
+                    if (curr < 1)
+                    {
+                        startval++;
+                        compute = true;
+                        break;
+                    }
+                }
+                if (!compute) break;
+            }
+            return startval;
+        }
     }
     #endregion
     #region "Easy Classes"
