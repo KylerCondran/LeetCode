@@ -4853,6 +4853,23 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2177. Find Three Consecutive Integers That Sum to a Given Number
+        //Link: https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number
+        //Tags: Math, Simulation
+        public static long[] SumOfThree(long num)
+        {
+            List<long> a = new List<long>();
+            if (num % 3 == 0)
+            {
+                long val = num / 3;
+                a.Add(val - 1);
+                a.Add(val);
+                a.Add(val + 1);
+            }
+            long[] ans = new long[a.Count];
+            for (int i = 0; i < a.Count; i++) ans[i] = a[i];
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
