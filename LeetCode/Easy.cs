@@ -8421,6 +8421,52 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2243. Calculate Digit Sum of a String
+        //Link: https://leetcode.com/problems/calculate-digit-sum-of-a-string
+        //Tags: String, Simulation
+        public static string DigitSum(string s, int k)
+        {
+            Queue<string> q = new Queue<string>();
+            int count = 0;
+            StringBuilder sb2 = new StringBuilder();
+            sb2.Append(s);
+            while (sb2.Length > k)
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < sb2.Length; i++)
+                {
+                    char val = sb2[i];
+                    sb.Append(val);
+                    count++;
+                    if (count == k)
+                    {
+                        q.Enqueue(sb.ToString());
+                        sb.Clear();
+                        count = 0;
+                    }
+                }
+                if (sb.Length > 0)
+                {
+                    q.Enqueue(sb.ToString());
+                    sb.Clear();
+                    count = 0;
+                }
+                sb2.Clear();
+                while (q.Count > 0)
+                {
+                    string val1 = q.Dequeue();
+                    int sum = 0;
+                    for (int i = 0; i < val1.Length; i++)
+                    {
+                        char val2 = val1[i];
+                        int.TryParse(val2 + "", out int digit);
+                        sum += digit;
+                    }
+                    sb2.Append(sum.ToString());
+                }
+            }
+            return sb2.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
