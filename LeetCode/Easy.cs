@@ -8272,6 +8272,51 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 228. Summary Ranges
+        //Link: https://leetcode.com/problems/summary-ranges
+        //Tags: Array
+        public static IList<string> SummaryRanges(int[] nums)
+        {
+            List<string> ans = new List<string>();
+            if (nums.Length == 0) { return ans; }
+            int count = 1;
+            StringBuilder sb = new StringBuilder();
+            int lag = nums[0];
+            sb.Append(lag.ToString());
+            for (int i = 1; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val != lag + 1)
+                {
+                    if (count == 1)
+                    {
+                        ans.Add(sb.ToString());
+                        sb.Clear();
+                        sb.Append(val.ToString());
+                    }
+                    else if (count > 1)
+                    {
+                        sb.Append("->");
+                        sb.Append(lag.ToString());
+                        ans.Add(sb.ToString());
+                        sb.Clear();
+                        sb.Append(val.ToString());
+                    }
+                    count = 1;
+                }
+                else count++;
+                lag = val;
+            }
+            if (count == 1) ans.Add(sb.ToString());
+            else if (count > 1)
+            {
+                sb.Append("->");
+                sb.Append(lag.ToString());
+                ans.Add(sb.ToString());
+            }
+            sb.Clear();
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
