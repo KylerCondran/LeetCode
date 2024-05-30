@@ -8396,6 +8396,31 @@ namespace LeetCode
             foreach (char b in s2.Reverse()) sb.Append(b);
             return sb.ToString();
         }
+        //Title: 2899. Last Visited Integers
+        //Link: https://leetcode.com/problems/last-visited-integers
+        //Tags: Array, Simulation
+        public static IList<int> LastVisitedIntegers(int[] nums)
+        {
+            List<int> ans = new List<int>();
+            List<int> s = new List<int>();
+            int count = 1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == -1)
+                {
+                    if (count > s.Count) ans.Add(-1);
+                    else ans.Add(s[s.Count - count]);
+                    count++;
+                }
+                else
+                {
+                    s.Add(val);
+                    count = 1;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
