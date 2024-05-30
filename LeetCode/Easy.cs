@@ -8336,6 +8336,40 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 1005. Maximize Sum Of Array After K Negations
+        //Link: https://leetcode.com/problems/maximize-sum-of-array-after-k-negations
+        //Tags: Array, Greedy, Sorting
+        public static int LargestSumAfterKNegations(int[] nums, int k)
+        {
+            Array.Sort(nums);
+            int len = nums.Length;
+            for (int i = 0; i < len; i++)
+            {
+                if (k > 0)
+                {
+                    int val = nums[i];
+                    if (val < 0)
+                    {
+                        nums[i] = val * -1;
+                        k--;
+                    }
+                    else break;
+                }
+                else break;
+            }
+            if (nums.Contains(0) || k % 2 == 0) return nums.Sum();
+            Array.Sort(nums);
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (val > 0)
+                {
+                    nums[i] = val * -1;
+                    break;
+                }
+            }
+            return nums.Sum();
+        }
     }
     #endregion
     #region "Easy Classes"
