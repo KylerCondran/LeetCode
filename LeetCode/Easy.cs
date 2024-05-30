@@ -8370,6 +8370,32 @@ namespace LeetCode
             }
             return nums.Sum();
         }
+        //Title: 1957. Delete Characters to Make Fancy String
+        //Link: https://leetcode.com/problems/delete-characters-to-make-fancy-string
+        //Tags: String
+        public static string MakeFancyString(string s)
+        {
+            Stack<char> s2 = new Stack<char>();
+            int count = 1;
+            char lag = s[0];
+            s2.Push(lag);
+            for (int i = 1; i < s.Length; i++)
+            {
+                char val = s[i];
+                s2.Push(val);
+                if (val == lag) count++;
+                else count = 1;
+                if (count == 3)
+                {
+                    s2.Pop();
+                    count--;
+                }
+                lag = val;
+            }
+            StringBuilder sb = new StringBuilder();
+            foreach (char b in s2.Reverse()) sb.Append(b);
+            return sb.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
