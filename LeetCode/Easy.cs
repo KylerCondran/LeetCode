@@ -8197,6 +8197,23 @@ namespace LeetCode
             foreach (KeyValuePair<char, int> i in a) if (i.Value % len != 0) return false;
             return true;
         }
+        //Title: 3162. Find the Number of Good Pairs I
+        //Link: https://leetcode.com/problems/find-the-number-of-good-pairs-i
+        //Tags: Array, Hash Table
+        public static int NumberOfPairs(int[] nums1, int[] nums2, int k)
+        {
+            int counter = 0;
+            for (int i = 0; i < nums1.Length; i++)
+            {
+                int val1 = nums1[i];
+                for (int j = 0; j < nums2.Length; j++)
+                {
+                    int val2 = nums2[j];
+                    if (val1 % (val2 * k) == 0) counter++;
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
