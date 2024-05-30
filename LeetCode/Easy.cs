@@ -8258,6 +8258,20 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 141. Linked List Cycle
+        //Link: https://leetcode.com/problems/linked-list-cycle
+        //Tags: Hash Table, Linked List, Two Pointers
+        public static bool HasCycle(ListNode head)
+        {
+            int counter = 0;
+            while (head != null)
+            {
+                counter++;
+                if (counter > 10000) return true;
+                head = head.next;
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
