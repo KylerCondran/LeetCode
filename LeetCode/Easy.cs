@@ -8178,6 +8178,25 @@ namespace LeetCode
             sb.Append("1");
             return sb.ToString();
         }
+        //Title: 1897. Redistribute Characters to Make All Strings Equal
+        //Link: https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal
+        //Tags: Hash Table, String, Counting
+        public static bool MakeEqual(string[] words)
+        {
+            int len = words.Length;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            foreach (string word in words)
+            {
+                for (int i = 0; i < word.Length; i++)
+                {
+                    char val = word[i];
+                    if (!a.ContainsKey(val)) a.Add(val, 1);
+                    else a[val]++;
+                }
+            }
+            foreach (KeyValuePair<char, int> i in a) if (i.Value % len != 0) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
