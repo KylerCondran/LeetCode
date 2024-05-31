@@ -8578,6 +8578,24 @@ namespace LeetCode
             }
             return a.Count();
         }
+        //Title: 2016. Maximum Difference Between Increasing Elements
+        //Link: https://leetcode.com/problems/maximum-difference-between-increasing-elements
+        //Tags: Array
+        public static int MaximumDifference(int[] nums)
+        {
+            int len = nums.Length;
+            int max = -1;
+            for (int i = 0; i < len - 1; i++)
+            {
+                int val1 = nums[i];
+                for (int j = i + 1; j < len; j++)
+                {
+                    int val2 = nums[j];
+                    if (val2 > val1) max = Math.Max(max, Math.Abs(val2 - val1));
+                }
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
