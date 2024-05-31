@@ -8761,6 +8761,44 @@ namespace LeetCode
             else final = wild;
             return final;
         }
+        //Title: 541. Reverse String II
+        //Link: https://leetcode.com/problems/reverse-string-ii
+        //Tags: Two Pointers, String
+        public static string ReverseStr(string s, int k)
+        {
+            StringBuilder sb1 = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+            StringBuilder final = new StringBuilder();
+            int counter = 1;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (counter <= k) sb1.Append(val);
+                else if (counter > k && counter <= k * 2) sb2.Append(val);
+                else if (counter == k * 2 + 1)
+                {
+                    counter = 1;
+                    char[] c = sb1.ToString().ToCharArray();
+                    Array.Reverse(c);
+                    string backwards = new string(c);
+                    final.Append(backwards);
+                    final.Append(sb2.ToString());
+                    sb1.Clear();
+                    sb2.Clear();
+                    sb1.Append(val);
+                }
+                counter++;
+            }
+            if (sb1.Length > 0)
+            {
+                char[] c = sb1.ToString().ToCharArray();
+                Array.Reverse(c);
+                string backwards = new string(c);
+                final.Append(backwards);
+            }
+            if (sb2.Length > 0) final.Append(sb2.ToString());
+            return final.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
