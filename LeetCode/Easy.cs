@@ -8668,6 +8668,28 @@ namespace LeetCode
             }
             return Array.IndexOf(nums, max);
         }
+        //Title: 2644. Find the Maximum Divisibility Score
+        //Link: https://leetcode.com/problems/find-the-maximum-divisibility-score
+        //Tags: Array
+        public static int MaxDivScore(int[] nums, int[] divisors)
+        {
+            SortedDictionary<int, List<int>> a = new SortedDictionary<int, List<int>>(new ReverseSortComparer());
+            for (int i = 0; i < divisors.Length; i++)
+            {
+                int div = divisors[i];
+                int max = 0;
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    int val = nums[j];
+                    if (val % div == 0) max++;
+                }
+                if (!a.ContainsKey(max)) a.Add(max, new List<int> { div });
+                else a[max].Add(div);
+            }
+            List<int> b = a.ElementAt(0).Value;
+            b.Sort();
+            return b[0];
+        }
     }
     #endregion
     #region "Easy Classes"
