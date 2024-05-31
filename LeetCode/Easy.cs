@@ -8708,6 +8708,28 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 202. Happy Number
+        //Link: https://leetcode.com/problems/happy-number
+        //Tags: Hash Table, Math, Two Pointers
+        public static bool IsHappy(int n)
+        {
+            int counter = 0;
+            while (n != 1)
+            {
+                if (counter == 1000) return false;
+                string num = n.ToString();
+                int sum = 0;
+                for (int i = 0; i < num.Length; i++)
+                {
+                    char val = num[i];
+                    int.TryParse(val + "", out int digit);
+                    sum += (int)Math.Pow(digit, 2);
+                }
+                n = sum;
+                counter++;
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
