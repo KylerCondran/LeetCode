@@ -8730,6 +8730,37 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2833. Furthest Point From Origin
+        //Link: https://leetcode.com/problems/furthest-point-from-origin
+        //Tags: String, Counting
+        public static int FurthestDistanceFromOrigin(string moves)
+        {
+            int L = 0;
+            int R = 0;
+            int wild = 0;
+            int final = 0;
+            for (int i = 0; i < moves.Length; i++)
+            {
+                char val = moves[i];
+                if (val == 'L') L++;
+                else if (val == 'R') R++;
+                else if (val == '_') wild++;
+            }
+            if (L > R)
+            {
+                final += L;
+                final -= R;
+                final += wild;
+            }
+            else if (R > L)
+            {
+                final += R;
+                final -= L;
+                final += wild;
+            }
+            else final = wild;
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
