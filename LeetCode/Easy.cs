@@ -8655,6 +8655,19 @@ namespace LeetCode
             if (carry == 1) sb3.Insert(0, '1');
             return sb3.ToString();
         }
+        //Title: 747. Largest Number At Least Twice of Others
+        //Link: https://leetcode.com/problems/largest-number-at-least-twice-of-others
+        //Tags: Array, Sorting
+        public static int DominantIndex(int[] nums)
+        {
+            int max = nums.Max();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val != max) if (!(max >= val * 2)) return -1;
+            }
+            return Array.IndexOf(nums, max);
+        }
     }
     #endregion
     #region "Easy Classes"
