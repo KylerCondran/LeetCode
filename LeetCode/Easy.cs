@@ -8690,6 +8690,24 @@ namespace LeetCode
             b.Sort();
             return b[0];
         }
+        //Title: 1608. Special Array With X Elements Greater Than or Equal X
+        //Link: https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x
+        //Tags: Array, Binary Search, Sorting
+        public static int SpecialArray(int[] nums)
+        {
+            int len = nums.Length;
+            for (int i = 1; i <= len; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < len; j++)
+                {
+                    int val = nums[j];
+                    if (val >= i) count++;
+                }
+                if (count == i) return count;
+            }
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
