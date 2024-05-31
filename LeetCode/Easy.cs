@@ -8616,6 +8616,45 @@ namespace LeetCode
             foreach (KeyValuePair<char, int> i in a) if (i.Key == '0' || i.Value > 1) return false;
             return true;
         }
+        //Title: 415. Add Strings
+        //Link: https://leetcode.com/problems/add-strings
+        //Tags: Math, String, Simulation
+        public static string AddStrings(string num1, string num2)
+        {
+            StringBuilder sb1 = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+            StringBuilder sb3 = new StringBuilder();
+            sb1.Append(num1);
+            sb2.Append(num2);
+            int len1 = sb1.Length;
+            int len2 = sb2.Length;
+            if (len1 > len2)
+            {
+                int k = len1 - len2;
+                for (int i = 0; i < k; i++) sb2.Insert(0, '0');
+            }
+            else if (len2 > len1)
+            {
+                int k = len2 - len1;
+                for (int i = 0; i < k; i++) sb1.Insert(0, '0');
+            }
+            int carry = 0;
+            for (int i = sb1.Length - 1; i >= 0; i--)
+            {
+                char val1 = sb1[i];
+                char val2 = sb2[i];
+                int sum = 0;
+                int.TryParse(val1 + "", out int digit1);
+                int.TryParse(val2 + "", out int digit2);
+                sum += digit1 + digit2 + carry;
+                carry = 0;
+                if (sum > 9) carry = 1;
+                string sumstr = sum.ToString();
+                sb3.Insert(0, sumstr[sumstr.Length - 1]);
+            }
+            if (carry == 1) sb3.Insert(0, '1');
+            return sb3.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
