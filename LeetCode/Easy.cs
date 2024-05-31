@@ -8596,6 +8596,26 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2729. Check if The Number is Fascinating
+        //Link: https://leetcode.com/problems/check-if-the-number-is-fascinating
+        //Tags: Hash Table, Math
+        public static bool IsFascinating(int n)
+        {
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(n.ToString());
+            sb.Append((n * 2).ToString());
+            sb.Append((n * 3).ToString());
+            for (int i = 0; i < sb.Length; i++)
+            {
+                char val = sb[i];
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            if (a.Count != 9) return false;
+            foreach (KeyValuePair<char, int> i in a) if (i.Key == '0' || i.Value > 1) return false;
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
