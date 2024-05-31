@@ -8552,6 +8552,32 @@ namespace LeetCode
             }
             return sb.ToString();
         }
+        //Title: 2465. Number of Distinct Averages
+        //Link: https://leetcode.com/problems/number-of-distinct-averages
+        //Tags: Array, Hash Table, Two Pointers, Sorting
+        public static int DistinctAverages(int[] nums)
+        {
+            HashSet<double> a = new HashSet<double>();
+            List<int> b = new List<int>();
+            int len = nums.Length;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                b.Add(val);
+            }
+            for (int i = 0; i < len / 2; i++)
+            {
+                int max = b.Max();
+                int maxpos = b.IndexOf(max);
+                b.RemoveAt(maxpos);
+                int min = b.Min();
+                int minpos = b.IndexOf(min);
+                b.RemoveAt(minpos);
+                double avg = (double)(max + min) / 2;
+                a.Add(avg);
+            }
+            return a.Count();
+        }
     }
     #endregion
     #region "Easy Classes"
