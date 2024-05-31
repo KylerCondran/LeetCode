@@ -8525,6 +8525,33 @@ namespace LeetCode
             }
             return startval;
         }
+        //Title: 67. Add Binary
+        //Link: https://leetcode.com/problems/add-binary
+        //Tags: Math, String, Bit Manipulation, Simulation
+        public static string AddBinary(string a, string b)
+        {
+            BigInteger val1 = 0;
+            BigInteger val2 = 0;
+            foreach (char i in a)
+            {
+                val1 <<= 1;
+                if (i == '1') val1 |= 1;
+            }
+            foreach (char i in b)
+            {
+                val2 <<= 1;
+                if (i == '1') val2 |= 1;
+            }
+            BigInteger sum = val1 + val2;
+            if (sum == 0) return "0";
+            StringBuilder sb = new StringBuilder();
+            while (sum > 0)
+            {
+                sb.Insert(0, sum & 1);
+                sum >>= 1;
+            }
+            return sb.ToString();
+        }
     }
     #endregion
     #region "Easy Classes"
