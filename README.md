@@ -115,6 +115,22 @@ This error code means you have a memory leak somewhere. One of your objects are 
 
 This is a frustrating error code but it is actually really good news, it means you are super close to having your solution accepted but the program still took longer to finish than allowed. Final tweaks need to be made to make your application faster. Optimize your code to make it run faster, it may be stuggling on a larger than average test case.
 
+### Compile Error
+
+This means your code is not in the right format to be compiled. It will give you hints on what lines of code contain the illegal values.
+
+### Runtime Error
+
+This means while your code did compile correctly, during operation it did something that was illegal. The most often causes can be something like an index going outside the bounds of an array, or trying to access a non existent or empty collection, or arguments given values outside of the acceptable ranges. You can read the error stack trace backwards to determine where the error occured.
+
+### Wrong Answer
+
+This means your code did not return the correct output for the input it received. This requires going back and rewriting the logic to your program so it returns the correct answer for the given testcase. If you are confused on why your program returned the wrong answer it is most often helpful to debug the code and testcase externally from leetcode in an IDE. You can set break points and step through it line by line and watch the variable values as they change to determine at what point do things go awry.
+
+### Accepted
+
+Congratulations. Your code was accepted and you received credit for completion of the problem.
+
 ## Data Structure Pros/Cons
 
 1. Array
