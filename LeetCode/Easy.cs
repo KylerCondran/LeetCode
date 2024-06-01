@@ -8831,6 +8831,44 @@ namespace LeetCode
             }
             return score;
         }
+        //Title: 1974. Minimum Time to Type Word Using Special Typewriter
+        //Link: https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter
+        //Tags: String, Greedy
+        public static int MinTimeToType(string word)
+        {
+            char[] alpha = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            int seconds = 0;
+            int len = word.Length;
+            List<char> a = new List<char>();
+            foreach (char i in alpha) a.Add(i);
+            for (int i = 0; i < len; i++)
+            {
+                char val = word[i];
+                int pos = a.IndexOf(val);
+                if (pos < 13)
+                {
+                    while (a[0] != val)
+                    {
+                        char x = a[0];
+                        a.RemoveAt(0);
+                        a.Add(x);
+                        seconds++;
+                    }
+                }
+                else
+                {
+                    while (a[0] != val)
+                    {
+                        char x = a[a.Count - 1];
+                        a.RemoveAt(a.Count - 1);
+                        a.Insert(0, x);
+                        seconds++;
+                    }
+                }
+            }
+            seconds += len;
+            return seconds;
+        }
     }
     #endregion
     #region "Easy Classes"
