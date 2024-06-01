@@ -8869,6 +8869,55 @@ namespace LeetCode
             seconds += len;
             return seconds;
         }
+        //Title: 1763. Longest Nice Substring
+        //Link: https://leetcode.com/problems/longest-nice-substring
+        //Tags: Hash Table, String, Divide and Conquer, Bit Manipulation, Sliding Window
+        public static string LongestNiceSubstring(string s)
+        {
+            int len = s.Length;
+            char[] l = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            char[] u = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            for (int d = len; d >= 2; d--)
+            {
+                for (int i = 0; i <= len - d; i++)
+                {
+                    Dictionary<char, string> a = new Dictionary<char, string>();
+                    StringBuilder sb = new StringBuilder();
+                    for (int j = i; j < i + d; j++)
+                    {
+                        char val = s[j];
+                        sb.Append(val);
+                        if (!a.ContainsKey(Char.ToLower(val)))
+                        {
+                            if (l.Contains(val)) a.Add(val, "Lower");
+                            else if (u.Contains(val)) a.Add(Char.ToLower(val), "Upper");
+                        }
+                        else
+                        {
+                            if (l.Contains(val))
+                            {
+                                if (a[val] == "Upper") a[val] = "Both";
+                            }
+                            else if (u.Contains(val))
+                            {
+                                if (a[Char.ToLower(val)] == "Lower") a[Char.ToLower(val)] = "Both";
+                            }
+                        }
+                    }
+                    bool found = true;
+                    foreach (KeyValuePair<char, string> x in a)
+                    {
+                        if (x.Value != "Both")
+                        {
+                            found = false;
+                            break;
+                        }
+                    }
+                    if (found) return sb.ToString();
+                }
+            }
+            return "";
+        }
     }
     #endregion
     #region "Easy Classes"
