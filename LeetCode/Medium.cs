@@ -4870,6 +4870,58 @@ namespace LeetCode
             for (int i = 0; i < a.Count; i++) ans[i] = a[i];
             return ans;
         }
+        //Title: 725. Split Linked List in Parts
+        //Link: https://leetcode.com/problems/split-linked-list-in-parts
+        //Tags: Linked List
+        public static ListNode[] SplitListToParts(ListNode head, int k)
+        {
+            ListNode[] ans = new ListNode[k];
+            Queue<int> q = new Queue<int>();
+            while (head != null)
+            {
+                q.Enqueue(head.val);
+                head = head.next;
+            }
+            int len = q.Count;
+            int index = 0;
+            int extra = len % k;
+            if (len <= k) extra = 0;
+            while (q.Count > 0)
+            {
+                int counter = 0;
+                int remainder = len;
+                while (remainder >= k)
+                {
+                    counter++;
+                    remainder -= k;
+                }
+                if (len <= k) counter = 1;
+                if (extra > 0)
+                {
+                    counter++;
+                    extra--;
+                }
+                ListNode main = null;
+                ListNode current = main;
+                for (int i = 0; i < counter; i++)
+                {
+                    ListNode link = new ListNode(q.Dequeue());
+                    if (main == null)
+                    {
+                        main = link;
+                        current = main;
+                    }
+                    else
+                    {
+                        current.next = link;
+                        current = current.next;
+                    }
+                }
+                ans[index] = main;
+                index++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
