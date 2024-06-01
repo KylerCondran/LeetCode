@@ -8979,6 +8979,23 @@ namespace LeetCode
             foreach (char i in letters) if (i > target) return i;
             return letters[0];
         }
+        //Title: 2200. Find All K-Distant Indices in an Array
+        //Link: https://leetcode.com/problems/find-all-k-distant-indices-in-an-array
+        //Tags: Array, Two Pointers
+        public static IList<int> FindKDistantIndices(int[] nums, int key, int k)
+        {
+            List<int> a = new List<int>();
+            List<int> ans = new List<int>();
+            int len = nums.Length;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (val == key) a.Add(i);
+            }
+            foreach (int i in a) for (int j = 0; j < len; j++) if (Math.Abs(i - j) <= k) if (!ans.Contains(j)) ans.Add(j);
+            ans.Sort();
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
