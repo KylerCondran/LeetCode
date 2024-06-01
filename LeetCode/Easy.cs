@@ -8971,6 +8971,14 @@ namespace LeetCode
             }
             return 0;
         }
+        //Title: 744. Find Smallest Letter Greater Than Target
+        //Link: https://leetcode.com/problems/find-smallest-letter-greater-than-target
+        //Tags: Array, Binary Search
+        public static char NextGreatestLetter(char[] letters, char target)
+        {
+            foreach (char i in letters) if (i > target) return i;
+            return letters[0];
+        }
     }
     #endregion
     #region "Easy Classes"
