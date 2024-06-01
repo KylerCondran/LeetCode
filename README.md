@@ -106,6 +106,7 @@ Some easy problems have time limits, more medium problems have time limits, and 
 Research Topics:  
 [Time Complexity](https://en.wikipedia.org/wiki/Time_complexity)  
 [Big O Notation](https://en.wikipedia.org/wiki/Big_O_notation)  
+[Algorithms](https://en.wikipedia.org/wiki/List_of_algorithms)  
 
 ### Memory Limit Exceeded
 
@@ -125,7 +126,7 @@ This means while your code did compile correctly, during operation it did someth
 
 ### Wrong Answer
 
-This means your code did not return the correct output for the input it received. This requires going back and rewriting the logic to your program so it returns the correct answer for the given testcase. If you are confused on why your program returned the wrong answer it is most often helpful to debug the code and testcase externally from leetcode in an IDE. You can set break points and step through it line by line and watch the variable values as they change to determine at what point do things go awry.
+This means your code did not return the correct output for the input it received. This requires going back and rewriting the logic to your program so it returns the correct answer for the given testcase. If you are confused on why your program returned the wrong answer it is most often helpful to debug the code and testcase externally from leetcode in an IDE. You can set break points and step through your code line by line and watch the variable values as they change to determine at what point do things go awry.
 
 ### Accepted
 
