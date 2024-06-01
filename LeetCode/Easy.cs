@@ -8799,6 +8799,38 @@ namespace LeetCode
             if (sb2.Length > 0) final.Append(sb2.ToString());
             return final.ToString();
         }
+        //Title: 2815. Max Pair Sum in an Array
+        //Link: https://leetcode.com/problems/max-pair-sum-in-an-array
+        //Tags: Array, Hash Table
+        public static int MaxSum(int[] nums)
+        {
+            int score = -1;
+            int len = nums.Length;
+            int[] maxdigit = new int[len];
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                int max = 0;
+                string valstr = val.ToString();
+                for (int j = 0; j < valstr.Length; j++)
+                {
+                    char val2 = valstr[j];
+                    int.TryParse(val2 + "", out int digit);
+                    max = Math.Max(max, digit);
+                }
+                maxdigit[i] = max;
+            }
+            for (int i = 0; i < len - 1; i++)
+            {
+                int val1 = nums[i];
+                for (int j = i + 1; j < len; j++)
+                {
+                    int val2 = nums[j];
+                    if (maxdigit[i] == maxdigit[j]) score = Math.Max(score, val1 + val2);
+                }
+            }
+            return score;
+        }
     }
     #endregion
     #region "Easy Classes"
