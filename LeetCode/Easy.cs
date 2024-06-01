@@ -8943,6 +8943,34 @@ namespace LeetCode
             }
             return (largest[0] * largest[1]) - (smallest[0] * smallest[1]);
         }
+        //Title: 868. Binary Gap
+        //Link: https://leetcode.com/problems/binary-gap
+        //Tags: Bit Manipulation
+        public static int BinaryGap(int n)
+        {
+            string binary = Convert.ToString(n, 2);
+            int len = binary.Length;
+            int onecount = 0;
+            for (int i = 0; i < len; i++)
+            {
+                char val = binary[i];
+                if (val == '1')
+                {
+                    onecount++;
+                    if (onecount > 1) { break; }
+                }
+            }
+            if (onecount < 2) return 0;
+            for (int i = len - 2; i >= 0; i--)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append('1');
+                for (int j = 0; j < i; j++) sb.Append('0');
+                sb.Append('1');
+                if (binary.Contains(sb.ToString())) return i + 1;
+            }
+            return 0;
+        }
     }
     #endregion
     #region "Easy Classes"
