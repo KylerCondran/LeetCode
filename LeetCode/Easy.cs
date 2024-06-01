@@ -8918,6 +8918,31 @@ namespace LeetCode
             }
             return "";
         }
+        //Title: 1913. Maximum Product Difference Between Two Pairs
+        //Link: https://leetcode.com/problems/maximum-product-difference-between-two-pairs
+        //Tags: Array, Sorting
+        public static int MaxProductDifference(int[] nums)
+        {
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++) a.Add(nums[i]);
+            int[] largest = new int[2];
+            int[] smallest = new int[2];
+            for (int i = 0; i < 2; i++)
+            {
+                int max = a.Max();
+                int pos = a.IndexOf(max);
+                a.RemoveAt(pos);
+                largest[i] = max;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                int min = a.Min();
+                int pos = a.IndexOf(min);
+                a.RemoveAt(pos);
+                smallest[i] = min;
+            }
+            return (largest[0] * largest[1]) - (smallest[0] * smallest[1]);
+        }
     }
     #endregion
     #region "Easy Classes"
