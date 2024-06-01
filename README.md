@@ -84,6 +84,48 @@ while (q.Count > 0)
     }
 }
 ```
+### Copying A 2D Jagged Array
+```
+int[][] targetArray = new int[3][];
+targetArray[0] = new int[] { 1, 2, 3, 4 };
+targetArray[1] = new int[] { 2, 1, 4, 3 };
+targetArray[2] = new int[] { 3, 4, 1, 2 };
+int len = targetArray.Length;
+int[][] newArray = new int[len][];
+for (int x = 0; x < len; x++)
+{
+    int[] inner = targetArray[x];
+    int ilen = inner.Length;
+    int[] newer = new int[ilen];
+    Array.Copy(inner, newer, ilen);
+    newArray[x] = newer;
+}
+```
+### Find Lexicographically Larger String
+```
+string s1 = "StringA";
+string s2 = "StringB";
+int minlen = Math.Min(s1.Length, s2.Length);
+for (int x = 0; x < minlen; x++)
+{
+    if (s1[x] > s2[x])
+    {
+        return s1;
+    }
+    else if (s1[x] < s2[x])
+    {
+        return s2;
+    }
+}
+if (s1.Length > s2.Length)
+{
+    return s1;
+}
+else if (s1.Length < s2.Length)
+{
+    return s2;
+}
+```
 
 ## Submit Error Codes
 
