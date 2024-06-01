@@ -8996,6 +8996,29 @@ namespace LeetCode
             ans.Sort();
             return ans;
         }
+        //Title: 2855. Minimum Right Shifts to Sort the Array
+        //Link: https://leetcode.com/problems/minimum-right-shifts-to-sort-the-array
+        //Tags: Array
+        public static int MinimumRightShifts(IList<int> nums)
+        {
+            int min = nums.Min();
+            int count = 0;
+            while (nums[0] != min)
+            {
+                int x = nums[nums.Count - 1];
+                nums.RemoveAt(nums.Count - 1);
+                nums.Insert(0, x);
+                count++;
+            }
+            int lag = min;
+            for (int i = 1; i < nums.Count; i++)
+            {
+                int val = nums[i];
+                if (val < lag) return -1;
+                lag = val;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Easy Classes"
