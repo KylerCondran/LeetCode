@@ -9019,6 +9019,37 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 2099. Find Subsequence of Length K With the Largest Sum
+        //Link: https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum
+        //Tags: Array, Hash Table, Sorting, Heap (Priority Queue)
+        public static int[] MaxSubsequence(int[] nums, int k)
+        {
+            int len = nums.Length;
+            List<int> a = new List<int>();
+            List<int> b = new List<int>();
+            for (int i = 0; i < len; i++) a.Add(nums[i]);
+            a.Sort();
+            a.Reverse();
+            int[] ans = new int[k];
+            for (int i = 0; i < k; i++)
+            {
+                int val = a[i];
+                b.Add(val);
+            }
+            int index = 0;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (b.Contains(val))
+                {
+                    ans[index] = val;
+                    index++;
+                    b.Remove(val);
+                    if (index == k) break;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
