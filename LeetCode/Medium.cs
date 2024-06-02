@@ -5241,6 +5241,53 @@ namespace LeetCode
             }
             return min;
         }
+        //Title: 2841. Maximum Sum of Almost Unique Subarray
+        //Link: https://leetcode.com/problems/maximum-sum-of-almost-unique-subarray
+        //Tags: Array, Hash Table, Sliding Window
+        public static long MaxSum(IList<int> nums, int m, int k)
+        {
+            long max = 0;
+            long sum = 0;
+            int len = nums.Count;
+            int count = 0;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < k; i++)
+            {
+                int val = nums[i];
+                sum += val;
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                    count++;
+                }
+                else a[val]++;
+                q.Enqueue(val);
+            }
+            if (count >= m) max = Math.Max(max, sum);
+            for (int i = k; i < len; i++)
+            {
+                int dump = q.Dequeue();
+                sum -= dump;
+                a[dump]--;
+                if (a[dump] == 0)
+                {
+                    a.Remove(dump);
+                    count--;
+                }
+                int val = nums[i];
+                sum += val;
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                    count++;
+                }
+                else a[val]++;
+                if (count >= m) max = Math.Max(max, sum);
+                q.Enqueue(val);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Medium Classes"
