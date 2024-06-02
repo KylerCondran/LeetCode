@@ -31,7 +31,7 @@ git clone https://github.com/KylerCondran/LeetCode.git
 - What is hard for some people may be easy to you and vica versa, everyone has a unique skill set and learning ability.
 - Non increasing just means decreasing but with duplicates, non decreasing means increasing but with duplicates.
 - If you are stumped on a question, instead of looking at the solution, look at a solution for a similar problem to find some starter code or get a better idea of what is needed.
-- Once you learn a new skill or data structure like linked lists or tree's, you will get some starter code that can then be used to pop 20-30 questions quickly with minimal changes.
+- Once you learn a new skill or data structure like linked lists, trees, or sliding window, you will get some starter code that can then be used to pop 20-30 questions quickly with minimal changes.
 - Spend some time exclusively hunting for problems you think you can accomplish, sort by difficulty / category / acceptance rate, use the browser bookmark toolbar and create folders, scan through questions and dump them into folders of different categories.
 - The constraints section provides valuable clues such as what ranges are valid for variables, this can give you clues that can allow you to skip calculations outside these ranges such as working with negative numbers or duplicates.
 - Acceptance rate does not mean difficulty level, it means it was the average amount of submits required to get accepted status. This number can be skewed by purposely obtuse test cases not mentioned in the problem.
