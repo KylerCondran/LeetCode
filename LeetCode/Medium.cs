@@ -5071,6 +5071,29 @@ namespace LeetCode
             }
             return maxlen;
         }
+        //Title: 2260. Minimum Consecutive Cards to Pick Up
+        //Link: https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up
+        //Tags: Array, Hash Table, Sliding Window
+        public static int MinimumCardPickup(int[] cards)
+        {
+            int minindex = Int32.MaxValue;
+            bool found = false;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < cards.Length; i++)
+            {
+                int val = cards[i];
+                if (!a.ContainsKey(val)) a.Add(val, i);
+                else
+                {
+                    int index = a[val];
+                    found = true;
+                    minindex = Math.Min(minindex, i - index);
+                    a[val] = i;
+                }
+            }
+            if (found) return minindex + 1;
+            return -1;
+        }
     }
     #endregion
     #region "Medium Classes"
