@@ -5044,6 +5044,33 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 1208. Get Equal Substrings Within Budget
+        //Link: https://leetcode.com/problems/get-equal-substrings-within-budget
+        //Tags: String, Binary Search, Sliding Window, Prefix Sum
+        public static int EqualSubstring(string s, string t, int maxCost)
+        {
+            int cost = 0;
+            int len = 0;
+            int maxlen = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char a = s[i];
+                char b = t[i];
+                int val = Math.Abs(a - b);
+                while (cost + val > maxCost && q.Count > 0)
+                {
+                    int dump = q.Dequeue();
+                    cost -= dump;
+                    len--;
+                }
+                if (cost + val <= maxCost) maxlen = Math.Max(maxlen, len + 1);
+                cost += val;
+                len++;
+                q.Enqueue(val);
+            }
+            return maxlen;
+        }
     }
     #endregion
     #region "Medium Classes"
