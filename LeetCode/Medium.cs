@@ -4922,6 +4922,27 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 386. Lexicographical Numbers
+        //Link: https://leetcode.com/problems/lexicographical-numbers
+        //Tags: Depth-First Search, Trie
+        public static IList<int> LexicalOrder(int n)
+        {
+            List<string> a = new List<string>();
+            List<int> ans = new List<int>();
+            for (int i = 1; i <= n; i++)
+            {
+                string val = i.ToString();
+                a.Add(val);
+            }
+            a.Sort();
+            for (int i = 0; i < a.Count; i++)
+            {
+                string val = a[i];
+                int.TryParse(val, out int digits);
+                ans.Add(digits);
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
