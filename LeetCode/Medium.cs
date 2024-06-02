@@ -5140,6 +5140,46 @@ namespace LeetCode
             }
             return total - minsum;
         }
+        //Title: 2134. Minimum Swaps to Group All 1's Together II
+        //Link: https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii
+        //Tags: Array, Sliding Window
+        public static int MinSwaps(int[] nums)
+        {
+            int sum = nums.Sum();
+            int len = nums.Length;
+            int zeros = 0;
+            int minzero = len - sum;
+            if (sum == 0) return 0;
+            List<int> a = new List<int>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                a.Add(val);
+            }
+            for (int i = 0; i < sum; i++)
+            {
+                int val = nums[i];
+                a.Add(val);
+            }
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < sum; i++)
+            {
+                int val = a[i];
+                if (val == 0) zeros++;
+                q.Enqueue(val);
+            }
+            minzero = Math.Min(minzero, zeros);
+            for (int i = sum; i < len + sum; i++)
+            {
+                int dump = q.Dequeue();
+                if (dump == 0) zeros--;
+                int val = a[i];
+                if (val == 0) zeros++;
+                q.Enqueue(val);
+                minzero = Math.Min(minzero, zeros);
+            }
+            return minzero;
+        }
     }
     #endregion
     #region "Medium Classes"
