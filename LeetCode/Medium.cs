@@ -5094,6 +5094,22 @@ namespace LeetCode
             if (found) return minindex + 1;
             return -1;
         }
+        //Title: 187. Repeated DNA Sequences 
+        //Link: https://leetcode.com/problems/repeated-dna-sequences
+        //Tags: Hash Table, String, Bit Manipulation, Sliding Window, Rolling Hash, Hash Function
+        public static IList<string> FindRepeatedDnaSequences(string s)
+        {
+            Dictionary<string, int> a = new Dictionary<string, int>();
+            List<string> ans = new List<string>();
+            for (int i = 0; i <= s.Length - 10; i++)
+            {
+                string val = s.Substring(i, 10);
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            foreach (KeyValuePair<string, int> i in a) if (i.Value > 1) ans.Add(i.Key);
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
