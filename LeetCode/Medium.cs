@@ -5180,6 +5180,38 @@ namespace LeetCode
             }
             return minzero;
         }
+        //Title: 2380. Time Needed to Rearrange a Binary String
+        //Link: https://leetcode.com/problems/time-needed-to-rearrange-a-binary-string
+        //Tags: String, Dynamic Programming, Simulation
+        public static int SecondsToRemoveOccurrences(string s)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(s);
+            int len = sb.Length;
+            int count = 0;
+            bool active = true;
+            while (sb.ToString().Contains("01"))
+            {
+                count++;
+                for (int i = 0; i < len; i++)
+                {
+                    if (sb[i] == '0' && active)
+                    {
+                        if (i != len - 1)
+                        {
+                            if (sb[i + 1] == '1')
+                            {
+                                sb[i] = '1';
+                                sb[i + 1] = '0';
+                                active = false;
+                            }
+                        }
+                    }
+                    else active = true;
+                }
+            }
+            return count;
+        }
     }
     #endregion
     #region "Medium Classes"
