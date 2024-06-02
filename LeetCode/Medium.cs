@@ -5019,6 +5019,31 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1695. Maximum Erasure Value
+        //Link: https://leetcode.com/problems/maximum-erasure-value
+        //Tags: Array, Hash Table, Sliding Window
+        public static int MaximumUniqueSubarray(int[] nums)
+        {
+            int sum = 0;
+            int max = 0;
+            Queue<int> q = new Queue<int>();
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                while (a.Contains(val))
+                {
+                    int dump = q.Dequeue();
+                    a.Remove(dump);
+                    sum -= dump;
+                }
+                sum += val;
+                a.Add(val);
+                max = Math.Max(max, sum);
+                q.Enqueue(val);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Medium Classes"
