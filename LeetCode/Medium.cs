@@ -5110,6 +5110,36 @@ namespace LeetCode
             foreach (KeyValuePair<string, int> i in a) if (i.Value > 1) ans.Add(i.Key);
             return ans;
         }
+        //Title: 1423. Maximum Points You Can Obtain from Cards
+        //Link: https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards
+        //Tags: Array, Sliding Window, Prefix Sum
+        public static int MaxScore(int[] cardPoints, int k)
+        {
+            int sum = 0;
+            int total = 0;
+            int len = cardPoints.Length;
+            Queue<int> q = new Queue<int>();
+            if (k == len) return cardPoints.Sum();
+            for (int i = 0; i < len - k; i++)
+            {
+                int val = cardPoints[i];
+                sum += val;
+                total += val;
+                q.Enqueue(val);
+            }
+            int minsum = sum;
+            for (int i = len - k; i < len; i++)
+            {
+                int dump = q.Dequeue();
+                sum -= dump;
+                int val = cardPoints[i];
+                sum += val;
+                total += val;
+                q.Enqueue(val);
+                minsum = Math.Min(minsum, sum);
+            }
+            return total - minsum;
+        }
     }
     #endregion
     #region "Medium Classes"
