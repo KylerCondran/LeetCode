@@ -4968,6 +4968,31 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 1493. Longest Subarray of 1's After Deleting One Element
+        //Link: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element
+        //Tags: Array, Dynamic Programming, Sliding Window
+        public static int LongestSubarray(int[] nums)
+        {
+            int max = 0;
+            int count = 0;
+            int zeros = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 0) zeros++;
+                q.Enqueue(val);
+                while (zeros > 1)
+                {
+                    int dump = q.Dequeue();
+                    if (dump == 0) zeros--;
+                    count--;
+                }
+                count++;
+                max = Math.Max(max, count);
+            }
+            return max - 1;
+        }
     }
     #endregion
     #region "Medium Classes"
