@@ -4943,6 +4943,31 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1004. Max Consecutive Ones III
+        //Link: https://leetcode.com/problems/max-consecutive-ones-iii
+        //Tags: Array, Binary Search, Sliding Window, Prefix Sum
+        public static int LongestOnes(int[] nums, int k)
+        {
+            int max = 0;
+            int count = 0;
+            int zeros = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 0) zeros++;
+                q.Enqueue(val);
+                while (zeros > k)
+                {
+                    int dump = q.Dequeue();
+                    if (dump == 0) zeros--;
+                    count--;
+                }
+                count++;
+                max = Math.Max(max, count);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Medium Classes"
