@@ -4993,6 +4993,32 @@ namespace LeetCode
             }
             return max - 1;
         }
+        //Title: 1343. Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
+        //Link: https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold
+        //Tags: Array, Sliding Window
+        public static int NumOfSubarrays(int[] arr, int k, int threshold)
+        {
+            int sum = 0;
+            int counter = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < k; i++)
+            {
+                int val = arr[i];
+                sum += val;
+                q.Enqueue(val);
+            }
+            if ((sum / k) >= threshold) counter++;
+            for (int i = k; i < arr.Length; i++)
+            {
+                int dump = q.Dequeue();
+                sum -= dump;
+                int val = arr[i];
+                sum += val;
+                q.Enqueue(val);
+                if ((sum / k) >= threshold) counter++;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
