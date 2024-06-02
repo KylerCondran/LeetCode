@@ -5212,6 +5212,35 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 209. Minimum Size Subarray Sum
+        //Link: https://leetcode.com/problems/minimum-size-subarray-sum
+        //Tags: Array, Binary Search, Sliding Window, Prefix Sum
+        public static int MinSubArrayLen(int target, int[] nums)
+        {
+            int total = nums.Sum();
+            int len = nums.Length;
+            if (target > total) return 0;
+            else if (target == total) return len;
+            int sum = 0;
+            int min = len;
+            int count = 0;
+            Queue<int> q = new Queue<int>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                sum += val;
+                count++;
+                q.Enqueue(val);
+                while (sum >= target)
+                {
+                    if (sum >= target) min = Math.Min(min, count);
+                    int dump = q.Dequeue();
+                    sum -= dump;
+                    count--;
+                }
+            }
+            return min;
+        }
     }
     #endregion
     #region "Medium Classes"
