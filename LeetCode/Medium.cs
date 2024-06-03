@@ -5288,6 +5288,43 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2730. Find the Longest Semi-Repetitive Substring
+        //Link: https://leetcode.com/problems/find-the-longest-semi-repetitive-substring
+        //Tags: String, Sliding Window
+        public static int LongestSemiRepetitiveSubstring(string s)
+        {
+            int max = 0;
+            int count = 0;
+            int pos = 0;
+            bool found = false;
+            Queue<char> q = new Queue<char>();
+            char lag = s[0];
+            q.Enqueue(lag);
+            count++;
+            max = Math.Max(max, count);
+            for (int i = 1; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (val == lag)
+                {
+                    if (found)
+                    {
+                        for (int j = 0; j < pos; j++)
+                        {
+                            q.Dequeue();
+                            count--;
+                        }
+                    }
+                    else found = true;
+                    pos = count;
+                }
+                count++;
+                max = Math.Max(max, count);
+                q.Enqueue(val);
+                lag = val;
+            }
+            return max;
+        }
     }
     #endregion
     #region "Medium Classes"
