@@ -5325,6 +5325,23 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 2486. Append Characters to String to Make Subsequence
+        //Link: https://leetcode.com/problems/append-characters-to-string-to-make-subsequence
+        //Tags: Two Pointers, String, Greedy
+        public static int AppendCharacters(string s, string t)
+        {
+            int index = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                char val = s[i];
+                if (val == t[index])
+                {
+                    index++;
+                    if (index >= t.Length) break;
+                }
+            }
+            return t.Length - index;
+        }
     }
     #endregion
     #region "Medium Classes"
