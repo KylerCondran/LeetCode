@@ -5439,6 +5439,27 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 3159. Find Occurrences of an Element in an Array
+        //Link: https://leetcode.com/problems/find-occurrences-of-an-element-in-an-array
+        //Tags: Array, Hash Table
+        public static int[] OccurrencesOfElement(int[] nums, int[] queries, int x)
+        {
+            List<int> a = new List<int>();
+            int len = queries.Length;
+            int[] ans = new int[len];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == x) a.Add(i);
+            }
+            for (int i = 0; i < len; i++)
+            {
+                int val = queries[i];
+                if (val > a.Count) ans[i] = -1;
+                else ans[i] = a[val - 1];
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
