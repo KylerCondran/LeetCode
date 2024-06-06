@@ -5389,6 +5389,56 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 846. Hand of Straights
+        //Link: https://leetcode.com/problems/hand-of-straights
+        //Tags: Array, Hash Table, Greedy, Sorting
+        public static bool IsNStraightHand(int[] hand, int groupSize)
+        {
+            int len = hand.Length;
+            if (len % groupSize != 0) return false;
+            int count = 0;
+            SortedDictionary<int, int> a = new SortedDictionary<int, int>();
+            for (int i = 0; i < len; i++)
+            {
+                int val = hand[i];
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                    count++;
+                }
+                else a[val]++;
+            }
+            List<int> b = new List<int>();
+            while (count > 0)
+            {
+                if (count < groupSize) return false;
+                if (b.Count > 0)
+                {
+                    foreach (int j in b) a.Remove(j);
+                    b.Clear();
+                }
+                int lag = a.ElementAt(0).Key;
+                a[lag]--;
+                if (a[lag] == 0)
+                {
+                    b.Add(lag);
+                    count--;
+                }
+                for (int i = 1; i < groupSize; i++)
+                {
+                    int val = a.ElementAt(i).Key;
+                    if (val != lag + 1) return false;
+                    a[val]--;
+                    if (a[val] == 0)
+                    {
+                        b.Add(val);
+                        count--;
+                    }
+                    lag = val;
+                }
+            }
+            return true;
+        }
     }
     #endregion
     #region "Medium Classes"
