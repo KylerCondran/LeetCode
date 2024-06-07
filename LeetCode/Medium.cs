@@ -6302,5 +6302,30 @@ namespace LeetCode
             return ans;
         }
     }
+    //Title: 208. Implement Trie (Prefix Tree)
+    //Link: https://leetcode.com/problems/implement-trie-prefix-tree
+    //Tags: Hash Table, String, Design, Trie
+    public class Trie
+    {
+        List<string> a;
+        public Trie()
+        {
+            a = new List<string>();
+        }
+        public void Insert(string word)
+        {
+            if (!a.Contains(word)) a.Add(word);
+        }
+        public bool Search(string word)
+        {
+            return a.Contains(word);
+        }
+        public bool StartsWith(string prefix)
+        {
+            var results = a.Where((x) => x.StartsWith(prefix));
+            foreach (string i in results) return true;
+            return false;
+        }
+    }
     #endregion
 }
