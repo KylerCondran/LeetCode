@@ -6327,5 +6327,32 @@ namespace LeetCode
             return false;
         }
     }
+    //Title: 677. Map Sum Pairs
+    //Link: https://leetcode.com/problems/map-sum-pairs
+    //Tags: Hash Table, String, Design, Trie
+    public class MapSum
+    {
+        Dictionary<string, int> a;
+        public MapSum()
+        {
+            a = new Dictionary<string, int>();
+        }
+        public void Insert(string key, int val)
+        {
+            if (!a.ContainsKey(key)) a.Add(key, val);
+            else a[key] = val;
+        }
+        public int Sum(string prefix)
+        {
+            int len = prefix.Length;
+            int sum = 0;
+            foreach (KeyValuePair<string, int> i in a)
+            {
+                string val = i.Key;
+                if (val.Length >= len) if (val.Substring(0, len) == prefix) sum += i.Value;
+            }
+            return sum;
+        }
+    }
     #endregion
 }
