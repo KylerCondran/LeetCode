@@ -5481,6 +5481,35 @@ namespace LeetCode
             }
             return product;
         }
+        //Title: 945. Minimum Increment to Make Array Unique
+        //Link: https://leetcode.com/problems/minimum-increment-to-make-array-unique
+        //Tags: Array, Greedy, Sorting, Counting
+        public static int MinIncrementForUnique(int[] nums)
+        {
+            int counter = 0;
+            Array.Sort(nums);
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int start = nums[0];
+            a.Add(start, 1);
+            int nextavail = start + 1;
+            for (int i = 1; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (a.ContainsKey(val))
+                {
+                    counter += nextavail - val;
+                    val = nextavail;
+                    nextavail++;
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a.Add(val, 1);
+                    nextavail = val + 1;
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
