@@ -9050,6 +9050,23 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3184. Count Pairs That Form a Complete Day I
+        //Link: https://leetcode.com/problems/count-pairs-that-form-a-complete-day-i
+        //Tags: Array, Hash Table, Counting
+        public static int CountCompleteDayPairs(int[] hours)
+        {
+            int counter = 0;
+            for (int i = 0; i < hours.Length; i++)
+            {
+                int val1 = hours[i];
+                for (int j = i + 1; j < hours.Length; j++)
+                {
+                    int val2 = hours[j];
+                    if ((val1 + val2) % 24 == 0) counter++;
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Easy Classes"
