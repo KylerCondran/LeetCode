@@ -5530,6 +5530,26 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1010. Pairs of Songs With Total Durations Divisible by 60
+        //Link: https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60
+        //Tags: Array, Hash Table, Counting
+        public static int NumPairsDivisibleBy60(int[] time)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int counter = 0;
+            for (int i = 0; i < time.Length; i++)
+            {
+                int val = time[i] % 60;
+                if (a.ContainsKey((60 - val) % 60))
+                {
+                    int repeat = a[(60 - val) % 60];
+                    counter += repeat;
+                }
+                if (!a.ContainsKey(val)) a.Add(val, 1);
+                else a[val]++;
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
