@@ -5551,7 +5551,7 @@ namespace LeetCode
             return counter;
         }
         //Title: 2391. Minimum Amount of Time to Collect Garbage
-        //Link: 
+        //Link: https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage
         //Tags: Array, String, Prefix Sum
         public static int GarbageCollection(string[] garbage, int[] travel)
         {
