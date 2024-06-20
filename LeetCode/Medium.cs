@@ -5621,6 +5621,38 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2352. Equal Row and Column Pairs
+        //Link: https://leetcode.com/problems/equal-row-and-column-pairs
+        //Tags: Array, Hash Table, Matrix, Simulation
+        public static int EqualPairs(int[][] grid)
+        {
+            int lenx = grid[0].Length;
+            int leny = grid.Length;
+            int counter = 0;
+            Dictionary<string, int> a = new Dictionary<string, int>();
+            for (int i = 0; i < leny; i++)
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < lenx; j++)
+                {
+                    sb.Append(grid[i][j]);
+                    sb.Append('.');
+                }
+                if (!a.ContainsKey(sb.ToString())) a.Add(sb.ToString(), 1);
+                else a[sb.ToString()]++;
+            }
+            for (int i = 0; i < lenx; i++)
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < leny; j++)
+                {
+                    sb.Append(grid[j][i]);
+                    sb.Append('.');
+                }
+                if (a.ContainsKey(sb.ToString())) counter += a[sb.ToString()];
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
