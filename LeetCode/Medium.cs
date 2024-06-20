@@ -5589,6 +5589,18 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 1561. Maximum Number of Coins You Can Get
+        //Link: https://leetcode.com/problems/maximum-number-of-coins-you-can-get
+        //Tags: Array, Math, Greedy, Sorting, Game Theory
+        public static int MaxCoins(int[] piles)
+        {
+            int counter = 0;
+            int len = piles.Length;
+            Array.Sort(piles);
+            Array.Reverse(piles);
+            for (int i = 0; i < (len / 3) * 2; i++) if (i % 2 != 0) counter += piles[i];
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
