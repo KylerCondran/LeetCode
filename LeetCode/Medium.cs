@@ -5653,6 +5653,27 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 985. Sum of Even Numbers After Queries
+        //Link: https://leetcode.com/problems/sum-of-even-numbers-after-queries
+        //Tags: Array, Simulation
+        public static int[] SumEvenAfterQueries(int[] nums, int[][] queries)
+        {
+            int[] ans = new int[queries.Length];
+            int index = 0;
+            foreach (int[] i in queries)
+            {
+                int sum = 0;
+                nums[i[1]] += i[0];
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    int val = nums[j];
+                    if (val % 2 == 0) sum += val;
+                }
+                ans[index] = sum;
+                index++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
