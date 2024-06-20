@@ -5550,6 +5550,45 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 2391. Minimum Amount of Time to Collect Garbage
+        //Link: 
+        //Tags: Array, String, Prefix Sum
+        public static int GarbageCollection(string[] garbage, int[] travel)
+        {
+            int counter = 0;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            for (int i = 0; i < garbage.Length; i++)
+            {
+                string val = garbage[i];
+                if (val.Contains('M'))
+                {
+                    if (!a.ContainsKey('M')) a.Add('M', i);
+                    else a['M'] = i;
+                }
+                if (val.Contains('G'))
+                {
+                    if (!a.ContainsKey('G')) a.Add('G', i);
+                    else a['G'] = i;
+                }
+                if (val.Contains('P'))
+                {
+                    if (!a.ContainsKey('P')) a.Add('P', i);
+                    else a['P'] = i;
+                }
+            }
+            foreach (KeyValuePair<char, int> i in a)
+            {
+                char type = i.Key;
+                int depth = i.Value;
+                for (int k = 0; k <= depth; k++)
+                {
+                    string val = garbage[k];
+                    for (int j = 0; j < val.Length; j++) if (val[j] == type) counter++;
+                    if (k != 0) counter += travel[k - 1];
+                }
+            }
+            return counter;
+        }
     }
     #endregion
     #region "Medium Classes"
