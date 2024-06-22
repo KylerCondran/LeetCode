@@ -5674,6 +5674,33 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1248. Count Number of Nice Subarrays
+        //Link: https://leetcode.com/problems/count-number-of-nice-subarrays
+        //Tags: Array, Hash Table, Math, Sliding Window
+        public static int NumberOfSubarrays(int[] nums, int k)
+        {
+            int len = nums.Length;
+            int ans = 0;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            a.Add(0, 1);
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                if (val % 2 != 0) nums[i] = 1;
+                else nums[i] = 0;
+            }
+            int sum = 0;
+            for (int i = 0; i < len; i++)
+            {
+                int val = nums[i];
+                sum += val;
+                int diff = sum - k;
+                if (a.ContainsKey(diff)) ans += a[diff];
+                if (!a.ContainsKey(sum)) a.Add(sum, 1);
+                else a[sum]++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
