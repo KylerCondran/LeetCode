@@ -9067,6 +9067,26 @@ namespace LeetCode
             }
             return counter;
         }
+        //Title: 3194. Minimum Average of Smallest and Largest Elements
+        //Link: https://leetcode.com/problems/minimum-average-of-smallest-and-largest-elements
+        //Tags: None
+        public static double MinimumAverage(int[] nums)
+        {
+            Array.Sort(nums);
+            int len = nums.Length;
+            double min = Int32.MaxValue;
+            Queue<int> q1 = new Queue<int>();
+            Queue<int> q2 = new Queue<int>();
+            for (int i = 0; i < len / 2; i++) q1.Enqueue(nums[i]);
+            for (int i = len - 1; i > (len / 2) - 1; i--) q2.Enqueue(nums[i]);
+            while (q1.Count > 0)
+            {
+                int val1 = q1.Dequeue();
+                int val2 = q2.Dequeue();
+                min = Math.Min(min, (double)(val1 + val2) / 2);
+            }
+            return min;
+        }
     }
     #endregion
     #region "Easy Classes"
