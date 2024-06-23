@@ -9087,6 +9087,19 @@ namespace LeetCode
             }
             return min;
         }
+        //Title: 3194. Minimum Average of Smallest and Largest Elements
+        //Link: https://leetcode.com/problems/minimum-average-of-smallest-and-largest-elements
+        //Tags: None
+        public static int MinimumOperations(int[] nums)
+        {
+            int count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val % 3 != 0) count++;
+            }
+            return count;
+        }
     }
     #endregion
     #region "Easy Classes"
