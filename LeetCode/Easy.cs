@@ -9087,8 +9087,8 @@ namespace LeetCode
             }
             return min;
         }
-        //Title: 3194. Minimum Average of Smallest and Largest Elements
-        //Link: https://leetcode.com/problems/minimum-average-of-smallest-and-largest-elements
+        //Title: 3190. Find Minimum Operations to Make All Elements Divisible by Three
+        //Link: https://leetcode.com/problems/find-minimum-operations-to-make-all-elements-divisible-by-three
         //Tags: None
         public static int MinimumOperations(int[] nums)
         {
