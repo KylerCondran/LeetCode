@@ -9100,6 +9100,22 @@ namespace LeetCode
             }
             return count;
         }
+        //Title: 3683. Earliest Time to Finish One Task
+        //Link: https://leetcode.com/problems/earliest-time-to-finish-one-task
+        //Tags: Array
+        public int EarliestTime(int[][] tasks)
+        {
+            int lowest = 200;
+            foreach (int[] a in tasks)
+            {
+                int val = a[0] + a[1];
+                if (val < lowest)
+                {
+                    lowest = val;
+                }
+            }
+            return lowest;
+        }
     }
     #endregion
     #region "Easy Classes"
