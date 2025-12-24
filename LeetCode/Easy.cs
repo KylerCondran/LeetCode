@@ -9181,6 +9181,28 @@ namespace LeetCode
             }
             return answer;
         }
+        //Title: 3467. Transform Array by Parity
+        //Link: https://leetcode.com/problems/transform-array-by-parity
+        //Tags: Array, Sorting, Counting
+        public static int[] TransformArray(int[] nums)
+        {
+            int id = 0;
+            int[] answer = new int[nums.Length];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] % 2 == 0)
+                {
+                    answer[id] = 0;
+                }
+                else
+                {
+                    answer[id] = 1;
+                }
+                id++;
+            }
+            Array.Sort(answer);
+            return answer;
+        }
     }
     #endregion
     #region "Easy Classes"
