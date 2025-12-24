@@ -9251,6 +9251,25 @@ namespace LeetCode
             }
             return v + c;
         }
+        //Title: 3701. Compute Alternating Sum
+        //Link: https://leetcode.com/problems/compute-alternating-sum
+        //Tags: Array, Simulation
+        public static int AlternatingSum(int[] nums)
+        {
+            int total = nums[0];
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    total = total + nums[i];
+                }
+                else
+                {
+                    total = total - nums[i];
+                }
+            }
+            return total;
+        }
     }
     #endregion
     #region "Easy Classes"
