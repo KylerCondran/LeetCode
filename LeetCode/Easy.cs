@@ -9292,6 +9292,18 @@ namespace LeetCode
                 return 0;
             }
         }
+        //Title: 3280. Convert Date to Binary
+        //Link: https://leetcode.com/problems/convert-date-to-binary
+        //Tags: Math, String
+        public static string ConvertDateToBinary(string date)
+        {
+            string[] a = date.Split('-');
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = Convert.ToString(Convert.ToInt32(a[i]), 2); ;
+            }
+            return a[0] + '-' + a[1] + '-' + a[2];
+        }
     }
     #endregion
     #region "Easy Classes"
