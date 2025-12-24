@@ -9203,6 +9203,54 @@ namespace LeetCode
             Array.Sort(answer);
             return answer;
         }
+        //Title: 3541. Find Most Frequent Vowel and Consonant
+        //Link: https://leetcode.com/problems/find-most-frequent-vowel-and-consonant
+        //Tags: Hash Table, String, Counting
+        public static int MaxFreqSum(string s)
+        {
+            int v = 0;
+            int c = 0;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                switch (s[i])
+                {
+                    case 'a':
+                    case 'e':
+                    case 'i':
+                    case 'o':
+                    case 'u':
+                        if (!a.ContainsKey(s[i]))
+                        {
+                            a.Add(s[i], 1);
+                        }
+                        else
+                        {
+                            a[s[i]]++;
+                        }
+                        if (a[s[i]] > v)
+                        {
+                            v = a[s[i]];
+                        }
+                        break;
+                    default:
+                        if (!a.ContainsKey(s[i]))
+                        {
+                            a.Add(s[i], 1);
+                        }
+                        else
+                        {
+                            a[s[i]]++;
+                        }
+                        if (a[s[i]] > c)
+                        {
+                            c = a[s[i]];
+                        }
+                        break;
+                }
+            }
+            return v + c;
+        }
     }
     #endregion
     #region "Easy Classes"
