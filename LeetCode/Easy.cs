@@ -9116,6 +9116,24 @@ namespace LeetCode
             }
             return lowest;
         }
+        //Title: 3074. Apple Redistribution into Boxes
+        //Link: https://leetcode.com/problems/apple-redistribution-into-boxes
+        //Tags: Array, Greedy, Sorting
+        public int MinimumBoxes(int[] apple, int[] capacity)
+        {
+            int total = apple.Sum();
+            Array.Sort(capacity);
+            Array.Reverse(capacity);
+            for (int i = 0; i < capacity.Length; i++)
+            {
+                total -= capacity[i];
+                if (total <= 0)
+                {
+                    return i + 1;
+                }
+            }
+            return capacity.Length;
+        }
     }
     #endregion
     #region "Easy Classes"
