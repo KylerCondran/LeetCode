@@ -9159,6 +9159,28 @@ namespace LeetCode
             }
             return finish;
         }
+        //Title: 3289. The Two Sneaky Numbers of Digitville
+        //Link: https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville
+        //Tags: Array, Hash Table, Math
+        public static int[] GetSneakyNumbers(int[] nums)
+        {
+            int id = 0;
+            int[] answer = new int[2];
+            List<int> a = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.Contains(nums[i]))
+                {
+                    a.Add(nums[i]);
+                }
+                else
+                {
+                    answer[id] = nums[i];
+                    id++;
+                }
+            }
+            return answer;
+        }
     }
     #endregion
     #region "Easy Classes"
