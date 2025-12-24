@@ -9323,6 +9323,25 @@ namespace LeetCode
             }
             return total;
         }
+        //Title: 3264. Final Array State After K Multiplication Operations I
+        //Link: https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i
+        //Tags: Array, Math, Heap(Priority Queue), Simulation
+        public static int[] GetFinalState(int[] nums, int k, int multiplier)
+        {
+            for (int i = 0; i < k; i++)
+            {
+                int mymin = nums.Min();
+                for (int j = 0; j < nums.Length; j++)
+                {
+                    if (nums[j] == mymin)
+                    {
+                        nums[j] = nums[j] * multiplier;
+                        break;
+                    }
+                }
+            }
+            return nums;
+        }
     }
     #endregion
     #region "Easy Classes"
