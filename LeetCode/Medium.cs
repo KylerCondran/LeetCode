@@ -5701,6 +5701,21 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3760. Maximum Substrings With Distinct Start
+        //Link: https://leetcode.com/problems/maximum-substrings-with-distinct-start
+        //Tags: Hash Table, String
+        public static int MaxDistinct(string s)
+        {
+            List<char> a = new List<char>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!a.Contains(s[i]))
+                {
+                    a.Add(s[i]);
+                }
+            }
+            return a.Count;
+        }
     }
     #endregion
     #region "Medium Classes"
