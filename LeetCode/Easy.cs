@@ -9142,6 +9142,23 @@ namespace LeetCode
             int total = nums.Sum();
             return total % k;
         }
+        //Title: 3668. Restore Finishing Order
+        //Link: https://leetcode.com/problems/restore-finishing-order
+        //Tags: Array, Hash Table
+        public static int[] RecoverOrder(int[] order, int[] friends)
+        {
+            int id = 0;
+            int[] finish = new int[friends.Length];
+            for (int i = 0; i < order.Length; i++)
+            {
+                if (friends.Contains(order[i]))
+                {
+                    finish[id] = order[i];
+                    id++;
+                }
+            }
+            return finish;
+        }
     }
     #endregion
     #region "Easy Classes"
