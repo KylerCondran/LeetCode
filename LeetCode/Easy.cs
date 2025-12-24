@@ -9304,6 +9304,25 @@ namespace LeetCode
             }
             return a[0] + '-' + a[1] + '-' + a[2];
         }
+        //Title: 3498. Reverse Degree of a String
+        //Link: https://leetcode.com/problems/reverse-degree-of-a-string
+        //Tags: String, Simulation
+        public static int ReverseDegree(string s)
+        {
+            int total = 0;
+            int num = 26;
+            Dictionary<char, int> b = new Dictionary<char, int>();
+            for (char a = 'a'; a <= 'z'; a++)
+            {
+                b.Add(a, num);
+                num--;
+            }
+            for (int i = 0; i < s.Length; i++)
+            {
+                total += (i + 1) * b[s[i]];
+            }
+            return total;
+        }
     }
     #endregion
     #region "Easy Classes"
