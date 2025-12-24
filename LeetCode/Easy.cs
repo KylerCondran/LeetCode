@@ -9270,6 +9270,28 @@ namespace LeetCode
             }
             return total;
         }
+        //Title: 3516. Find Closest Person
+        //Link: https://leetcode.com/problems/find-closest-person
+        //Tags: Math
+        public static int FindClosest(int x, int y, int z)
+        {
+            int a = 0;
+            int b = 0;
+            a = Math.Abs(z - x);
+            b = Math.Abs(z - y);
+            if (a > b)
+            {
+                return 2;
+            }
+            else if (b > a)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
     #endregion
     #region "Easy Classes"
