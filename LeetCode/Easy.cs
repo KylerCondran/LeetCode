@@ -9103,7 +9103,7 @@ namespace LeetCode
         //Title: 3683. Earliest Time to Finish One Task
         //Link: https://leetcode.com/problems/earliest-time-to-finish-one-task
         //Tags: Array
-        public int EarliestTime(int[][] tasks)
+        public static int EarliestTime(int[][] tasks)
         {
             int lowest = 200;
             foreach (int[] a in tasks)
@@ -9119,7 +9119,7 @@ namespace LeetCode
         //Title: 3074. Apple Redistribution into Boxes
         //Link: https://leetcode.com/problems/apple-redistribution-into-boxes
         //Tags: Array, Greedy, Sorting
-        public int MinimumBoxes(int[] apple, int[] capacity)
+        public static int MinimumBoxes(int[] apple, int[] capacity)
         {
             int total = apple.Sum();
             Array.Sort(capacity);
@@ -9133,6 +9133,14 @@ namespace LeetCode
                 }
             }
             return capacity.Length;
+        }
+        //Title: 3512. Minimum Operations to Make Array Sum Divisible by K
+        //Link: https://leetcode.com/problems/minimum-operations-to-make-array-sum-divisible-by-k
+        //Tags: Array, Math
+        public static int MinOperations2(int[] nums, int k)
+        {
+            int total = nums.Sum();
+            return total % k;
         }
     }
     #endregion
