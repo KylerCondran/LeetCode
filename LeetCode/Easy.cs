@@ -9342,6 +9342,18 @@ namespace LeetCode
             }
             return nums;
         }
+        //Title: 3783. Mirror Distance of an Integer
+        //Link: https://leetcode.com/problems/mirror-distance-of-an-integer
+        //Tags: Math
+        public static int MirrorDistance(int n)
+        {
+            string r = Convert.ToString(n);
+            char[] a = r.ToCharArray();
+            Array.Reverse(a);
+            string wb = new String(a);
+            int backwards = Convert.ToInt32(wb);
+            return Math.Abs(n - backwards);
+        }
     }
     #endregion
     #region "Easy Classes"
