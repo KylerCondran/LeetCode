@@ -5761,6 +5761,29 @@ namespace LeetCode
             }
             return total;
         }
+        //Title: 3271. Hash Divided String
+        //Link: https://leetcode.com/problems/hash-divided-string
+        //Tags: String, Simulation
+        public static string StringHash(string s, int k)
+        {
+            char[] alpha = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            string final = "";
+            int step = 0;
+            for (int i = 0; i < (s.Length / k); i++)
+            {
+                string a = s.Substring(step, k);
+                step += k;
+                int sum = 0;
+                for (int j = 0; j < a.Length; j++)
+                {
+                    char b = a[j];
+                    sum += Array.IndexOf(alpha, b);
+                }
+                int val = sum % 26;
+                final += alpha[val];
+            }
+            return final;
+        }
     }
     #endregion
     #region "Medium Classes"
