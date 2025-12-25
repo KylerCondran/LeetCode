@@ -5716,6 +5716,28 @@ namespace LeetCode
             }
             return a.Count;
         }
+        //Title: 1079. Letter Tile Possibilities
+        //Link: https://leetcode.com/problems/letter-tile-possibilities
+        //Tags: Hash Table, String, Backtracking, Counting
+        public static int NumTilePossibilities(string tiles)
+        {
+            int total = 0;
+            for (int i = 0; i < tiles.Length; i++)
+            {
+                var result = GetPermutations(Enumerable.Range(0, tiles.Length), i + 1).Select(t => t.Select(j => tiles[j]));
+                List<string> a = new List<string>();
+                foreach (IEnumerable<char> o in result)
+                {
+                    string r = new String(o.ToArray());
+                    if (!a.Contains(r))
+                    {
+                        a.Add(r);
+                        total++;
+                    }
+                }
+            }
+            return total;
+        }
     }
     #endregion
     #region "Medium Classes"
