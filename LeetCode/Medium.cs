@@ -5738,6 +5738,29 @@ namespace LeetCode
             }
             return total;
         }
+        //Title: 3075. Maximize Happiness of Selected Children
+        //Link: https://leetcode.com/problems/maximize-happiness-of-selected-children
+        //Tags: Array, Greedy, Sorting
+        public static long MaximumHappinessSum(int[] happiness, int k)
+        {
+            long total = 0;
+            int val = 0;
+            Array.Sort(happiness);
+            Array.Reverse(happiness);
+            for (int i = 0; i < k; i++)
+            {
+                if ((happiness[val] - val) <= 0)
+                {
+                    total += 0;
+                }
+                else
+                {
+                    total += happiness[val] - val;
+                }
+                val++;
+            }
+            return total;
+        }
     }
     #endregion
     #region "Medium Classes"
