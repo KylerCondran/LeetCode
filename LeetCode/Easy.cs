@@ -9405,6 +9405,42 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 3248. Snake in Matrix
+        //Link: https://leetcode.com/problems/snake-in-matrix
+        //Tags: Array, String, Simulation
+        public static int FinalPositionOfSnake(int n, IList<string> commands)
+        {
+            int coordx = 0;
+            int coordy = 0;
+            int ans = 0;
+            foreach (string a in commands)
+            {
+                switch (a)
+                {
+                    case "UP":
+                        coordy -= 1;
+                        break;
+                    case "DOWN":
+                        coordy += 1;
+                        break;
+                    case "RIGHT":
+                        coordx += 1;
+                        break;
+                    case "LEFT":
+                        coordx -= 1;
+                        break;
+                }
+            }
+            for (int i = 0; i < coordy; i++)
+            {
+                ans += n;
+            }
+            for (int i = 0; i < coordx; i++)
+            {
+                ans += 1;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
