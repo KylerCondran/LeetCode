@@ -9354,6 +9354,37 @@ namespace LeetCode
             int backwards = Convert.ToInt32(wb);
             return Math.Abs(n - backwards);
         }
+        //Title: 3658. GCD of Odd and Even Sums
+        //Link: https://leetcode.com/problems/gcd-of-odd-and-even-sums
+        //Tags: Math, Number Theory
+        public static int GcdOfOddEvenSums(int n)
+        {
+            int odd = 0;
+            int even = 0;
+            for (int i = 1; i <= n * 2; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    even += i;
+                }
+                else
+                {
+                    odd += i;
+                }
+            }
+            return GCD(even, odd);
+        }
+        public static int GCD(int a, int b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+            return a | b;
+        }
     }
     #endregion
     #region "Easy Classes"
