@@ -9385,6 +9385,26 @@ namespace LeetCode
             }
             return a | b;
         }
+        //Title: 3174. Clear Digits
+        //Link: https://leetcode.com/problems/clear-digits
+        //Tags: String, Stack, Simulation
+        public static string ClearDigits(string s)
+        {
+            string final = "";
+            char[] num = new char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (num.Contains(s[i]))
+                {
+                    final = final.Substring(0, final.Length - 1);
+                }
+                else
+                {
+                    final += s[i];
+                }
+            }
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
