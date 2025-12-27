@@ -5784,6 +5784,95 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 695. Max Area of Island
+        //Link: https://leetcode.com/problems/max-area-of-island
+        //Tags: Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
+        public static int MaxAreaOfIsland(int[][] grid)
+        {
+            List<string> a = new List<string>();
+            int ylen = grid.Length - 1;
+            int xlen = grid[0].Length - 1;
+            int max = 0;
+            int current = 0;
+            Queue<string> q = new Queue<string>();
+            for (int i = 0; i < ylen + 1; i++)
+            {
+                for (int j = 0; j < xlen + 1; j++)
+                {
+                    if (grid[i][j] == 1 && !a.Contains(i.ToString() + ',' + j.ToString()))
+                    {
+                        q.Enqueue(i.ToString() + ',' + j.ToString());
+                        while (q.Count > 0)
+                        {
+                            string coords = q.Peek();
+                            if (!a.Contains(coords))
+                            {
+                                a.Add(coords);
+                            }
+                            else
+                            {
+                                q.Dequeue();
+                                continue;
+                            }
+                            current += 1;
+                            max = Math.Max(max, current);
+                            string[] vals = coords.Split(',');
+                            int xval = 0;
+                            int yval = 0;
+                            int.TryParse(vals[0], out yval);
+                            int.TryParse(vals[1], out xval);
+                            //up
+                            if (yval > 0)
+                            {
+                                if (grid[yval - 1][xval] == 1)
+                                {
+                                    if (!a.Contains((yval - 1).ToString() + ',' + xval.ToString()))
+                                    {
+                                        q.Enqueue((yval - 1).ToString() + ',' + xval.ToString());
+                                    }
+                                }
+                            }
+                            //down
+                            if (yval < ylen)
+                            {
+                                if (grid[yval + 1][xval] == 1)
+                                {
+                                    if (!a.Contains((yval + 1).ToString() + ',' + xval.ToString()))
+                                    {
+                                        q.Enqueue((yval + 1).ToString() + ',' + xval.ToString());
+                                    }
+                                }
+                            }
+                            //left
+                            if (xval > 0)
+                            {
+                                if (grid[yval][xval - 1] == 1)
+                                {
+                                    if (!a.Contains(yval.ToString() + ',' + (xval - 1).ToString()))
+                                    {
+                                        q.Enqueue(yval.ToString() + ',' + (xval - 1).ToString());
+                                    }
+                                }
+                            }
+                            //right
+                            if (xval < xlen)
+                            {
+                                if (grid[yval][xval + 1] == 1)
+                                {
+                                    if (!a.Contains(yval.ToString() + ',' + (xval + 1).ToString()))
+                                    {
+                                        q.Enqueue(yval.ToString() + ',' + (xval + 1).ToString());
+                                    }
+                                }
+                            }
+                            q.Dequeue();
+                        }
+                        current = 0;
+                    }
+                }
+            }
+            return max;
+        }
     }
     #endregion
     #region "Medium Classes"
