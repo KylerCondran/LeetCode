@@ -5873,6 +5873,75 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 200. Number of Islands
+        //Link: https://leetcode.com/problems/number-of-islands
+        //Tags: Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
+        public static int NumIslands(char[][] grid)
+        {
+            int ylen = grid.Length - 1;
+            int xlen = grid[0].Length - 1;
+            int ans = 0;
+            HashSet<Pair> a = new HashSet<Pair>();
+            Queue<Pair> q = new Queue<Pair>();
+            for (int i = 0; i < grid.Length; i++)
+            {
+                for (int j = 0; j < grid[0].Length; j++)
+                {
+                    if (grid[i][j] == '1' && !a.Contains(new Pair(i, j)))
+                    {
+                        q.Enqueue(new Pair(i, j));
+                        while (q.Count > 0)
+                        {
+                            Pair coords = q.Peek();
+                            if (!a.Contains(new Pair(coords.A, coords.B)))
+                            {
+                                a.Add(new Pair(coords.A, coords.B));
+                            }
+                            else
+                            {
+                                q.Dequeue();
+                                continue;
+                            }
+                            //up
+                            if (coords.A > 0)
+                            {
+                                if (grid[coords.A - 1][coords.B] == '1')
+                                {
+                                    q.Enqueue(new Pair(coords.A - 1, coords.B));
+                                }
+                            }
+                            //down
+                            if (coords.A < ylen)
+                            {
+                                if (grid[coords.A + 1][coords.B] == '1')
+                                {
+                                    q.Enqueue(new Pair(coords.A + 1, coords.B));
+                                }
+                            }
+                            //left
+                            if (coords.B > 0)
+                            {
+                                if (grid[coords.A][coords.B - 1] == '1')
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B - 1));
+                                }
+                            }
+                            //right
+                            if (coords.B < xlen)
+                            {
+                                if (grid[coords.A][coords.B + 1] == '1')
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B + 1));
+                                }
+                            }
+                            q.Dequeue();
+                        }
+                        ans += 1;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
