@@ -9487,6 +9487,22 @@ namespace LeetCode
             }
             return 0;
         }
+        //Title: 3536. Maximum Product of Two Digits
+        //Link: https://leetcode.com/problems/maximum-product-of-two-digits
+        //Tags: Math, Sorting
+        public static int MaxProduct(int n)
+        {
+            string b = n.ToString();
+            int[] a = new int[b.Length];
+            for (int i = 0; i < b.Length; i++)
+            {
+                int digit = 0;
+                int.TryParse(b[i].ToString(), out digit);
+                a[i] = digit;
+            }
+            Array.Sort(a);
+            return a[b.Length - 1] * a[b.Length - 2];
+        }
     }
     #endregion
     #region "Easy Classes"
