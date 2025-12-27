@@ -9473,6 +9473,20 @@ namespace LeetCode
             }
             return year;
         }
+        //Title: 3718. Smallest Missing Multiple of K
+        //Link: https://leetcode.com/problems/smallest-missing-multiple-of-k
+        //Tags: Array, Hash Table
+        public static int MissingMultiple(int[] nums, int k)
+        {
+            for (int i = 1; i > -1; i++)
+            {
+                if (!nums.Contains(i * k))
+                {
+                    return i * k;
+                }
+            }
+            return 0;
+        }
     }
     #endregion
     #region "Easy Classes"
