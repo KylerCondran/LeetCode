@@ -9441,6 +9441,38 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1854. Maximum Population Year
+        //Link: https://leetcode.com/problems/maximum-population-year
+        //Tags: Array, Counting, Prefix Sum
+        public static int MaximumPopulation(int[][] logs)
+        {
+            int max = 0;
+            int year = 0;
+            SortedDictionary<int, int> b = new SortedDictionary<int, int>();
+            foreach (int[] a in logs)
+            {
+                for (int i = a[0]; i < a[1]; i++)
+                {
+                    if (!b.ContainsKey(i))
+                    {
+                        b.Add(i, 1);
+                    }
+                    else
+                    {
+                        b[i]++;
+                    }
+                }
+            }
+            foreach (KeyValuePair<int, int> c in b)
+            {
+                if (c.Value > max)
+                {
+                    max = c.Value;
+                    year = c.Key;
+                }
+            }
+            return year;
+        }
     }
     #endregion
     #region "Easy Classes"
