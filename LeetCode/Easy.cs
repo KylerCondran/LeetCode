@@ -9690,6 +9690,33 @@ namespace LeetCode
             long.TryParse(final, out ans);
             return ans;
         }
+        //Title: 3712. Sum of Elements With Frequency Divisible by K
+        //Link: https://leetcode.com/problems/sum-of-elements-with-frequency-divisible-by-k
+        //Tags: Array, Hash Table, Counting
+        public static int SumDivisibleByK(int[] nums, int k)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int sum = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+                else
+                {
+                    a[nums[i]]++;
+                }
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                if (b.Value % k == 0)
+                {
+                    sum += b.Key * b.Value;
+                }
+            }
+            return sum;
+        }
     }
     #endregion
     #region "Easy Classes"
