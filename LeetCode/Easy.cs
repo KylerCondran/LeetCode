@@ -9652,6 +9652,26 @@ namespace LeetCode
             }
             return large - small;
         }
+        //Title: 3731. Find Missing Elements
+        //Link: https://leetcode.com/problems/find-missing-elements
+        //Tags: Array, Hash Table, Sorting
+        public static IList<int> FindMissingElements(int[] nums)
+        {
+            List<int> a = new List<int>();
+            int min = 0;
+            int max = 0;
+            min = nums.Min();
+            max = nums.Max();
+            Array.Sort(nums);
+            for (int i = min; i < max; i++)
+            {
+                if (!nums.Contains(i))
+                {
+                    a.Add(i);
+                }
+            }
+            return a;
+        }
     }
     #endregion
     #region "Easy Classes"
