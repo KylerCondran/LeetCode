@@ -5942,6 +5942,75 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 419. Battleships in a Board
+        //Link: https://leetcode.com/problems/battleships-in-a-board
+        //Tags: Array, Depth-First Search, Matrix
+        public static int CountBattleships(char[][] board)
+        {
+            int ylen = board.Length - 1;
+            int xlen = board[0].Length - 1;
+            int ans = 0;
+            HashSet<Pair> a = new HashSet<Pair>();
+            Queue<Pair> q = new Queue<Pair>();
+            for (int i = 0; i < board.Length; i++)
+            {
+                for (int j = 0; j < board[0].Length; j++)
+                {
+                    if (board[i][j] == 'X' && !a.Contains(new Pair(i, j)))
+                    {
+                        q.Enqueue(new Pair(i, j));
+                        while (q.Count > 0)
+                        {
+                            Pair coords = q.Peek();
+                            if (!a.Contains(new Pair(coords.A, coords.B)))
+                            {
+                                a.Add(new Pair(coords.A, coords.B));
+                            }
+                            else
+                            {
+                                q.Dequeue();
+                                continue;
+                            }
+                            //up
+                            if (coords.A > 0)
+                            {
+                                if (board[coords.A - 1][coords.B] == 'X')
+                                {
+                                    q.Enqueue(new Pair(coords.A - 1, coords.B));
+                                }
+                            }
+                            //down
+                            if (coords.A < ylen)
+                            {
+                                if (board[coords.A + 1][coords.B] == 'X')
+                                {
+                                    q.Enqueue(new Pair(coords.A + 1, coords.B));
+                                }
+                            }
+                            //left
+                            if (coords.B > 0)
+                            {
+                                if (board[coords.A][coords.B - 1] == 'X')
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B - 1));
+                                }
+                            }
+                            //right
+                            if (coords.B < xlen)
+                            {
+                                if (board[coords.A][coords.B + 1] == 'X')
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B + 1));
+                                }
+                            }
+                            q.Dequeue();
+                        }
+                        ans += 1;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Medium Classes"
