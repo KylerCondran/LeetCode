@@ -9633,6 +9633,25 @@ namespace LeetCode
             }
             return image;
         }
+        //Title: 3774. Absolute Difference Between Maximum and Minimum K Elements
+        //Link: https://leetcode.com/problems/absolute-difference-between-maximum-and-minimum-k-elements
+        //Tags: Array, Sorting
+        public static int AbsDifference(int[] nums, int k)
+        {
+            if (nums.Length == 1) return 0;
+            Array.Sort(nums);
+            int small = 0;
+            int large = 0;
+            for (int i = 0; i < k; i++)
+            {
+                small += nums[i];
+            }
+            for (int i = nums.Length - 1; i > ((nums.Length - 1) - k); i--)
+            {
+                large += nums[i];
+            }
+            return large - small;
+        }
     }
     #endregion
     #region "Easy Classes"
