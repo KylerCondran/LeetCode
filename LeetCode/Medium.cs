@@ -6085,6 +6085,90 @@ namespace LeetCode
             }
             return num;
         }
+        //Title: 1905. Count Sub Islands
+        //Link: https://leetcode.com/problems/count-sub-islands
+        //Tags: Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
+        public static int CountSubIslands(int[][] grid1, int[][] grid2)
+        {
+            int num = 0;
+            int ylen = grid2.Length - 1;
+            int xlen = grid2[0].Length - 1;
+            HashSet<Pair> a = new HashSet<Pair>();
+            Queue<Pair> q = new Queue<Pair>();
+            for (int i = 0; i < grid2.Length; i++)
+            {
+                for (int j = 0; j < grid2[0].Length; j++)
+                {
+                    if (grid2[i][j] != 0 && !a.Contains(new Pair(i, j)))
+                    {
+                        HashSet<Pair> snake = new HashSet<Pair>();
+                        q.Enqueue(new Pair(i, j));
+                        while (q.Count > 0)
+                        {
+                            Pair coords = q.Peek();
+                            if (!a.Contains(new Pair(coords.A, coords.B)))
+                            {
+                                a.Add(new Pair(coords.A, coords.B));
+                                snake.Add(new Pair(coords.A, coords.B));
+                            }
+                            else
+                            {
+                                q.Dequeue();
+                                continue;
+                            }
+                            //up
+                            if (coords.A > 0)
+                            {
+                                if (grid2[coords.A - 1][coords.B] != 0)
+                                {
+                                    q.Enqueue(new Pair(coords.A - 1, coords.B));
+                                }
+                            }
+                            //down
+                            if (coords.A < ylen)
+                            {
+                                if (grid2[coords.A + 1][coords.B] != 0)
+                                {
+                                    q.Enqueue(new Pair(coords.A + 1, coords.B));
+                                }
+                            }
+                            //left
+                            if (coords.B > 0)
+                            {
+                                if (grid2[coords.A][coords.B - 1] != 0)
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B - 1));
+                                }
+                            }
+                            //right
+                            if (coords.B < xlen)
+                            {
+                                if (grid2[coords.A][coords.B + 1] != 0)
+                                {
+                                    q.Enqueue(new Pair(coords.A, coords.B + 1));
+                                }
+                            }
+                            q.Dequeue();
+                        }
+                        bool subisland = true;
+                        foreach (Pair c in snake)
+                        {
+                            if (grid1[c.A][c.B] != 1)
+                            {
+                                subisland = false;
+                                break;
+                            }
+                        }
+                        if (subisland)
+                        {
+                            num++;
+                        }
+                        snake.Clear();
+                    }
+                }
+            }
+            return num;
+        }
     }
     #endregion
     #region "Medium Classes"
