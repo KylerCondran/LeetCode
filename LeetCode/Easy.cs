@@ -9570,6 +9570,69 @@ namespace LeetCode
             }
             return sides;
         }
+        //Title: 733. Flood Fill
+        //Link: https://leetcode.com/problems/flood-fill
+        //Tags: Array, Depth-First Search, Breadth-First Search, Matrix
+        public static int[][] FloodFill(int[][] image, int sr, int sc, int color)
+        {
+            int ylen = image.Length - 1;
+            int xlen = image[0].Length - 1;
+            int val = image[sr][sc];
+            HashSet<Pair> a = new HashSet<Pair>();
+            Queue<Pair> q = new Queue<Pair>();
+            q.Enqueue(new Pair(sr, sc));
+            while (q.Count > 0)
+            {
+                Pair coords = q.Peek();
+                if (!a.Contains(new Pair(coords.A, coords.B)))
+                {
+                    a.Add(new Pair(coords.A, coords.B));
+                    if (image[coords.A][coords.B] == val)
+                    {
+                        image[coords.A][coords.B] = color;
+                    }
+                }
+                else
+                {
+                    q.Dequeue();
+                    continue;
+                }
+                //up
+                if (coords.A > 0)
+                {
+                    if (image[coords.A - 1][coords.B] == val)
+                    {
+                        q.Enqueue(new Pair(coords.A - 1, coords.B));
+                    }
+                }
+                //down
+                if (coords.A < ylen)
+                {
+                    if (image[coords.A + 1][coords.B] == val)
+                    {
+                        q.Enqueue(new Pair(coords.A + 1, coords.B));
+                    }
+                }
+                //left
+                if (coords.B > 0)
+                {
+                    if (image[coords.A][coords.B - 1] == val)
+                    {
+                        q.Enqueue(new Pair(coords.A, coords.B - 1));
+                    }
+                }
+                //right
+                if (coords.B < xlen)
+                {
+                    if (image[coords.A][coords.B + 1] == val)
+                    {
+                        q.Enqueue(new Pair(coords.A, coords.B + 1));
+                    }
+                }
+                q.Dequeue();
+            }
+            return image;
+        }
     }
     #endregion
     #region "Easy Classes"
