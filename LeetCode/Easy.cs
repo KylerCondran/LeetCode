@@ -9672,6 +9672,24 @@ namespace LeetCode
             }
             return a;
         }
+        //Title: 3726. Remove Zeros in Decimal Representation
+        //Link: https://leetcode.com/problems/remove-zeros-in-decimal-representation
+        //Tags: Math, Simulation
+        public static long RemoveZeros(long n)
+        {
+            string a = n.ToString();
+            string final = "";
+            long ans = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] != '0')
+                {
+                    final += a[i];
+                }
+            }
+            long.TryParse(final, out ans);
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
