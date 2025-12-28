@@ -9717,6 +9717,35 @@ namespace LeetCode
             }
             return sum;
         }
+        //Title: 3684. Maximize Sum of At Most K Distinct Elements
+        //Link: https://leetcode.com/problems/maximize-sum-of-at-most-k-distinct-elements
+        //Tags: Array, Hash Table, Greedy, Sorting
+        public static int[] MaxKDistinct(int[] nums, int k)
+        {
+            Array.Sort(nums);
+            int j = 0;
+            int id = 0;
+            List<int> a = new List<int>();
+            for (int i = nums.Length - 1; i >= 0; i--)
+            {
+                if (!a.Contains(nums[i]))
+                {
+                    a.Add(nums[i]);
+                    id++;
+                    if (id == k)
+                    {
+                        break;
+                    }
+                }
+            }
+            int[] ans = new int[a.Count];
+            foreach (int b in a)
+            {
+                ans[j] = b;
+                j++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
