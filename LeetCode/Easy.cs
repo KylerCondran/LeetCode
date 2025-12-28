@@ -9503,6 +9503,73 @@ namespace LeetCode
             Array.Sort(a);
             return a[b.Length - 1] * a[b.Length - 2];
         }
+        //Title: 463. Island Perimeter
+        //Link: https://leetcode.com/problems/island-perimeter
+        //Tags: Array, Depth-First Search, Breadth-First Search, Matrix
+        public static int IslandPerimeter(int[][] grid)
+        {
+            int ylen = grid.Length - 1;
+            int xlen = grid[0].Length - 1;
+            int sides = 0;
+            for (int i = 0; i < grid.Length; i++)
+            {
+                for (int j = 0; j < grid[0].Length; j++)
+                {
+                    if (grid[i][j] == 1)
+                    {
+                        //up
+                        if (i > 0)
+                        {
+                            if (grid[i - 1][j] == 0)
+                            {
+                                sides++;
+                            }
+                        }
+                        else
+                        {
+                            sides++;
+                        }
+                        //down
+                        if (i < ylen)
+                        {
+                            if (grid[i + 1][j] == 0)
+                            {
+                                sides++;
+                            }
+                        }
+                        else
+                        {
+                            sides++;
+                        }
+                        //left
+                        if (j > 0)
+                        {
+                            if (grid[i][j - 1] == 0)
+                            {
+                                sides++;
+                            }
+                        }
+                        else
+                        {
+                            sides++;
+                        }
+                        //right
+                        if (j < xlen)
+                        {
+                            if (grid[i][j + 1] == 0)
+                            {
+                                sides++;
+                            }
+                        }
+                        else
+                        {
+                            sides++;
+                        }
+                    }
+                }
+            }
+            return sides;
+        }
     }
     #endregion
     #region "Easy Classes"
