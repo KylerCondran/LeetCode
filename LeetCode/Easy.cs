@@ -9859,6 +9859,42 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3379. Transformed Array
+        //Link: https://leetcode.com/problems/transformed-array
+        //Tags: Array, Simulation
+        public static int[] ConstructTransformedArray(int[] nums)
+        {
+            int[] ans = new int[nums.Length];
+            int id = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int val = nums[i];
+                if (val == 0)
+                {
+                    ans[id] = 0;
+                }
+                else if (val > 0)
+                {
+                    int num = i + val;
+                    while (num > nums.Length - 1)
+                    {
+                        num -= nums.Length;
+                    }
+                    ans[id] = nums[num];
+                }
+                else
+                {
+                    int num = i - Math.Abs(val);
+                    while (num < 0)
+                    {
+                        num += nums.Length;
+                    }
+                    ans[id] = nums[num];
+                }
+                id++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
