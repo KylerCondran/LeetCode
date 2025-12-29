@@ -9746,6 +9746,85 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3396. Minimum Number of Operations to Make Elements in Array Distinct
+        //Link: https://leetcode.com/problems/minimum-number-of-operations-to-make-elements-in-array-distinct
+        //Tags: Array, Hash Table
+        public static int MinimumOperations2(int[] nums)
+        {
+            int rounds = 0;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            Queue<int> c = new Queue<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!a.ContainsKey(nums[i]))
+                {
+                    a.Add(nums[i], 1);
+                }
+                else
+                {
+                    a[nums[i]]++;
+                }
+                c.Enqueue(nums[i]);
+            }
+            bool unique = false;
+            while (unique == false)
+            {
+                unique = true;
+                if (a.Count == 0)
+                {
+                    break;
+                }
+                foreach (KeyValuePair<int, int> b in a)
+                {
+                    if (b.Value > 1)
+                    {
+                        unique = false;
+                        rounds++;
+                        if (c.Count > 0)
+                        {
+                            int val = c.Peek();
+                            if (a[val] == 1)
+                            {
+                                a.Remove(val);
+                            }
+                            else
+                            {
+                                a[val]--;
+                            }
+                            c.Dequeue();
+                        }
+                        if (c.Count > 0)
+                        {
+                            int val = c.Peek();
+                            if (a[val] == 1)
+                            {
+                                a.Remove(val);
+                            }
+                            else
+                            {
+                                a[val]--;
+                            }
+                            c.Dequeue();
+                        }
+                        if (c.Count > 0)
+                        {
+                            int val = c.Peek();
+                            if (a[val] == 1)
+                            {
+                                a.Remove(val);
+                            }
+                            else
+                            {
+                                a[val]--;
+                            }
+                            c.Dequeue();
+                        }
+                        break;
+                    }
+                }
+            }
+            return rounds;
+        }
     }
     #endregion
     #region "Easy Classes"
