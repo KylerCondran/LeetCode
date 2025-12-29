@@ -9895,6 +9895,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3340. Check Balanced String
+        //Link: https://leetcode.com/problems/check-balanced-string
+        //Tags: String
+        public static bool IsBalanced(string num)
+        {
+            int even = 0;
+            int odd = 0;
+            for (int i = 0; i < num.Length; i++)
+            {
+                int val = 0;
+                int.TryParse(num[i] + "", out val);
+                if (i % 2 == 0)
+                {
+                    even += val;
+                }
+                else
+                {
+                    odd += val;
+                }
+            }
+            return (even == odd);
+        }
     }
     #endregion
     #region "Easy Classes"
