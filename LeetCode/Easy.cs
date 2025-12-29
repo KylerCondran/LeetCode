@@ -9825,6 +9825,40 @@ namespace LeetCode
             }
             return rounds;
         }
+        //Title: 3386. Button with Longest Push Time
+        //Link: https://leetcode.com/problems/button-with-longest-push-time
+        //Tags: Array
+        public static int ButtonWithLongestTime(int[][] events)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            int ans = 0;
+            int max = 0;
+            int time = 0;
+            List<int> b = new List<int>();
+            for (int i = 0; i < events.Length; i++)
+            {
+                int index = events[i][0];
+                int duration = events[i][1];
+                int diff = duration - time;
+                if (diff == max)
+                {
+                    b.Add(index);
+                }
+                if (diff > max)
+                {
+                    b.Clear();
+                    b.Add(index);
+                    max = diff;
+                    ans = index;
+                }
+                time = duration;
+            }
+            if (b.Count > 1)
+            {
+                return b.Min();
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
