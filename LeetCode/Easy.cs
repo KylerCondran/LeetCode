@@ -10145,6 +10145,27 @@ namespace LeetCode
             }
             return num;
         }
+        //Title: 3168. Minimum Number of Chairs in a Waiting Room
+        //Link: https://leetcode.com/problems/minimum-number-of-chairs-in-a-waiting-room
+        //Tags: String, Simulation
+        public static int MinimumChairs(string s)
+        {
+            int max = 0;
+            int sum = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == 'E')
+                {
+                    sum++;
+                }
+                else
+                {
+                    sum--;
+                }
+                max = Math.Max(sum, max);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
