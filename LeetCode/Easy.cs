@@ -9964,6 +9964,37 @@ namespace LeetCode
             int.TryParse(final, out ans);
             return ans;
         }
+        //Title: 3754. Concatenate Non-Zero Digits and Multiply by Sum I
+        //Link: https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i
+        //Tags: Math
+        public static long SumAndMultiply(int n)
+        {
+            if (n == 0)
+            {
+                return 0;
+            }
+            long sum = 0;
+            string val = n.ToString();
+            string final = "";
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (val[i] != '0')
+                {
+                    final += val[i];
+                }
+            }
+            for (int i = 0; i < final.Length; i++)
+            {
+                int val2 = 0;
+                int.TryParse(final[i] + "", out val2);
+                sum += val2;
+            }
+            long x = 0;
+            long.TryParse(final, out x);
+            long ans = 0;
+            ans = x * sum;
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
