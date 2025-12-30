@@ -1,4 +1,4 @@
-# Accepted LeetCode Solutions
+# Accepted C# LeetCode Solutions
 
 This repository contains all my solutions to LeetCode problems implemented in C#. 
 
