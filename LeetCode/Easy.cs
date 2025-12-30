@@ -10109,6 +10109,42 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3178. Find the Child Who Has the Ball After K Seconds
+        //Link: https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds
+        //Tags: Math, Simulation
+        public static int NumberOfChild(int n, int k)
+        {
+            bool forward = true;
+            int num = 0;
+            for (int i = 0; i < k; i++)
+            {
+                if (forward)
+                {
+                    if (num != n - 1)
+                    {
+                        num++;
+                    }
+                    else
+                    {
+                        forward = false;
+                        num--;
+                    }
+                }
+                else
+                {
+                    if (num != 0)
+                    {
+                        num--;
+                    }
+                    else
+                    {
+                        forward = true;
+                        num++;
+                    }
+                }
+            }
+            return num;
+        }
     }
     #endregion
     #region "Easy Classes"
