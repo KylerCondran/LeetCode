@@ -10012,6 +10012,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3345. Smallest Divisible Digit Product I
+        //Link: https://leetcode.com/problems/smallest-divisible-digit-product-i
+        //Tags: Math, Enumeration
+        public static int SmallestNumber(int n, int t)
+        {
+            for (int i = n; i < 101; i++)
+            {
+                int digitproduct = 1;
+                string final = i.ToString();
+                for (int j = 0; j < final.Length; j++)
+                {
+                    int val = 0;
+                    int.TryParse(final[j] + "", out val);
+                    digitproduct *= val;
+                }
+                if (digitproduct % t == 0)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
     }
     #endregion
     #region "Easy Classes"
