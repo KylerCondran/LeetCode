@@ -10188,6 +10188,22 @@ namespace LeetCode
             }
             return s[0] == s[1];
         }
+        //Title: 3736. Minimum Moves to Equal Array Elements III
+        //Link: https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii
+        //Tags: Array, Math
+        public static int MinMoves(int[] nums)
+        {
+            int max = nums.Max();
+            int ans = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] < max)
+                {
+                    ans += (max - nums[i]);
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
