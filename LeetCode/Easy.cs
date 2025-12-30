@@ -10034,6 +10034,23 @@ namespace LeetCode
             }
             return 0;
         }
+        //Title: 3304. Find the K-th Character in String Game I
+        //Link: https://leetcode.com/problems/find-the-k-th-character-in-string-game-i
+        //Tags: Math, Bit Manipulation, Recursion, Simulation
+        public static char KthCharacter(int k)
+        {
+            string a = "a";
+            while (a.Length < k)
+            {
+                string final = "";
+                for (int i = 0; i < a.Length; i++)
+                {
+                    final += (char)(a[i] + 1);
+                }
+                a += final;
+            }
+            return a[k - 1];
+        }
     }
     #endregion
     #region "Easy Classes"
