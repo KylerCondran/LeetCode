@@ -10204,6 +10204,30 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3042. Count Prefix and Suffix Pairs I
+        //Link: https://leetcode.com/problems/count-prefix-and-suffix-pairs-i
+        //Tags: Array, String, Trie, Rolling Hash, String Matching, Hash Function
+        public static int CountPrefixSuffixPairs(string[] words)
+        {
+            int ans = 0;
+            for (int i = 0; i < words.Length; i++)
+            {
+                string word1 = words[i];
+                for (int j = i + 1; j < words.Length; j++)
+                {
+                    string word2 = words[j];
+                    if (word1.Length <= word2.Length)
+                    {
+                        char[] a = word2.ToCharArray();
+                        if (word1 == word2.Substring(0, word1.Length) && word1 == word2.Substring(word2.Length - word1.Length, word1.Length))
+                        {
+                            ans++;
+                        }
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
