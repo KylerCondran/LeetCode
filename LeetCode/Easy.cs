@@ -10051,6 +10051,26 @@ namespace LeetCode
             }
             return a[k - 1];
         }
+        //Title: 3232. Find if Digit Game Can Be Won
+        //Link: https://leetcode.com/problems/find-if-digit-game-can-be-won
+        //Tags: Array, Math
+        public static bool CanAliceWin(int[] nums)
+        {
+            int singled = 0;
+            int doubled = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] > 9)
+                {
+                    doubled += nums[i];
+                }
+                else
+                {
+                    singled += nums[i];
+                }
+            }
+            return singled != doubled;
+        }
     }
     #endregion
     #region "Easy Classes"
