@@ -9917,6 +9917,53 @@ namespace LeetCode
             }
             return (even == odd);
         }
+        //Title: 3270. Find the Key of the Numbers
+        //Link: https://leetcode.com/problems/find-the-key-of-the-numbers
+        //Tags: Math
+        public static int GenerateKey(int num1, int num2, int num3)
+        {
+            string[] a = new string[3];
+            a[0] = num1.ToString();
+            a[1] = num2.ToString();
+            a[2] = num3.ToString();
+            string final = "";
+            for (int i = 0; i < a.Length; i++)
+            {
+                switch (a[i].Length)
+                {
+                    case 1:
+                        a[i] = "000" + a[i];
+                        break;
+                    case 2:
+                        a[i] = "00" + a[i];
+                        break;
+                    case 3:
+                        a[i] = "0" + a[i];
+                        break;
+                    default:
+                        break;
+                }
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                char char1 = a[0][i];
+                char char2 = a[1][i];
+                char char3 = a[2][i];
+                int minval = 99999;
+                int val1 = 0;
+                int val2 = 0;
+                int val3 = 0;
+                int.TryParse(char1 + "", out val1);
+                int.TryParse(char2 + "", out val2);
+                int.TryParse(char3 + "", out val3);
+                minval = Math.Min(val1, val2);
+                minval = Math.Min(minval, val3);
+                final += minval.ToString();
+            }
+            int ans = 0;
+            int.TryParse(final, out ans);
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
