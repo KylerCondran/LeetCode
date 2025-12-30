@@ -10083,6 +10083,32 @@ namespace LeetCode
             }
             return final;
         }
+        //Title: 3206. Alternating Groups I
+        //Link: https://leetcode.com/problems/alternating-groups-i
+        //Tags: Array, Sliding Window
+        public static int NumberOfAlternatingGroups(int[] colors)
+        {
+            int ans = 0;
+            int[] final = new int[colors.Length + 2];
+            for (int i = 0; i < colors.Length; i++)
+            {
+                final[i] = colors[i];
+            }
+            final[colors.Length] = colors[0];
+            final[colors.Length + 1] = colors[1];
+            for (int i = 0; i < colors.Length; i++)
+            {
+                if (final[i] == 1 && final[i + 1] == 0 && final[i + 2] == 1)
+                {
+                    ans++;
+                }
+                else if (final[i] == 0 && final[i + 1] == 1 && final[i + 2] == 0)
+                {
+                    ans++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
