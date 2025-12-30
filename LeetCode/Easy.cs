@@ -10166,6 +10166,28 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 3461. Check If Digits Are Equal in String After Operations I
+        //Link: https://leetcode.com/problems/check-if-digits-are-equal-in-string-after-operations-i
+        //Tags: Math, String, Simulation, Combinatorics, Number Theory
+        public static bool HasSameDigits(string s)
+        {
+            while (s.Length != 2)
+            {
+                string final = "";
+                for (int i = 0; i < s.Length - 1; i++)
+                {
+                    int sum = 0;
+                    int val1 = 0;
+                    int val2 = 0;
+                    int.TryParse(s[i] + "", out val1);
+                    int.TryParse(s[i + 1] + "", out val2);
+                    sum = (val1 + val2) % 10;
+                    final += sum.ToString();
+                }
+                s = final;
+            }
+            return s[0] == s[1];
+        }
     }
     #endregion
     #region "Easy Classes"
