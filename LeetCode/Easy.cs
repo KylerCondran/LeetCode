@@ -10071,6 +10071,18 @@ namespace LeetCode
             }
             return singled != doubled;
         }
+        //Title: 3210. Find the Encrypted String
+        //Link: https://leetcode.com/problems/find-the-encrypted-string
+        //Tags: String
+        public static string GetEncryptedString(string s, int k)
+        {
+            string final = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                final += s[(i + k) % s.Length];
+            }
+            return final;
+        }
     }
     #endregion
     #region "Easy Classes"
