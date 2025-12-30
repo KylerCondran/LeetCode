@@ -9995,6 +9995,23 @@ namespace LeetCode
             ans = x * sum;
             return ans;
         }
+        //Title: 3330. Find the Original Typed String I
+        //Link: https://leetcode.com/problems/find-the-original-typed-string-i
+        //Tags: String
+        public static int PossibleStringCount(string word)
+        {
+            int ans = 1;
+            char b = '1';
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (b == word[i])
+                {
+                    ans++;
+                }
+                b = word[i];
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
