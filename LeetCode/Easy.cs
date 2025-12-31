@@ -10251,6 +10251,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3492. Maximum Containers on a Ship
+        //Link: https://leetcode.com/problems/maximum-containers-on-a-ship
+        //Tags: Math
+        public static int MaxContainers(int n, int w, int maxWeight)
+        {
+            int slots = n * n;
+            int totalweight = 0;
+            int ans = 0;
+            for (int i = 0; i < slots; i++)
+            {
+                if (totalweight + w <= maxWeight)
+                {
+                    totalweight += w;
+                    ans++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
