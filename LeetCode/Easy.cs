@@ -10354,6 +10354,43 @@ namespace LeetCode
             b[1] = lastline;
             return b;
         }
+        //Title: 3438. Find Valid Pair of Adjacent Digits in String
+        //Link: https://leetcode.com/problems/find-valid-pair-of-adjacent-digits-in-string
+        //Tags: Hash Table, String, Counting
+        public static string FindValidPair(string s)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                int val = 0;
+                int.TryParse(s[i] + "", out val);
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a[val]++;
+                }
+            }
+            for (int i = 0; i < s.Length - 1; i++)
+            {
+                char char1 = s[i];
+                char char2 = s[i + 1];
+                int val1 = 0;
+                int.TryParse(char1 + "", out val1);
+                int val2 = 0;
+                int.TryParse(char2 + "", out val2);
+                if (char1 != char2)
+                {
+                    if (val1 == a[val1] && val2 == a[val2])
+                    {
+                        return val1.ToString() + val2.ToString();
+                    }
+                }
+            }
+            return "";
+        }
     }
     #endregion
     #region "Easy Classes"
