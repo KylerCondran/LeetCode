@@ -10228,6 +10228,29 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3423. Maximum Difference Between Adjacent Elements in a Circular Array
+        //Link: https://leetcode.com/problems/maximum-difference-between-adjacent-elements-in-a-circular-array
+        //Tags: Array
+        public static int MaxAdjacentDistance(int[] nums)
+        {
+            int ans = 0;
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                int diff = 0;
+                diff = Math.Abs(nums[i] - nums[i + 1]);
+                if (diff > ans)
+                {
+                    ans = diff;
+                }
+            }
+            int last = 0;
+            last = Math.Abs(nums[0] - nums[nums.Length - 1]);
+            if (last > ans)
+            {
+                ans = last;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
