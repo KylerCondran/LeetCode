@@ -10273,6 +10273,55 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2062. Count Vowel Substrings of a String
+        //Link: https://leetcode.com/problems/count-vowel-substrings-of-a-string
+        //Tags: Hash Table, String
+        public static int CountVowelSubstrings(string word)
+        {
+            int ans = 0;
+            for (int i = 0; i < word.Length; i++)
+            {
+                bool hasa = false;
+                bool hase = false;
+                bool hasi = false;
+                bool haso = false;
+                bool hasu = false;
+                bool fail = false;
+                for (int j = i; j < word.Length; j++)
+                {
+                    switch (word[j])
+                    {
+                        case 'a':
+                            hasa = true;
+                            break;
+                        case 'e':
+                            hase = true;
+                            break;
+                        case 'i':
+                            hasi = true;
+                            break;
+                        case 'o':
+                            haso = true;
+                            break;
+                        case 'u':
+                            hasu = true;
+                            break;
+                        default:
+                            fail = true;
+                            break;
+                    }
+                    if (fail)
+                    {
+                        break;
+                    }
+                    if (hasa && hase && hasi && haso && hasu)
+                    {
+                        ans++;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
