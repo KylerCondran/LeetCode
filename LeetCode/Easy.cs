@@ -10391,6 +10391,48 @@ namespace LeetCode
             }
             return "";
         }
+        //Title: 2409. Count Days Spent Together
+        //Link: https://leetcode.com/problems/count-days-spent-together
+        //Tags: Math, String
+        public static int CountDaysTogether(string arriveAlice, string leaveAlice, string arriveBob, string leaveBob)
+        {
+            bool bobinrome = false;
+            bool aliceinrome = false;
+            int ans = 0;
+            int[] day = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            for (int i = 0; i < 12; i++)
+            {
+                for (int j = 1; j <= day[i]; j++)
+                {
+                    string datestamp = "";
+                    string monthstamp = "";
+                    string daystamp = "";
+                    if (i < 9)
+                    {
+                        monthstamp = "0" + (i + 1).ToString();
+                    }
+                    else
+                    {
+                        monthstamp = (i + 1).ToString();
+                    }
+                    if (j < 10)
+                    {
+                        daystamp = "0" + j.ToString();
+                    }
+                    else
+                    {
+                        daystamp = j.ToString();
+                    }
+                    datestamp = monthstamp + "-" + daystamp;
+                    if (datestamp == arriveAlice) aliceinrome = true;
+                    if (datestamp == arriveBob) bobinrome = true;
+                    if (aliceinrome && bobinrome) ans++;
+                    if (datestamp == leaveAlice) aliceinrome = false;
+                    if (datestamp == leaveBob) bobinrome = false;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
