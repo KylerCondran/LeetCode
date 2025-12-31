@@ -10322,6 +10322,38 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 806. Number of Lines To Write String
+        //Link: https://leetcode.com/problems/number-of-lines-to-write-string
+        //Tags: Array, String
+        public static int[] NumberOfLines2(int[] widths, string s)
+        {
+            int lines = 1;
+            int lastline = 0;
+            int id = 0;
+            Dictionary<char, int> a = new Dictionary<char, int>();
+            for (char c = 'a'; c <= 'z'; c++)
+            {
+                a.Add(c, widths[id]);
+                id++;
+            }
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (lastline + a[s[i]] <= 100)
+                {
+                    lastline += a[s[i]];
+                }
+                else
+                {
+                    lastline = 0;
+                    lines++;
+                    lastline += a[s[i]];
+                }
+            }
+            int[] b = new int[2];
+            b[0] = lines;
+            b[1] = lastline;
+            return b;
+        }
     }
     #endregion
     #region "Easy Classes"
