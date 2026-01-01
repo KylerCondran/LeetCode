@@ -10456,6 +10456,28 @@ namespace LeetCode
             }
             return min;
         }
+        //Title: 3550. Smallest Index With Digit Sum Equal to Index
+        //Link: https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index
+        //Tags: Array, Math
+        public static int SmallestIndex(int[] nums)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                string digits = nums[i].ToString();
+                int sum = 0;
+                for (int j = 0; j < digits.Length; j++)
+                {
+                    int val = 0;
+                    int.TryParse(digits[j] + "", out val);
+                    sum += val;
+                }
+                if (sum == i)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
