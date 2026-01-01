@@ -10675,6 +10675,52 @@ namespace LeetCode
                 return false;
             }
         }
+        //Title: 3663. Find The Least Frequent Digit
+        //Link: https://leetcode.com/problems/find-the-least-frequent-digit
+        //Tags: Array, Hash Table, Math, Counting
+        public static int GetLeastFrequentDigit(int n)
+        {
+            string digits = n.ToString();
+            int ans = 10000;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < digits.Length; i++)
+            {
+                int val = 0;
+                int.TryParse(digits[i] + "", out val);
+                if (!a.ContainsKey(val))
+                {
+                    a.Add(val, 1);
+                }
+                else
+                {
+                    a[val]++;
+                }
+            }
+            int min = 10000;
+            List<int> c = new List<int>();
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                if (b.Value < min)
+                {
+                    min = b.Value;
+                }
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                if (b.Value == min)
+                {
+                    c.Add(b.Key);
+                }
+            }
+            foreach (int d in c)
+            {
+                if (d < ans)
+                {
+                    ans = d;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
