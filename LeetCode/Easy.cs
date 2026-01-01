@@ -10568,6 +10568,59 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 821. Shortest Distance to a Character
+        //Link: https://leetcode.com/problems/shortest-distance-to-a-character
+        //Tags: Array, Two Pointers, String
+        public static int[] ShortestToChar(string s, char c)
+        {
+            int[] ans = new int[s.Length];
+            int id = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                int left = 0;
+                int right = 0;
+                bool rightfound = false;
+                bool leftfound = false;
+                for (int j = i; j < s.Length; j++)
+                {
+                    if (s[j] != c)
+                    {
+                        right++;
+                    }
+                    else
+                    {
+                        rightfound = true;
+                        break;
+                    }
+                }
+                for (int z = i; z >= 0; z--)
+                {
+                    if (s[z] != c)
+                    {
+                        left++;
+                    }
+                    else
+                    {
+                        leftfound = true;
+                        break;
+                    }
+                }
+                if (leftfound && rightfound)
+                {
+                    ans[id] = Math.Min(left, right);
+                }
+                else if (leftfound)
+                {
+                    ans[id] = left;
+                }
+                else if (rightfound)
+                {
+                    ans[id] = right;
+                }
+                id++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
