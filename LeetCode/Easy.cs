@@ -10511,6 +10511,21 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 2716. Minimize String Length
+        //Link: https://leetcode.com/problems/minimize-string-length
+        //Tags: Hash Table, String
+        public static int MinimizedStringLength(string s)
+        {
+            List<char> a = new List<char>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!a.Contains(s[i]))
+                {
+                    a.Add(s[i]);
+                }
+            }
+            return a.Count();
+        }
     }
     #endregion
     #region "Easy Classes"
