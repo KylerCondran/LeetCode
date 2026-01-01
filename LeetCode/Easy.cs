@@ -10745,6 +10745,21 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 2706. Buy Two Chocolates
+        //Link: https://leetcode.com/problems/buy-two-chocolates
+        //Tags: Array, Greedy, Sorting
+        public static int BuyChoco(int[] prices, int money)
+        {
+            Array.Sort(prices);
+            if (prices[0] + prices[1] <= money)
+            {
+                return money - (prices[0] + prices[1]);
+            }
+            else
+            {
+                return money;
+            }
+        }
     }
     #endregion
     #region "Easy Classes"
