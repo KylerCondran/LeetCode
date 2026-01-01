@@ -10621,6 +10621,60 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3274. Check if Two Chessboard Squares Have the Same Color
+        //Link: https://leetcode.com/problems/check-if-two-chessboard-squares-have-the-same-color
+        //Tags: Math, String
+        public static bool CheckTwoChessboards(string coordinate1, string coordinate2)
+        {
+            bool c1blackeven = false;
+            bool c2blackeven = false;
+            bool c1black = false;
+            bool c2black = false;
+            switch (coordinate1[0])
+            {
+                case 'b':
+                case 'd':
+                case 'f':
+                case 'h':
+                    c1blackeven = true;
+                    break;
+                default:
+                    c1blackeven = false;
+                    break;
+            }
+            switch (coordinate2[0])
+            {
+                case 'b':
+                case 'd':
+                case 'f':
+                case 'h':
+                    c2blackeven = true;
+                    break;
+                default:
+                    c2blackeven = false;
+                    break;
+            }
+            int c1val = 0;
+            int c2val = 0;
+            int.TryParse(coordinate1[1] + "", out c1val);
+            int.TryParse(coordinate2[1] + "", out c2val);
+            if ((c1blackeven && c1val % 2 == 0) || (!c1blackeven && !(c1val % 2 == 0)))
+            {
+                c1black = true;
+            }
+            if ((c2blackeven && c2val % 2 == 0) || (!c2blackeven && !(c2val % 2 == 0)))
+            {
+                c2black = true;
+            }
+            if ((c1black && c2black) || (c1black == false && c2black == false))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     #endregion
     #region "Easy Classes"
