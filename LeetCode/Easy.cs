@@ -10553,6 +10553,21 @@ namespace LeetCode
             }
             return xval == 0 && yval == 0;
         }
+        //Title: 1450. Number of Students Doing Homework at a Given Time
+        //Link: https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time
+        //Tags: Array
+        public static int BusyStudent(int[] startTime, int[] endTime, int queryTime)
+        {
+            int ans = 0;
+            for (int i = 0; i < startTime.Length; i++)
+            {
+                if (startTime[i] <= queryTime && endTime[i] >= queryTime)
+                {
+                    ans++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
