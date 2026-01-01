@@ -10433,6 +10433,29 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 3300. Minimum Element After Replacement With Digit Sum
+        //Link: https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum
+        //Tags: Array, Math
+        public static int MinElement(int[] nums)
+        {
+            int min = 100000;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                string digits = nums[i].ToString();
+                int sum = 0;
+                for (int j = 0; j < digits.Length; j++)
+                {
+                    int val = 0;
+                    int.TryParse(digits[j] + "", out val);
+                    sum += val;
+                }
+                if (sum < min)
+                {
+                    min = sum;
+                }
+            }
+            return min;
+        }
     }
     #endregion
     #region "Easy Classes"
