@@ -10526,6 +10526,33 @@ namespace LeetCode
             }
             return a.Count();
         }
+        //Title: 657. Robot Return to Origin
+        //Link: https://leetcode.com/problems/robot-return-to-origin
+        //Tags: String, Simulation
+        public static bool JudgeCircle(string moves)
+        {
+            int xval = 0;
+            int yval = 0;
+            for (int i = 0; i < moves.Length; i++)
+            {
+                switch (moves[i])
+                {
+                    case 'U':
+                        yval += 1;
+                        break;
+                    case 'D':
+                        yval -= 1;
+                        break;
+                    case 'L':
+                        xval -= 1;
+                        break;
+                    case 'R':
+                        xval += 1;
+                        break;
+                }
+            }
+            return xval == 0 && yval == 0;
+        }
     }
     #endregion
     #region "Easy Classes"
