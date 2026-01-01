@@ -10721,6 +10721,30 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1991. Find the Middle Index in Array
+        //Link: https://leetcode.com/problems/find-the-middle-index-in-array
+        //Tags: Array, Prefix Sum
+        public static int FindMiddleIndex(int[] nums)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int leftsum = 0;
+                int rightsum = 0;
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    rightsum += nums[j];
+                }
+                for (int z = i - 1; z >= 0; z--)
+                {
+                    leftsum += nums[z];
+                }
+                if (leftsum == rightsum)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
     #endregion
     #region "Easy Classes"
