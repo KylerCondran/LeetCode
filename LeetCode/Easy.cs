@@ -10478,6 +10478,39 @@ namespace LeetCode
             }
             return -1;
         }
+        //Title: 3258. Count Substrings That Satisfy K-Constraint I
+        //Link: https://leetcode.com/problems/count-substrings-that-satisfy-k-constraint-i
+        //Tags: String, Sliding Window
+        public static int CountKConstraintSubstrings(string s, int k)
+        {
+            int ans = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+                int onecount = 0;
+                int zerocount = 0;
+                for (int j = i; j < s.Length; j++)
+                {
+                    switch (s[j])
+                    {
+                        case '1':
+                            onecount++;
+                            break;
+                        case '0':
+                            zerocount++;
+                            break;
+                    }
+                    if (onecount <= k || zerocount <= k)
+                    {
+                        ans++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
