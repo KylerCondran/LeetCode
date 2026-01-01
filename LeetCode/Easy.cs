@@ -10760,6 +10760,30 @@ namespace LeetCode
                 return money;
             }
         }
+        //Title: 3622. Check Divisibility by Digit Sum and Product
+        //Link: https://leetcode.com/problems/check-divisibility-by-digit-sum-and-product
+        //Tags: Math
+        public static bool CheckDivisibility(int n)
+        {
+            string digits = n.ToString();
+            int digitsum = 0;
+            int digitproduct = 1;
+            for (int i = 0; i < digits.Length; i++)
+            {
+                int val = 0;
+                int.TryParse(digits[i] + "", out val);
+                digitsum += val;
+                digitproduct *= val;
+            }
+            if (n % (digitsum + digitproduct) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     #endregion
     #region "Easy Classes"
