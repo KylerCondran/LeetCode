@@ -10881,6 +10881,38 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1629. Slowest Key
+        //Link: https://leetcode.com/problems/slowest-key
+        //Tags: Array, String
+        public static char SlowestKey(int[] releaseTimes, string keysPressed)
+        {
+            int val = 0;
+            int max = 0;
+            Dictionary<int, List<char>> a = new Dictionary<int, List<char>>();
+            for (int i = 0; i < releaseTimes.Length; i++)
+            {
+                int duration = releaseTimes[i] - val;
+                if (!a.ContainsKey(duration))
+                {
+                    a.Add(duration, new List<char> { keysPressed[i] });
+                }
+                else
+                {
+                    if (!a[duration].Contains(keysPressed[i]))
+                    {
+                        a[duration].Add(keysPressed[i]);
+                    }
+                }
+                val = releaseTimes[i];
+            }
+            foreach (KeyValuePair<int, List<char>> b in a)
+            {
+                max = Math.Max(max, b.Key);
+            }
+            List<char> ans = a[max];
+            ans.Sort();
+            return ans[ans.Count - 1];
+        }
     }
     #endregion
     #region "Easy Classes"
