@@ -10913,6 +10913,40 @@ namespace LeetCode
             ans.Sort();
             return ans[ans.Count - 1];
         }
+        //Title: 2190. Most Frequent Number Following Key In an Array
+        //Link: https://leetcode.com/problems/most-frequent-number-following-key-in-an-array
+        //Tags: Array, Hash Table, Counting
+        public static int MostFrequent(int[] nums, int key)
+        {
+            int max = 0;
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                if (nums[i] == key)
+                {
+                    if (!a.ContainsKey(nums[i + 1]))
+                    {
+                        a.Add(nums[i + 1], 1);
+                    }
+                    else
+                    {
+                        a[nums[i + 1]]++;
+                    }
+                }
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                max = Math.Max(max, b.Value);
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                if (b.Value == max)
+                {
+                    return b.Key;
+                }
+            }
+            return 0;
+        }
     }
     #endregion
     #region "Easy Classes"
