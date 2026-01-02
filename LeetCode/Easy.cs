@@ -10865,6 +10865,22 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 3392. Count Subarrays of Length Three With a Condition
+        //Link: https://leetcode.com/problems/count-subarrays-of-length-three-with-a-condition
+        //Tags: Array
+        public static int CountSubarrays(int[] nums)
+        {
+            int ans = 0;
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                int val = nums[i] + nums[i + 2];
+                if (nums[i + 1] == val * 2)
+                {
+                    ans++;
+                }
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
