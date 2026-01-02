@@ -10821,6 +10821,50 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 3105. Longest Strictly Increasing or Strictly Decreasing Subarray
+        //Link: https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray
+        //Tags: Array
+        public static int LongestMonotonicSubarray(int[] nums)
+        {
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int start = nums[i];
+                int increase = 1;
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[j] > start)
+                    {
+                        increase++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    start = nums[j];
+                }
+                max = Math.Max(max, increase);
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int start = nums[i];
+                int decrease = 1;
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[j] < start)
+                    {
+                        decrease++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    start = nums[j];
+                }
+                max = Math.Max(max, decrease);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
