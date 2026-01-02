@@ -10784,6 +10784,43 @@ namespace LeetCode
                 return false;
             }
         }
+        //Title: 2068. Check Whether Two Strings are Almost Equivalent
+        //Link: https://leetcode.com/problems/check-whether-two-strings-are-almost-equivalent
+        //Tags: Hash Table, String, Counting
+        public static bool CheckAlmostEquivalent(string word1, string word2)
+        {
+            Dictionary<int, int> a = new Dictionary<int, int>();
+            for (int i = 0; i < word1.Length; i++)
+            {
+                if (!a.ContainsKey(word1[i]))
+                {
+                    a.Add(word1[i], 1);
+                }
+                else
+                {
+                    a[word1[i]]++;
+                }
+            }
+            for (int i = 0; i < word2.Length; i++)
+            {
+                if (!a.ContainsKey(word2[i]))
+                {
+                    a.Add(word2[i], -1);
+                }
+                else
+                {
+                    a[word2[i]]--;
+                }
+            }
+            foreach (KeyValuePair<int, int> b in a)
+            {
+                if (b.Value > 3 || b.Value < -3)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
     #endregion
     #region "Easy Classes"
