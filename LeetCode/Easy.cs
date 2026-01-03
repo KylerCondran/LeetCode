@@ -10947,6 +10947,32 @@ namespace LeetCode
             }
             return 0;
         }
+        //Title: 674. Longest Continuous Increasing Subsequence
+        //Link: https://leetcode.com/problems/longest-continuous-increasing-subsequence
+        //Tags: Array
+        public static int FindLengthOfLCIS(int[] nums)
+        {
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int start = nums[i];
+                int length = 1;
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[j] > start)
+                    {
+                        length++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    start = nums[j];
+                }
+                max = Math.Max(max, length);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
