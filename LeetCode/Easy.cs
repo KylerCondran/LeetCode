@@ -10973,6 +10973,27 @@ namespace LeetCode
             }
             return max;
         }
+        //Title: 392. Is Subsequence
+        //Link: https://leetcode.com/problems/is-subsequence
+        //Tags: Two Pointers, String, Dynamic Programming
+        public static bool IsSubsequence(string s, string t)
+        {
+            bool ans = false;
+            int id = 0;
+            if (s == "") { return true; }
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] == s[id])
+                {
+                    id++;
+                    if (id > s.Length - 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
     #endregion
     #region "Easy Classes"
