@@ -10994,6 +10994,42 @@ namespace LeetCode
             }
             return false;
         }
+        //Title: 2389. Longest Subsequence With Limited Sum
+        //Link: https://leetcode.com/problems/longest-subsequence-with-limited-sum
+        //Tags: Array, Binary Search, Greedy, Sorting, Prefix Sum
+        public static int[] AnswerQueries(int[] nums, int[] queries)
+        {
+            int[] ans = new int[queries.Length];
+            int id = 0;
+            Array.Sort(nums);
+            foreach (int a in queries)
+            {
+                int max = 0;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    int length = 0;
+                    int sum = 0;
+                    for (int j = i; j < nums.Length; j++)
+                    {
+                        int val = nums[j];
+                        sum += val;
+                        if (sum <= a)
+                        {
+                            length++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        val = nums[j];
+                    }
+                    max = Math.Max(max, length);
+                }
+                ans[id] = max;
+                id++;
+            }
+            return ans;
+        }
     }
     #endregion
     #region "Easy Classes"
