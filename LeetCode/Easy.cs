@@ -11124,6 +11124,46 @@ namespace LeetCode
             }
             return true;
         }
+        //Title: 2806. Account Balance After Rounded Purchase
+        //Link: https://leetcode.com/problems/account-balance-after-rounded-purchase
+        //Tags: Math
+        public static int AccountBalanceAfterPurchase(int purchaseAmount)
+        {
+            int bank = 100;
+            string digits = purchaseAmount.ToString();
+            char val = digits[digits.Length - 1];
+            switch (val)
+            {
+                case '1':
+                    purchaseAmount -= 1;
+                    break;
+                case '2':
+                    purchaseAmount -= 2;
+                    break;
+                case '3':
+                    purchaseAmount -= 3;
+                    break;
+                case '4':
+                    purchaseAmount -= 4;
+                    break;
+                case '5':
+                    purchaseAmount += 5;
+                    break;
+                case '6':
+                    purchaseAmount += 4;
+                    break;
+                case '7':
+                    purchaseAmount += 3;
+                    break;
+                case '8':
+                    purchaseAmount += 2;
+                    break;
+                case '9':
+                    purchaseAmount += 1;
+                    break;
+            }
+            return bank - purchaseAmount;
+        }
     }
     #endregion
     #region "Easy Classes"
