@@ -11164,6 +11164,32 @@ namespace LeetCode
             }
             return bank - purchaseAmount;
         }
+        //Title: 2739. Total Distance Traveled
+        //Link: https://leetcode.com/problems/total-distance-traveled
+        //Tags: Math, Simulation
+        public static int DistanceTraveled(int mainTank, int additionalTank)
+        {
+            int distance = 0;
+            int counter = 0;
+            Queue<bool> q = new Queue<bool>();
+            for (int i = 0; i < mainTank; i++)
+            {
+                q.Enqueue(true);
+            }
+            while (q.Count > 0)
+            {
+                q.Dequeue();
+                distance += 10;
+                counter++;
+                if (additionalTank > 0 && counter == 5)
+                {
+                    q.Enqueue(true);
+                    counter = 0;
+                    additionalTank--;
+                }
+            }
+            return distance;
+        }
     }
     #endregion
     #region "Easy Classes"
