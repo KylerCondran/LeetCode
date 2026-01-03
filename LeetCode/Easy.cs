@@ -11030,6 +11030,28 @@ namespace LeetCode
             }
             return ans;
         }
+        //Title: 1588. Sum of All Odd Length Subarrays
+        //Link: https://leetcode.com/problems/sum-of-all-odd-length-subarrays
+        //Tags: Array, Math, Prefix Sum
+        public static int SumOddLengthSubarrays(int[] arr)
+        {
+            int totalsum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int length = 1;
+                int sum = 0;
+                for (int j = i; j < arr.Length; j++)
+                {
+                    sum += arr[j];
+                    if (length % 2 != 0)
+                    {
+                        totalsum += sum;
+                    }
+                    length++;
+                }
+            }
+            return totalsum;
+        }
     }
     #endregion
     #region "Easy Classes"
