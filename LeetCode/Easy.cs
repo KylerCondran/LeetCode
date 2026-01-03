@@ -11052,6 +11052,32 @@ namespace LeetCode
             }
             return totalsum;
         }
+        //Title: 1800. Maximum Ascending Subarray Sum
+        //Link: https://leetcode.com/problems/maximum-ascending-subarray-sum
+        //Tags: Array
+        public static int MaxAscendingSum(int[] nums)
+        {
+            int max = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int start = nums[i];
+                int sum = nums[i];
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[j] > start)
+                    {
+                        sum += nums[j];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    start = nums[j];
+                }
+                max = Math.Max(max, sum);
+            }
+            return max;
+        }
     }
     #endregion
     #region "Easy Classes"
